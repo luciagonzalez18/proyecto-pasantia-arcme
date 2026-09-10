@@ -6,3 +6,4 @@ export const routes: Routes = [
   { path: 'registro', component: Registro }
 
 ];
+        
