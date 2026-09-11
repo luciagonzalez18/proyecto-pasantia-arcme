@@ -1,5 +1,37 @@
 <form>
+    <img src="assets/logoArcme.png" alt="logoArcme">
+    <div class="mb-3">
+        <label for="exampleDNI" class="form-label">DNI</label>
+        <input type="text" class="form-control" id="exampleDNI"><!--aria-describedby="DNIhelp"-->
+        <!--<div id="DNIhelp" class="form-text">We'll never share your DNI with anyone else.</div>-->
+    </div>
+    <div class="mb-3">
+        <label for="passInp" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="passInp">
+
+        <label class="mostrar-password">
+            <input type="checkbox" onclick="passInp.type=this.checked ? 'text' : 'password'"> Mostrar contraseña
+        </label>
+
+    </div>
+    <div class="mb-3">
+        <label for="passInp2" class="form-label">Repita su contraseña </label>
+        <input type="password" class="form-control" id="passInp2">
+
+        <label class="mostrar-password">
+            <input type="checkbox" onclick="passInp2.type=this.checked ? 'text' : 'password'"> Mostrar contraseña
+        </label>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Continuar</button>
+    <p>¿Ya tienes una cuenta?</p>
+    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
     
+</form>
+
+<!--<form>
+    <img src="assets/logoArcme.png" alt="logoArcme">
     <div class="mb-3">
         <label for="exampleDNI" class="form-label">DNI</label>
         <input type="email" class="form-control" id="exampleDNI" aria-describedby="DNIhelp">
@@ -21,3 +53,4 @@
     <p>¿Ya tienes una cuenta?</p>
     <button type="submit" class="btn btn-primary">Iniciar sesión</button>
 </form>
+-->
