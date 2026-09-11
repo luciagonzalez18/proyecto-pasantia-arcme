@@ -1,34 +1,49 @@
-<form>
-    <img src="assets/logoArcme.png" alt="logoArcme">
-    <div class="mb-3">
-        <label for="exampleDNI" class="form-label">DNI</label>
-        <input type="text" class="form-control" id="exampleDNI"><!--aria-describedby="DNIhelp"-->
-        <!--<div id="DNIhelp" class="form-text">We'll never share your DNI with anyone else.</div>-->
-    </div>
-    <div class="mb-3">
-        <label for="passInp" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" id="passInp">
+<div class="registro">
+    <form>
+        <img src="assets/logoArcme.png" alt="logoArcme">
+        <div class="mb-3">
+            <label for="username" class="form-label">Ingrese su nombre</label>
+            <input type="text" class="form-control" id="username" placeholder="Nombre de usuario">
+        </div>
+        <div class="mb-3">
+            <label for="exampleDNI" class="form-label">DNI</label>
+            <input type="text" class="form-control" id="exampleDNI"
+                placeholder="xx-xxx-xxx"><!--aria-describedby="DNIhelp"-->
+            <!--<div id="DNIhelp" class="form-text">We'll never share your DNI with anyone else.</div>-->
+        </div>
+        <div class="mb-3">
+            <label for="passInp" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="passInp" placeholder="###########">
 
-        <label class="mostrar-password">
-            <input type="checkbox" onclick="passInp.type=this.checked ? 'text' : 'password'"> Mostrar contraseña
-        </label>
+            <label class="mostrar-password">
+                <input type="checkbox" onclick="passInp.type=this.checked ? 'text' : 'password'"> Mostrar contraseña
+            </label>
 
-    </div>
-    <div class="mb-3">
-        <label for="passInp2" class="form-label">Repita su contraseña </label>
-        <input type="password" class="form-control" id="passInp2">
+        </div>
+        <div class="mb-3">
+            <label for="passInp2" class="form-label">Repita su contraseña </label>
+            <input type="password" class="form-control" id="passInp2" placeholder="###########">
 
-        <label class="mostrar-password">
-            <input type="checkbox" onclick="passInp2.type=this.checked ? 'text' : 'password'"> Mostrar contraseña
-        </label>
+            <label class="mostrar-password">
+                <input type="checkbox" onclick="passInp2.type=this.checked ? 'text' : 'password'"> Mostrar contraseña
+            </label>
 
-    </div>
+        </div>
 
-    <button type="submit" class="btn btn-primary">Continuar</button>
-    <p>¿Ya tienes una cuenta?</p>
-    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-    
-</form>
+        <button type="submit" class="btn btn-primary">Continuar</button>
+        <p>¿Ya tienes una cuenta?</p>
+        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+
+    </form>
+    <footer>
+        <div class="footer-links">
+            <a href="">Contactanos</a>
+            <a href="">Ayuda</a>
+            <a href="">Acerca de nosotros</a>
+        </div>
+        <p class="copyright">Copyright © 2026</p>
+    </footer>
+</div>
 
 <!--<form>
     <img src="assets/logoArcme.png" alt="logoArcme">
