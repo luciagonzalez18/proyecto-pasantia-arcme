@@ -1,33 +1,39 @@
-<!-- <form class="formulario">
-    <h2>Iniciar Sesión</h2>
-    <div class="mb-3">
-        <label for="">DNI</label>
-        <input type="text" class="form-control" placeholder="ej: 24999333">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder = "ej: 1234">
-        <div>
-            <a href="">Has olvidado la contraseña?</a>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Continuar</button>
-    <button>Registrarse</button>
-</form> -->
+<div class="container">
+  <form>
 
-<form>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">DNI</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div class="mb-3">
+      <label for="dni">DNI</label>
+      <input type="number" id="dni" placeholder="00-000-000" required>
+    </div>
+    <div class="mb-3">
+      <label for="contraseña">Contraseña</label>
+      <input type="password" id="contraseña" placeholder="############" required>
+    </div>
+
+    <a href="#" class="olvidarContraseña">Has olvidado la contraseña?</a>
+
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Recordarme</label>
+    </div>
+
+    <button type="submit" class="btn btnIniciarSesion">Iniciar Sesion</button>
+
+    <div class="divisor">
+      <h3>O</h3>
+    </div>
+    <button class="btn btnRegistro">Registrarse</button>
+
+  </form>
+
+</div>
+
+
+<footer>
+  <div class="footer-links">
+    <a>Contactanos</a>
+    <a>Ayuda</a>
+    <a>Acerca de nosotros</a>
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-        <a id="emailHelp">Has olvidado la contraseña?</a>
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+  <p class="copyright">Copyright © 2026</p>
+</footer>

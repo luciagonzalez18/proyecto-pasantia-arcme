@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+    border: 1.5px solid #2d2d2d;
+    border-radius: 20px;
+    padding: 30px 25px;
+    width: 100%;
+    max-width: 360px;
+    margin: 40px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+.dni {
+    
+}
+
+
+footer {
+    background-color: #f5f5f7;
+    padding: 25px 15px 20px;
+    text-align: center;
+    border-top: 1px solid #eaeaea;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.btnRegistro {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1.5px solid #2d2d2d;
+    border-radius: 12px;
+    padding: 10px;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.btnIniciarSesion {
+    background-color: #1e20ff;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.divisor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.divisor h3 {
+    padding: 12px;
+    font-size: 20px;
+}
+
+.olvidarContraseña {
+    display: block;
+    font-size: 15px;
+    text-decoration: none;
+    margin-top: 6px;
+    margin-bottom: 20px;
+}
