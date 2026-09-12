@@ -1,10 +1,12 @@
 <div class="registro">
+    @if(paso===1){
     <form>
         <img src="assets/logoArcme.png" alt="logoArcme">
-        <div class="mb-3">
+        <h2>Registrarse</h2>
+        <!-- <div class="mb-3">
             <label for="username" class="form-label">Ingrese su nombre</label>
             <input type="text" class="form-control" id="username" placeholder="Nombre de usuario">
-        </div>
+        </div> -->
         <div class="mb-3">
             <label for="exampleDNI" class="form-label">DNI</label>
             <input type="text" class="form-control" id="exampleDNI"
@@ -30,11 +32,35 @@
 
         </div>
 
-        <button type="submit" class="btn btn-primary">Continuar</button>
+        <button type="button" class="btn btn-primary" (click)="paso = 2">Continuar</button>
         <p>¿Ya tienes una cuenta?</p>
         <button type="submit" class="btn btn-primary">Iniciar sesión</button>
 
     </form>
+    }
+
+    @if(paso===2){
+    <form>
+        <img src="assets/logoArcme.png" alt="logoArcme">
+        <h2>¿Cómo te llamas?</h2>
+
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre de usuario</label>
+
+            <input type="text" class="form-control" id="nombre" placeholder="Ingrese un nombre de usuario">
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Registrarse
+        </button>
+
+        <button  type="button" class="btn btn-secondary" (click)="paso = 1">
+            ← Volver
+        </button>
+    </form>
+
+    }
+
     <footer>
         <div class="footer-links">
             <a href="">Contactanos</a>
@@ -44,28 +70,3 @@
         <p class="copyright">Copyright © 2026</p>
     </footer>
 </div>
-
-<!--<form>
-    <img src="assets/logoArcme.png" alt="logoArcme">
-    <div class="mb-3">
-        <label for="exampleDNI" class="form-label">DNI</label>
-        <input type="email" class="form-control" id="exampleDNI" aria-describedby="DNIhelp">
-        <div id="DNIhelp" class="form-text">We'll never share your DNI with anyone else.</div>
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword2" class="form-label">Repita su contraseña </label>
-        <input type="password" class="form-control" id="exampleInputPassword2">
-    </div>
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Continuar</button>
-    <p>¿Ya tienes una cuenta?</p>
-    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-</form>
--->
