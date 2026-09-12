@@ -1,6 +1,7 @@
 .container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     background: #ffffff;
     border: 1.5px solid #2d2d2d;
     border-radius: 20px;
@@ -8,6 +9,18 @@
     width: 100%;
     max-width: 360px;
     margin-bottom: 40px;
+}
+
+.containerLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
 }
 
 .btnRegistro {
@@ -52,38 +65,41 @@
 
 .containerDNI {
     border: 1.5px solid #2d2d2d;
+    max-width: 250px;
+    width: 100%;
     border-radius: 15px;
 }
 
 .containerDNI label {
     display: flex;
     padding-left: 10px;
-    border-radius: 20px;
 }
 
 .containerDNI input {
     padding-left: 10px;
     border-style: none;
-    border-radius: 10px;
+    border-radius: 15x;
+    outline: none;
 }
 
 .containerContraseña {
     border: 1.5px solid #2d2d2d;
+    max-width: 250px;
+    width: 100%;
     border-radius: 15px;
 }
 
 .containerContraseña label {
     display: flex;
     padding-left: 10px;
-    border-radius: 20px;
 }
 
 .containerContraseña input {
     padding-left: 10px;
     border-style: none;
-    border-radius: 10px;
+    outline: none;
+    border-radius: 15px;
 }
-
 
 footer {
     background-color: #f5f5f7;
@@ -98,4 +114,3 @@ footer {
     gap: 30px;
     margin-bottom: 20px;
 }
-
