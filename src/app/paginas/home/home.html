@@ -1,36 +1,112 @@
+<!--inicio del navbar-->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">navbarrrrr</a>
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    
+    <!-- a la izquierda Logo y nombre de nuestra pagina (arcme) -->
+    <div class="d-flex align-items-center gap-2">
+      <!-- aca abajo esta la imagen de nuestro logo -->
+      <img src="assets/logoArcme.jpg" alt="Logo Arcme" height="55" class="d-block">
+      <div class="lh-1">
+        <!--abajo el texto que esta al lado del logo  la etiqueta small sirve para hacer subtitulos-->
+        <span class="fs-3 fw-bold text-dark d-block lh-1" style="letter-spacing: -0.5px;">arcme</span>
+        <small class="text-muted fw-normal" style="font-size: 0.65rem; display: block; margin-top: 1px;">arquitectura y diseño</small>
+      </div>
+    </div>
+
+    <!-- (botones que venian con el nav de boostrap creo que es algo para celulares) -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+        
+    <!-- Botones de Iniciar Sesión y Registro dentro de un div para que queden al lado-->
+    <div class="d-flex align-items-center gap-2">
+      <!-- Botón Iniciar Sesión -->
+      <button class="btn btn-light text-dark" type="button">
+        <i class="bi bi-box-arrow-right me-1"></i> Iniciar sesión
+      </button>
+
+      <!-- Botón Registrarse -->
+      <button class="btn btn-light text-dark" type="button">
+        <i class="bi bi-person-plus me-1"></i> Registrarse
+      </button>
     </div>
-  </div>
+
+  </div> <!-- Cierre del container-fluid que tiene todo adentro -->
 </nav>
+<!--terminacion del navbar-->
+
+
+
+<!-- Sección debajo del navbar con una descripcion sobre para que sirve nuestra pagina  -->
+
+
+<section class="container my-5">
+  <!--cramos un div que va a tener todo (esta dividido en 2 columnas una para gestion y la otra para imagenes)-->
+  <div class="row align-items-center g-4">
+
+    <!-- a la izquierda una card de "Gestión" y Texto abajo -->
+     <!-- col es una columna -->
+    <div class="col-12 col-lg-6">
+
+      <!--abajo la card que contiene "gestion"-->
+      <div class="card text-bg-dark border-0 rounded-4 shadow-sm d-inline-block mb-3" style="max-width: 320px;">
+        <div class="card-body px-4 py-3">
+          <h2 class="card-title fw-bold m-0 fs-1">Gestión</h2>
+        </div>
+      </div>
+
+      
+     <!-- Lista con info debajo de la card -->
+<ul class="list-unstyled fs-5 text-secondary d-flex flex-column gap-2 mb-4">
+
+  <li class="d-flex align-items-center gap-2">
+    
+    <span>Para tus proyectos</span>
+  </li>
+  <!--oracion 1-->
+  <li class="d-flex align-items-center gap-2">
+    <i class="bi bi-check-circle-fill text-dark fs-6"></i>
+    <span>Control sobre todo lo que necesites</span>
+  </li>
+  <!--oracion 2-->
+  <li class="d-flex align-items-center gap-2">
+    <i class="bi bi-check-circle-fill text-dark fs-6"></i>
+    <span>Facil e intuitiva de usar</span>
+  </li>
+  <!--oracion 3 -->
+  <li class="d-flex align-items-center gap-2">
+    <i class="bi bi-check-circle-fill text-dark fs-6"></i>
+    <span>Publicita y comparti tus proyectos</span>
+  </li>
+</ul>
+
+    </div> <!-- Cierre de la columna que tiene gestion y el listado-->
+
+    <!-- columna 2 que contendra las imagenes: -->
+    <div class="col-12 col-lg-6">
+      <img src="assets/imagenHOME1.jpg" alt="Imagen de gestión" class="img-fluid rounded-4 shadow">
+
+    <!-- Fila para las 2 imágenes chicas q se ven en el diseño de figma (Abajo, una al lado de la otra) -->
+<div class="row g-2 g-md-3 m-0 w-100">
+  
+  <!-- Imagen chica 1 -->
+  <div class="col-6 ps-0 pe-1 pe-md-2">
+    <img src="assets/imagenHOME2.jpg" 
+         alt="imagen 1" 
+         class="img-fluid rounded-4 shadow-sm w-100 d-block" 
+         style="height: 140px; object-fit: cover;">
+  </div>
+
+  <!-- Imagen chica 2 -->
+  <div class="col-6 ps-1 ps-md-2 pe-0">
+    <img src="assets/imagenHOME3.jpg" 
+         alt="imagen 2" 
+         class="img-fluid rounded-4 shadow-sm w-100 d-block" 
+         style="height: 140px; object-fit: cover;">
+  </div>
+
+</div><!--cierre del div que contiene imagenes chicas -->
+    </div> <!-- Cierre de la columna que contiene imagenes -->
+
+  </div> <!-- Cierre del div que contiene todo (las 2 columnas) -->
+</section> 
