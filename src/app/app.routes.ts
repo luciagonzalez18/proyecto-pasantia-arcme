@@ -1,7 +1,15 @@
 import { Routes } from '@angular/router';
 import { Home } from './paginas/home/home';
+import { Registro } from './auth/registro/registro';
+import { InicioSesion } from './auth/inicio-sesion/inicio-sesion';
 
 export const routes: Routes = [
- {path: "home", component: Home}
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+
+    { path: "home", component: Home },
+    { path: "registro", component: Registro },
+    { path: "inicioSesion",component:InicioSesion},
+
+    { path: '**', redirectTo: 'home' }
 
 ];
