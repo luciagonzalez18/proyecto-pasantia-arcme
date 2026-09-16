@@ -1,116 +1,304 @@
-.container {
+/* =========================
+   CONTENEDOR PRINCIPAL
+========================= */
+
+body {
+    margin: 0;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background: #ffffff;
-    border: 1.5px solid #2d2d2d;
-    border-radius: 20px;
-    padding: 30px 25px;
-    width: 100%;
-    max-width: 360px;
-    margin-bottom: 40px;
 }
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+/* =========================
+   FORMULARIO
+========================= */
+
+form {
+    width: 100%;
+    max-width: 600px;
+
+    margin: 50px auto;
+    padding: 35px 40px;
+
+    background-color: #ffffff;
+
+    border: 2px solid #000000;
+    border-radius: 18px;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   LOGO
+========================= */
 
 .containerLogo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+    text-align: center;
 }
 
-.logo {
+form img.logo {
+    display: block;
+
     width: 150px;
-    height: auto;
+    max-width: 100%;
+
+    margin: 0 auto 30px auto;
 }
 
-.btnRegistro {
-    background-color: #ffffff;
-    color: #000000;
-    border: 1.5px solid #2d2d2d;
-    border-radius: 12px;
-    padding: 10px;
+
+/* =========================
+   LABELS
+========================= */
+
+form label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #222222;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   INPUTS (TEXTO Y PASSWORD)
+========================= */
+
+form input[type="number"],
+form input[type="password"] {
     width: 100%;
-    font-weight: 500;
+    height: 45px;
+
+    padding: 8px 12px;
+
+    border: 1px solid #aaaaaa;
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    box-sizing: border-box;
+
+    transition: 0.2s;
+}
+
+form input[type="number"]:focus,
+form input[type="password"]:focus {
+    border-color: #000000;
+
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+
+    outline: none;
+}
+
+
+/* =========================
+   ESPACIADO
+========================= */
+
+.mb-3 {
+    margin-bottom: 22px !important;
+}
+
+
+/* =========================
+   LINK OLVIDAR CONTRASEÑA
+========================= */
+
+.olvidarContraseña {
+    display: inline-block;
+
+    margin-bottom: 15px;
+
+    color: #1587df;
+
+    font-size: 14px;
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+.olvidarContraseña:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   CHECKBOX (RECORDARME)
+========================= */
+
+.form-check {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 8px;
+
+    color: #555555;
+
+    font-size: 14px;
+}
+
+.form-check-label {
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.form-check-input {
+    width: 16px;
+    height: 16px;
+
+    margin: 0;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   BOTONES
+========================= */
+
+.btn {
+    width: 100%;
+    height: 45px;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
 }
 
 .btnIniciarSesion {
-    background-color: #1e20ff;
+    background-color: #1587df;
     color: #ffffff;
-    border: none;
-    border-radius: 12px;
-    padding: 12px;
-    width: 100%;
-    font-weight: 500;
 }
 
+.btnIniciarSesion:hover {
+    background-color: #0b4771;
+    color: #ffffff;
+}
+
+
+/* =========================
+   DIVISOR (TEXTO "O" ENTRE BOTONES)
+========================= */
+
 .divisor {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 25px 0 12px;
+
     text-align: center;
 }
 
 .divisor h3 {
-    padding: 12px;
-    font-size: 20px;
+    margin: 0;
+
+    color: #666666;
+
+    font-size: 14px;
+    font-weight: normal;
 }
 
-.olvidarContraseña {
-    display: block;
-    font-size: 15px;
-    text-decoration: none;
-    margin-top: 6px;
-    margin-bottom: 20px;
+
+/* =========================
+   SEGUNDO BOTÓN (REGISTRARSE)
+========================= */
+
+.btnRegistro {
+    background-color: #ffffff;
+
+    border: 1.5px solid #000000;
+
+    color: #6e6e6e;
 }
 
-.containerDNI {
-    border: 1.5px solid #2d2d2d;
-    max-width: 250px;
-    width: 100%;
-    border-radius: 15px;
+.btnRegistro:hover {
+    background-color: #000000;
+
+    color: #ffffff;
 }
 
-.containerDNI label {
-    display: flex;
-    padding-left: 10px;
-}
 
-.containerDNI input {
-    padding-left: 10px;
-    border-style: none;
-    border-radius: 15x;
-    outline: none;
-}
-
-.containerContraseña {
-    border: 1.5px solid #2d2d2d;
-    max-width: 250px;
-    width: 100%;
-    border-radius: 15px;
-}
-
-.containerContraseña label {
-    display: flex;
-    padding-left: 10px;
-}
-
-.containerContraseña input {
-    padding-left: 10px;
-    border-style: none;
-    outline: none;
-    border-radius: 15px;
-}
+/* =========================
+   FOOTER
+========================= */
 
 footer {
+    width: 100%;
+
+    margin-top: auto;
+
     background-color: #f5f5f7;
+
     padding: 25px 15px 20px;
+
     text-align: center;
-    border-top: 1px solid #eaeaea;
+
+    border-top: 1px solid #e5e5e5;
+
+    box-sizing: border-box;
 }
+
+
+/* =========================
+   LINKS FOOTER
+========================= */
 
 .footer-links {
     display: flex;
+
     justify-content: center;
+
     gap: 30px;
-    margin-bottom: 20px;
+
+    margin-bottom: 18px;
+}
+
+.footer-links a {
+    color: #555555;
+
+    font-size: 14px;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+.footer-links a:hover {
+    color: #1587df;
+
+    text-decoration: underline;
+}
+
+
+/* =========================
+   COPYRIGHT
+========================= */
+
+.copyright {
+    margin: 0;
+
+    color: #888888;
+
+    font-size: 13px;
 }
