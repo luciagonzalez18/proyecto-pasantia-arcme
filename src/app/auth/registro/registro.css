@@ -1,0 +1,317 @@
+/* =========================
+   CONTENEDOR PRINCIPAL
+========================= */
+
+.registro {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* =========================
+   FORMULARIO
+========================= */
+
+form {
+    width: 100%;
+    max-width: 600px;
+
+    margin: 50px auto;
+    padding: 35px 40px;
+
+    background-color: #ffffff;
+
+    border: 2px solid #000000;
+    border-radius: 18px;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+form img {
+    display: block;
+
+    width: 150px;
+    max-width: 100%;
+
+    margin: 0 auto 30px auto;
+}
+
+
+/* =========================
+   LABELS
+========================= */
+
+.form-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #222222;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+.form-control {
+    width: 100%;
+    height: 45px;
+
+    padding: 8px 12px;
+
+    border: 1px solid #aaaaaa;
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    box-sizing: border-box;
+
+    transition: 0.2s;
+}
+
+.form-control:focus {
+    border-color: #000000;
+
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+
+    outline: none;
+}
+
+
+/* =========================
+   ESPACIADO
+========================= */
+
+.mb-3 {
+    margin-bottom: 22px !important;
+}
+
+
+/* =========================
+   MOSTRAR CONTRASEÑA
+========================= */
+
+.mostrar-password {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 8px;
+
+    color: #555555;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.mostrar-password input {
+    width: 16px;
+    height: 16px;
+
+    margin: 0;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   BOTONES
+========================= */
+
+.btn-primary {
+    width: 100%;
+    height: 45px;
+
+    border-radius: 8px;
+
+    background-color: #1587df;
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #0b4771;
+    color: #ffffff;
+}
+
+
+/* =========================
+   TEXTO ENTRE BOTONES
+========================= */
+
+form>p {
+    margin: 25px 0 12px;
+
+    text-align: center;
+
+    color: #666666;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   SEGUNDO BOTÓN
+========================= */
+
+form>p+.btn-primary {
+    background-color: #ffffff;
+
+    border: 1.5px solid #000000;
+
+    color: #6e6e6e;
+}
+
+form>p+.btn-primary:hover {
+    background-color: #000000;
+
+    color: #ffffff;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    width: 100%;
+
+    margin-top: auto;
+
+    background-color: #f5f5f7;
+
+    padding: 25px 15px 20px;
+
+    text-align: center;
+
+    border-top: 1px solid #e5e5e5;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+.footer-links {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    margin-bottom: 18px;
+}
+
+.footer-links a {
+    color: #555555;
+
+    font-size: 14px;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+.footer-links a:hover {
+    color: #1587df;
+
+    text-decoration: underline;
+}
+
+
+/* =========================
+   COPYRIGHT
+========================= */
+
+.copyright {
+    margin: 0;
+
+    color: #888888;
+
+    font-size: 13px;
+}
+
+
+
+/*==========================
+PASO 2
+===========================*/
+form h2 {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 35px;
+    margin-bottom: 35px;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+
+    border: 1.5px solid #000000;
+    width: 100%;
+    height: 45px;
+    margin-top: 25px;
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.2s;
+    color: #6e6e6e;
+}
+.btn-secondary:hover{
+    background-color: #000000;
+
+    color: #ffffff;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 500px) {
+
+    form {
+        width: calc(100% - 30px);
+
+        margin: 25px auto;
+
+        padding: 30px 25px;
+    }
+
+    form img {
+        width: 130px;
+
+        margin-bottom: 25px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+}

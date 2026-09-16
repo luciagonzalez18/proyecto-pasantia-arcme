@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
-import { InicioSesion } from './auth/inicio-sesion/inicio-sesion';
+import { Home } from './paginas/home/home';
 
 export const routes: Routes = [
-    {path: "InicioSesion", component: InicioSesion}
+ {path: "home", component: Home}
+
 ];
