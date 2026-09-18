@@ -1,0 +1,98 @@
+<div class="container">
+    <h2>Historial de proyectos:</h2>
+
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+            <!-- Primer grupo de imágenes (Activo) -->
+            <div class="carousel-item active">
+                <div class="row g-3 justify-content-center align-items-center">
+                    <div class="col-12 col-md-4">
+                        <img src="ruta-imagen-1.jpg" class="d-block w-100 rounded-3 shadow-sm object-fit-cover"
+                            style="height: 250px;" alt="Casa 1">
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <img src="ruta-imagen-2.jpg" class="d-block w-100 rounded-3 shadow-sm object-fit-cover"
+                            style="height: 250px;" alt="Casa 2">
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <img src="ruta-imagen-3.jpg" class="d-block w-100 rounded-3 shadow-sm object-fit-cover"
+                            style="height: 250px;" alt="Casa 3">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Segundo grupo de imágenes (se muestra al pasar de diapositiva) -->
+            <div class="carousel-item">
+                <div class="row g-3 justify-content-center align-items-center">
+                    <div class="col-12 col-md-4">
+                        <img src="ruta-imagen-4.jpg" class="d-block w-100 rounded-3 shadow-sm object-fit-cover"
+                            style="height: 250px;" alt="Casa 4">
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <img src="ruta-imagen-5.jpg" class="d-block w-100 rounded-3 shadow-sm object-fit-cover"
+                            style="height: 250px;" alt="Casa 5">
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <img src="ruta-imagen-6.jpg" class="d-block w-100 rounded-3 shadow-sm object-fit-cover"
+                            style="height: 250px;" alt="Casa 6">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Botones de navegación (Controles) -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+
+    <div class="navegacion">
+
+        <form class="d-flex" role="search">
+            <input class="form-control me-2 bi bi-search" type="search" placeholder="Buscar Proyectos" aria-label="Search" />
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle bi bi-list-ul" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Filtrar
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Todos</a></li>
+                <li><a class="dropdown-item" href="#">Mas recientes</a></li>
+                <li><a class="dropdown-item" href="#">Mas antiguos</a></li>
+                <li><a class="dropdown-item" href="#">De la A - Z</a></li>
+                <li><a class="dropdown-item" href="#">De la Z - A</a></li>
+
+            </ul>
+        </div>
+        <div class="btn btn-outline-success ">
+            <i class="bi bi-plus-lg"></i>
+            <a>Agregar Proyecto</a>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div>
+            <img src="" alt="">
+        </div>
+        <div class="datos">
+            <p>Obra, Los Alamos 1245</p>
+            <ul>
+                <li>Superficie: 100 m</li>
+                <li>Cliente: Lucia Gonzalez</li>
+                <li>Cuotas 11 / 16</li>
+            </ul>
+            <button>Ver detalles</button>
+        </div>
+    </div>
+</div>
