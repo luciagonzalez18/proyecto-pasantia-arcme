@@ -1,7 +1,7 @@
 <div class="container">
-
+  <!--FormGroup: Sirve para agrupar los campos del formulario y poder controlar sus estados y validaciones a traves typeScript -->
   <form [formGroup]="formulario" (ngSubmit)="iniciarSesion()">
-    
+
     <div class="containerLogo">
       <img class="logo" src="assets/logoArcme.png" alt="Logo Arcme">
     </div>
@@ -13,19 +13,23 @@
       <input type="text" id="dni" placeholder="XX-XXX-XXX" formControlName="dni">
 
 
-      <!--formulario pide el control del campo dni, si es invalido y si el usuario interactuo con el input -->
+      <!--formulario verifica si el dato ingresado es invalido y si el usuario ya interactuo con el campo(dni)-->
 
       @if (formulario.controls.dni.invalid && formulario.controls.dni.touched) {
 
-      <!--si el formulario tiene el error de required, se muestra el mensaje de error correspondiente -->
+      <!--Se verifica si el DNI tiene el error 'required', si no se ingreso nada muestra el mensaje de error-->
       @if (formulario.controls.dni.hasError('required')) {
       <small>El DNI es obligatorio.</small>
       }
-      <!--si el formulario tiene el error de minlength, se muestra el mensaje de error correspondiente -->
+      <!--Se verifica si el DNI tiene el error 'pattern', si el campo dni tiene letras entonces muestra el mensaje de error-->
+      @else if(formulario.controls.dni.hasError('pattern')){
+        <small>Solo puede ingresar numeros</small>
+      }
+      <!--Se verifica si el DNI tiene el error 'minlength', si el campo dni no tiene el minimo de caracteres entonces muestra el mensaje de error-->
       @else if (formulario.controls.dni.hasError('minlength')) {
       <small>El DNI debe tener al menos 7 números.</small>
       }
-      <!--si el formulario tiene el error de maxlength, se muestra el mensaje de error correspondiente -->
+      <!--Se verifica si el DNI tiene el error 'maxlength', si el campo dni supera el maximo de caracteres entonces muestra el mensaje de error-->
       @else if (formulario.controls.dni.hasError('maxlength')) {
       <small>El DNI no puede superar los 8 números.</small>
       }
@@ -39,12 +43,11 @@
 
       <input type="password" id="contraseña" placeholder="############" formControlName="contra">
       <label class="mostrar-password">
-        <input type="checkbox" onclick="contraseña.type=this.checked ? 'text' : 'password'"> Mostrar contraseña
+        <input type="checkbox" onclick="contraseña.type=this.checked ? 'text' : 'password'"> Mostrar contraseña <!--Si el checkbox fue seleccionado cambia el type del input a text sino queda como input-->
       </label>
-      <!--formulario pide el control del campo contra, si es invalido y si el usuario interactuo con el input -->
-      @if (formulario.controls.contra.invalid &&
-      formulario.controls.contra.touched) {
-      <!--si el formulario tiene el error de required, se muestra el mensaje de error correspondiente -->
+      <!--formulario verifica si el dato ingresado es invalido y si el usuario ya interactuo con el campo(contraseña)-->
+      @if (formulario.controls.contra.invalid && formulario.controls.contra.touched) {
+      <!--Se verifica si la contraseña tiene el error 'required', si no se ingreso nada muestra el mensaje de error -->
       @if (formulario.controls.contra.hasError('required')) {
 
       <small>
@@ -52,7 +55,7 @@
       </small>
 
       }
-      <!--si el formulario tiene el error de minlength, se muestra el mensaje de error correspondiente -->
+      <!--Se verifica si la contraseña tiene el error 'minlength', si el campo contraseña no tiene el minimo de caracteres entonces muestra el mensaje de error-->
       @else if (formulario.controls.contra.hasError('minlength')) {
 
       <small>
@@ -60,7 +63,7 @@
       </small>
 
       }
-      <!--si el formulario tiene el error de pattern, se muestra el mensaje de error correspondiente -->
+      <!--Se verifica si la contraseña tiene el error 'pattern', si el campo contraseña no cuenta con una Mayus y un caracter especial entonces muestra el mensaje de error-->
       @else if (formulario.controls.contra.hasError('pattern')) {
 
       <small>

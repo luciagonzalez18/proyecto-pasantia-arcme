@@ -8,13 +8,17 @@ import { RouterLink } from '@angular/router';
   templateUrl: './inicio-sesion.html',
   styleUrl: './inicio-sesion.css'
 })
+
+
+
 export class InicioSesion {
 
   formulario = new FormGroup({
     dni: new FormControl('', [
       Validators.required,//Verifica que el campo no esté vacío
       Validators.minLength(7),//Verifica que el campo tenga al menos 7 caracteres
-      Validators.maxLength(8)//Verifica que el campo no tenga más de 8 caracteres
+      Validators.maxLength(8),//Verifica que el campo no tenga más de 8 caracteres
+      Validators.pattern(/^[0-9-]+$/) //Verifica que el campo tenga solo numeros del 0 al 9
     ]),
 
     contra: new FormControl('', [
