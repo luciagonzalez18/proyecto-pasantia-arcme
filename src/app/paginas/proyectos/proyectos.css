@@ -1,0 +1,245 @@
+.navegacion {
+    display: flex;
+}
+
+.dropdown button {
+    border-radius: 15px;
+}
+
+/* --- General / Contenedor principal --- */
+.container {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333333;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #111111;
+    margin-bottom: 25px;
+}
+
+/* --- Carrusel / Historial de proyectos superior --- */
+#carouselExample {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.carousel-inner img {
+    border-radius: 8px !important;
+    object-fit: cover;
+    box-shadow: none !important; /* Elimina sombras pesadas para un diseño limpio */
+}
+
+/* Flechas/Controles del Carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    opacity: 0.8;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: transparent !important;
+    background-image: none !important;
+    color: #000000;
+    font-size: 2rem;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Icono de flecha tipo la imagen */
+.carousel-control-next-icon::after {
+    content: "→";
+    font-size: 2.5rem;
+    color: #000;
+    font-weight: 300;
+}
+
+.carousel-control-prev-icon::after {
+    content: "←";
+    font-size: 2.5rem;
+    color: #000;
+    font-weight: 300;
+}
+
+/* --- Barra de Navegación / Buscador y Filtros --- */
+.navegacion {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+/* Formulario de Búsqueda */
+.navegacion form {
+    flex-grow: 1;
+    position: relative;
+}
+
+.navegacion form input[type="search"] {
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px 10px 45px; /* Espacio para el ícono de lupa */
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.navegacion form input[type="search"]::placeholder {
+    color: #666;
+}
+
+
+/* Ocultar el botón original de submit de búsqueda para calzar con la imagen */
+.navegacion form button {
+    display: none;
+}
+
+/* Botón Filtro (Dropdown) */
+.navegacion .dropdown button {
+    background-color: #dcdcdc;
+    color: #222222;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navegacion .dropdown button:hover,
+.navegacion .dropdown button:focus {
+    background-color: #cfcfcf;
+    color: #000;
+}
+
+/* Botón Agregar Proyecto */
+.navegacion .btn-outline-success {
+    background-color: #a8ebd1;
+    color: #1b5e3b;
+    border: 1px solid #7cdbaa;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.navegacion .btn-outline-success:hover {
+    background-color: #92e4c3;
+    color: #124228;
+}
+
+.navegacion .btn-outline-success a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* --- Cards / Tarjetas de Proyecto --- */
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #e2e2e2;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: none;
+}
+
+.card > div:first-child {
+    width: 140px;
+    height: 110px;
+    flex-shrink: 0;
+    margin-right: 25px;
+}
+
+.card > div:first-child img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.card .datos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+/* Título de la obra */
+.card .datos > p {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #111111;
+    margin-bottom: 6px;
+}
+
+/* Lista de detalles */
+.card .datos ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+}
+
+.card .datos ul li {
+    font-size: 0.9rem;
+    color: #e57373; /* Color rojizo/rosado para los textos secundarios como en la imagen */
+    margin-bottom: 2px;
+}
+
+.card .datos ul li:first-child {
+    color: #777777; /* La superficie se mantiene en gris */
+}
+
+/* Botón "Ver detalles" */
+.card .datos button {
+    align-self: flex-start;
+    background-color: #e0e0e0;
+    color: #444444;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.card .datos button:hover {
+    background-color: #d0d0d0;
+    color: #111111;
+}
+
+/* --- Responsive (Móviles) --- */
+@media (max-width: 768px) {
+    .navegacion {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card > div:first-child {
+        width: 100%;
+        height: 180px;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
