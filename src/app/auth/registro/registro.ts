@@ -8,4 +8,7 @@ import { RouterLink } from '@angular/router';
 })
 export class Registro {
   paso=1;
+
+
+
 }
