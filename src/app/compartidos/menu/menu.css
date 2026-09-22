@@ -1,0 +1,167 @@
+/* General Styles */
+* {
+    display: block;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f5f7;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Contenedor envolvente ocupando el 100% de la ventana */
+.containerGrande {
+    display: flex;
+    height: 100vh;
+    /* Altura total de la pantalla */
+    overflow: hidden;
+    /* Evita scrolls no deseados */
+}
+
+/* Contenedor principal de la barra lateral */
+.container {
+    width: 250px;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Header de la Sidebar */
+.container .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding-left: 4px;
+}
+
+.container .logo img {
+    height: 32px;
+    object-fit: contain;
+}
+
+.container .cuenta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-left: 4px;
+}
+
+.container .cuenta img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #000000;
+    /* Placeholder si no hay foto */
+}
+
+.container .cuenta h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* Botón "Cargar Proyecto" */
+.container .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    color: #1a1a1a;
+    transition: background-color 0.2s;
+}
+
+.container .btn span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.container .btn .bi-plus-circle {
+    font-size: 16px;
+}
+
+.container .btn:hover {
+    background-color: #f8f9fa;
+}
+
+/* Navegación y Secciones */
+.secciones {
+    flex: 1;
+    /* Ocupa todo el espacio disponible empujando la configuración hacia abajo */
+    overflow-y: auto;
+    /* Permite scroll interno SOLO en el menú en pantallas muy pequeñas */
+}
+
+.container ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.container ul li {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    /* Relleno ajustado */
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.container ul li i {
+    font-size: 18px;
+    margin-right: 12px;
+    color: #333333;
+}
+
+.container ul li a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 500;
+    width: 100%;
+}
+
+.container ul li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Sección de Configuración y Cierre de Sesión */
+.configuracion {
+    margin-top: auto;
+    /* Empuja el bloque al fondo del contenedor */
+    padding-top: 12px;
+    border-top: 1px solid #eeeeee;
+}
+
+/* Línea vertical divisora */
+.linea-vertical {
+    width: 1px;
+    height: 100%;
+    background-color: #5c5a5a;
+}
+
+.linea-horizontal {
+    .linea-horizontal {
+        border: none;
+        /* Quita el borde por defecto del navegador */
+        height: 2px;
+        /* Grosor de la línea */
+        background-color: #333;
+        /* Color de la línea */
+        margin: 20px 0;
+        /* Espaciado arriba y abajo */
+    }
+
+}
