@@ -1,0 +1,154 @@
+<div class="container">
+    <div class="header">
+        <h1 class="titulo">Clientes</h1>
+        <button data-bs-toggle="modal" data-bs-target="#formClienteModal"><i class="bi bi-plus-lg"></i> Agregar
+            cliente</button>
+    </div>
+
+    <div class="filtros">
+        <!-- The second value will be selected initially -->
+        <p>Ordenar por:</p>
+        <select name="select">
+            <option value="value1" selected>Nombre A-Z</option>
+            <option value="value2">Nombre Z-A</option>
+            <option value="value3">Fecha de registro</option>
+        </select>
+
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscar cliente" aria-label="Search" />
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+
+        <p>Filtrar por ciudad:</p>
+        <select name="select">
+            <option value="value1" selected>Todos</option>
+            <option value="value2">Cipolletti</option>
+            <option value="value3">Allen</option>
+        </select>
+
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="formClienteModal" tabindex="-1" aria-labelledby="formClienteModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="formClienteModalLabel">Nuevo cliente</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+
+
+                        <div class="mb-3">
+                            <label for="clienteName" class="form-label">
+                                Nombre del cliente 
+                            </label>
+
+                            <input type="text" class="form-control" id="clienteName"
+                                placeholder="Nombre y apellido del cliente">
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label for="telefono" class="form-label">
+                                    Telefono
+                                </label>
+
+                                <input type="text" class="form-control" id="telefono" placeholder="Ej: 299-123-4567">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="correo" class="form-label">
+                                    Correo electronico
+                                </label>
+
+                                <input type="text" class="form-control" id="correo" placeholder="Ej: contacto@gmail.com">
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="ciudad" class="form-label">
+                                Ciudad
+                            </label>
+
+                            <input type="text" class="form-control" id="ciudad" placeholder="Ej: Neuquén">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">
+                                Dirección
+                            </label>
+
+                            <input type="text" class="form-control" id="direccion"
+                                placeholder="Ej: Av. Argentina 1234">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tabla">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Telefono</th>
+                    <th>Correo</th>
+                    <th>Direccion</th>
+                    <th>Ciudad</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fernando García</td>
+                    <td>299-664-4321</td>
+                    <td>fernandoxdlol@gmail.com</td>
+                    <td>Los Alamos 2343</td>
+                    <td>Cipolletti</td>
+                    <td><button>Ver detalles <i class="bi bi-caret-right-fill"></i></button></td>
+                </tr>
+
+                <tr>
+                    <td>Fernando García</td>
+                    <td>299-664-4321</td>
+                    <td>fernandoxdlol@gmail.com</td>
+                    <td>Los Alamos 2343</td>
+                    <td>Cipolletti</td>
+                    <td><button>Ver detalles <i class="bi bi-caret-right-fill"></i></button></td>
+                </tr>
+
+                <tr>
+                    <td>Fernando García</td>
+                    <td>299-664-4321</td>
+                    <td>fernandoxdlol@gmail.com</td>
+                    <td>Los Alamos 2343</td>
+                    <td>Cipolletti</td>
+                    <td><button>Ver detalles <i class="bi bi-caret-right-fill"></i></button></td>
+                </tr>
+
+                <tr>
+                    <td>Fernando García</td>
+                    <td>299-664-4321</td>
+                    <td>fernandoxdlol@gmail.com</td>
+                    <td>Los Alamos 2343</td>
+                    <td>Cipolletti</td>
+                    <td><button>Ver detalles <i class="bi bi-caret-right-fill"></i></button></td>
+                </tr>
+            </tbody>
+
+
+        </table>
+    </div>
+</div>

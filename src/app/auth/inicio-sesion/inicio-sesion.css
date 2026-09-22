@@ -1,3 +1,4 @@
+
 /* =========================
    CONTENEDOR PRINCIPAL
 ========================= */
@@ -5,16 +6,20 @@
 body {
     margin: 0;
     min-height: 100vh;
+
     display: flex;
     flex-direction: column;
 }
 
 .container {
     min-height: 100vh;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+
+    padding: 30px 15px;
+    box-sizing: border-box;
 }
 
 
@@ -26,7 +31,7 @@ form {
     width: 100%;
     max-width: 600px;
 
-    margin: 50px auto;
+    margin: 30px auto;
     padding: 35px 40px;
 
     background-color: #ffffff;
@@ -56,13 +61,23 @@ form img.logo {
 
     margin: 0 auto 30px auto;
 }
+form h2 {
+    text-align: center;
 
+    margin-bottom: 30px;
+
+    color: #222222;
+
+    font-size: 35px;
+    font-weight: 600;
+}
 
 /* =========================
    LABELS
 ========================= */
 
-form label {
+.containerDNI > label,
+.containerContraseña > label:first-child {
     display: block;
 
     margin-bottom: 7px;
@@ -75,10 +90,10 @@ form label {
 
 
 /* =========================
-   INPUTS (TEXTO Y PASSWORD)
+   INPUTS
 ========================= */
 
-form input[type="number"],
+form input[type="text"],
 form input[type="password"] {
     width: 100%;
     height: 45px;
@@ -95,11 +110,11 @@ form input[type="password"] {
     transition: 0.2s;
 }
 
-form input[type="number"]:focus,
+form input[type="text"]:focus,
 form input[type="password"]:focus {
-    border-color: #000000;
+    border-color: #1587df;
 
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 2px rgba(21, 135, 223, 0.15);
 
     outline: none;
 }
@@ -115,6 +130,57 @@ form input[type="password"]:focus {
 
 
 /* =========================
+   MOSTRAR CONTRASEÑA
+========================= */
+
+.mostrar-password {
+    display: flex !important;
+
+    align-items: center;
+
+    gap: 7px;
+
+    width: fit-content;
+
+    margin-top: 9px;
+    margin-bottom: 0 !important;
+
+    color: #555555;
+
+    font-size: 14px !important;
+    font-weight: normal !important;
+
+    cursor: pointer;
+}
+
+.mostrar-password input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+
+    margin: 0;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   MENSAJES DE VALIDACIÓN
+========================= */
+
+.containerDNI small,
+.containerContraseña small {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #dc3545;
+
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+
+/* =========================
    LINK OLVIDAR CONTRASEÑA
 ========================= */
 
@@ -126,18 +192,21 @@ form input[type="password"]:focus {
     color: #1587df;
 
     font-size: 14px;
+
     text-decoration: none;
 
     transition: 0.2s;
 }
 
 .olvidarContraseña:hover {
+    color: #0b4771;
+
     text-decoration: underline;
 }
 
 
 /* =========================
-   CHECKBOX (RECORDARME)
+   CHECKBOX RECORDARME
 ========================= */
 
 .form-check {
@@ -155,8 +224,10 @@ form input[type="password"]:focus {
 }
 
 .form-check-label {
-    margin-bottom: 0;
-    font-weight: normal;
+    margin-bottom: 0 !important;
+
+    font-weight: normal !important;
+
     cursor: pointer;
 }
 
@@ -189,19 +260,26 @@ form input[type="password"]:focus {
     transition: 0.2s;
 }
 
+
+/* =========================
+   BOTÓN INICIAR SESIÓN
+========================= */
+
 .btnIniciarSesion {
     background-color: #1587df;
+
     color: #ffffff;
 }
 
 .btnIniciarSesion:hover {
     background-color: #0b4771;
+
     color: #ffffff;
 }
 
 
 /* =========================
-   DIVISOR (TEXTO "O" ENTRE BOTONES)
+   DIVISOR
 ========================= */
 
 .divisor {
@@ -221,7 +299,7 @@ form input[type="password"]:focus {
 
 
 /* =========================
-   SEGUNDO BOTÓN (REGISTRARSE)
+   BOTÓN REGISTRARSE
 ========================= */
 
 .btnRegistro {
@@ -302,3 +380,34 @@ footer {
 
     font-size: 13px;
 }
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 20px 10px;
+    }
+
+    form {
+        padding: 30px 25px;
+
+        border-radius: 14px;
+    }
+
+    form img.logo {
+        width: 130px;
+
+        margin-bottom: 25px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+}
+

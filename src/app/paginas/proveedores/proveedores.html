@@ -1,0 +1,189 @@
+<div class="container">
+    <div class="header">
+        <h1 class="titulo">Proveedores</h1>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formProveedoresModal"><i
+                class="bi bi-plus-lg"></i> Agregar proveedor</button>
+    </div>
+
+    <div class="filtros">
+        <!-- The second value will be selected initially -->
+        <p>Ordenar por:</p>
+        <select name="select">
+            <option value="value1" selected>Nombre A-Z</option>
+            <option value="value2">Nombre Z-A</option>
+            <option value="value3">Fecha de registro</option>
+        </select>
+
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscar proveedor" aria-label="Search" />
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+
+        <p>Filtrar por categoría:</p>
+        <select name="select">
+            <option value="value1" selected>Todas</option>
+            <option value="value2">Maderera</option>
+            <option value="value3">Ferreteria</option>
+        </select>
+
+    </div>
+    <!-- Button trigger modal -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="formProveedoresModal" tabindex="-1" aria-labelledby="formProveedoresModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="formProveedoresModalLabel">Nuevo proveedor</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label for="proveedorName" class="form-label">
+                                    Proveedor
+                                </label>
+
+                                <input type="text" class="form-control" id="proveedorName"
+                                    placeholder="Nombre del proveedor">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="categoria" class="form-label">
+                                    Categoría
+                                </label>
+
+                                <input type="text" class="form-control" id="categoria" list="categorias"
+                                    placeholder="Escribí o seleccioná una categoría">
+
+                                <datalist id="categorias">
+                                    <option value="Maderera"> <i class="bi bi-trash"></i></option>
+                                    <option value="Ferretería"></option>
+                                    <option value="Pinturería"></option>
+                                    <option value="Electricidad"></option>
+                                </datalist>
+                            </div>
+
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="contacto" class="form-label">
+                                Contacto
+                            </label>
+
+                            <input type="text" class="form-control" id="contacto" placeholder="Nombre del contacto">
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label for="telefono" class="form-label">
+                                    Telefono
+                                </label>
+
+                                <input type="text" class="form-control" id="telefono" placeholder="Número de teléfono">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="correo" class="form-label">
+                                    Correo electronico
+                                </label>
+
+                                <input type="text" class="form-control" id="correo" placeholder="Ej:contacto@gmail.com">
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="ciudad" class="form-label">
+                                Ciudad
+                            </label>
+
+                            <input type="text" class="form-control" id="ciudad" placeholder="Ciudad del proveedor">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">
+                                Dirección
+                            </label>
+
+                            <input type="text" class="form-control" id="direccion"
+                                placeholder="Dirección del proveedor">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">
+                                Descripción
+                            </label>
+
+                            <textarea class="form-control" id="descripcion" rows="3"
+                                placeholder="Descripción del proveedor"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tabla">
+        <table>
+            <thead>
+                <tr>
+                    <th>Proveedor</th>
+                    <th>Categoria</th>
+                    <th>Contacto</th>
+                    <th>Telefono</th>
+                    <th>Ciudad</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Madera El roble</td>
+                    <td>Maderera</td>
+                    <td>Alexis Quinteros</td>
+                    <td>298-433-0017</td>
+                    <td>Cipolletti</td>
+                    <td><button>Ver detalles <i class="bi bi-caret-right-fill"></i></button></td>
+                </tr>
+
+                <tr>
+                    <td>Ferreteria central</td>
+                    <td>Ferreteria</td>
+                    <td>Gonzalo Rodriguez</td>
+                    <td>299-123-4567</td>
+                    <td>Allen</td>
+                    <td><button>Ver detalles <i class="bi bi-caret-right-fill"></i></button></td>
+                </tr>
+
+
+                <tr>
+                    <td>Ferreteria central</td>
+                    <td>Ferreteria</td>
+                    <td>Gonzalo Rodriguez</td>
+                    <td>299-123-4567</td>
+                    <td>Allen</td>
+                    <td><button>Ver detalles <i class="bi bi-caret-right-fill"></i></button></td>
+                </tr>
+
+
+                <tr>
+                    <td>Ferreteria central</td>
+                    <td>Ferreteria</td>
+                    <td>Gonzalo Rodriguez</td>
+                    <td>299-123-4567</td>
+                    <td>Allen</td>
+                    <td><button>Ver detalles <i class="bi bi-caret-right-fill"></i></button></td>
+                </tr>
+            </tbody>
+
+
+        </table>
+    </div>
+</div>

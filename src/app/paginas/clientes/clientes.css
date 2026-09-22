@@ -1,0 +1,549 @@
+
+/* =========================
+   CONTENEDOR PRINCIPAL
+========================= */
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.titulo {
+    margin: 0;
+    color: #2f3e46;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   BOTÓN AGREGAR CLIENTE
+========================= */
+
+.header button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 11px 18px;
+
+    background-color: #2f6f7e;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.header button:hover {
+    background-color: #245865;
+}
+
+.header button i {
+    font-size: 14px;
+}
+
+
+/* =========================
+   FILTROS
+========================= */
+
+.filtros {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 18px 20px;
+
+    background-color: #f8f9fa;
+
+    border: 1px solid #e1e5e8;
+    border-radius: 10px;
+
+    margin-bottom: 25px;
+}
+
+.filtros p {
+    margin: 0 2px 0 8px;
+
+    color: #495057;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* =========================
+   SELECT
+========================= */
+
+.filtros select {
+    height: 38px;
+
+    padding: 0 35px 0 12px;
+
+    background-color: white;
+
+    border: 1px solid #ced4da;
+    border-radius: 7px;
+
+    color: #495057;
+
+    font-size: 14px;
+
+    cursor: pointer;
+    outline: none;
+}
+
+.filtros select:focus {
+    border-color: #2f6f7e;
+
+    box-shadow: 0 0 0 3px rgba(47, 111, 126, 0.12);
+}
+
+
+/* =========================
+   BUSCADOR
+========================= */
+
+.filtros form {
+    display: flex;
+    margin-left: auto;
+}
+
+.filtros input {
+    height: 38px;
+
+    min-width: 230px;
+
+    border-radius: 7px;
+}
+
+.filtros input:focus {
+    border-color: #2f6f7e;
+
+    box-shadow: 0 0 0 3px rgba(47, 111, 126, 0.12);
+}
+
+
+/* Botón buscar */
+
+.filtros form button {
+    height: 38px;
+    border-radius: 7px;
+}
+
+
+/* =========================
+   TABLA
+========================= */
+
+.tabla {
+    overflow-x: auto;
+
+    background-color: white;
+
+    border: 1px solid #e1e5e8;
+    border-radius: 10px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 800px;
+}
+
+
+/* =========================
+   ENCABEZADO TABLA
+========================= */
+
+thead {
+    background-color: #2f3e46;
+}
+
+th {
+    padding: 15px;
+
+    color: white;
+
+    text-align: left;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   CELDAS
+========================= */
+
+td {
+    padding: 15px;
+
+    color: #495057;
+
+    font-size: 14px;
+
+    border-bottom: 1px solid #e9ecef;
+}
+
+
+/* Filas */
+
+tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+tbody tr:hover {
+    background-color: #f8fafb;
+}
+
+
+/* Última fila */
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================
+   BOTÓN DETALLES
+========================= */
+
+td button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 7px 13px;
+
+    background-color: transparent;
+
+    color: #2f6f7e;
+
+    border: 1px solid #2f6f7e;
+    border-radius: 6px;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+td button:hover {
+    background-color: #2f6f7e;
+    color: white;
+}
+
+td button i {
+    font-size: 11px;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+/* Tamaño del modal */
+
+.modal-dialog {
+    max-width: 900px;
+}
+
+
+/* Contenedor */
+
+.modal-content {
+    border: none;
+    border-radius: 12px;
+
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.18);
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   CABECERA MODAL
+========================= */
+
+.modal-header {
+    padding: 20px 25px;
+
+    background-color: #f8f9fa;
+
+    border-bottom: 1px solid #e1e5e8;
+}
+
+.modal-title {
+    margin: 0;
+
+    color: #2f3e46;
+
+    font-size: 21px;
+    font-weight: 600;
+}
+
+
+/* Botón cerrar */
+
+.modal-header .btn-close {
+    opacity: 0.6;
+}
+
+.modal-header .btn-close:hover {
+    opacity: 1;
+}
+
+
+/* =========================
+   CUERPO MODAL
+========================= */
+
+.modal-body {
+    padding: 25px 30px;
+
+    background-color: white;
+}
+
+
+/* Labels */
+
+.modal-body .form-label {
+    margin-bottom: 7px;
+
+    color: #2f3e46;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* Inputs */
+
+.modal-body .form-control {
+    min-height: 42px;
+
+    padding: 9px 12px;
+
+    border: 1px solid #ced4da;
+    border-radius: 7px;
+
+    color: #495057;
+
+    font-size: 14px;
+
+    transition: 0.2s ease;
+}
+
+
+/* Focus de inputs */
+
+.modal-body .form-control:focus {
+    border-color: #2f6f7e;
+
+    box-shadow: 0 0 0 3px rgba(47, 111, 126, 0.12);
+}
+
+
+/* Placeholder */
+
+.modal-body .form-control::placeholder {
+    color: #adb5bd;
+}
+
+
+/* Espaciado entre filas */
+
+.modal-body .row {
+    margin-bottom: 2px;
+}
+
+
+/* =========================
+   FOOTER MODAL
+========================= */
+
+.modal-footer {
+    padding: 16px 25px;
+
+    background-color: #f8f9fa;
+
+    border-top: 1px solid #e1e5e8;
+}
+
+
+/* Botones del modal */
+
+.modal-footer .btn {
+    min-width: 90px;
+
+    padding: 9px 16px;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* Botón guardar */
+
+.modal-footer .btn-primary {
+    background-color: #2f6f7e;
+
+    border-color: #2f6f7e;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #245865;
+
+    border-color: #245865;
+}
+
+
+/* Botón cerrar */
+
+.modal-footer .btn-secondary {
+    background-color: #6c757d;
+
+    border-color: #6c757d;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .filtros {
+        flex-wrap: wrap;
+    }
+
+    .filtros form {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .filtros input {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .modal-dialog {
+        max-width: 95%;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .container {
+        margin: 25px auto;
+        padding: 0 15px;
+    }
+
+
+    /* Header */
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .titulo {
+        font-size: 28px;
+    }
+
+
+    /* Filtros */
+
+    .filtros {
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 10px;
+    }
+
+    .filtros p {
+        margin-left: 0;
+    }
+
+    .filtros select {
+        width: 100%;
+    }
+
+
+    /* Buscador */
+
+    .filtros form {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .filtros input {
+        min-width: 0;
+        width: 100%;
+    }
+
+
+    /* Modal */
+
+    .modal-dialog {
+        max-width: 95%;
+        margin: 10px auto;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .modal-header {
+        padding: 18px 20px;
+    }
+
+    .modal-footer {
+        padding: 15px 20px;
+    }
+
+
+    /* En móvil los campos pasan a una columna */
+
+    .modal-body .col-md-6 {
+        width: 100%;
+    }
+
+
+    /* Tabla */
+
+    .tabla {
+        overflow-x: auto;
+    }
+}
