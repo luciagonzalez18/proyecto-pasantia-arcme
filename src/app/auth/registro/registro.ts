@@ -7,6 +7,9 @@ import { RouterLink } from '@angular/router';
   styleUrl: './registro.css',
 })
 export class Registro {
+<<<<<<< HEAD
+  paso=1;
+=======
   paso = 1;
   //el formulario no existe aun ,cuando se usa ngoninit (que ejecuta apenas entras a la pagina)
   //el formulario no se ejecuta al entrar en la pagina sino despues al dar click al boton
@@ -61,6 +64,7 @@ export class Registro {
 
 
 
+>>>>>>> 59b1d9cd30da238234616917352454cccf49706c
 
 
 

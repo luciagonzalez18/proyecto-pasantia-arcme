@@ -1,0 +1,415 @@
+/* Variables para facilitar el cambio de colores */
+:root {
+  --bg-color: #f8f9fa;
+  --card-bg: #ffffff;
+  --border-color: #cbd5e1;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --primary: #4f46e5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  padding: 20px;
+}
+
+/* Contenedor Principal */
+.container {
+  width: 95%;
+  max-width: none;
+  margin: 0 auto;
+}
+
+/* Card General */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Botones Comunes */
+.btn {
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.btn-dark {
+  background: #000;
+  color: #fff;
+  border: none;
+}
+
+/* --- CABECERA --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Subnavegación de Agenda */
+.agenda-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.nav-left {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.nav-center h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.nav-right {
+  display: flex;
+  gap: 5px;
+}
+
+.nav-right .btn.active {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+/* --- TABLA AGENDA SEMANAL --- */
+.agenda-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cell {
+  border: 1px solid #a0a0a0;
+  height: 70px;
+  padding: 6px;
+  font-size: 13px;
+  vertical-align: top;
+}
+
+/* Encabezados */
+.cell-header {
+  background-color: #f1f5f9;
+  font-weight: 600;
+  text-align: center;
+  padding: 10px 4px;
+  height: auto;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.cell-time-header {
+  width: 60px;
+}
+
+.cell-header.wed { color: #2563eb; }
+.cell-header.sat { color: #0284c7; }
+.cell-header.sun { color: #dc2626; }
+
+/* Horas (lateral) */
+.cell-time {
+  background: #f8fafc;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-align: center;
+  vertical-align: middle;
+  border-right: 2px solid var(--border-color);
+  width: 60px;
+}
+
+/* Bloques de Eventos en Calendario */
+.cal-event {
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 11px;
+  line-height: 1.2;
+  border-left: 3px solid transparent;
+  margin-bottom: 4px;
+}
+
+.cal-event-blue { background: #dbeafe; border-left-color: #2563eb; color: #1e3a8a; }
+.cal-event-green { background: #dcfce7; border-left-color: #16a34a; color: #14532d; }
+.cal-event-yellow { background: #fef9c3; border-left-color: #ca8a04; color: #713f12; }
+.cal-event-pink { background: #fce7f3; border-left-color: #db2777; color: #701a75; }
+
+/* --- SECCIÓN INFERIOR --- */
+.bottom-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Próximos Eventos */
+.events-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.events-list-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.view-all {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.event-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.event-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-blue { background: #3b82f6; }
+.dot-green { background: #22c55e; }
+.dot-yellow { background: #eab308; }
+.dot-pink { background: #ec4899; }
+
+.event-details h4 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.event-details p {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.event-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-edit {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-delete {
+  background: #fee2e2;
+  color: #991b1b;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+/* --- LATERAL DERECHO (Filtros) --- */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar h3 {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filter-group {
+  margin-bottom: 12px;
+}
+
+.filter-group label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+  color: var(--text-muted);
+}
+
+.filter-select {
+  width: 100%;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  font-size: 13px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+/* --- CSS DEL FORMULARIO MODAL --- */
+/* Modal Nativo Centrado y Flotante */
+.modal-dialog {
+  border: none;
+  border-radius: 12px;
+  padding: 0;
+  max-width: 700px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+
+  /* Propiedades clave para centrarlo en pantalla */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0; /* Quita márgenes por defecto del navegador */
+}
+
+.modal-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+}
+
+.modal-content {
+  padding: 24px;
+  background-color: #ffffff;
+  color: #333;
+  font-family: inherit;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.modal-body {
+  display: flex;
+  gap: 24px;
+}
+
+.modal-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-col.col-right {
+  justify-content: space-between;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.form-group textarea {
+  height: 160px;
+  resize: vertical;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.btn-cancel {
+  background-color: #ffffff;
+  border: 1px solid #222;
+  color: #222;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-submit {
+  background-color: #000000;
+  border: 1px solid #000;
+  color: #ffffff;
+  padding: 8px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-cancel:hover { background-color: #f2f2f2; }
+.btn-submit:hover { background-color: #333333; }
