@@ -7,9 +7,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './registro.css',
 })
 export class Registro {
-<<<<<<< HEAD
-  paso=1;
-=======
   paso = 1;
   //el formulario no existe aun ,cuando se usa ngoninit (que ejecuta apenas entras a la pagina)
   //el formulario no se ejecuta al entrar en la pagina sino despues al dar click al boton
@@ -19,10 +16,10 @@ export class Registro {
     const dni = document.querySelector("#DNI-input") as any;
     const contrasena = document.getElementById("contrasena-input") as any;
     const contrasena2 = document.getElementById("contrasena2-input") as any;
-   
+
 
     if (this.paso === 1) {
-      if (dni.value === "" || dni.value.length !==7 && dni.value.length !==8) {
+      if (dni.value === "" || dni.value.length !== 7 && dni.value.length !== 8) {
         alert("Ingrese un DNI valido");
 
         dni.value = ""
@@ -52,11 +49,11 @@ export class Registro {
 
     this.paso = 2;
   }
-   
-  validacionRegistro2() {
- const nombre = document.getElementById("nombre") as any;
 
-     if(nombre.value==="") {
+  validacionRegistro2() {
+    const nombre = document.getElementById("nombre") as any;
+
+    if (nombre.value === "") {
       alert("Ingrese un nombre de usuario");
       return
     }
@@ -64,7 +61,6 @@ export class Registro {
 
 
 
->>>>>>> 59b1d9cd30da238234616917352454cccf49706c
 
 
 

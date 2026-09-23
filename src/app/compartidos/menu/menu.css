@@ -1,6 +1,5 @@
 /* General Styles */
 * {
-    display: block;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,14 +11,19 @@ body {
 }
 
 /* Contenedor envolvente ocupando el 100% de la ventana */
-.containerGrande {
+/* .containerGrande {
     display: flex;
     height: 100vh;
-    /* Altura total de la pantalla */
+    Altura total de la pantalla 
     overflow: hidden;
-    /* Evita scrolls no deseados */
+    Evita scrolls no deseados 
+} */
+.containerGrande {
+    display: flex;
+    width: 251px;
+    height: 100vh;
+    overflow: hidden;
 }
-
 /* Contenedor principal de la barra lateral */
 .container {
     width: 250px;

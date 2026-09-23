@@ -1,0 +1,25 @@
+/* Contenedor principal */
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-left: auto; /* deja espacio para el sidebar fijo */
+}
+
+/* Sidebar fijo */
+app-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 251px;
+  height: 100vh;
+  z-index: 1000;
+}
+
+
+
+/* Footer siempre abajo */
+app-footer {
+  margin-top: auto;
+  width: 100%;
+}
