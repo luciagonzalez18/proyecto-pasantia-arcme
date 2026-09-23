@@ -8,7 +8,7 @@ import { PreguntasFrecuentes } from './compartidos/preguntas-frecuentes/pregunta
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-
+    { path: "proyectos", component: Proyectos},
     { path: "home", component: Home },
     { path: "registro", component: Registro },
     { path: "inicioSesion", component: InicioSesion },
