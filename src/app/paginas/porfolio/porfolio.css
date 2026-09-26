@@ -1,0 +1,249 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+   
+}
+
+body {
+    background-color: #ffffff;
+    padding: 30px;
+    color: #000000;
+}
+
+/* Encabezado */
+.encabezado-portfolio {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.logotipo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.botones-encabezado {
+    display: flex;
+    gap: 12px;
+}
+
+.boton-borde {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 6px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Grilla Compacta: Organizada con espacio uniforme */
+.contenedor-grilla {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    justify-content: space-between; /* Distribuye el espacio sobrante entre las tarjetas de la fila */
+}
+
+/* Tarjeta Individual Corregida (Todas con tamaño fijo idéntico) */
+.tarjeta {
+    width: 30%;           /* Ancho exacto y fijo para simular 3 columnas reales */
+    min-width: 380px;     /* Previene que la tabla de info colapse */
+    max-width: 450px;     /* Bloquea que se estire de mas si queda sola abajo */
+    margin: 15px 0;       /* Margen superior e inferior estable */
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Línea divisoria vertical entre las tarjetas */
+.linea-separadora {
+    border-right: 1.5px solid #000000; /* Línea negra definida a la derecha */
+    padding-right: 25px;               /* Espacio para separar el contenido de la línea */
+}
+
+/* Cabecera de Tarjeta */
+.cabecera-tarjeta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.cabecera-tarjeta h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.subtitulo {
+    font-size: 12px;
+    color: #888888;
+}
+
+.icono-configuracion {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Imágenes con Iconos Bootstrap */
+.imagen-principal {
+    width: 100%;
+    height: 160px;
+    background-color: #e0e0e0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888888;
+}
+
+.imagen-principal i {
+    font-size: 32px;
+}
+
+.fila-miniaturas {
+    display: flex;
+    gap: 8px;
+}
+
+.miniatura {
+    flex: 1;
+    height: 55px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888888;
+}
+
+.miniatura i {
+    font-size: 16px;
+}
+
+.miniatura-mas {
+    flex: 1;
+    height: 55px;
+    background-color: #cccccc;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333333;
+}
+
+/* Tabla de Información */
+.tabla-info {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+    margin: 4px 0;
+}
+
+.columna-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 0 4px;
+}
+
+/* Línea divisoria entre columnas internas */
+.borde-derecho {
+    border-right: 1px solid #e0e0e0;
+}
+
+.titulo-info {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    white-space: nowrap;
+}
+
+.valor-info {
+    font-size: 12px;
+    color: #222222;
+    line-height: 1.3;
+}
+
+.texto-chico {
+    font-size: 11px;
+}
+
+/* Botón de Memoria.pdf */
+.etiqueta-pdf {
+    font-size: 11px;
+    font-weight: 500;
+    background-color: #e0e0e0;
+    padding: 5px 12px;
+    border-radius: 15px;
+    border: 1px solid #777777;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+/* Fila de Acciones Inferiores */
+.fila-acciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.boton-icono {
+    background: #e4e4e7;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boton-icono i {
+    font-size: 14px;
+    color: #4b5563;
+}
+
+.boton-icono:hover {
+    background-color: #d4d4d8;
+}
+
+.acciones-derecha {
+    display: flex;
+    gap: 15px;
+}
+
+.boton-texto {
+    background: none;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    color: #000000;
+}
+
+.texto-negrita {
+    font-weight: bold;
+}
+
+.barra-separadora-superior {
+    background-color: #D9D9D9;
+    height: 0.5px;
+    width: 100%;
+}
+
+.barra-separadora-3cards {
+    background-color: #D9D9D9;
+    height: 0.5px;
+    width: 100%;
+}
