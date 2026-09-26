@@ -1,9 +1,9 @@
-/* Contenedor principal */
+/* Layout principal */
 .page {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  margin-left: auto; /* deja espacio para el sidebar fijo */
+  margin-left: 251px;     /* ← mismo ancho que el menú */
 }
 
 /* Sidebar fijo */
@@ -16,7 +16,12 @@ app-menu {
   z-index: 1000;
 }
 
-
+/* Contenido principal */
+.main-content {
+  flex: 1;
+  min-width: 0;           /* permite que se achique */
+  width: 100%;
+}
 
 /* Footer siempre abajo */
 app-footer {
