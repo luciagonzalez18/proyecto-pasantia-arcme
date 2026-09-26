@@ -1,0 +1,334 @@
+/* ========================================= */
+/*          CONFIGURACIÓN GENERAL             */
+/* ========================================= */
+
+/* Hace que los tamaños sean más fáciles de controlar */
+* {
+    box-sizing: border-box;
+}
+
+/* Configuración general de la página */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #111;
+    background-color: #fcfbf9; /* Fondo gris claro general */
+}
+
+
+/* ========================================= */
+/*             MENÚ IZQUIERDO                */
+/* ========================================= */
+
+aside {
+    position: fixed;
+
+    /* Ahora el menú es más grande */
+    width: 220px;
+
+    /* Ocupa toda la altura de la pantalla */
+    height: 100vh;
+
+    /* Línea que separa el menú del contenido (rgb 0 0 0 / 0.5) nos marca una linea negra con 50% de opacidad */ 
+    border-right: 1px solid rgb(0 0 0 / 0.5);
+
+    /* Fondo blanco */
+    background-color: #fcfbf9;
+}
+
+
+/* Título "Configuración" */
+aside h2 {
+    font-size: 17px;
+    font-weight: normal;
+
+    /* Espacio alrededor */
+    margin: 20px;
+}
+
+
+/* Textos "Mi cuenta" y "Página" */
+.titulo {
+    color: #aaa;
+
+    margin: 25px 15px 8px;
+
+    font-size: 14px;
+}
+
+
+/* Botón "Perfil personal" */
+.opcion-activa {
+    width: 150px;
+
+    margin-left: 10px;
+
+    padding: 7px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background-color: #ddd;
+
+    font-size: 14px;
+}
+
+
+/* Línea encima de "Página" */
+.pagina {
+    border-top: 1px solid #ddd;
+
+    padding-top: 15px;
+}
+
+
+/* Texto "Personalización" */
+
+    .opcion {
+    /* Hace que no parezca un botón */
+    background: none;
+
+    /* Quita el borde del botón */
+    border: none;
+
+    /* Quita el espacio interno que trae el botón */
+    padding: 0;
+
+    /* Lo mueve un poco hacia la derecha */
+    margin-left: 20px;
+
+    /* Mantiene el mismo tamaño de texto */
+    font-size: 14px;
+
+    /* Hace que el texto quede alineado a la izquierda */
+    text-align: left;
+
+    /* Hace que aparezca la manito al pasar el mouse */
+    cursor: pointer;
+
+    /* Mantiene el color gris/negro del texto */
+    color: #111;
+}
+
+
+
+/* ========================================= */
+/*            CONTENIDO PRINCIPAL            */
+/* ========================================= */
+
+main {
+    /* Dejamos espacio para el menú */
+    margin-left: 220px;
+
+    /* Espacio alrededor del contenido */
+    padding: 50px 50px;
+}
+
+
+/* Título "Perfil personal" */
+h1 {
+    font-size: 25px;
+
+    font-weight: normal;
+
+    margin: 0 0 25px;
+}
+
+
+/* ========================================= */
+/*              CAJA DEL PERFIL              */
+/* ========================================= */
+
+.perfil {
+    /* Mucho más grande que antes */
+    width: 1060px;
+
+    /* Altura de la caja */
+    min-height: 480px;
+
+    /* Borde */
+    border: 1px solid #ccc;
+
+    /* Esquinas redondeadas */
+    border-radius: 8px;
+
+    /* Espacio interno */
+    padding: 30px;
+}
+
+
+/* ========================================= */
+/*                    LOGO                   */
+/* ========================================= */
+
+.logo {
+    height: 100px;
+
+    margin-bottom: 15px;
+}
+
+
+/* Botón azul para cargar el logo */
+.boton-logo {
+    width: 190px;
+
+    height: 158px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background-color: rgba(75, 154, 194, 0.75);
+
+    color: white;
+
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+
+/* Texto "Cargá tu logo" */
+.boton-logo span {
+    display: block;
+
+    font-size: 11px;
+
+    margin-top: 5px;
+}
+
+
+/* Texto que está al lado del logo */
+.texto-logo {
+    display: inline-block;
+
+    vertical-align: top;
+
+    margin-left: 20px;
+}
+
+
+/* Título "Tu logo" */
+.texto-logo h3 {
+    margin: 15px 0 7px;
+
+    font-size: 30px;
+
+font-weight:100;
+}
+
+
+/* Texto debajo de "Tu logo" */
+.texto-logo p {
+    margin: 0;
+  
+    font-size: 15px;
+
+    color: #777;
+}
+
+
+/* ========================================= */
+/*                FORMULARIO                 */
+/* ========================================= */
+
+form {
+    padding-top: 75px;
+    width: 100%;
+}
+
+
+/* Textos que están encima de los campos */
+label {
+    display: block;
+
+    font-size: 12px;
+
+    margin-bottom: 5px;
+}
+
+
+/* Texto "(no se puede editar)" */
+label span {
+    color: #aaa;
+}
+
+
+/* Campos donde escribimos */
+input {
+    width: 100%;
+
+    height: 35px;
+
+    padding: 8px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid #aaa;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+}
+
+
+/* ========================================= */
+/*             BOTONES INFERIORES             */
+/* ========================================= */
+
+.botones {
+    text-align: right;
+
+    margin-top: 35px;
+}
+
+
+/* Configuración general de los botones */
+.botones button {
+    height: 32px;
+
+    padding: 0 15px;
+
+    border-radius: 15px;
+
+    font-size: 12px;
+}
+
+
+/* ========================================= */
+/*             BOTÓN DESCARTAR               */
+/* ========================================= */
+
+.descartar {
+    border: 1px solid #ccc;
+
+    background-color: white;
+
+    color: #aaa;
+}
+
+
+/* ========================================= */
+/*           BOTÓN GUARDAR CAMBIOS           */
+/* ========================================= */
+
+.guardar {
+    border: 1px solid #ccc;
+
+    background-color: #eee;
+
+    color: #bbb;
+}
+
+.imagen-principal {
+    width: 100%;
+    height: 160px;
+    background-color: #e0e0e0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888888;
+}

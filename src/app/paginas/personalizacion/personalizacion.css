@@ -1,0 +1,191 @@
+/* ========================================= */
+/*          CONFIGURACIÓN GENERAL             */
+/* ========================================= */
+
+/* Hace que los tamaños sean más fáciles de controlar */
+* {
+    box-sizing: border-box;
+}
+
+/* Configuración general de la página de fondo */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #111;
+    background-color: #fcfbf9; /* Fondo gris claro general */
+}
+
+/* Contenedor que organiza el Menú y el Contenido Principal juntos */
+.interfaz-global {
+    display: flex; /* Pone el aside y el main uno al lado del otro */
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* ========================================= */
+/*             MENÚ IZQUIERDO                */
+/* ========================================= */
+
+aside {
+    position: fixed;
+
+    /* Ahora el menú es más grande */
+    width: 220px;
+
+    /* Ocupa toda la altura de la pantalla */
+    height: 100vh;
+
+    /* Línea que separa el menú del contenido (rgb 0 0 0 / 0.5) nos marca una linea negra con 50% de opacidad */ 
+    border-right: 1px solid rgb(0 0 0 / 0.5);
+
+    /* Fondo blanco */
+    background-color: #fcfbf9;
+}
+
+
+/* Título "Configuración" */
+aside h2 {
+    font-size: 17px;
+    font-weight: normal;
+    margin: 20px;
+}
+
+/* Textos divisores "Mi cuenta" y "Página" */
+.titulo {
+    color: #aaa;
+    margin: 20px 20px 8px 20px;
+    font-size: 13px;
+    text-transform: none;
+}
+
+/* Línea sutil encima de "Página" */
+.pagina {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+
+}
+
+/* BOTÓN NORMAL (Perfil personal) */
+.opcion {
+    background: none;
+    border: none;
+    padding: 8px 20px;
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+    color: #111;
+    width: 100%;
+}
+
+/* BOTÓN SELECCIONADO ACTIVO (Personalización) */
+.opcion-activa {
+     width: 150px;
+
+    margin-left: 10px;
+
+    padding: 7px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background-color: #ddd;
+
+    font-size: 14px;
+}
+
+
+/* ========================================= */
+/*       CONTENIDO PRINCIPAL (APARIENCIA)    */
+/* ========================================= */
+
+.contenedor-apariencia {
+    flex-1: 1;
+    /* IMPORTANTE: Margen izquierdo igual al ancho del menú para que no se monten */
+    margin-left: 220px; 
+    
+    padding: 40px 60px;
+    width: 100%;
+    /* Limita el ancho máximo del contenido para que se vea ordenado en pantallas anchas */
+    max-width: 1000px; 
+}
+
+/* Título "Apariencia" */
+.titulo-principal {
+    font-size: 26px;
+    color: #333333;
+    margin-bottom: 25px;
+    font-weight: normal;
+}
+
+/* Tarjeta blanca de opciones */
+.tarjeta-opciones {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+}
+
+/* Separación entre bloques internos */
+.seccion-opcion {
+    margin-bottom: 35px;
+}
+
+.seccion-opcion:last-child {
+    margin-bottom: 0;
+}
+
+/* Títulos dentro de la tarjeta */
+.subtitulo-opcion {
+    font-size: 20px;
+    color: #111111;
+    margin: 0 0 12px 0;
+    font-weight: normal;
+}
+
+/* Alineador de títulos con sus paréntesis aclaratorios */
+.texto-con-aclaracion {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.aclaracion {
+    font-size: 12px;
+    color: #888888;
+}
+
+/* Barra negra del modo oscuro */
+.barra-oscura {
+    background-color: #000000;
+    color: #ffffff;
+    height: 36px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    font-size: 13px;
+    width: 100%;
+}
+
+/* Cápsula de color morado */
+.selector-color {
+    background-color: #5533ff;
+    width: 130px;
+    height: 32px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Círculo cromático de Figma */
+.circulo-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- Indica al navegador que este es un documento HTML moderno (HTML5) -->
+<html lang="es">
+<head>
+    <!-- Define la codificación de caracteres para que se lean bien los acentos y la "ñ" -->
+    <meta charset="UTF-8">
+    
+    <!-- Hace que la página se adapte correctamente al tamaño de la pantalla -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- El título que se muestra en la pestaña del navegador -->
+    <title>Configuración de Apariencia</title>
+    
+    <!-- Enlace vital: Conecta este archivo HTML con el archivo de estilos CSS externo -->
+    <link rel="stylesheet" href="personalizacion.css">
+</head>
+<body>
+
+    <!-- Contenedor global que envuelve toda la aplicación -->
+    <div class="interfaz-global">
+
+        <!-- ============================= -->
+        <!--        MENÚ IZQUIERDO         -->
+        <!-- ============================= -->
+        <aside>
+            <!-- aside representa una sección lateral de la página -->
+            <h2><b>Configuración</b></h2>
+            
+            <p class="titulo">Mi cuenta</p>
+            <!-- Opción normal (no activa) -->
+            <button class="opcion" routerLink="/configuracion">Perfil personal</button>
+
+            <p class="titulo pagina">Página</p>
+            <!-- Opción activa (con el fondo gris redondeado) -->
+            <button class="opcion-activa" routerLink="/personalizacion">
+                Personalización
+            </button>
+        </aside>
+
+        <!-- ============================= -->
+        <!--       CONTENIDO PRINCIPAL     -->
+        <!-- ============================= -->
+        <main class="contenedor-apariencia">
+            
+            <!-- El título principal de la sección -->
+            <h1 class="titulo-principal">Apariencia</h1>
+
+            <!-- Este <div> funciona como la gran tarjeta blanca contenedora con bordes grises -->
+            <div class="tarjeta-opciones">
+                
+                <!-- BLOQUE 1: Configuración del Modo Oscuro -->
+                <div class="seccion-opcion">
+                    <h2 class="subtitulo-opcion">Modo oscuro</h2>
+                    <div class="barra-oscura">x</div>
+                </div>
+
+                <!-- BLOQUE 2: Configuración del Color Representativo -->
+                <div class="seccion-opcion">
+                    <div class="texto-con-aclaracion">
+                        <h2 class="subtitulo-opcion">Color representativo</h2>
+                        <span class="aclaracion">(los demás verán tu catálogo con este color como fondo)</span>
+                    </div>
+                    <div class="selector-color">
+                        <div class="circulo-color"></div>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 3: Configuración del Color de Fondo -->
+                <div class="seccion-opcion">
+                    <div class="texto-con-aclaracion">
+                        <h2 class="subtitulo-opcion">Color de fondo</h2>
+                        <span class="aclaracion">(tú verás este color como fondo de la página)</span>
+                    </div>
+                    <div class="selector-color">
+                        <div class="circulo-color"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

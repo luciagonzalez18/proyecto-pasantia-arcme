@@ -1,0 +1,228 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px 4%;
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+
+/* TITULO */
+
+h1 {
+    font-size: 32px;
+    margin: 0;
+}
+
+.descripcion {
+    color: #666;
+    font-size: 15px;
+}
+
+
+/* PARTE DE ARRIBA */
+
+.parte-superior {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+
+/* INGRESOS */
+
+.ingresos {
+    width: 55%;
+    background-color: #eeeeee;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.ingresos h2 {
+    font-size: 18px;
+    padding: 15px;
+    margin: 0;
+}
+
+
+/* TABLA */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #bdbdbd;
+    padding: 8px;
+    text-align: left;
+}
+
+td {
+    padding: 7px;
+    border-bottom: 1px solid #ccc;
+}
+
+
+/* CLASES PARA LOS NUMEROS */
+
+.numero-tabla {
+    text-align: center;
+}
+
+
+/* TOTAL */
+
+.total {
+    background-color: #bdbdbd;
+    font-weight: bold;
+}
+
+
+/* ALERTAS */
+
+.alertas {
+    width: 45%;
+    background-color: #eeeeee;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.alertas h2 {
+    font-size: 18px;
+    margin-top: 0;
+}
+
+
+/* ALERTA */
+
+.alerta {
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    position: relative;
+    min-height: 115px;
+}
+
+.alerta h3 {
+    margin: 0 0 8px 0;
+}
+
+.alerta p {
+    font-size: 13px;
+}
+
+.alerta strong {
+    font-size: 17px;
+}
+
+
+/* ALERTA ROJA */
+
+.vencidas {
+    background-color: #f77d82;
+    border: 1px solid #d64e54;
+}
+
+
+/* ALERTA AMARILLA */
+
+.por-vencer {
+    background-color: #ffe56b;
+    border: 1px solid #d5b900;
+}
+
+
+/* NUMERO DE LA ALERTA */
+
+.numero {
+    float: right;
+    font-size: 17px;
+}
+
+
+/* BOTONES DE ALERTA */
+
+.alerta button {
+    float: right;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+/* CLIENTES */
+
+.clientes {
+    width: 100%;
+    margin-top: 20px;
+}
+
+
+/* TITULO DE CLIENTES */
+
+.titulo-clientes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titulo-clientes h2 {
+    font-size: 18px;
+}
+
+
+/* BOTON VER TODOS */
+
+.ver-todos {
+    padding: 7px 15px;
+    background-color: white;
+    border: 1px solid #999;
+    border-radius: 6px;
+}
+
+
+/* TABLA DE CLIENTES */
+
+.tabla-clientes {
+    border: 1px solid #ccc;
+}
+
+.tabla-clientes th {
+    background-color: white;
+}
+
+.tabla-clientes td {
+    background-color: #f5f5f5;
+}
+
+
+/* ESTADOS */
+
+.estado {
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.vencido {
+    background-color: #ff7777;
+}
+
+.por-vencer-estado {
+    background-color: #ffe36b;
+}
+
+
+/* BOTON VER CLIENTE */
+
+.cliente-boton {
+    background-color: white;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    padding: 5px 12px;
+}
