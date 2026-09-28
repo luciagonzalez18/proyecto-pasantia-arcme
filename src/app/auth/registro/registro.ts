@@ -6,14 +6,12 @@ import { RouterLink } from '@angular/router';
   templateUrl: './registro.html',
   styleUrl: './registro.css',
 })
-export class Registro{
-  paso=1;
+export class Registro {
+  paso = 1;
+
 
 
 }
-
-
-
 
 
 

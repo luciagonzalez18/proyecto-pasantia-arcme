@@ -3,7 +3,7 @@
     <form id="formulario-registro">
         <img src="assets/logoArcme.png" alt="logoArcme">
         <h2>Registrarse</h2>
-    
+
         <div class="mb-3">
             <label for="exampleDNI" class="form-label">DNI</label>
             <input type="text" class="form-control" id="DNI-input"
@@ -11,19 +11,20 @@
         </div>
         <div class="mb-3">
             <label for="passInp" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="contrasena-input" placeholder="###########">
+            <input type="password" class="form-control" id="contraseña" placeholder="###########">
 
             <label class="mostrar-password">
-                <input type="checkbox" onclick="passInp.type=this.checked ? 'text' : 'password'"> Mostrar contraseña
+                <input type="checkbox" onclick="contraseña.type=this.checked ? 'text' : 'password'"> Mostrar contraseña
             </label>
 
         </div>
         <div class="mb-3">
             <label for="passInp2" class="form-label">Repita su contraseña </label>
-            <input type="password" class="form-control" id="contrasena2-input" placeholder="###########">
+            <input type="password" class="form-control" id="contraseña2" placeholder="###########">
 
             <label class="mostrar-password">
-                <input type="checkbox" onclick="contrasena2-input.typethis.checked ? 'text' : 'password'"> Mostrar contraseña
+                <input type="checkbox" onclick="contraseña2.type=this.checked ? 'text' : 'password'"> Mostrar
+                contraseña
             </label>
 
         </div>
@@ -50,7 +51,7 @@
             Registrarse
         </button>
 
-        <button  type="button" class="btn btn-secondary" (click)="paso = 1">
+        <button type="button" class="btn btn-secondary" (click)="paso = 1">
             ← Volver
         </button>
     </form>

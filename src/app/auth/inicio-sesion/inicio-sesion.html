@@ -1,37 +1,101 @@
 <div class="container">
-  <form>
+  <!--FormGroup: Sirve para agrupar los campos del formulario y poder controlar sus estados y validaciones a traves typeScript -->
+  <form [formGroup]="formulario" (ngSubmit)="iniciarSesion()">
+
     <div class="containerLogo">
       <img class="logo" src="assets/logoArcme.png" alt="Logo Arcme">
     </div>
-    <div>
-       <h2>Iniciar Sesion</h2>
-    </div>
+    <h2>Iniciar Sesión</h2>
+
     <div class="mb-3 containerDNI">
-      <label>DNI</label>
-      <input type="number" id="dni" placeholder="XX-XXX-XXX">
+      <label for="dni">DNI</label>
+
+      <input type="text" id="dni" placeholder="XX-XXX-XXX" formControlName="dni">
+
+
+      <!--formulario verifica si el dato ingresado es invalido y si el usuario ya interactuo con el campo(dni)-->
+
+      @if (formulario.controls.dni.invalid && formulario.controls.dni.touched) {
+
+      <!--Se verifica si el DNI tiene el error 'required', si no se ingreso nada muestra el mensaje de error-->
+      @if (formulario.controls.dni.hasError('required')) {
+      <small>El DNI es obligatorio.</small>
+      }
+      <!--Se verifica si el DNI tiene el error 'pattern', si el campo dni tiene letras entonces muestra el mensaje de error-->
+      @else if(formulario.controls.dni.hasError('pattern')){
+        <small>Solo puede ingresar numeros</small>
+      }
+      <!--Se verifica si el DNI tiene el error 'minlength', si el campo dni no tiene el minimo de caracteres entonces muestra el mensaje de error-->
+      @else if (formulario.controls.dni.hasError('minlength')) {
+      <small>El DNI debe tener al menos 7 números.</small>
+      }
+      <!--Se verifica si el DNI tiene el error 'maxlength', si el campo dni supera el maximo de caracteres entonces muestra el mensaje de error-->
+      @else if (formulario.controls.dni.hasError('maxlength')) {
+      <small>El DNI no puede superar los 8 números.</small>
+      }
+
+      }
     </div>
+
 
     <div class="mb-3 containerContraseña">
       <label for="contraseña">Contraseña</label>
-      <input type="password" id="contraseña" placeholder="############">
+
+      <input type="password" id="contraseña" placeholder="############" formControlName="contra">
+      <label class="mostrar-password">
+        <input type="checkbox" onclick="contraseña.type=this.checked ? 'text' : 'password'"> Mostrar contraseña <!--Si el checkbox fue seleccionado cambia el type del input a text sino queda como input-->
+      </label>
+      <!--formulario verifica si el dato ingresado es invalido y si el usuario ya interactuo con el campo(contraseña)-->
+      @if (formulario.controls.contra.invalid && formulario.controls.contra.touched) {
+      <!--Se verifica si la contraseña tiene el error 'required', si no se ingreso nada muestra el mensaje de error -->
+      @if (formulario.controls.contra.hasError('required')) {
+
+      <small>
+        La contraseña es obligatoria.
+      </small>
+
+      }
+      <!--Se verifica si la contraseña tiene el error 'minlength', si el campo contraseña no tiene el minimo de caracteres entonces muestra el mensaje de error-->
+      @else if (formulario.controls.contra.hasError('minlength')) {
+
+      <small>
+        La contraseña debe tener al menos 8 caracteres.
+      </small>
+
+      }
+      <!--Se verifica si la contraseña tiene el error 'pattern', si el campo contraseña no cuenta con una Mayus y un caracter especial entonces muestra el mensaje de error-->
+      @else if (formulario.controls.contra.hasError('pattern')) {
+
+      <small>
+        La contraseña debe contener una mayúscula y un carácter especial.
+      </small>
+
+      }
+
+      }
     </div>
 
-    <a href="#" class="olvidarContraseña">Has olvidado la contraseña?</a>
 
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Recordarme</label>
-    </div>
 
-    <button type="submit" class="btn btnIniciarSesion" click="iniciarSesion()">Iniciar Sesion</button>
+
+
+    <button type="submit" class="btn btnIniciarSesion">
+      Iniciar Sesion
+    </button>
+
 
     <div class="divisor">
       <h3>O</h3>
     </div>
 
-    <button type="button" class="btn btnRegistro" routerLink='/registro'>Registrarse</button>
+
+    <button type="button" class="btn btnRegistro" routerLink="/registro">
+      Registrarse
+    </button>
+
   </form>
 </div>
+
 
 <footer>
   <div class="footer-links">
@@ -39,5 +103,6 @@
     <a href="#">Ayuda</a>
     <a href="#">Acerca de nosotros</a>
   </div>
+
   <p class="copyright">Copyright © 2026</p>
 </footer>

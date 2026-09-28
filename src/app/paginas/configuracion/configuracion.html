@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración</title>
+    <link rel="stylesheet" href="configuracion.css">
+    <!-- Conecta este HTML con nuestro archivo CSS -->
+
+    <!-- Enlace para cargar los Iconos de Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+
+
+<body>
+
+    <!-- ============================= -->
+    <!--        MENÚ IZQUIERDO         -->
+    <!-- ============================= -->
+    <aside>
+        <!-- aside representa una sección lateral de la página -->
+
+        <h2><b>Configuración</b></h2>
+        <!-- Título del menú -->
+
+        <p class="titulo">Mi cuenta</p>
+        <!-- Texto "Mi cuenta".
+             class="titulo" permite darle estilo desde CSS -->
+
+
+        <button class="opcion-activa" routerLink="/configuracion">Perfil personal</button>
+        <!-- Botón que representa la opción seleccionada -->
+
+
+        <p class="titulo pagina">Página</p>
+        <!-- Otro título del menú -->
+
+
+        <button class="opcion" routerLink="/personalizacion">Personalizacion</button>
+
+        <!-- Otra opción del menú -->
+
+    </aside>
+
+
+    <!-- ============================= -->
+    <!--       CONTENIDO PRINCIPAL     -->
+    <!-- ============================= -->
+
+    <main>
+        <!-- main contiene el contenido principal de la página -->
+
+
+        <h1>Perfil personal</h1>
+        <!-- Título principal -->
+
+
+        <!-- ============================= -->
+        <!--        CAJA DEL PERFIL        -->
+        <!-- ============================= -->
+
+        <section class="perfil">
+            <!-- section crea una sección.
+             La clase "perfil" nos permitirá darle el diseño de la caja -->
+
+
+            <!-- ============================= -->
+            <!--             LOGO               -->
+            <!-- ============================= -->
+
+            <div class="logo">
+                <!-- div sirve para agrupar elementos -->
+
+
+                <button class="boton-logo">
+                    <!--Hacemos que al tocar el botón se abra el selector de archivos -->
+                    <input type="file" style="display: none;">
+                    <i class="bi bi-card-image"></i>
+    
+                   
+                </button>
+                <!-- Botón azul para cargar el logo -->
+
+
+                <div class="texto-logo">
+
+                    <h3><b>Tu logo</b></h3>
+                    <!-- Título que aparece al lado del logo -->
+
+                    <p>
+                        Recomendamos elegir un logo o imagen tuya que te represente.
+                    </p>
+                    <!-- Pequeño texto explicativo -->
+
+                </div>
+
+            </div>
+
+
+            <!-- ============================= -->
+            <!--          FORMULARIO            -->
+            <!-- ============================= -->
+
+            <form>
+                <!-- form representa el formulario -->
+
+
+                <label><span style="color: red;">*</span> Nombre</label>
+                <!-- Texto que está arriba del campo (con el span colocamos el * en rojo) -->
+
+                <input type="text" placeholder="Ingrese nombre">
+                <!-- Campo para escribir el nombre.
+                     value="Octavio" hace que aparezca Octavio -->
+
+
+                <label>
+                    <span style="color: red;">*</span> Documento
+                    <span>(no se puede editar)</span>
+                </label>
+                <!-- Texto del campo Documento (con el span colocamos el * en rojo) -->
+
+
+                <input type="text" disabled placeholder="48.503.463">
+                <!-- Campo del documento -->
+
+
+                <label>Correo electrónico</label>
+
+                <input type="email" placeholder="Ingrese correo electronico">
+                <!-- Campo para escribir un correo -->
+
+
+                <label>Teléfono</label>
+
+                <input type="tel" placeholder="Ingrese numero de teléfono">
+                <!-- Campo para escribir un teléfono -->
+
+
+                <!-- ============================= -->
+                <!--           BOTONES              -->
+                <!-- ============================= -->
+
+                <div class="botones">
+                    <!-- Agrupamos los dos botones -->
+
+                    <button type="button" class="descartar" disabled>
+                        Descartar
+                    </button>
+
+                    <button type="button" class="guardar" disabled>
+                        Guardar cambios
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
