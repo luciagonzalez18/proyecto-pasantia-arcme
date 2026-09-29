@@ -1,4 +1,7 @@
-/* General Styles */
+/* =========================================
+   RESET / ESTILOS GENERALES
+========================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,52 +10,80 @@
 
 body {
     background-color: #f4f5f7;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: #333;
 }
 
-/* Contenedor envolvente ocupando el 100% de la ventana */
-/* .containerGrande {
-    display: flex;
-    height: 100vh;
-    Altura total de la pantalla 
-    overflow: hidden;
-    Evita scrolls no deseados 
-} */
+
+/* =========================================
+   CONTENEDOR GENERAL
+========================================= */
+
 .containerGrande {
     display: flex;
     width: 251px;
     height: 100vh;
     overflow: hidden;
 }
-/* Contenedor principal de la barra lateral */
+
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
 .container {
     width: 250px;
     height: 100%;
     background-color: #ffffff;
+
     padding: 20px 16px;
+
     display: flex;
     flex-direction: column;
+
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
 }
 
-/* Header de la Sidebar */
+
+/* =========================================
+   LOGO
+========================================= */
+
 .container .logo {
     display: flex;
     align-items: center;
     gap: 8px;
+
     margin-bottom: 16px;
     padding-left: 4px;
 }
 
 .container .logo img {
     height: 32px;
+    width: auto;
     object-fit: contain;
 }
+
+/* =========================
+   LÍNEAS
+   ========================= */
+
+.linea-horizontal {
+    border: 0;
+    border-top: 2px solid #aeaeae;
+    margin: 20px 0;
+}
+
+/* =========================================
+   CUENTA / USUARIO
+========================================= */
 
 .container .cuenta {
     display: flex;
     align-items: center;
     gap: 10px;
+
     margin-bottom: 16px;
     padding-left: 4px;
 }
@@ -60,9 +91,11 @@ body {
 .container .cuenta img {
     width: 36px;
     height: 36px;
+
     border-radius: 50%;
-    background-color: #000000;
-    /* Placeholder si no hay foto */
+    background-color: #000;
+
+    object-fit: cover;
 }
 
 .container .cuenta h3 {
@@ -71,19 +104,35 @@ body {
     color: #1a1a1a;
 }
 
-/* Botón "Cargar Proyecto" */
+
+/* =========================================
+   BOTÓN CARGAR PROYECTO
+========================================= */
+
 .container .btn {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 8px 12px;
+
+    width: 100%;
+    padding: 9px 12px;
+
     border: 1px solid #eeeeee;
     border-radius: 8px;
+
     margin-bottom: 16px;
-    cursor: pointer;
+
+    background-color: #ffffff;
     color: #1a1a1a;
-    transition: background-color 0.2s;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .container .btn span {
@@ -97,75 +146,262 @@ body {
 
 .container .btn:hover {
     background-color: #f8f9fa;
+    border-color: #e2e2e2;
 }
 
-/* Navegación y Secciones */
+.container .btn:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================================
+   SECCIONES / MENÚ
+========================================= */
+
 .secciones {
     flex: 1;
-    /* Ocupa todo el espacio disponible empujando la configuración hacia abajo */
+
     overflow-y: auto;
-    /* Permite scroll interno SOLO en el menú en pantallas muy pequeñas */
+    overflow-x: hidden;
+
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db transparent;
 }
+
+/* Scrollbar para Chrome / Edge / Safari */
+
+.secciones::-webkit-scrollbar {
+    width: 5px;
+}
+
+.secciones::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.secciones::-webkit-scrollbar-thumb {
+    background-color: #d1d5db;
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   LISTA
+========================================= */
 
 .container ul {
     list-style: none;
+
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 3px;
 }
+
+
+/* =========================================
+   ELEMENTOS DEL MENÚ
+========================================= */
 
 .container ul li {
+    position: relative;
+
     display: flex;
     align-items: center;
-    padding: 8px 12px;
-    /* Relleno ajustado */
+
+    padding: 9px 12px;
+
     border-radius: 8px;
-    transition: all 0.2s ease;
+
+    background-color: transparent;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
+
+
+/* Iconos */
 
 .container ul li i {
+    flex-shrink: 0;
+
+    width: 20px;
+
     font-size: 18px;
+
     margin-right: 12px;
-    color: #333333;
+
+    color: #555;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
 }
+
+
+/* Links */
 
 .container ul li a {
+    width: 100%;
+
     text-decoration: none;
-    color: #333333;
+
+    color: #333;
+
     font-size: 14px;
     font-weight: 500;
-    width: 100%;
+
+    transition:
+        color 0.2s ease,
+        font-weight 0.2s ease;
 }
 
-.container ul li:hover {
-    background-color: #f0f0f0;
+
+/* =========================================
+   HOVER
+========================================= */
+
+.container ul li:not(.activo):hover {
+    background-color: #f5f5f5;
+
+    transform: translateX(2px);
 }
 
-/* Sección de Configuración y Cierre de Sesión */
+.container ul li:not(.activo):hover i {
+    color: #2563eb;
+}
+
+.container ul li:not(.activo):hover a {
+    color: #222;
+}
+
+
+/* =========================================
+   ELEMENTO ACTIVO
+========================================= */
+
+.container ul li.activo {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    padding: 9px 12px;
+
+    background-color: #eff4ff;
+
+    border-radius: 8px;
+
+    color: #2563eb;
+
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
+}
+
+
+/* Barra azul lateral */
+
+.container ul li.activo::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 25%;
+
+    width: 3px;
+    height: 50%;
+
+    background-color: #2563eb;
+
+    border-radius: 0 4px 4px 0;
+}
+
+
+/* Icono activo */
+
+.container ul li.activo i {
+    color: #2563eb;
+
+    transform: scale(1.05);
+}
+
+
+/* Texto activo */
+
+.container ul li.activo a {
+    color: #2563eb;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   CONFIGURACIÓN / CIERRE DE SESIÓN
+========================================= */
+
 .configuracion {
     margin-top: auto;
-    /* Empuja el bloque al fondo del contenedor */
+
     padding-top: 12px;
+
     border-top: 1px solid #eeeeee;
 }
 
-/* Línea vertical divisora */
+
+/* =========================================
+   LÍNEA VERTICAL
+========================================= */
+
 .linea-vertical {
     width: 1px;
     height: 100%;
-    background-color: #5c5a5a;
+
+    background-color: #d1d5db;
 }
 
-.linea-horizontal {
-    .linea-horizontal {
-        border: none;
-        /* Quita el borde por defecto del navegador */
-        height: 2px;
-        /* Grosor de la línea */
-        background-color: #333;
-        /* Color de la línea */
-        margin: 20px 0;
-        /* Espaciado arriba y abajo */
+
+/* =========================================
+   LÍNEA HORIZONTAL
+========================================= */
+
+
+/* =========================================
+   ESTADOS DE ACCESIBILIDAD
+========================================= */
+
+.container ul li a:focus-visible,
+.container .btn:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-height: 600px) {
+
+    .container {
+        padding-top: 12px;
+        padding-bottom: 12px;
     }
 
+    .container .logo {
+        margin-bottom: 10px;
+    }
+
+    .container .cuenta {
+        margin-bottom: 10px;
+    }
+
+    .container .btn {
+        margin-bottom: 10px;
+    }
+
+    .container ul li {
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
 }
