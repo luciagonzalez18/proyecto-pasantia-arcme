@@ -15,17 +15,19 @@
   font-family: system-ui, -apple-system, sans-serif;
 }
 
-body {
+/* body {
   background-color: var(--bg-color);
   color: var(--text-dark);
   padding: 20px;
-}
+} */
 
 /* Contenedor Principal */
 .container {
-  width: 95%;
+  width: 100%;
   max-width: none;
-  margin: 0 auto;
+  margin: 45px 0;
+  padding: 0 35px;
+  box-sizing: border-box;
 }
 
 /* Card General */
@@ -48,9 +50,31 @@ body {
 }
 
 .btn-dark {
-  background: #000;
-  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 13px 21px;
+
+  background-color: #2f6f7e;
+  color: white;
+
   border: none;
+  border-radius: 9px;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-dark:hover {
+  background-color: #245865;
+}
+
+.btn-dark:active {
+  transform: scale(0.97);
 }
 
 /* --- CABECERA --- */
@@ -62,11 +86,10 @@ body {
 }
 
 .header-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 24px;
-  font-weight: 700;
+  margin: 0;
+  color: #2f3e46;
+  font-size: 36px;
+  font-weight: 600;
 }
 
 /* Subnavegación de Agenda */
@@ -130,9 +153,17 @@ body {
   width: 60px;
 }
 
-.cell-header.wed { color: #2563eb; }
-.cell-header.sat { color: #0284c7; }
-.cell-header.sun { color: #dc2626; }
+.cell-header.wed {
+  color: #2563eb;
+}
+
+.cell-header.sat {
+  color: #0284c7;
+}
+
+.cell-header.sun {
+  color: #dc2626;
+}
 
 /* Horas (lateral) */
 .cell-time {
@@ -155,10 +186,29 @@ body {
   margin-bottom: 4px;
 }
 
-.cal-event-blue { background: #dbeafe; border-left-color: #2563eb; color: #1e3a8a; }
-.cal-event-green { background: #dcfce7; border-left-color: #16a34a; color: #14532d; }
-.cal-event-yellow { background: #fef9c3; border-left-color: #ca8a04; color: #713f12; }
-.cal-event-pink { background: #fce7f3; border-left-color: #db2777; color: #701a75; }
+.cal-event-blue {
+  background: #dbeafe;
+  border-left-color: #2563eb;
+  color: #1e3a8a;
+}
+
+.cal-event-green {
+  background: #dcfce7;
+  border-left-color: #16a34a;
+  color: #14532d;
+}
+
+.cal-event-yellow {
+  background: #fef9c3;
+  border-left-color: #ca8a04;
+  color: #713f12;
+}
+
+.cal-event-pink {
+  background: #fce7f3;
+  border-left-color: #db2777;
+  color: #701a75;
+}
 
 /* --- SECCIÓN INFERIOR --- */
 .bottom-section {
@@ -209,10 +259,21 @@ body {
   flex-shrink: 0;
 }
 
-.dot-blue { background: #3b82f6; }
-.dot-green { background: #22c55e; }
-.dot-yellow { background: #eab308; }
-.dot-pink { background: #ec4899; }
+.dot-blue {
+  background: #3b82f6;
+}
+
+.dot-green {
+  background: #22c55e;
+}
+
+.dot-yellow {
+  background: #eab308;
+}
+
+.dot-pink {
+  background: #ec4899;
+}
 
 .event-details h4 {
   font-size: 14px;
@@ -303,7 +364,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin: 0; /* Quita márgenes por defecto del navegador */
+  margin: 0;
+  /* Quita márgenes por defecto del navegador */
 }
 
 .modal-dialog::backdrop {
@@ -391,25 +453,61 @@ body {
   margin-top: 10px;
 }
 
+/* Botones del modal */
+
 .btn-cancel {
-  background-color: #ffffff;
-  border: 1px solid #222;
-  color: #222;
-  padding: 8px 20px;
-  border-radius: 6px;
-  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 13px 21px;
+
+  background-color: #6c757d;
+  color: white;
+
+  border: none;
+  border-radius: 9px;
+
+  font-size: 16px;
+  font-weight: 500;
+
   cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-cancel:hover {
+  background-color: #5c636a;
+}
+
+.btn-cancel:active {
+  transform: scale(0.97);
 }
 
 .btn-submit {
-  background-color: #000000;
-  border: 1px solid #000;
-  color: #ffffff;
-  padding: 8px 24px;
-  border-radius: 6px;
-  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 13px 21px;
+
+  background-color: #2f6f7e;
+  color: white;
+
+  border: none;
+  border-radius: 9px;
+
+  font-size: 16px;
+  font-weight: 500;
+
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
-.btn-cancel:hover { background-color: #f2f2f2; }
-.btn-submit:hover { background-color: #333333; }
+
+.btn-submit:hover {
+  background-color: #245865;
+}
+
+.btn-submit:active {
+  transform: scale(0.97);
+}
