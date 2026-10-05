@@ -1,0 +1,181 @@
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    margin: auto;
+    font-size: 60px;
+    font-weight: 600;
+}
+
+/* =========================
+   IMÁGENES
+   ========================= */
+
+.imagenes {
+    width: 100%;
+}
+
+.row {
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.col-4,
+.col-3 {
+    display: flex;
+}
+
+img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.03);
+}
+
+/* =========================
+   LÍNEAS
+   ========================= */
+
+.linea-horizontal {
+    border: 0;
+    border-top: 2px solid #aeaeae;
+    margin: 20px 0;
+}
+
+/* =========================
+   RECORDATORIOS (full width)
+   ========================= */
+
+.recordatorios {
+    width: 100%;
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+/* Título */
+
+.titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.titulo i {
+    font-size: 28px;
+    color: #333;
+}
+
+.titulo h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+/* Línea dentro del recordatorio */
+
+.recordatorios .linea-horizontal {
+    margin: 20px 0;
+}
+
+/* =========================
+   CADA NOTIFICACIÓN
+   ========================= */
+
+.notificacion {
+    margin: 0 0 12px 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+
+    padding: 18px 20px;
+
+    background-color: #f8f9fa;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+
+    box-sizing: border-box;
+    transition: 0.2s ease;
+}
+
+.notificacion:hover {
+    background-color: #f1f3f5;
+    transform: translateY(-2px);
+}
+
+/* Textos */
+
+.notificacion p {
+    margin: 4px 0;
+    color: #333;
+}
+
+.notificacion > div:first-child p:first-child {
+    font-weight: 600;
+}
+
+.notificacion > div:first-child p:last-child {
+    font-size: 14px;
+    color: #777;
+}
+
+/* agendado */
+
+.agendado {
+    max-width: 350px;
+    text-align: right;
+}
+
+.agendado p {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(130, 130, 130);
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 700px) {
+
+    .container {
+        padding: 0 15px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    .recordatorios {
+        padding: 18px 15px;
+    }
+
+    .titulo h1 {
+        font-size: 23px;
+    }
+
+    .notificacion {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .agendado {
+        max-width: 100%;
+        text-align: left;
+    }
+}
