@@ -9,6 +9,7 @@ import { Clientes } from './paginas/clientes/clientes';
 import { Agenda } from './compartidos/agenda/agenda';
 import { Porfolio } from './paginas/porfolio/porfolio';
 import { PreguntasFrecuentes } from './compartidos/preguntas-frecuentes/preguntas-frecuentes';
+import { Ingresos } from './paginas/ingresos/ingresos';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'inicio', pathMatch: 'full' },
@@ -21,6 +22,8 @@ export const routes: Routes = [
     { path: "clientes", component: Clientes },
     { path: "agenda", component: Agenda },
     { path: "porfolio", component: Porfolio },
+    {path: "preguntas-frecuentes", component: PreguntasFrecuentes },
+    {path: "ingresos", component: Ingresos },
     { path: "preguntas-frecuentes", component: PreguntasFrecuentes },
     { path: '**', redirectTo: 'inicio' }
 
