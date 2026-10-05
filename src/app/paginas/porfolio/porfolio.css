@@ -2,71 +2,82 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-   
 }
 
 body {
-    background-color: #ffffff;
-    padding: 30px;
-    color: #000000;
+    background-color: white;
+    padding: 25px;
+    color: black;
+    font-family: Arial, sans-serif;
 }
 
-/* Encabezado */
+/* Encabezado - MODIFICADO */
 .encabezado-portfolio {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 20px; /* Reducido de 25px */
     width: 100%;
 }
 
 .logotipo {
-    font-size: 22px;
+    font-size: 24px; /* Reducido de 30px */
     font-weight: bold;
 }
 
 .botones-encabezado {
     display: flex;
-    gap: 12px;
+    gap: 10px; /* Reducido de 15px */
 }
 
 .boton-borde {
-    background: white;
+    background-color: white;
     border: 1px solid #ccc;
-    padding: 6px 16px;
-    border-radius: 20px;
+    padding: 8px 16px; /* Reducido de 12px 20px */
+    border-radius: 25px;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 14px; /* Reducido de 16px */
     font-weight: 500;
 }
 
-/* Grilla Compacta: Organizada con espacio uniforme */
+.boton-borde:hover {
+    background-color: #eeeeee;
+}
+
+/* Línea superior */
+.barra-separadora-superior {
+    background-color: #d9d9d9;
+    height: 1px;
+    width: 100%;
+}
+
+/* Grilla con flex - MODIFICADO */
 .contenedor-grilla {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 50px;
-    justify-content: space-between; /* Distribuye el espacio sobrante entre las tarjetas de la fila */
+    justify-content: space-between; /* Distribuye las tarjetas de punta a punta */
+    gap: 30px;                     /* Genera el espacio óptimo entre las cards */
+    margin-top: 40px;
+    width: 100%;
 }
 
-/* Tarjeta Individual Corregida (Todas con tamaño fijo idéntico) */
+/* Tarjetas - MODIFICADO */
 .tarjeta {
-    width: 30%;           /* Ancho exacto y fijo para simular 3 columnas reales */
-    min-width: 380px;     /* Previene que la tabla de info colapse */
-    max-width: 450px;     /* Bloquea que se estire de mas si queda sola abajo */
-    margin: 15px 0;       /* Margen superior e inferior estable */
-    background: #ffffff;
+    width: 30%;            
+    max-width: 350px;      
+    min-width: 260px;      
+    background-color: white;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 12px;             
+    margin: 10px 0;
+    padding: 15px; 
+    
+    
+    border: 1.5px solid #cccccc; 
 }
 
-/* Línea divisoria vertical entre las tarjetas */
-.linea-separadora {
-    border-right: 1.5px solid #000000; /* Línea negra definida a la derecha */
-    padding-right: 25px;               /* Espacio para separar el contenido de la línea */
-}
 
-/* Cabecera de Tarjeta */
 .cabecera-tarjeta {
     display: flex;
     justify-content: space-between;
@@ -74,26 +85,28 @@ body {
 }
 
 .cabecera-tarjeta h2 {
-    font-size: 18px;
+    font-size: 19px; /* Reducido de 23px */
     font-weight: 600;
 }
 
 .subtitulo {
-    font-size: 12px;
+    font-size: 14px; /* Reducido de 16px */
     color: #888888;
+    margin-top: 4px;
 }
 
 .icono-configuracion {
-    font-size: 16px;
+    font-size: 15px; /* Reducido de 17px */
+    color: #aaa0bf;
     cursor: pointer;
 }
 
-/* Imágenes con Iconos Bootstrap */
+/* Imagen principal - MODIFICADO */
 .imagen-principal {
     width: 100%;
-    height: 160px;
+    height: 160px; /* Reducido de 200px */
     background-color: #e0e0e0;
-    border-radius: 12px;
+    border-radius: 12px; /* Ajustado proporcionalmente */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -101,17 +114,18 @@ body {
 }
 
 .imagen-principal i {
-    font-size: 32px;
+    font-size: 30px; /* Reducido de 35px */
 }
 
+/* Miniaturas - MODIFICADO */
 .fila-miniaturas {
     display: flex;
-    gap: 8px;
+    gap: 8px; /* Reducido de 10px */
 }
 
 .miniatura {
     flex: 1;
-    height: 55px;
+    height: 55px; /* Reducido de 75px */
     background-color: #e0e0e0;
     border-radius: 8px;
     display: flex;
@@ -121,88 +135,100 @@ body {
 }
 
 .miniatura i {
-    font-size: 16px;
+    font-size: 16px; /* Reducido de 18px */
 }
 
 .miniatura-mas {
     flex: 1;
-    height: 55px;
+    height: 55px; /* Reducido de 75px */
     background-color: #cccccc;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 15px; /* Reducido de 18px */
     color: #333333;
 }
 
-/* Tabla de Información */
+/* Tabla de información */
 .tabla-info {
-    display: flex;
+     display: flex;
     width: 100%;
     border-top: 1px solid #e0e0e0;
     border-bottom: 1px solid #e0e0e0;
-    padding: 10px 0;
-    margin: 4px 0;
+    padding: 8px 0; /* Un poco más compacto */
+    margin: 5px 0;
 }
 
 .columna-info {
-    flex: 1;
+   flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     text-align: center;
-    padding: 0 4px;
+    gap: 6px;
+    padding: 0 2px; /* Margen mínimo para que no se peguen las columnas */
 }
 
-/* Línea divisoria entre columnas internas */
 .borde-derecho {
     border-right: 1px solid #e0e0e0;
 }
 
 .titulo-info {
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 600;
-    margin-bottom: 8px;
-    white-space: nowrap;
+    display: flex;          /* Alinea el icono y el texto juntos */
+    flex-direction: column; /* Pone el icono arriba del texto si el espacio es muy justo */
+    align-items: center;
+    gap: 2px;
+}
+
+.titulo-info i {
+   color: #8e83b2;
 }
 
 .valor-info {
-    font-size: 12px;
-    color: #222222;
-    line-height: 1.3;
+ font-size: 10px;
+    color: #333333;
+    line-height: 1.2;
+    word-break: break-word; /* Corta palabras extremadamente largas si no entran */
 }
 
-.texto-chico {
-    font-size: 11px;
-}
-
-/* Botón de Memoria.pdf */
+/* Memoria PDF */
 .etiqueta-pdf {
-    font-size: 11px;
+   font-size: 9px;
     font-weight: 500;
     background-color: #e0e0e0;
-    padding: 5px 12px;
-    border-radius: 15px;
+    padding: 4px 6px;
+    border-radius: 20px;
     border: 1px solid #777777;
-    white-space: nowrap;
-    cursor: pointer;
+    text-align: center;
+    display: inline-block;  /* Permite un comportamiento más flexible */
+    max-width: 100%;       /* Obliga al botón a no superar el ancho de su columna */
+    overflow: hidden;       /* Si el texto "Memoria.pdf" es muy largo, oculta lo sobrante en pantallas mini */
+    text-overflow: ellipsis;/* Pone tres puntos (...) si el nombre del archivo no llega a entrar */
 }
 
-/* Fila de Acciones Inferiores */
+.etiqueta-pdf i {
+    color: #141414;
+}
+
+/* Acciones inferiores */
 .fila-acciones {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 4px;
+    gap: 10px;
+    margin-top: 5px;
 }
 
 .boton-icono {
-    background: #e4e4e7;
+    background-color: #e4e4e7;
     border: none;
-    padding: 6px 12px;
+    padding: 10px 13px;
     border-radius: 8px;
     cursor: pointer;
     display: flex;
@@ -211,7 +237,7 @@ body {
 }
 
 .boton-icono i {
-    font-size: 14px;
+    font-size: 16px;
     color: #4b5563;
 }
 
@@ -221,29 +247,75 @@ body {
 
 .acciones-derecha {
     display: flex;
-    gap: 15px;
+    gap: 12px;
+    align-items: center;
 }
 
 .boton-texto {
     background: none;
     border: none;
-    font-size: 13px;
+    font-size: 14px;
     cursor: pointer;
-    color: #000000;
+    color: black;
+    white-space: nowrap;
+}
+
+.boton-texto i {
+    color: #aaa0bf;
+    font-size: 16px;
+}
+
+.boton-texto:hover {
+    text-decoration: underline;
 }
 
 .texto-negrita {
     font-weight: bold;
 }
 
-.barra-separadora-superior {
-    background-color: #D9D9D9;
-    height: 0.5px;
+/* Paginación */
+.paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
     width: 100%;
+    margin: 40px auto 20px;
 }
 
-.barra-separadora-3cards {
-    background-color: #D9D9D9;
-    height: 0.5px;
-    width: 100%;
+.pagina {
+    background-color: white;
+    border: none;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: #222222;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.pagina:hover {
+    background-color: #eeeeee;
+}
+
+.pagina-activa {
+    background-color: #292929;
+    color: white;
+}
+
+.pagina-activa:hover {
+    background-color: #292929;
+}
+
+.anterior,
+.siguiente {
+    padding: 9px 12px;
+}
+
+.anterior {
+    color: #aaaaaa;
+}
+
+.puntos {
+    padding: 8px;
+    font-size: 14px;
 }

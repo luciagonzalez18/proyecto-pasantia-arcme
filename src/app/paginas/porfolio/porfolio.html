@@ -1,42 +1,52 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Portfolio</title>
-    <!-- Enlace para cargar los Iconos de Bootstrap -->
+
+    <!-- Iconos Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
     <link rel="stylesheet" href="porfolio.css">
 </head>
 <body>
 
-    <!-- Encabezado Principal -->
-    <header class="encabezado-portfolio">
-        <h1 class="logotipo">Porfolio</h1>
+    <!-- Encabezado -->
+    <div class="encabezado-portfolio">
+        <h1 class="logotipo">Portfolio</h1>
+
         <div class="botones-encabezado">
-            <button class="boton-borde">📝 Editar Portfolio</button>
-            <button class="boton-borde">🔗 Compartir Portfolio</button>
+            <button class="boton-borde">
+                <i class="bi bi-pencil-square"></i> Editar Portfolio
+            </button>
+
+            <button class="boton-borde">
+                <i class="bi bi-link-45deg"></i> Compartir Portfolio
+            </button>
         </div>
-        
-    </header>
-<div class="barra-separadora-superior"></div>
-    <!-- Grilla de Tarjetas -->
-    <main class="contenedor-grilla">
+    </div>
+
+    <div class="barra-separadora-superior"></div>
+
+    <!-- Grilla de tarjetas -->
+    <div class="contenedor-grilla">
 
         <!-- TARJETA 1 -->
-        <div class="tarjeta linea-separadora">
+        <div class="tarjeta">
             <div class="cabecera-tarjeta">
                 <div>
                     <h2>Nombre de la obra</h2>
                     <p class="subtitulo">Última actualización</p>
                 </div>
-                <span class="icono-configuracion">⚙️</span>
+                <i class="bi bi-gear-fill icono-configuracion"></i>
             </div>
-            
+
             <div class="imagen-principal">
                 <i class="bi bi-card-image"></i>
             </div>
-            
+
             <div class="fila-miniaturas">
                 <div class="miniatura"><i class="bi bi-card-image"></i></div>
                 <div class="miniatura"><i class="bi bi-card-image"></i></div>
@@ -44,51 +54,46 @@
                 <div class="miniatura-mas">+10</div>
             </div>
 
-            <!-- Tabla de información detallada -->
             <div class="tabla-info">
                 <div class="columna-info borde-derecho">
-                    <span class="titulo-info">📍 Ubicación</span>
-                    <span class="valor-info">Los alamos 770</span>
+                    <span class="titulo-info"><i class="bi bi-geo-alt-fill"></i> Ubicación</span>
+                    <span class="valor-info">Los Alamos 770</span>
                 </div>
                 <div class="columna-info borde-derecho">
-                    <span class="titulo-info">📅 Fecha</span>
-                    <span class="valor-info texto-chico">Fecha de inicio<br>10/07/2026</span>
+                    <span class="titulo-info"><i class="bi bi-calendar3"></i> Fecha</span>
+                    <span class="valor-info">Fecha de inicio<br>10/07/2026</span>
                 </div>
                 <div class="columna-info borde-derecho">
-                    <span class="titulo-info">ℹ️ Estado</span>
+                    <span class="titulo-info"><i class="bi bi-info-square-fill"></i> Estado</span>
                     <span class="valor-info">En proceso</span>
                 </div>
                 <div class="columna-info">
-                    <span class="titulo-info">📖 Memoria</span>
-                    <span class="etiqueta-pdf">📖 Memoria.pdf</span>
+                    <span class="titulo-info"><i class="bi bi-book"></i> Memoria</span>
+                    <span class="etiqueta-pdf"><i class="bi bi-file-pdf"></i> Memoria.pdf</span>
                 </div>
             </div>
 
             <div class="fila-acciones">
-                <button class="boton-icono">
-                    <i class="bi bi-trash-fill"></i>
-                </button>
+                <button class="boton-icono"><i class="bi bi-trash-fill"></i></button>
                 <div class="acciones-derecha">
-                    <button class="boton-texto">🔗 Compartir</button>
+                    <button class="boton-texto"><i class="bi bi-link-45deg"></i> Compartir</button>
                     <button class="boton-texto texto-negrita">Ver Más »</button>
                 </div>
             </div>
         </div>
 
         <!-- TARJETA 2 -->
-        <div class="tarjeta linea-separadora">
+        <div class="tarjeta">
             <div class="cabecera-tarjeta">
                 <div>
                     <h2>Nombre de la obra</h2>
                     <p class="subtitulo">Última actualización</p>
                 </div>
-                <span class="icono-configuracion">⚙️</span>
+                <i class="bi bi-gear-fill icono-configuracion"></i>
             </div>
-            
-            <div class="imagen-principal">
-                <i class="bi bi-card-image"></i>
-            </div>
-            
+
+            <div class="imagen-principal"><i class="bi bi-card-image"></i></div>
+
             <div class="fila-miniaturas">
                 <div class="miniatura"><i class="bi bi-card-image"></i></div>
                 <div class="miniatura"><i class="bi bi-card-image"></i></div>
@@ -98,29 +103,27 @@
 
             <div class="tabla-info">
                 <div class="columna-info borde-derecho">
-                    <span class="titulo-info">📍 Ubicación</span>
-                    <span class="valor-info">Los alamos 770</span>
+                    <span class="titulo-info"><i class="bi bi-geo-alt-fill"></i> Ubicación</span>
+                    <span class="valor-info">Los Alamos 770</span>
                 </div>
                 <div class="columna-info borde-derecho">
-                    <span class="titulo-info">📅 Fecha</span>
-                    <span class="valor-info texto-chico">Fecha de inicio<br>10/07/2026</span>
+                    <span class="titulo-info"><i class="bi bi-calendar3"></i> Fecha</span>
+                    <span class="valor-info">Fecha de inicio<br>10/07/2026</span>
                 </div>
                 <div class="columna-info borde-derecho">
-                    <span class="titulo-info">ℹ️ Estado</span>
+                    <span class="titulo-info"><i class="bi bi-info-square-fill"></i> Estado</span>
                     <span class="valor-info">En proceso</span>
                 </div>
                 <div class="columna-info">
-                    <span class="titulo-info">📖 Memoria</span>
-                    <span class="etiqueta-pdf">📖 Memoria.pdf</span>
+                    <span class="titulo-info"><i class="bi bi-book"></i> Memoria</span>
+                    <span class="etiqueta-pdf"><i class="bi bi-file-pdf"></i> Memoria.pdf</span>
                 </div>
             </div>
 
             <div class="fila-acciones">
-                <button class="boton-icono">
-                    <i class="bi bi-trash-fill"></i>
-                </button>
+                <button class="boton-icono"><i class="bi bi-trash-fill"></i></button>
                 <div class="acciones-derecha">
-                    <button class="boton-texto">🔗 Compartir</button>
+                    <button class="boton-texto"><i class="bi bi-link-45deg"></i> Compartir</button>
                     <button class="boton-texto texto-negrita">Ver Más »</button>
                 </div>
             </div>
@@ -133,13 +136,11 @@
                     <h2>Nombre de la obra</h2>
                     <p class="subtitulo">Última actualización</p>
                 </div>
-                <span class="icono-configuracion">⚙️</span>
+                <i class="bi bi-gear-fill icono-configuracion"></i>
             </div>
-            
-            <div class="imagen-principal">
-                <i class="bi bi-card-image"></i>
-            </div>
-            
+
+            <div class="imagen-principal"><i class="bi bi-card-image"></i></div>
+
             <div class="fila-miniaturas">
                 <div class="miniatura"><i class="bi bi-card-image"></i></div>
                 <div class="miniatura"><i class="bi bi-card-image"></i></div>
@@ -149,34 +150,32 @@
 
             <div class="tabla-info">
                 <div class="columna-info borde-derecho">
-                    <span class="titulo-info">📍 Ubicación</span>
-                    <span class="valor-info">Los alamos 770</span>
+                    <span class="titulo-info"><i class="bi bi-geo-alt-fill"></i> Ubicación</span>
+                    <span class="valor-info">Los Alamos 770</span>
                 </div>
                 <div class="columna-info borde-derecho">
-                    <span class="titulo-info">📅 Fecha</span>
-                    <span class="valor-info texto-chico">Fecha de inicio<br>10/07/2026</span>
+                    <span class="titulo-info"><i class="bi bi-calendar3"></i> Fecha</span>
+                    <span class="valor-info">Fecha de inicio<br>10/07/2026</span>
                 </div>
                 <div class="columna-info borde-derecho">
-                    <span class="titulo-info">ℹ️ Estado</span>
+                    <span class="titulo-info"><i class="bi bi-info-square-fill"></i> Estado</span>
                     <span class="valor-info">En proceso</span>
                 </div>
                 <div class="columna-info">
-                    <span class="titulo-info">📖 Memoria</span>
-                    <span class="etiqueta-pdf">📖 Memoria.pdf</span>
+                    <span class="titulo-info"><i class="bi bi-book"></i> Memoria</span>
+                    <span class="etiqueta-pdf"><i class="bi bi-file-pdf"></i> Memoria.pdf</span>
                 </div>
             </div>
 
             <div class="fila-acciones">
-                <button class="boton-icono">
-                    <i class="bi bi-trash-fill"></i>
-                </button>
+                <button class="boton-icono"><i class="bi bi-trash-fill"></i></button>
                 <div class="acciones-derecha">
-                    <button class="boton-texto">🔗 Compartir</button>
+                    <button class="boton-texto"><i class="bi bi-link-45deg"></i> Compartir</button>
                     <button class="boton-texto texto-negrita">Ver Más »</button>
                 </div>
             </div>
         </div>
-        <div class="barra-separadora-3cards"></div>
+
         <!-- TARJETA 4 -->
         <div class="tarjeta">
             <div class="cabecera-tarjeta">
@@ -184,13 +183,11 @@
                     <h2>Nombre de la obra</h2>
                     <p class="subtitulo">Última actualización</p>
                 </div>
-                <span class="icono-configuracion">⚙️</span>
+                <i class="bi bi-gear-fill icono-configuracion"></i>
             </div>
-            
-            <div class="imagen-principal">
-                <i class="bi bi-card-image"></i>
-            </div>
-            
+
+            <div class="imagen-principal"><i class="bi bi-card-image"></i></div>
+
             <div class="fila-miniaturas">
                 <div class="miniatura"><i class="bi bi-card-image"></i></div>
                 <div class="miniatura"><i class="bi bi-card-image"></i></div>
@@ -200,35 +197,288 @@
 
             <div class="tabla-info">
                 <div class="columna-info borde-derecho">
-                    <span class="titulo-info">📍 Ubicación</span>
-                    <span class="valor-info">Los alamos 770</span>
+                    <span class="titulo-info"><i class="bi bi-geo-alt-fill"></i> Ubicación</span>
+                    <span class="valor-info">Los Alamos 770</span>
                 </div>
                 <div class="columna-info borde-derecho">
-                    <span class="titulo-info">📅 Fecha</span>
-                    <span class="valor-info texto-chico">Fecha de inicio<br>10/07/2026</span>
+                    <span class="titulo-info"><i class="bi bi-calendar3"></i> Fecha</span>
+                    <span class="valor-info">Fecha de inicio<br>10/07/2026</span>
                 </div>
                 <div class="columna-info borde-derecho">
-                    <span class="titulo-info">ℹ️ Estado</span>
+                    <span class="titulo-info"><i class="bi bi-info-square-fill"></i> Estado</span>
                     <span class="valor-info">En proceso</span>
                 </div>
                 <div class="columna-info">
-                    <span class="titulo-info">📖 Memoria</span>
-                    <span class="etiqueta-pdf">📖 Memoria.pdf</span>
+                    <span class="titulo-info"><i class="bi bi-book"></i> Memoria</span>
+                    <span class="etiqueta-pdf"><i class="bi bi-file-pdf"></i> Memoria.pdf</span>
                 </div>
             </div>
 
             <div class="fila-acciones">
-                <button class="boton-icono">
-                    <i class="bi bi-trash-fill"></i>
-                </button>
+                <button class="boton-icono"><i class="bi bi-trash-fill"></i></button>
                 <div class="acciones-derecha">
-                    <button class="boton-texto">🔗 Compartir</button>
+                    <button class="boton-texto"><i class="bi bi-link-45deg"></i> Compartir</button>
                     <button class="boton-texto texto-negrita">Ver Más »</button>
                 </div>
             </div>
         </div>
 
-    </main>
+        <!-- TARJETA 5 -->
+        <div class="tarjeta">
+            <div class="cabecera-tarjeta">
+                <div>
+                    <h2>Nombre de la obra</h2>
+                    <p class="subtitulo">Última actualización</p>
+                </div>
+                <i class="bi bi-gear-fill icono-configuracion"></i>
+            </div>
+
+            <div class="imagen-principal"><i class="bi bi-card-image"></i></div>
+
+            <div class="fila-miniaturas">
+                <div class="miniatura"><i class="bi bi-card-image"></i></div>
+                <div class="miniatura"><i class="bi bi-card-image"></i></div>
+                <div class="miniatura"><i class="bi bi-card-image"></i></div>
+                <div class="miniatura-mas">+10</div>
+            </div>
+
+            <div class="tabla-info">
+                <div class="columna-info borde-derecho">
+                    <span class="titulo-info"><i class="bi bi-geo-alt-fill"></i> Ubicación</span>
+                    <span class="valor-info">Los Alamos 770</span>
+                </div>
+                <div class="columna-info borde-derecho">
+                    <span class="titulo-info"><i class="bi bi-calendar3"></i> Fecha</span>
+                    <span class="valor-info">Fecha de inicio<br>10/07/2026</span>
+                </div>
+                <div class="columna-info borde-derecho">
+                    <span class="titulo-info"><i class="bi bi-info-square-fill"></i> Estado</span>
+                    <span class="valor-info">En proceso</span>
+                </div>
+                <div class="columna-info">
+                    <span class="titulo-info"><i class="bi bi-book"></i> Memoria</span>
+                    <span class="etiqueta-pdf"><i class="bi bi-file-pdf"></i> Memoria.pdf</span>
+                </div>
+            </div>
+
+            <div class="fila-acciones">
+                <button class="boton-icono"><i class="bi bi-trash-fill"></i></button>
+                <div class="acciones-derecha">
+                    <button class="boton-texto"><i class="bi bi-link-45deg"></i> Compartir</button>
+                    <button class="boton-texto texto-negrita">Ver Más »</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TARJETA 6 -->
+        <div class="tarjeta">
+            <div class="cabecera-tarjeta">
+                <div>
+                    <h2>Nombre de la obra</h2>
+                    <p class="subtitulo">Última actualización</p>
+                </div>
+                <i class="bi bi-gear-fill icono-configuracion"></i>
+            </div>
+
+            <div class="imagen-principal"><i class="bi bi-card-image"></i></div>
+
+            <div class="fila-miniaturas">
+                <div class="miniatura"><i class="bi bi-card-image"></i></div>
+                <div class="miniatura"><i class="bi bi-card-image"></i></div>
+                <div class="miniatura"><i class="bi bi-card-image"></i></div>
+                <div class="miniatura-mas">+10</div>
+            </div>
+
+            <div class="tabla-info">
+                <div class="columna-info borde-derecho">
+                    <span class="titulo-info"><i class="bi bi-geo-alt-fill"></i> Ubicación</span>
+                    <span class="valor-info">Los Alamos 770</span>
+                </div>
+                <div class="columna-info borde-derecho">
+                    <span class="titulo-info"><i class="bi bi-calendar3"></i> Fecha</span>
+                    <span class="valor-info">Fecha de inicio<br>10/07/2026</span>
+                </div>
+                <div class="columna-info borde-derecho">
+                    <span class="titulo-info"><i class="bi bi-info-square-fill"></i> Estado</span>
+                    <span class="valor-info">En proceso</span>
+                </div>
+                <div class="columna-info">
+                    <span class="titulo-info"><i class="bi bi-book"></i> Memoria</span>
+                    <span class="etiqueta-pdf"><i class="bi bi-file-pdf"></i> Memoria.pdf</span>
+                </div>
+            </div>
+
+            <div class="fila-acciones">
+                <button class="boton-icono"><i class="bi bi-trash-fill"></i></button>
+                <div class="acciones-derecha">
+                    <button class="boton-texto"><i class="bi bi-link-45deg"></i> Compartir</button>
+                    <button class="boton-texto texto-negrita">Ver Más »</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TARJETA 7 -->
+        <div class="tarjeta">
+            <div class="cabecera-tarjeta">
+                <div>
+                    <h2>Nombre de la obra</h2>
+                    <p class="subtitulo">Última actualización</p>
+                </div>
+                <i class="bi bi-gear-fill icono-configuracion"></i>
+            </div>
+
+            <div class="imagen-principal"><i class="bi bi-card-image"></i></div>
+
+            <div class="fila-miniaturas">
+                <div class="miniatura"><i class="bi bi-card-image"></i></div>
+                <div class="miniatura"><i class="bi bi-card-image"></i></div>
+                <div class="miniatura"><i class="bi bi-card-image"></i></div>
+                <div class="miniatura-mas">+10</div>
+            </div>
+
+            <div class="tabla-info">
+                <div class="columna-info borde-derecho">
+                    <span class="titulo-info"><i class="bi bi-geo-alt-fill"></i> Ubicación</span>
+                    <span class="valor-info">Los Alamos 770</span>
+                </div>
+                <div class="columna-info borde-derecho">
+                    <span class="titulo-info"><i class="bi bi-calendar3"></i> Fecha</span>
+                    <span class="valor-info">Fecha de inicio<br>10/07/2026</span>
+                </div>
+                <div class="columna-info borde-derecho">
+                    <span class="titulo-info"><i class="bi bi-info-square-fill"></i> Estado</span>
+                    <span class="valor-info">En proceso</span>
+                </div>
+                <div class="columna-info">
+                    <span class="titulo-info"><i class="bi bi-book"></i> Memoria</span>
+                    <span class="etiqueta-pdf"><i class="bi bi-file-pdf"></i> Memoria.pdf</span>
+                </div>
+            </div>
+
+            <div class="fila-acciones">
+                <button class="boton-icono"><i class="bi bi-trash-fill"></i></button>
+                <div class="acciones-derecha">
+                    <button class="boton-texto"><i class="bi bi-link-45deg"></i> Compartir</button>
+                    <button class="boton-texto texto-negrita">Ver Más »</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TARJETA 8 -->
+        <div class="tarjeta">
+            <div class="cabecera-tarjeta">
+                <div>
+                    <h2>Nombre de la obra</h2>
+                    <p class="subtitulo">Última actualización</p>
+                </div>
+                <i class="bi bi-gear-fill icono-configuracion"></i>
+            </div>
+
+            <div class="imagen-principal"><i class="bi bi-card-image"></i></div>
+
+            <div class="fila-miniaturas">
+                <div class="miniatura"><i class="bi bi-card-image"></i></div>
+                <div class="miniatura"><i class="bi bi-card-image"></i></div>
+                <div class="miniatura"><i class="bi bi-card-image"></i></div>
+                <div class="miniatura-mas">+10</div>
+            </div>
+
+            <div class="tabla-info">
+                <div class="columna-info borde-derecho">
+                    <span class="titulo-info"><i class="bi bi-geo-alt-fill"></i> Ubicación</span>
+                    <span class="valor-info">Los Alamos 770</span>
+                </div>
+                <div class="columna-info borde-derecho">
+                    <span class="titulo-info"><i class="bi bi-calendar3"></i> Fecha</span>
+                    <span class="valor-info">Fecha de inicio<br>10/07/2026</span>
+                </div>
+                <div class="columna-info borde-derecho">
+                    <span class="titulo-info"><i class="bi bi-info-square-fill"></i> Estado</span>
+                    <span class="valor-info">En proceso</span>
+                </div>
+                <div class="columna-info">
+                    <span class="titulo-info"><i class="bi bi-book"></i> Memoria</span>
+                    <span class="etiqueta-pdf"><i class="bi bi-file-pdf"></i> Memoria.pdf</span>
+                </div>
+            </div>
+
+            <div class="fila-acciones">
+                <button class="boton-icono"><i class="bi bi-trash-fill"></i></button>
+                <div class="acciones-derecha">
+                    <button class="boton-texto"><i class="bi bi-link-45deg"></i> Compartir</button>
+                    <button class="boton-texto texto-negrita">Ver Más »</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TARJETA 9 -->
+        <div class="tarjeta">
+            <div class="cabecera-tarjeta">
+                <div>
+                    <h2>Nombre de la obra</h2>
+                    <p class="subtitulo">Última actualización</p>
+                </div>
+                <i class="bi bi-gear-fill icono-configuracion"></i>
+            </div>
+
+            <div class="imagen-principal"><i class="bi bi-card-image"></i></div>
+
+            <div class="fila-miniaturas">
+                <div class="miniatura"><i class="bi bi-card-image"></i></div>
+                <div class="miniatura"><i class="bi bi-card-image"></i></div>
+                <div class="miniatura"><i class="bi bi-card-image"></i></div>
+                <div class="miniatura-mas">+10</div>
+            </div>
+
+            <div class="tabla-info">
+                <div class="columna-info borde-derecho">
+                    <span class="titulo-info"><i class="bi bi-geo-alt-fill"></i> Ubicación</span>
+                    <span class="valor-info">Los Alamos 770</span>
+                </div>
+                <div class="columna-info borde-derecho">
+                    <span class="titulo-info"><i class="bi bi-calendar3"></i> Fecha</span>
+                    <span class="valor-info">Fecha de inicio<br>10/07/2026</span>
+                </div>
+                <div class="columna-info borde-derecho">
+                    <span class="titulo-info"><i class="bi bi-info-square-fill"></i> Estado</span>
+                    <span class="valor-info">En proceso</span>
+                </div>
+                <div class="columna-info">
+                    <span class="titulo-info"><i class="bi bi-book"></i> Memoria</span>
+                    <span class="etiqueta-pdf"><i class="bi bi-file-pdf"></i> Memoria.pdf</span>
+                </div>
+            </div>
+
+            <div class="fila-acciones">
+                <button class="boton-icono"><i class="bi bi-trash-fill"></i></button>
+                <div class="acciones-derecha">
+                    <button class="boton-texto"><i class="bi bi-link-45deg"></i> Compartir</button>
+                    <button class="boton-texto texto-negrita">Ver Más »</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Paginación -->
+    <div class="paginacion">
+        <button class="pagina anterior">
+            <i class="bi bi-arrow-left"></i> Anterior
+        </button>
+
+        <button class="pagina pagina-activa">1</button>
+        <button class="pagina">2</button>
+        <button class="pagina">3</button>
+
+        <span class="puntos">...</span>
+
+        <button class="pagina">67</button>
+        <button class="pagina">68</button>
+
+        <button class="pagina siguiente">
+            Siguiente <i class="bi bi-arrow-right"></i>
+        </button>
+    </div>
 
 </body>
 </html>
