@@ -1,4 +1,3 @@
-
 /* =========================
    CONTENEDOR PRINCIPAL
 ========================= */
@@ -21,6 +20,23 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 35px;
+}
+
+.titulo-contenido {
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo-contenido .titulo {
+    margin: 0;
+}
+
+.titulo-contenido p {
+    margin: 4px 0 0 0;
+
+    color: #777777;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .titulo {
@@ -57,6 +73,10 @@
 
 .header button:hover {
     background-color: #245865;
+}
+
+.header button:active {
+    transform: scale(0.97);
 }
 
 .header button i {
@@ -128,7 +148,12 @@
 
 .filtros form {
     display: flex;
+
     margin-left: auto;
+    margin-right: auto;
+
+    width: 45%;
+    min-width: 350px;
 }
 
 .filtros input {
@@ -248,9 +273,9 @@ td button {
 
     background-color: transparent;
 
-    color: #2f6f7e;
+    color: #475569;
 
-    border: 1px solid #2f6f7e;
+    border: 1px solid #475569;
     border-radius: 7px;
 
     font-size: 14px;
@@ -261,12 +286,16 @@ td button {
 }
 
 td button:hover {
-    background-color: #2f6f7e;
+    background-color: #475569;
     color: white;
 }
 
+td button:active {
+    transform: scale(0.97);
+}
+
 td button i {
-    font-size: 12px;
+    font-size: 16px;
 }
 
 
@@ -441,6 +470,9 @@ td button i {
     border-color: #245865;
 }
 
+.modal-footer .btn-primary:active {
+    transform: scale(0.97);
+}
 
 /* Botón cerrar */
 
@@ -450,6 +482,13 @@ td button i {
     border-color: #6c757d;
 }
 
+.modal-footer .btn-secondary:hover {
+    background-color: #5c636a;
+}
+
+.modal-footer .btn-secondary:active {
+    transform: scale(0.97);
+}
 
 /* =========================
    RESPONSIVE

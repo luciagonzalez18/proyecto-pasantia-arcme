@@ -2,7 +2,7 @@
     <aside class="container">
         <!-- Bloque superior: Logo + Cuenta + Botón -->
         <div class="header-sidebar">
-            <div class="logo">
+            <div class="logo" routerLink='/inicio'>
                 <img src="assets/logoArcme.png" alt="Logo Arcme">
                 <div class="lh-1">
                     <span class="fs-3 fw-bold text-dark d-block lh-1" style="letter-spacing: -0.5px;">arcme</span>
@@ -17,7 +17,7 @@
             <hr class="linea-horizontal">
             <div class="btn">
                 <i class="bi bi-plus-circle"></i>
-                <a>Cargar Proyecto</a>
+                <span>Cargar Proyecto</span>
             </div>
         </div>
 
@@ -25,33 +25,33 @@
         <!-- Secciones principales (toma el espacio libre) -->
         <nav class="secciones">
             <ul>
-                <li>
+                <li routerLink='/inicio' routerLinkActive="activo">
                     <i class="bi bi-house-door"></i>
-                    <a routerLink='/inicio'>Inicio</a>
+                    <span>Inicio</span>
                 </li>
-                <li>
+                <li routerLink='/proyectos' routerLinkActive="activo">
                     <i class="bi bi-folder"></i>
-                    <a routerLink='/proyectos'>Proyectos</a>
+                    <span>Proyectos</span>
                 </li>
-                <li>
+                <li routerLink='/agenda' routerLinkActive="activo">
                     <i class="bi bi-calendar4-week"></i>
-                    <a routerLink='/agenda'>Agenda</a>
+                    <span>Agenda</span>
                 </li>
-                <li>
+                <li routerLink='/portfolio' routerLinkActive="activo">
                     <i class="bi bi-book"></i>
-                    <a routerLink='/portfolio'>Portfolio</a>
+                    <span>Portfolio</span>
                 </li>
-                <li>
+                <li routerLink='/ingresos' routerLinkActive="activo">
                     <i class="bi bi-currency-dollar"></i>
-                    <a routerLink='/ingresos'>Ingresos</a>
+                    <span>Ingresos</span>
                 </li>
-                <li>
+                <li routerLink='/clientes' routerLinkActive="activo">
                     <i class="bi bi-people"></i>
-                    <a routerLink='/clientes'>Clientes</a>
+                    <span>Clientes</span>
                 </li>
-                <li>
+                <li routerLink='/proveedores' routerLinkActive="activo">
                     <i class="bi bi-person-rolodex"></i>
-                    <a routerLink='/proveedores'>Proveedores</a>
+                    <span>Proveedores</span>
                 </li>
             </ul>
         </nav>
@@ -59,13 +59,13 @@
         <!-- Configuración al final -->
         <div class="configuracion">
             <ul>
-                <li>
+                <li routerLink='/configuracion' routerLinkActive="activo">
                     <i class="bi bi-gear"></i>
-                    <a routerLink='/configuracion'>Configuración</a>
+                    <span>Configuración</span>
                 </li>
                 <li>
                     <i class="bi bi-box-arrow-right"></i>
-                    <a click="cerrarSesion()">Cerrar Sesión</a>
+                    <span href="#">Cerrar Sesión</span>
                 </li>
             </ul>
         </div>

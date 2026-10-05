@@ -1,250 +1,254 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agenda</title>
   <link rel="stylesheet" href="agenda.css">
 </head>
+
 <body>
 
-<div class="container">
-  
-  <!-- contenedor de la agenda -->
-  <div class="card">
-    <div class="header">
-      <div class="header-title">
-        📅 Agenda
-      </div>
-      <!--boton de nuevo evento con click para llamar al metodo abrirModal()  
-      llama al formulario a traves de getelement seleccionandolo por id-->
-      
-      <button class="btn btn-dark" onclick="document.getElementById('modal-nuevo-evento').showModal()">+ Nuevo evento</button>
-    </div>
+  <div class="container">
 
-    <!-- Formulario Modal -->
-    <dialog id="modal-nuevo-evento" class="modal-dialog">
-      <div class="modal-content">
-        
-        <!-- Encabezado del modal -->
-        <div class="modal-header">
-          <h2>📅 Nuevo evento</h2>
-          <form method="dialog">
-            <button class="btn-close" aria-label="Cerrar">✕</button>
+    <!-- contenedor de la agenda -->
+    <div class="card">
+      <div class="header">
+        <div class="header-title">
+          Agenda
+        </div>
+        <!--boton de nuevo evento con click para llamar al metodo abrirModal()  
+      llama al formulario a traves de getelement seleccionandolo por id-->
+
+        <button class="btn btn-dark" onclick="document.getElementById('modal-nuevo-evento').showModal()"><i
+            class="bi bi-plus-lg"></i> Nuevo evento</button>
+      </div>
+
+      <!-- Formulario Modal -->
+      <dialog id="modal-nuevo-evento" class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Encabezado del modal -->
+          <div class="modal-header">
+            <h2>📅 Nuevo evento</h2>
+            <form method="dialog">
+              <button class="btn-close" aria-label="Cerrar">✕</button>
+            </form>
+          </div>
+
+          <!-- Cuerpo con el formulario -->
+          <form method="dialog" class="modal-body">
+
+            <!-- Columna Izquierda inputs -->
+            <div class="modal-col">
+              <div class="form-group">
+                <label>✏️ Título</label>
+                <input type="text" placeholder="Ingresar título" required>
+              </div>
+
+              <div class="form-group">
+                <label>📅 Fecha</label>
+                <input type="date" required>
+              </div>
+
+              <div class="form-group">
+                <label>⏱️ Hora</label>
+                <input type="time" required>
+              </div>
+
+              <div class="form-group">
+                <label>☑️ Categoría</label>
+                <select required>
+                  <option value="" disabled selected>Seleccione una categoría</option>
+                  <option value="trabajo">Trabajo</option>
+                  <option value="personal">Personal</option>
+                  <option value="reunion">Reunión</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Columna derecha Descripción y botones -->
+            <div class="modal-col col-right">
+              <div class="form-group group-full">
+                <label>Descripción</label>
+                <textarea placeholder="Ingresar descripción..."></textarea>
+              </div>
+
+              <!-- Botones de cerrar y cancelar -->
+              <div class="modal-actions">
+                <button type="submit" value="cancel" class="btn-cancel">Cancelar</button>
+                <button type="submit" value="default" class="btn-submit">Crear</button>
+              </div>
+            </div>
+
           </form>
         </div>
+      </dialog>
+      <!--cierre del formulario modal-->
 
-        <!-- Cuerpo con el formulario -->
-        <form method="dialog" class="modal-body">
-          
-          <!-- Columna Izquierda inputs -->
-          <div class="modal-col">
-            <div class="form-group">
-              <label>✏️ Título</label>
-              <input type="text" placeholder="Ingresar título" required>
-            </div>
-
-            <div class="form-group">
-              <label>📅 Fecha</label>
-              <input type="date" required>
-            </div>
-
-            <div class="form-group">
-              <label>⏱️ Hora</label>
-              <input type="time" required>
-            </div>
-
-            <div class="form-group">
-              <label>☑️ Categoría</label>
-              <select required>
-                <option value="" disabled selected>Seleccione una categoría</option>
-                <option value="trabajo">Trabajo</option>
-                <option value="personal">Personal</option>
-                <option value="reunion">Reunión</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Columna derecha Descripción y botones -->
-          <div class="modal-col col-right">
-            <div class="form-group group-full">
-              <label>✏️ Descripción</label>
-              <textarea placeholder="Ingresar descripción..."></textarea>
-            </div>
-
-            <!-- Botones de cerrar y cancelar -->
-            <div class="modal-actions">
-              <button type="submit" value="cancel" class="btn-cancel">Cancelar</button>
-              <button type="submit" value="default" class="btn-submit">Crear</button>
-            </div>
-          </div>
-
-        </form>
-      </div>
-    </dialog>
-    <!--cierre del formulario modal-->
-
-    <!-- Navegación de Fechas -->
-    <div class="agenda-nav">
-      <div class="nav-left">
-        <button class="btn">hoy</button>
-        <button class="btn">&lt;</button>
-        <button class="btn">&gt;</button>
-      </div>
-      <div class="nav-center">
-        <h2>26 mayo - 1 junio 2026</h2>
-      </div>
-      <div class="nav-right">
-        <button class="btn">Día</button>
-        <button class="btn active">Semana</button>
-        <button class="btn">mes</button>
-      </div>
-    </div>
-
-    <!-- Agenda Semanal en estructura de tabla -->
-    <table class="agenda-table">
-      <thead>
-        <tr> <!--dentro del thead los tr con los dias de la semana-->
-          <th class="cell cell-header cell-time-header"></th>
-          <th class="cell cell-header">Lunes 26/05</th>
-          <th class="cell cell-header">Martes 27/05</th>
-          <th class="cell cell-header wed">Miércoles 28/05</th>
-          <th class="cell cell-header">Jueves 29/05</th>
-          <th class="cell cell-header">Viernes 30/05</th>
-          <th class="cell cell-header sat">Sábado 31/05</th>
-          <th class="cell cell-header sun">Domingo 01/06</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Fila 8:00 -->
-        <tr>
-          <td class="cell cell-time">8:00</td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-        </tr>
-
-        <!-- Fila 9:00 -->
-        <tr>
-          <td class="cell cell-time">9:00</td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-        </tr>
-
-        <!-- Fila 10:00 -->
-        <tr>
-          <td class="cell cell-time">10:00</td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-        </tr>
-
-        <!-- Fila 11:00 -->
-        <tr>
-          <td class="cell cell-time">11:00</td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-        </tr>
-
-        <!-- Fila 12:00 -->
-        <tr>
-          <td class="cell cell-time">12:00</td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell">
-            <div class="cal-event cal-event-yellow">
-              <strong>12:00-13:00</strong><br>Seguimiento cliente<br>cliente:Todo hogar
-            </div>
-          </td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-        </tr>
-
-        <!-- Fila 13:00 -->
-        <tr>
-          <td class="cell cell-time">13:00</td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-        </tr>
-      </tbody>
-    </table>
-
-  </div> <!--cierre del contenedor de agenda-->
-
-  <!-- seccion inferior -->
-  <div class="bottom-section">
-    
-    <!-- Próximos Eventos -->
-    <div class="card">
-      <div class="events-list-header">
-        <h3>📅 Próximos eventos</h3>
-        <a href="#" class="view-all">Ver agenda completa</a>
-      </div>
-      <div class="event-row">
-        <div class="event-info">
-          <div class="dot dot-yellow"></div>
-          <div class="event-details">
-            <!-- Detalles del evento si fuera necesario -->
-          </div>
+      <!-- Navegación de Fechas -->
+      <div class="agenda-nav">
+        <div class="nav-left">
+          <button class="btn">hoy</button>
+          <button class="btn">&lt;</button>
+          <button class="btn">&gt;</button>
         </div>
-        <div class="event-actions">
-          <button class="btn-edit">✏️</button>
-          <button class="btn-delete">Eliminar</button>
+        <div class="nav-center">
+          <h2>26 mayo - 1 junio 2026</h2>
+        </div>
+        <div class="nav-right">
+          <button class="btn">Día</button>
+          <button class="btn active">Semana</button>
+          <button class="btn">mes</button>
         </div>
       </div>
-    </div>
 
-    <!-- Sidebar (Filtros) -->
-    <div class="sidebar">
+      <!-- Agenda Semanal en estructura de tabla -->
+      <table class="agenda-table">
+        <thead>
+          <tr> <!--dentro del thead los tr con los dias de la semana-->
+            <th class="cell cell-header cell-time-header"></th>
+            <th class="cell cell-header">Lunes 26/05</th>
+            <th class="cell cell-header">Martes 27/05</th>
+            <th class="cell cell-header wed">Miércoles 28/05</th>
+            <th class="cell cell-header">Jueves 29/05</th>
+            <th class="cell cell-header">Viernes 30/05</th>
+            <th class="cell cell-header sat">Sábado 31/05</th>
+            <th class="cell cell-header sun">Domingo 01/06</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Fila 8:00 -->
+          <tr>
+            <td class="cell cell-time">8:00</td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+          </tr>
+
+          <!-- Fila 9:00 -->
+          <tr>
+            <td class="cell cell-time">9:00</td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+          </tr>
+
+          <!-- Fila 10:00 -->
+          <tr>
+            <td class="cell cell-time">10:00</td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+          </tr>
+
+          <!-- Fila 11:00 -->
+          <tr>
+            <td class="cell cell-time">11:00</td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+          </tr>
+
+          <!-- Fila 12:00 -->
+          <tr>
+            <td class="cell cell-time">12:00</td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell">
+              <div class="cal-event cal-event-yellow">
+                <strong>12:00-13:00</strong><br>Seguimiento cliente<br>cliente:Todo hogar
+              </div>
+            </td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+          </tr>
+
+          <!-- Fila 13:00 -->
+          <tr>
+            <td class="cell cell-time">13:00</td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div> <!--cierre del contenedor de agenda-->
+
+    <!-- seccion inferior -->
+    <div class="bottom-section">
+
+      <!-- Próximos Eventos -->
       <div class="card">
-        <h3>⏳ Filtros</h3>
-        <div class="filter-group">
-          <label>tipo de evento</label>
-          <select class="filter-select">
-            <option>todos</option>
-          </select>
+        <div class="events-list-header">
+          <h3>📅 Próximos eventos</h3>
+          <a href="#" class="view-all">Ver agenda completa</a>
         </div>
-        <div class="filter-group">
-          <label>categoría</label>
-          <select class="filter-select">
-            <option>todas</option>
-          </select>
-        </div>
-        <div class="checkbox-container">
-          <input type="checkbox" id="mis-eventos">
-          <label for="mis-eventos">Mostrar solo mis eventos</label>
+        <div class="event-row">
+          <div class="event-info">
+            <div class="dot dot-yellow"></div>
+            <div class="event-details">
+              <!-- Detalles del evento si fuera necesario -->
+            </div>
+          </div>
+          <div class="event-actions">
+            <button class="btn-edit">✏️</button>
+            <button class="btn-delete">Eliminar</button>
+          </div>
         </div>
       </div>
+
+      <!-- Sidebar (Filtros) -->
+      <div class="sidebar">
+        <div class="card">
+          <h3>⏳ Filtros</h3>
+          <div class="filter-group">
+            <label>tipo de evento</label>
+            <select class="filter-select">
+              <option>todos</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>categoría</label>
+            <select class="filter-select">
+              <option>todas</option>
+            </select>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="mis-eventos">
+            <label for="mis-eventos">Mostrar solo mis eventos</label>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </div>
 
-</div>
-
 </body>
+
 </html>

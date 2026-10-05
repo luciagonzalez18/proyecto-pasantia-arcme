@@ -1,8 +1,12 @@
 <div class="container">
     <div class="header">
-        <h1 class="titulo">Proveedores</h1>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formProveedoresModal"><i
-                class="bi bi-plus-lg"></i> Agregar proveedor</button>
+        <div class="titulo-contenido">
+            <h1 class="titulo">Proveedores</h1>
+            <p>Gestiona la informacion de tus proveedores</p>
+        </div>
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formProveedoresModal">
+            <i class="bi bi-plus-lg"></i> Agregar proveedor</button>
     </div>
 
     <div class="filtros">
@@ -14,8 +18,11 @@
             <option value="value3">Fecha de registro</option>
         </select>
 
+
+
+
         <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar proveedor" aria-label="Search" />
+            <input class="form-control me-2" type="search" placeholder="Buscar Proveedor" aria-label="Search" />
             <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
 
@@ -27,6 +34,8 @@
         </select>
 
     </div>
+
+
 
 
     <!-- Modal -->
@@ -110,8 +119,7 @@
                                 Dirección
                             </label>
 
-                            <input type="text" class="form-control" id="direccion"
-                                placeholder="Ej: Av. Argentina 1234">
+                            <input type="text" class="form-control" id="direccion" placeholder="Ej: Av. Argentina 1234">
                         </div>
 
                         <div class="mb-3">
