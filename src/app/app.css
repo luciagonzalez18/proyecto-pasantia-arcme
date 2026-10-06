@@ -1,35 +1,60 @@
-/* Layout principal */
+/* =========================================
+   LAYOUT PRINCIPAL
+========================================= */
+
 .page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin-left: 251px;
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+
+    /* Mismo ancho que el sidebar */
+    margin-left: 211px;
 }
 
 /* Cuando NO hay menú */
 .page.sin-menu {
-  margin-left: 0;
+    margin-left: 0;
 }
 
-/* Sidebar fijo */
+
+/* =========================================
+   SIDEBAR FIJO
+========================================= */
+
 app-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 251px;
-  height: 100vh;
-  z-index: 1000;
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 211px;
+    height: 100vh;
+
+    z-index: 1000;
 }
 
-/* Contenido principal */
+
+/* =========================================
+   CONTENIDO PRINCIPAL
+========================================= */
+
 .main-content {
-  flex: 1;
-  min-width: 0;
-  width: 100%;
+    flex: 1;
+
+    min-width: 0;
+    width: 100%;
 }
 
-/* Footer siempre abajo */
+
+/* =========================================
+   FOOTER
+========================================= */
+
 app-footer {
-  margin-top: auto;
-  width: 100%;
+    display: block;
+
+    width: 100%;
+
+    margin-top: auto;
 }
