@@ -215,7 +215,7 @@ body {
 .container ul li {
     display: flex;
     align-items: center;
-
+    cursor: pointer;
     padding: 7px 9px;
 
     border-radius: 7px;

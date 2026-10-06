@@ -32,7 +32,17 @@
     cursor: pointer;
     transition: 0.2s ease;
 }
+.boton_agregarProyecto:hover {
+    background-color: #245865;
+}
 
+.boton_agregarProyecto:active {
+    transform: scale(0.97);
+}
+
+.boton_agregarProyecto i {
+    font-size: 16px;
+}
 .dropdown button {
     border-radius: 15px;
 }
