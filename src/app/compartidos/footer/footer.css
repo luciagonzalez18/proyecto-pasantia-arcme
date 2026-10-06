@@ -1,13 +1,110 @@
+/* CDN de Font Awesome para los íconos (inclúyelo en el <head> de tu HTML) */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+
 .footer {
     width: 100%;
-    background-color: #ffffff;
-    border-top: 1px solid #eeeeee;
-    padding: 20px 32px;
+    background-color: #6f6b6b; /* Actualizado al fondo oscuro de la imagen */
+    border-top: 1px solid #6f6b6b;
+    padding: 40px 32px 20px;
     font-size: 14px;
-    color: #666666;
+    color: #ffffff; /* Actualizado a texto blanco */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+/* Contenido Principal (3 columnas: Marca, Contacto, Redes) */
 .footer-contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding-bottom: 40px;
+}
+
+/* Estilos de las Columnas */
+.footer-columna {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Columna Marca (Logo + Nombre) */
+.footer-marca {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo-texto {
+    font-size: 28px;
+    letter-spacing: 2px;
+    margin: 0 0 16px 0;
+    font-weight: 400;
+    color: #ffffff;
+     align-items: center; 
+}
+
+.footer-logo-img {
+    width: 180px;            
+    max-width: 100%;
+    height: auto;
+}
+
+/* Títulos de Secciones (Contacto y Seguinos) */
+.footer-contacto h3,
+.footer-redes h3 {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0 0 20px 0;
+    color: #ffffff;
+}
+
+/* Columna Contacto */
+.contacto-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    gap: 12px;
+}
+
+.contacto-item .icono {
+    font-size: 20px;
+    margin-top: 2px;
+}
+
+.contacto-item .label {
+    display: block;
+    font-size: 14px;
+    color: #ffffff;
+    margin-bottom: 2px;
+}
+
+.contacto-item p {
+    margin: 0;
+    font-size: 13px;
+    color: #cccccc;
+}
+
+/* Columna Redes Sociales */
+.redes-iconos {
+    display: flex;
+    gap: 20px;
+}
+
+.redes-iconos a {
+    color: #ffffff;
+    font-size: 26px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.redes-iconos a:hover {
+    opacity: 0.7;
+}
+
+/* Barra Inferior (Copyright y Links) */
+.footer-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,19 +112,27 @@
     margin: 0 auto;
     flex-wrap: wrap;
     gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid #1a1a1a;
 }
 
+.footer-bottom p {
+    margin: 0;
+    color: #ffffff;
+}
+
+/* Links (Mapeados desde tu base) */
 .footer-links {
     display: flex;
     gap: 20px;
 }
 
 .footer-links a {
-    color: #666666;
+    color: #ffffff;
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: opacity 0.2s ease;
 }
 
 .footer-links a:hover {
-    color: #1a1a1a;
+    opacity: 0.7;
 }
