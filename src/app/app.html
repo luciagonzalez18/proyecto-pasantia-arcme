@@ -1,6 +1,8 @@
-<div class="page">
+<div class="page" [class.sin-menu]="!mostrarMenu()"> <!-- Cuando mostrarMenu devuelva false al div "page" se le agrega la class sin-menu-->
 
-    <app-menu></app-menu>
+    @if(mostrarMenu()){
+        <app-menu></app-menu>
+    }
 
     <main class="main-content">
         <router-outlet></router-outlet>

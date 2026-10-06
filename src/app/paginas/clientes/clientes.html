@@ -1,6 +1,10 @@
 <div class="container">
     <div class="header">
-        <h1 class="titulo">Clientes</h1>
+        <div class="titulo-contenido">
+            <h1 class="titulo">Clientes</h1>
+            <p>Gestiona la informacion de tus clientes</p>
+        </div>
+
         <button data-bs-toggle="modal" data-bs-target="#formClienteModal"><i class="bi bi-plus-lg"></i> Agregar
             cliente</button>
     </div>
@@ -14,7 +18,7 @@
         </select>
 
         <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar cliente" aria-label="Search" />
+            <input class="form-control me-2" type="search" placeholder="Buscar Cliente" aria-label="Search" />
             <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
 
@@ -43,7 +47,7 @@
 
                         <div class="mb-3">
                             <label for="clienteName" class="form-label">
-                                Nombre del cliente 
+                                Nombre del cliente
                             </label>
 
                             <input type="text" class="form-control" id="clienteName"
@@ -65,7 +69,8 @@
                                     Correo electronico
                                 </label>
 
-                                <input type="text" class="form-control" id="correo" placeholder="Ej: contacto@gmail.com">
+                                <input type="text" class="form-control" id="correo"
+                                    placeholder="Ej: contacto@gmail.com">
                             </div>
 
                         </div>
@@ -83,8 +88,7 @@
                                 Dirección
                             </label>
 
-                            <input type="text" class="form-control" id="direccion"
-                                placeholder="Ej: Av. Argentina 1234">
+                            <input type="text" class="form-control" id="direccion" placeholder="Ej: Av. Argentina 1234">
                         </div>
 
                     </form>
