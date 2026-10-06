@@ -1,15 +1,18 @@
 <div class="container">
 
     <div class="titulo">
-        <h2>Proyectos</h2>
-
-          <div class="btn btn-outline-success " style="background-color: #2f6f7e;">
-            <i class="bi bi-plus-lg"></i>
-            <a class="agregarProyecto">Agregar Proyecto</a>
+        <div>
+            <h2>Proyectos</h2>
+            <p>Gestiona tus proyectos y Optimiza tu flujo de trabajo</p>
         </div>
+
+
+        <button class="boton_agregarProyecto">
+            <i class="bi bi-plus-lg"></i>
+            <span>Agregar Proyecto</span>
+        </button>
     </div>
     <hr class="linea-horizontal">
-
 
     <h4>Historial de proyectos:</h4>
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
@@ -71,10 +74,14 @@
     <div class="navegacion">
 
         <form class="d-flex" role="search">
-            
-            <input class="form-control me-2 bi bi-search" type="search" placeholder="Buscar Proyectos" aria-label="Search" />
-            
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input class="form-control" type="search" placeholder="Buscar proyecto" aria-label="Search"
+                    aria-describedby="basic-addon1" />
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </div>
         </form>
 
         <div class="dropdown">
@@ -91,7 +98,7 @@
 
             </ul>
         </div>
-      
+
     </div>
 
 
@@ -107,7 +114,7 @@
                 <li>Cliente: Lucia Gonzalez</li>
                 <li>Cuotas 11 / 16</li>
             </ul>
-            <button>Ver detalles <i class="bi bi-caret-right-fill"></i></button>
+            <button>Ver detalles</button>
         </div>
     </div>
 
@@ -123,7 +130,7 @@
                 <li>Cliente: Juan Villacorta</li>
                 <li>Cuotas 6/16</li>
             </ul>
-            <button>Ver detalles <i class="bi bi-caret-right-fill"></i></button>
+            <button>Ver detalles</button>
         </div>
     </div>
 
@@ -139,7 +146,7 @@
                 <li>Cliente: Javier Juancho</li>
                 <li>Cuotas 15 / 16</li>
             </ul>
-            <button>Ver detalles <i class="bi bi-caret-right-fill"></i></button>
+            <button>Ver detalles</button>
         </div>
     </div>
 </div>
