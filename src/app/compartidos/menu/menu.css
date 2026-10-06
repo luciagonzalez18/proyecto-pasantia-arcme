@@ -71,7 +71,6 @@ body {
 
 /* =========================================
    LÍNEAS
-========================================= */
 
 .linea-horizontal {
     border: 0;
@@ -178,7 +177,6 @@ body {
 
 /* =========================================
    SCROLLBAR
-========================================= */
 
 .secciones::-webkit-scrollbar {
     width: 5px;
@@ -213,6 +211,8 @@ body {
 ========================================= */
 
 .container ul li {
+    position: relative;
+
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -226,7 +226,6 @@ body {
 
 /* =========================================
    ICONOS
-========================================= */
 
 .container ul li i {
     font-size: 16px;
@@ -239,7 +238,6 @@ body {
 
 /* =========================================
    LINKS / TEXTO
-========================================= */
 
 .container ul li span {
     width: 100%;
@@ -264,6 +262,56 @@ body {
 .container ul li:not(.activo):hover {
     background-color: #f5f5f5;
 
+
+.container ul li.activo {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    padding: 9px 12px;
+
+    background-color: #eff4ff;
+
+    border-radius: 8px;
+
+    color: #2563eb;
+
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
+}
+
+
+/* Barra azul lateral */
+
+.container ul li.activo::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 25%;
+
+    width: 3px;
+    height: 50%;
+
+    background-color: #2563eb;
+
+    border-radius: 0 4px 4px 0;
+}
+
+
+/* Icono activo */
+
+.container ul li.activo i {
+    color: #2563eb;
+
+    transform: scale(1.05);
+}
+
+
+/* Texto activo */
+
+.container ul li.activo a {
 }
 
 .container ul li:not(.activo):hover i {
@@ -277,7 +325,6 @@ body {
 
 /* =========================================
    ELEMENTO ACTIVO
-========================================= */
 
 .container ul li.activo {
     position: relative;
@@ -299,7 +346,6 @@ body {
 
 /* =========================================
    BARRA AZUL LATERAL
-========================================= */
 
 .container ul li.activo::before {
     content: "";
@@ -320,7 +366,6 @@ body {
 
 /* =========================================
    ICONO ACTIVO
-========================================= */
 
 .container ul li.activo i {
     color: #2563eb;
@@ -331,7 +376,6 @@ body {
 
 /* =========================================
    TEXTO ACTIVO
-========================================= */
 
 .container ul li.activo span {
     color: #2563eb;
