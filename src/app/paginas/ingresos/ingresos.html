@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingresos</title>
-
-    <link rel="stylesheet" href="ingresos.css">
-</head>
-
-<body>
-
+<div class="container">
     <h1>Ingresos</h1>
     <p class="descripcion">Registro de ingresos mensuales de los clientes y resumen general.</p>
 
@@ -19,7 +7,7 @@
 
         <!-- INGRESOS MENSUALES -->
         <div class="ingresos">
-            <h2>$  Ingresos mensuales de clientes</h2>
+            <h2><i class="bi bi-currency-dollar"></i>  Ingresos mensuales de clientes</h2>
 
             <table>
                 <tr>
@@ -105,7 +93,7 @@
 
                 <strong>$480.450</strong>
 
-                <button>Ver detalles →</button>
+                <button>Ver detalles <i class="bi bi-caret-right-fill"></i></button>
             </div>
 
 
@@ -115,11 +103,23 @@
                 <h3>Por vencer</h3>
 
                 <p>Hay 4 clientes con la fecha de cobro próxima<br>
-                (en los próximos 5 días)</p>
+                    (en los próximos 5 días)</p>
 
                 <strong>$300.067</strong>
 
-                <button>Ver detalles →</button>
+                <button>Ver detalles <i class="bi bi-caret-right-fill"></i></button>
+            </div>
+
+            <div class="alerta pagadas">
+                <span class="numero">25</span>
+
+                <h3>Cuotas pagadas</h3>
+
+                <p>Hay 25 clientes que ya pagaron su cuota mensual</p>
+
+                <strong>$2.450.000</strong>
+
+                <button>Ver detalles <i class="bi bi-caret-right-fill"></i></button>
             </div>
 
         </div>
@@ -131,7 +131,7 @@
     <div class="clientes">
 
         <div class="titulo-clientes">
-            <h2>♧  Clientes </h2>
+            <h2><i class="bi bi-person-fill"></i> Clientes </h2>
 
             <button class="ver-todos">Ver todos <i class="bi bi-caret-right-fill"></i></button>
         </div>
@@ -149,7 +149,7 @@
             </tr>
 
             <tr>
-                <td>♟  Santiago Ortega</td>
+                <td><i class="bi bi-person-circle"></i> Santiago Ortega</td>
                 <td>Ampliación</td>
                 <td>$232.676</td>
                 <td>18/03/2026</td>
@@ -158,7 +158,7 @@
             </tr>
 
             <tr>
-                <td>♟  Agustin Robles</td>
+                <td><i class="bi bi-person-circle"></i> Agustin Robles</td>
                 <td>Cosa</td>
                 <td>$232.676</td>
                 <td>29/04/2026</td>
@@ -167,7 +167,7 @@
             </tr>
 
             <tr>
-                <td>♟ Andre Ferreiro</td>
+                <td><i class="bi bi-person-circle"></i> Andre Ferreira</td>
                 <td>lorem</td>
                 <td>$232.676</td>
                 <td>18/06/2026</td>
@@ -176,7 +176,7 @@
             </tr>
 
             <tr>
-                <td>♟  Angelica Pereyra</td>
+                <td><i class="bi bi-person-circle"></i> Angelica Pereyra</td>
                 <td>lorem</td>
                 <td>$232.676</td>
                 <td>11/09/2026</td>
@@ -185,7 +185,7 @@
             </tr>
 
             <tr>
-                <td>♟  Mariana Vasquez</td>
+                <td><i class="bi bi-person-circle"></i> Mariana Vasquez</td>
                 <td>lorem</td>
                 <td>$232.676</td>
                 <td>26/09/2026</td>
@@ -194,7 +194,7 @@
             </tr>
 
             <tr>
-                <td>♟  Damian Robles</td>
+                <td><i class="bi bi-person-circle"></i> Damian Robles</td>
                 <td>lorem</td>
                 <td>$232.676</td>
                 <td>29/09/2026</td>
@@ -206,5 +206,5 @@
 
     </div>
 
-</body>
-</html>
+
+</div>
