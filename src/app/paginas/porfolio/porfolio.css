@@ -2,13 +2,15 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-   
+
 }
 
 body {
-    background-color: #ffffff;
-    padding: 30px;
-    color: #000000;
+    width: 100%;
+    max-width: none;
+    margin: 45px 0;
+    padding: 0 35px;
+    box-sizing: border-box;
 }
 
 /* Encabezado */
@@ -21,8 +23,10 @@ body {
 }
 
 .logotipo {
-    font-size: 22px;
-    font-weight: bold;
+    margin: 0;
+    color: #2f3e46;
+    font-size: 36px;
+    font-weight: 600;
 }
 
 .botones-encabezado {
@@ -45,15 +49,20 @@ body {
     display: flex;
     flex-wrap: wrap;
     margin-top: 50px;
-    justify-content: space-between; /* Distribuye el espacio sobrante entre las tarjetas de la fila */
+    justify-content: space-between;
+    /* Distribuye el espacio sobrante entre las tarjetas de la fila */
 }
 
 /* Tarjeta Individual Corregida (Todas con tamaño fijo idéntico) */
 .tarjeta {
-    width: 30%;           /* Ancho exacto y fijo para simular 3 columnas reales */
-    min-width: 380px;     /* Previene que la tabla de info colapse */
-    max-width: 450px;     /* Bloquea que se estire de mas si queda sola abajo */
-    margin: 15px 0;       /* Margen superior e inferior estable */
+    width: 30%;
+    /* Ancho exacto y fijo para simular 3 columnas reales */
+    min-width: 380px;
+    /* Previene que la tabla de info colapse */
+    max-width: 450px;
+    /* Bloquea que se estire de mas si queda sola abajo */
+    margin: 15px 0;
+    /* Margen superior e inferior estable */
     background: #ffffff;
     display: flex;
     flex-direction: column;
@@ -62,8 +71,10 @@ body {
 
 /* Línea divisoria vertical entre las tarjetas */
 .linea-separadora {
-    border-right: 1.5px solid #000000; /* Línea negra definida a la derecha */
-    padding-right: 25px;               /* Espacio para separar el contenido de la línea */
+    border-right: 1.5px solid #000000;
+    /* Línea negra definida a la derecha */
+    padding-right: 25px;
+    /* Espacio para separar el contenido de la línea */
 }
 
 /* Cabecera de Tarjeta */
