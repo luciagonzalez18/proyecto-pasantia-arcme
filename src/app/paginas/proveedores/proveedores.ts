@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './proveedores.html',
   styleUrl: './proveedores.css',
 })
-export class Proveedores {}
+export class Proveedores {
+  verDetalles: boolean = false;
+
+}

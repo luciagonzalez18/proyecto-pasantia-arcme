@@ -491,6 +491,130 @@ td button i {
 }
 
 /* =========================
+   DETALLES DEL CLIENTE
+========================= */
+
+.header-detalles {
+    width: 100%;
+    border-bottom: 1px solid #dcdcdc;
+    margin-bottom: 28px;
+}
+
+.header-detalles .volver {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+
+    padding: 0 0 14px 0;
+}
+
+.header-detalles .volver i {
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.header-detalles .titulo-volver {
+    margin: 0;
+    color: #111;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+/* Contenido */
+
+.contenido-detalles {
+    margin-left: 5px;
+    width: 350px;
+}
+
+
+/* Título */
+
+.contenido-detalles .titulo {
+    display: inline-block;
+
+    margin: 0 0 30px 0;
+    padding-bottom: 4px;
+
+    color: #111;
+    font-size: 26px;
+    font-weight: 700;
+
+    border-bottom: 2px solid #d0d0d0;
+}
+
+
+/* Información General */
+
+.contenido-detalles .subtitulo {
+    margin: 0 0 7px 5px;
+
+    color: #222;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* Cada detalle */
+
+.contenido-detalles .detalle,
+.contenido-detalles .detalles {
+    display: flex;
+    align-items: center;
+
+    width: 180px;
+
+    margin-left: 15px;
+    padding: 9px 0;
+
+    gap: 8px;
+
+    border-bottom: 1px solid #d0d0d0;
+
+    font-size: 11px;
+}
+
+
+/* Iconos */
+
+.contenido-detalles .detalle i,
+.contenido-detalles .detalles i {
+    width: 16px;
+
+    color: #222;
+
+    font-size: 14px;
+    text-align: center;
+}
+
+
+/* Texto */
+
+.contenido-detalles .detalle span,
+.contenido-detalles .detalles span {
+    white-space: nowrap;
+}
+
+.contenido-detalles .detalle strong,
+.contenido-detalles .detalles strong {
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
    RESPONSIVE
 ========================= */
 
