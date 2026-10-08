@@ -1,0 +1,195 @@
+/* =========================
+   CONTENEDOR
+========================= */
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.header h2 {
+    margin: 0;
+    color: #2f3e46;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+
+/* Botón volver */
+
+.header button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    background-color: #f1f3f5;
+    color: #2f3e46;
+
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.header button:hover {
+    background-color: #2f3e46;
+    color: white;
+}
+
+
+/* =========================
+   PREGUNTAS
+========================= */
+
+.preguntas {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================
+   DETAILS
+========================= */
+
+.preguntas details {
+    background-color: white;
+
+    border: 1px solid #e1e5e8;
+    border-bottom: none;
+
+    overflow: hidden;
+
+    transition: 0.2s ease;
+}
+
+/* Bordes redondeados solamente arriba y abajo */
+
+.preguntas details:first-child {
+    border-radius: 9px 9px 0 0;
+}
+
+.preguntas details:last-child {
+    border-bottom: 1px solid #e1e5e8;
+    border-radius: 0 0 9px 9px;
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.preguntas summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 20px;
+
+    color: #2f3e46;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    list-style: none;
+}
+
+.preguntas summary::-webkit-details-marker {
+    display: none;
+}
+
+
+/* Signo + */
+
+.preguntas summary::after {
+    content: "+";
+
+    font-size: 22px;
+    font-weight: 400;
+
+    color: #2f6f7e;
+}
+
+
+/* Signo - cuando está abierto */
+
+.preguntas details[open] summary::after {
+    content: "−";
+}
+
+
+/* =========================
+   RESPUESTA
+========================= */
+
+.preguntas details p {
+    margin: 0;
+    margin-top: 15px;
+    padding: 0 20px 20px;
+    
+    color: #6c757d;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* Separación entre pregunta y respuesta */
+
+.preguntas details[open] summary {
+    border-bottom: 1px solid #e9ecef;
+}
+
+
+/* =========================
+   HOVER
+========================= */
+
+.preguntas details:hover {
+    background-color: #f8fafb;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .container {
+        margin: 25px auto;
+        padding: 0 15px;
+    }
+
+    .header h2 {
+        font-size: 25px;
+    }
+
+    .preguntas summary {
+        padding: 16px;
+        font-size: 14px;
+    }
+
+    .preguntas details p {
+        padding: 0 16px 16px;
+    }
+}
+

@@ -1,0 +1,307 @@
+.titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.titulo p {
+     margin: 4px 0 0 0;
+
+    color: #777777;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.boton_agregarProyecto {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 13px 21px;
+
+    background-color: #2f6f7e;
+    color: white;
+
+    border: none;
+    border-radius: 9px;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.boton_agregarProyecto:hover {
+    background-color: #245865;
+}
+
+.boton_agregarProyecto:active {
+    transform: scale(0.97);
+}
+
+.boton_agregarProyecto i {
+    font-size: 16px;
+}
+.dropdown button {
+    border-radius: 15px;
+}
+
+/* --- General / Contenedor principal --- */
+.container {
+    width: 100%;
+    max-width: none;
+    margin: 45px 0;
+    padding: 0 35px;
+    box-sizing: border-box;
+}
+
+.container h2 {
+    margin: 0;
+    color: #2f3e46;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+/* Contenedor del carrusel */
+#carouselExample {
+    margin-top: 35px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.carousel-inner img {
+    border-radius: 8px !important;
+    object-fit: cover;
+    box-shadow: none !important;
+    /* Elimina sombras pesadas para un diseño limpio */
+}
+
+/* Flechas/Controles del Carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 8%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+}
+
+.carousel-control-prev {
+    left: -20px;
+}
+
+.carousel-control-next {
+    right: -20px;
+}
+
+.carousel-inner img {
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: none;
+}
+
+
+
+/* --- Barra de Navegación / Buscador y Filtros --- */
+.navegacion {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+/* Formulario de Búsqueda */
+.navegacion form {
+    flex-grow: 1;
+    position: relative;
+}
+
+.navegacion form input[type="search"] {
+   height: 50px;
+
+    min-width: 260px;
+
+    border-radius: 8px;
+    border-color: #b4b8bd;
+    font-size: 15px;
+}
+
+.input-group-text {
+    border-style: none;
+    background-color: #e0e0e0;
+}
+
+/* Botón Filtro (Dropdown) */
+.navegacion .dropdown button {
+    background-color: white;
+    color: #020202;
+    border: none solid #ced4da;
+    border-radius: 9px;
+    padding: 13px 21px;
+    font-weight: 500;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navegacion .dropdown button:hover,
+.navegacion .dropdown button:focus {
+    border-color: #2f6f7e;
+
+    box-shadow: 0 0 0 3px rgba(47, 111, 126, 0.12);
+}
+
+/* Botón Agregar Proyecto */
+.navegacion .btn-outline-success {
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 13px 21px;
+
+    background-color: #2f6f7e;
+    color: white;
+
+    border: none;
+    border-radius: 9px;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+
+.navegacion .btn-outline-success:hover {
+    background-color: #245865;
+}
+
+.navegacion .btn-outline-success:active {
+    transform: scale(0.97);
+}
+
+/* --- Cards / Tarjetas de Proyecto --- */
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #e2e2e2;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: none;
+}
+
+.card>div:first-child {
+    width: 140px;
+    height: 110px;
+    flex-shrink: 0;
+    margin-right: 25px;
+}
+
+.card>div:first-child img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+
+.card .datos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+/* Título de la obra */
+.card .datos>p {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #111111;
+    margin-bottom: 6px;
+}
+
+/* Lista de detalles */
+.card .datos ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+}
+
+.card .datos ul li {
+    font-size: 0.9rem;
+    color: #e57373;
+    /* Color rojizo/rosado para los textos secundarios como en la imagen */
+    margin-bottom: 2px;
+}
+
+.card .datos ul li:first-child {
+    color: #777777;
+    /* La superficie se mantiene en gris */
+}
+
+/* Botón "Ver detalles" */
+.card .datos button {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 8px 15px;
+    width: fit-content;
+
+    background-color: transparent;
+
+    color: #475569;
+
+    border: 1.5px solid #475569;
+    border-radius: 7px;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.card .datos button i {
+    font-size: 16px;
+}
+
+.card .datos button:hover {
+    background-color: #475569;
+    color: white;
+}
+
+.card .datos button:active {
+    transform: scale(0.97);
+}
+/* --- Responsive (Móviles) --- */
+@media (max-width: 768px) {
+    .navegacion {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card>div:first-child {
+        width: 100%;
+        height: 180px;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}

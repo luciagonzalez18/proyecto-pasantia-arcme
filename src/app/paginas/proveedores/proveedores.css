@@ -1,0 +1,604 @@
+/* =========================
+   CONTENEDOR PRINCIPAL
+========================= */
+
+.container {
+    width: 100%;
+    max-width: none;
+    margin: 45px 0;
+    padding: 0 35px;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.titulo-contenido {
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo-contenido .titulo {
+    margin: 0;
+}
+
+.titulo-contenido p {
+    margin: 4px 0 0 0;
+
+    color: #777777;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.titulo {
+    margin: 0;
+    color: #2f3e46;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   BOTÓN AGREGAR PROVEEDOR
+========================= */
+
+.header button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 13px 21px;
+
+    background-color: #2f6f7e;
+    color: white;
+
+    border: none;
+    border-radius: 9px;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.header button:hover {
+    background-color: #245865;
+}
+
+.header button:active {
+    transform: scale(0.97);
+}
+
+.header button i {
+    font-size: 16px;
+}
+
+
+/* =========================
+   FILTROS
+========================= */
+
+.filtros {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 21px 23px;
+
+    background-color: #f8f9fa;
+
+    border: 1px solid #e1e5e8;
+    border-radius: 11px;
+
+    margin-bottom: 30px;
+}
+
+.filtros p {
+    margin: 0 2px 0 8px;
+
+    color: #495057;
+
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+/* =========================
+   SELECT
+========================= */
+
+.filtros select {
+    height: 42px;
+
+    padding: 0 38px 0 14px;
+
+    background-color: white;
+
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+
+    color: #495057;
+
+    font-size: 15px;
+
+    cursor: pointer;
+    outline: none;
+}
+
+.filtros select:focus {
+    border-color: #2f6f7e;
+
+    box-shadow: 0 0 0 3px rgba(47, 111, 126, 0.12);
+}
+
+
+/* =========================
+   BUSCADOR
+========================= */
+
+.filtros form {
+    display: flex;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 45%;
+    min-width: 350px;
+}
+
+.filtros input {
+    height: 42px;
+
+    min-width: 260px;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+}
+
+.filtros input:focus {
+    border-color: #2f6f7e;
+
+    box-shadow: 0 0 0 3px rgba(47, 111, 126, 0.12);
+}
+
+
+/* Botón buscar */
+
+.filtros form button {
+    height: 42px;
+    border-radius: 8px;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   TABLA
+========================= */
+
+.tabla {
+    overflow-x: auto;
+
+    background-color: white;
+
+    border: 1px solid #e1e5e8;
+    border-radius: 11px;
+
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.04);
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 850px;
+}
+
+
+/* =========================
+   ENCABEZADO TABLA
+========================= */
+
+thead {
+    background-color: #2f3e46;
+}
+
+th {
+    padding: 17px;
+
+    color: white;
+
+    text-align: left;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   CELDAS
+========================= */
+
+td {
+    padding: 17px;
+
+    color: #495057;
+
+    font-size: 15px;
+
+    border-bottom: 1px solid #e9ecef;
+}
+
+
+/* Filas */
+
+tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+tbody tr:hover {
+    background-color: #f8fafb;
+}
+
+
+/* Última fila */
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================
+   BOTÓN DETALLES
+========================= */
+
+td button {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 8px 15px;
+
+    background-color: transparent;
+
+    color: #475569;
+
+    border: 1px solid #475569;
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+td button:hover {
+    background-color: #475569;
+    color: white;
+}
+
+td button:active {
+    transform: scale(0.97);
+}
+
+td button i {
+    font-size: 16px;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+/* Tamaño del modal */
+
+.modal-dialog {
+    max-width: 950px;
+}
+
+
+/* Contenedor */
+
+.modal-content {
+    border: none;
+    border-radius: 13px;
+
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.18);
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   CABECERA MODAL
+========================= */
+
+.modal-header {
+    padding: 23px 28px;
+
+    background-color: #f8f9fa;
+
+    border-bottom: 1px solid #e1e5e8;
+}
+
+.modal-title {
+    margin: 0;
+
+    color: #2f3e46;
+
+    font-size: 23px;
+    font-weight: 600;
+}
+
+
+/* Botón cerrar */
+
+.modal-header .btn-close {
+    opacity: 0.6;
+
+    transform: scale(1.1);
+}
+
+.modal-header .btn-close:hover {
+    opacity: 1;
+}
+
+
+/* =========================
+   CUERPO MODAL
+========================= */
+
+.modal-body {
+    padding: 28px 34px;
+
+    background-color: white;
+}
+
+
+/* Labels */
+
+.modal-body .form-label {
+    margin-bottom: 8px;
+
+    color: #2f3e46;
+
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+/* Inputs */
+
+.modal-body .form-control {
+    min-height: 45px;
+
+    padding: 10px 14px;
+
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+
+    color: #495057;
+
+    font-size: 15px;
+
+    transition: 0.2s ease;
+}
+
+
+/* Focus de inputs */
+
+.modal-body .form-control:focus {
+    border-color: #2f6f7e;
+
+    box-shadow: 0 0 0 3px rgba(47, 111, 126, 0.12);
+}
+
+
+/* Placeholder */
+
+.modal-body .form-control::placeholder {
+    color: #adb5bd;
+}
+
+
+/* Textarea */
+
+.modal-body textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+
+/* Espaciado entre filas */
+
+.modal-body .row {
+    margin-bottom: 3px;
+}
+
+
+/* =========================
+   FOOTER MODAL
+========================= */
+
+.modal-footer {
+    padding: 19px 28px;
+
+    background-color: #f8f9fa;
+
+    border-top: 1px solid #e1e5e8;
+}
+
+
+/* Botones del modal */
+
+.modal-footer .btn {
+    min-width: 100px;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+/* Botón guardar */
+
+.modal-footer .btn-primary {
+    background-color: #2f6f7e;
+
+    border-color: #2f6f7e;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #245865;
+
+    border-color: #245865;
+}
+
+.modal-footer .btn-primary:active {
+    transform: scale(0.97);
+}
+
+/* Botón cerrar */
+
+.modal-footer .btn-secondary {
+    background-color: #6c757d;
+
+    border-color: #6c757d;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #5c636a;
+}
+
+.modal-footer .btn-secondary:active {
+    transform: scale(0.97);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .filtros {
+        flex-wrap: wrap;
+    }
+
+    .filtros form {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .filtros input {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .modal-dialog {
+        max-width: 95%;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .container {
+        margin: 30px auto;
+        padding: 0 18px;
+    }
+
+
+    /* Header */
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 18px;
+    }
+
+    .titulo {
+        font-size: 31px;
+    }
+
+
+    /* Filtros */
+
+    .filtros {
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 12px;
+    }
+
+    .filtros p {
+        margin-left: 0;
+    }
+
+    .filtros select {
+        width: 100%;
+    }
+
+
+    /* Buscador */
+
+    .filtros form {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .filtros input {
+        min-width: 0;
+        width: 100%;
+    }
+
+
+    /* Modal */
+
+    .modal-dialog {
+        max-width: 95%;
+        margin: 10px auto;
+    }
+
+    .modal-body {
+        padding: 22px;
+    }
+
+    .modal-header {
+        padding: 20px 22px;
+    }
+
+    .modal-footer {
+        padding: 17px 22px;
+    }
+
+
+    /* En móvil los campos pasan a una columna */
+
+    .modal-body .col-md-6 {
+        width: 100%;
+    }
+
+
+    /* Tabla */
+
+    .tabla {
+        overflow-x: auto;
+    }
+}

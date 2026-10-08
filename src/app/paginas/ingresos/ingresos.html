@@ -1,0 +1,210 @@
+<div class="container">
+    <h1>Ingresos</h1>
+    <p class="descripcion">Registro de ingresos mensuales de los clientes y resumen general.</p>
+
+    <!-- PARTE SUPERIOR -->
+    <div class="parte-superior">
+
+        <!-- INGRESOS MENSUALES -->
+        <div class="ingresos">
+            <h2><i class="bi bi-currency-dollar"></i>  Ingresos mensuales de clientes</h2>
+
+            <table>
+                <tr>
+                    <th>Mes</th>
+                    <th style="padding-left: 80px;">Total de ingresos</th>
+                    <th style="padding-left: 65px;">Cantidad de clientes</th>
+                </tr>
+
+                <tr>
+                    <td>Enero</td>
+                    <td class="numero-tabla">$932.670</td>
+                    <td class="numero-tabla">12</td>
+                </tr>
+
+                <tr>
+                    <td>Febrero</td>
+                    <td class="numero-tabla">$432.654</td>
+                    <td class="numero-tabla">5</td>
+                </tr>
+
+                <tr>
+                    <td>Marzo</td>
+                    <td class="numero-tabla">$832.034</td>
+                    <td class="numero-tabla">5</td>
+                </tr>
+
+                <tr>
+                    <td>Abril</td>
+                    <td class="numero-tabla">$124.762</td>
+                    <td class="numero-tabla">1</td>
+                </tr>
+
+                <tr>
+                    <td>Mayo</td>
+                    <td class="numero-tabla">$628.935</td>
+                    <td class="numero-tabla">3</td>
+                </tr>
+
+                <tr>
+                    <td>Junio</td>
+                    <td class="numero-tabla">$724.035</td>
+                    <td class="numero-tabla">7</td>
+                </tr>
+
+                <tr>
+                    <td>Julio</td>
+                    <td class="numero-tabla">$613.865</td>
+                    <td class="numero-tabla">6</td>
+                </tr>
+
+                <tr>
+                    <td>Agosto</td>
+                    <td class="numero-tabla">$124.632</td>
+                    <td class="numero-tabla">1</td>
+                </tr>
+
+                <tr>
+                    <td>Septiembre</td>
+                    <td class="numero-tabla">$214.632</td>
+                    <td class="numero-tabla">2</td>
+                </tr>
+
+                <tr class="total">
+                    <td>Total acumulado</td>
+                    <td class="numero-tabla">$32.323.670</td>
+                    <td class="numero-tabla">---</td>
+                </tr>
+            </table>
+        </div>
+
+
+        <!-- ALERTAS -->
+        <div class="alertas">
+
+            <h2>Alertas y avisos</h2>
+
+            <div class="alerta vencidas">
+                <span class="numero">3</span>
+
+                <h3>Cuotas vencidas</h3>
+
+                <p>Hay 3 clientes que no han pagado su cuota mensual</p>
+
+                <strong>$480.450</strong>
+
+                <button>Ver detalles <i class="bi bi-caret-right-fill"></i></button>
+            </div>
+
+
+            <div class="alerta por-vencer">
+                <span class="numero">4</span>
+
+                <h3>Por vencer</h3>
+
+                <p>Hay 4 clientes con la fecha de cobro próxima<br>
+                    (en los próximos 5 días)</p>
+
+                <strong>$300.067</strong>
+
+                <button>Ver detalles <i class="bi bi-caret-right-fill"></i></button>
+            </div>
+
+            <div class="alerta pagadas">
+                <span class="numero">25</span>
+
+                <h3>Cuotas pagadas</h3>
+
+                <p>Hay 25 clientes que ya pagaron su cuota mensual</p>
+
+                <strong>$2.450.000</strong>
+
+                <button>Ver detalles <i class="bi bi-caret-right-fill"></i></button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CLIENTES CON CUOTAS PENDIENTES -->
+    <div class="clientes">
+
+        <div class="titulo-clientes">
+            <h2><i class="bi bi-person-fill"></i> Clientes </h2>
+
+            <button class="ver-todos">Ver todos <i class="bi bi-caret-right-fill"></i></button>
+        </div>
+
+
+        <table class="tabla-clientes">
+
+            <tr>
+                <th>Nombre</th>
+                <th>Obra:</th>
+                <th>Cuota por cobrar:</th>
+                <th>Fecha de vencimiento:</th>
+                <th>Estado</th>
+                <th>Detalles:</th>
+            </tr>
+
+            <tr>
+                <td><i class="bi bi-person-circle"></i> Santiago Ortega</td>
+                <td>Ampliación</td>
+                <td>$232.676</td>
+                <td>18/03/2026</td>
+                <td><span class="estado vencido">Vencido</span></td>
+                <td><button class="cliente-boton">Ver cliente <i class="bi bi-caret-right-fill"></i></button></td>
+            </tr>
+
+            <tr>
+                <td><i class="bi bi-person-circle"></i> Agustin Robles</td>
+                <td>Cosa</td>
+                <td>$232.676</td>
+                <td>29/04/2026</td>
+                <td><span class="estado vencido">Vencido</span></td>
+                <td><button class="cliente-boton">Ver cliente <i class="bi bi-caret-right-fill"></i></button></td>
+            </tr>
+
+            <tr>
+                <td><i class="bi bi-person-circle"></i> Andre Ferreira</td>
+                <td>lorem</td>
+                <td>$232.676</td>
+                <td>18/06/2026</td>
+                <td><span class="estado vencido">Vencido</span></td>
+                <td><button class="cliente-boton">Ver cliente <i class="bi bi-caret-right-fill"></i></button></td>
+            </tr>
+
+            <tr>
+                <td><i class="bi bi-person-circle"></i> Angelica Pereyra</td>
+                <td>lorem</td>
+                <td>$232.676</td>
+                <td>11/09/2026</td>
+                <td><span class="estado por-vencer-estado">Por vencer</span></td>
+                <td><button class="cliente-boton">Ver cliente <i class="bi bi-caret-right-fill"></i></button></td>
+            </tr>
+
+            <tr>
+                <td><i class="bi bi-person-circle"></i> Mariana Vasquez</td>
+                <td>lorem</td>
+                <td>$232.676</td>
+                <td>26/09/2026</td>
+                <td><span class="estado por-vencer-estado">Por vencer</span></td>
+                <td><button class="cliente-boton">Ver cliente <i class="bi bi-caret-right-fill"></i></button></td>
+            </tr>
+
+            <tr>
+                <td><i class="bi bi-person-circle"></i> Damian Robles</td>
+                <td>lorem</td>
+                <td>$232.676</td>
+                <td>29/09/2026</td>
+                <td><span class="estado por-vencer-estado">Por vencer</span></td>
+                <td><button class="cliente-boton">Ver cliente <i class="bi bi-caret-right-fill"></i></button></td>
+            </tr>
+
+        </table>
+
+    </div>
+
+
+</div>

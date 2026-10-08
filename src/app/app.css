@@ -1,0 +1,60 @@
+/* =========================================
+   LAYOUT PRINCIPAL
+========================================= */
+
+.page {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+
+    /* Mismo ancho que el sidebar */
+    margin-left: 211px;
+}
+
+/* Cuando NO hay menú */
+.page.sin-menu {
+    margin-left: 0;
+}
+
+
+/* =========================================
+   SIDEBAR FIJO
+========================================= */
+
+app-menu {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 211px;
+    height: 100vh;
+
+    z-index: 1000;
+}
+
+
+/* =========================================
+   CONTENIDO PRINCIPAL
+========================================= */
+
+.main-content {
+    flex: 1;
+
+    min-width: 0;
+    width: 100%;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+app-footer {
+    display: block;
+
+    width: 100%;
+
+    margin-top: auto;
+}

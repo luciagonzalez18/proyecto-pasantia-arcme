@@ -1,0 +1,76 @@
+<div class="containerGrande">
+    <aside class="container">
+        <!-- Bloque superior: Logo + Cuenta + Botón -->
+        <div class="header-sidebar">
+            <div class="logo" routerLink='/inicio'>
+                <img src="assets/logoArcme.png" alt="Logo Arcme">
+                <div class="lh-1">
+                    <span class="fs-3 fw-bold text-dark d-block lh-1" style="letter-spacing: -0.5px; margin-top: 10px"> Arcme</span>
+                </div>
+
+            </div>
+
+            <div class="cuenta">
+                <img src="" alt="Foto usuario">
+                <h3>Octavio</h3>
+            </div>
+
+            <hr class="linea-horizontal">
+            <div class="btn">
+                <i class="bi bi-plus-circle"></i>
+                <span>Cargar Proyecto</span>
+            </div>
+        </div>
+
+        <hr class="linea-horizontal">
+        <!-- Secciones principales (toma el espacio libre) -->
+        <nav class="secciones">
+            <ul>
+                <li routerLink='/inicio' routerLinkActive="activo">
+                    <i class="bi bi-house-door"></i>
+                    <span>Inicio</span>
+                </li>
+                <li routerLink='/proyectos' routerLinkActive="activo">
+                    <i class="bi bi-folder"></i>
+                    <span>Proyectos</span>
+                </li>
+                <li routerLink='/agenda' routerLinkActive="activo">
+                    <i class="bi bi-calendar4-week"></i>
+                    <span>Agenda</span>
+                </li>
+                <li routerLink='/portfolio' routerLinkActive="activo">
+                    <i class="bi bi-book"></i>
+                    <span>Portfolio</span>
+                </li>
+                <li routerLink='/ingresos' routerLinkActive="activo">
+                    <i class="bi bi-currency-dollar"></i>
+                    <span>Ingresos</span>
+                </li>
+                <li routerLink='/clientes' routerLinkActive="activo">
+                    <i class="bi bi-people"></i>
+                    <span>Clientes</span>
+                </li>
+                <li routerLink='/proveedores' routerLinkActive="activo">
+                    <i class="bi bi-person-rolodex"></i>
+                    <span>Proveedores</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Configuración al final -->
+        <div class="configuracion">
+            <ul>
+                <li routerLink='/configuracion' routerLinkActive="activo">
+                    <i class="bi bi-gear"></i>
+                    <span>Configuración</span>
+                </li>
+                <li>
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span href="#">Cerrar Sesión</span>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <div class="linea-vertical"></div>
+</div>

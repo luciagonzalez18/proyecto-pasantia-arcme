@@ -7,5 +7,12 @@ import { RouterLink } from '@angular/router';
   styleUrl: './registro.css',
 })
 export class Registro {
-  paso=1;
+  paso = 1;
+
+
+
 }
+
+
+
+
