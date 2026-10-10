@@ -159,7 +159,7 @@
                     <td>Alexis Quinteros</td>
                     <td>298-433-0017</td>
                     <td>Cipolletti</td>
-                    <td><button>Ver detalles <i class="bi bi-caret-right-fill"></i></button></td>
+                    <td><button (click)="verDetalles=true">Ver detalles <i class="bi bi-caret-right-fill"></i></button></td>
                 </tr>
 
                 <tr>
@@ -168,7 +168,7 @@
                     <td>Gonzalo Rodriguez</td>
                     <td>299-123-4567</td>
                     <td>Allen</td>
-                    <td><button>Ver detalles <i class="bi bi-caret-right-fill"></i></button></td>
+                    <td><button (click)="verDetalles=true">Ver detalles <i class="bi bi-caret-right-fill"></i></button></td>
                 </tr>
 
 
@@ -178,7 +178,7 @@
                     <td>Gonzalo Rodriguez</td>
                     <td>299-123-4567</td>
                     <td>Allen</td>
-                    <td><button>Ver detalles <i class="bi bi-caret-right-fill"></i></button></td>
+                    <td><button (click)="verDetalles=true">Ver detalles <i class="bi bi-caret-right-fill"></i></button></td>
                 </tr>
 
 
@@ -204,27 +204,38 @@
 }
 
 
-
+<!--DETALLES DE Proveedor-->
 @if(verDetalles){
-<div class="container">
-    <div class="header">
+<div class="header-verDetalles">
 
-        <div class="titulo-contenido volver">
-            <i class="bi bi-arrow-left" (click)="verDetalles=false"></i>
-            <p class="titulo-volver">Volver a Clientes</p>
-        </div>
-
+    <div class="titulo-contenido volver" (click)="verDetalles=false">
+        <i class="bi bi-arrow-left"></i>
+        <p class="titulo-volver">Volver a Proveedores</p>
     </div>
+
+</div>
+<div class="container-verDetalles">
+
 
     <div class="contenido-detalles">
 
-        <h1 class="titulo">Datos del Cliente:</h1>
+        <h1 class="titulo">Datos del proveedor:</h1>
 
         <p class="subtitulo">Información General:</p>
 
         <div class="detalle">
             <i class="bi bi-person"></i>
-            <span><strong>Nombre del Cliente:</strong> Fernando Perez</span>
+            <span><strong>Nombre del Proveedor:</strong> Madera El roble</span>
+        </div>
+
+        <div class="detalle">
+            <i class="bi bi-person-circle"></i>
+            <span><strong>Persona de contacto:</strong> Alexis Quinteros</span>
+        </div>
+
+         <div class="detalle">
+            <i class="bi bi-list-ul"></i>
+            <span><strong>Categoria:</strong>Maderera</span>
         </div>
 
         <div class="detalle">
@@ -248,6 +259,41 @@
         </div>
 
     </div>
+    <div class="card-Proveedores">
+        <header class="header-card-detalles">
+            <button><i class="bi bi-pencil-square"></i>Editar Información</button>
+            <button><i class="bi bi-trash-fill"></i>Eliminar Proveedor</button>
+        </header>
+        <hr class="linea-horizontal">
+        <p> <i class="bi bi-clipboard"></i>Descripcion</p>
+        <div class="descripcion-Proveedor">
 
+            <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores alias
+                animi iste laborum iure architecto officia laboriosam at rem, ipsam et corrupti rerum neque, magni sint
+                sunt
+                doloribus? Obcaecati, eos.
+                Consequuntur modi molestiae cupiditate reiciendis distinctio sed praesentium magni ea illum deleniti
+                similique, corporis voluptatibus ipsa voluptatem doloremque necessitatibus minus numquam enim asperiores
+                veritatis. Impedit dolores temporibus ut quos? Tenetur?
+            </span>
+        </div>
+        <div class="footer-card-detalles">
+            <div class="categoria">
+                <p><i class="bi bi-tag"></i>Categoria</p>
+                <hr class="linea-horizontal">
+                <span>Maderera</span>
+            </div>
+            <div class="productos">
+                <p><i class="bi bi-box-fill"></i>Productos</p>
+                <hr class="linea-horizontal">
+                <ul>
+                    <li>Tirantes</li>
+                    <li>Machimbre</li>
+                    <li>Madera de pino</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
 </div>
 }

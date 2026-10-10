@@ -1,3 +1,4 @@
+@if(verDetalles==false){
 <div class="container">
     <div class="header">
         <div class="titulo-contenido">
@@ -120,7 +121,8 @@
                     <td>fernandoxdlol@gmail.com</td>
                     <td>Los Alamos 2343</td>
                     <td>Cipolletti</td>
-                    <td><button>Ver detalles <i class="bi bi-caret-right-fill"></i></button></td>
+                    <td><button (click)="verDetalles=true">Ver detalles <i class="bi bi-caret-right-fill"></i></button>
+                    </td>
                 </tr>
 
                 <tr>
@@ -155,3 +157,100 @@
         </table>
     </div>
 </div>
+}
+<!--DETALLES DE cliente-->
+@if(verDetalles){
+<div class="header-verDetalles">
+
+    <div class="titulo-contenido volver" (click)="verDetalles=false">
+        <i class="bi bi-arrow-left"></i>
+        <p class="titulo-volver">Volver a Clientes</p>
+    </div>
+
+</div>
+<div class="container-verDetalles">
+
+
+    <div class="contenido-detalles">
+
+        <h1 class="titulo">Datos del Cliente:</h1>
+
+        <p class="subtitulo">Información General:</p>
+
+        <div class="detalle">
+            <i class="bi bi-person"></i>
+            <span><strong>Nombre del Cliente:</strong>Fernando García</span>
+        </div>
+
+        <div class="detalle">
+            <i class="bi bi-geo-alt"></i>
+            <span><strong>Dirección:</strong> Los Alamos 2345</span>
+        </div>
+
+        <div class="detalle">
+            <i class="bi bi-buildings"></i>
+            <span><strong>Ciudad:</strong> Cipolletti, Rio Negro</span>
+        </div>
+
+        <div class="detalle">
+            <i class="bi bi-telephone"></i>
+            <span><strong>Teléfono:</strong> 299-456-789</span>
+        </div>
+
+        <div class="detalle">
+            <i class="bi bi-envelope"></i>
+            <span><strong>Email:</strong> fernandoemail@gmail.com</span>
+        </div>
+
+    </div>
+    <div class="card-Clientes">
+        <header class="header-card-detalles">
+            <button><i class="bi bi-pencil-square"></i>Editar Información</button>
+            <button><i class="bi bi-trash-fill"></i>Eliminar Cliente</button>
+        </header>
+        <hr class="linea-horizontal">
+        <p> <i class="bi bi-clipboard"></i>Obras Vinculadas</p>
+        <div class="obras-Cliente">
+            <div class="obra">
+                <img src="assets/imagenHOME1.jpg" alt="obra1 aña">
+                <div class="contenido-card">
+                    <span class="titulo-obra">Casa familiar</span>
+                    <span class="Direccion">Direccion:Los Alamos 2345</span>
+                    <span class="estado"><strong>Finalizada</strong></span>
+                </div>
+            </div>
+
+            <div class="obra">
+                <img src="assets/imagenHOME1.jpg" alt="obra1 aña">
+                <div class="contenido-card">
+                    <span class="titulo-obra">Casa familiar</span>
+                    <span class="Direccion">Direccion:Los Alamos 2345</span>
+                    <span class="estado"><strong>Finalizada</strong></span>
+                </div>
+            </div>
+
+            <div class="obra">
+                <img src="assets/imagenHOME1.jpg" alt="obra1 aña">
+                <div class="contenido-card">
+                    <span class="titulo-obra">Casa familiar</span>
+                    <span class="Direccion">Direccion:Los Alamos 2345</span>
+                    <span class="estado"><strong>Finalizada</strong></span>
+                </div>
+            </div>
+
+              <div class="obra">
+                <img src="assets/imagenHOME1.jpg" alt="obra1 aña">
+                <div class="contenido-card">
+                    <span class="titulo-obra">Casa familiar</span>
+                    <span class="Direccion">Direccion:Los Alamos 2345</span>
+                    <span class="estado"><strong>Finalizada</strong></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-card-detalles">
+            <button><i class="bi bi-file-earmark-plus"></i>Vincular nueva Obra</button>
+        </div>
+    </div>
+</div>
+}

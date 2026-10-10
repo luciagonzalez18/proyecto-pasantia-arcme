@@ -6,7 +6,7 @@
 }
 
 .titulo p {
-     margin: 4px 0 0 0;
+    margin: 4px 0 0 0;
 
     color: #777777;
     font-size: 16px;
@@ -32,6 +32,7 @@
     cursor: pointer;
     transition: 0.2s ease;
 }
+
 .boton_agregarProyecto:hover {
     background-color: #245865;
 }
@@ -43,6 +44,7 @@
 .boton_agregarProyecto i {
     font-size: 16px;
 }
+
 .dropdown button {
     border-radius: 15px;
 }
@@ -123,7 +125,7 @@
 }
 
 .navegacion form input[type="search"] {
-   height: 50px;
+    height: 50px;
 
     min-width: 260px;
 
@@ -286,6 +288,615 @@
 .card .datos button:active {
     transform: scale(0.97);
 }
+
+
+
+
+
+
+
+/* =========================
+   HEADER VOLVER
+========================= */
+
+.header-verDetalles {
+    width: 100%;
+    max-width: none;
+    margin: 45px 0 0 0;
+    padding: 0 35px;
+    box-sizing: border-box;
+}
+
+.titulo-contenido.volver {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    width: fit-content;
+    transition: 0.2s ease;
+}
+
+.titulo-contenido.volver:hover {
+    opacity: 0.75;
+}
+
+.titulo-contenido.volver i {
+    font-size: 22px;
+    color: #2f6f7e;
+}
+
+.titulo-volver {
+    margin: 0;
+    color: #2f6f7e;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+/* =========================
+   CONTENEDOR DETALLES
+========================= */
+
+.container-verDetalles {
+    width: 100%;
+    max-width: none;
+    margin: 25px 0 45px 0;
+    padding: 0 35px;
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: stretch;
+}
+
+
+/* =========================
+   COLUMNA IZQUIERDA - DATOS
+========================= */
+
+.contenido-detalles {
+    background-color: white;
+    border: 1px solid #e1e5e8;
+    border-radius: 11px;
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.04);
+    padding: 30px 32px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.contenido-detalles .titulo {
+    margin: 0 0 24px 0;
+    color: #2f3e46;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   ÍTEMS DE DETALLE
+========================= */
+
+.detalle {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.detalle:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.detalle i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+
+    background-color: #f0f7f9;
+    color: #2f6f7e;
+    border-radius: 9px;
+    font-size: 18px;
+}
+
+.detalle span {
+    color: #495057;
+    font-size: 16px;
+    line-height: 1.45;
+}
+
+.detalle span strong {
+    color: #2f3e46;
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+
+/* =========================
+   CARD DERECHA
+========================= */
+
+.card-Proveedores {
+    background-color: white;
+    border: 1px solid #e1e5e8;
+    border-radius: 11px;
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.04);
+    padding: 28px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   HEADER CARD (BOTONES)
+========================= */
+
+.header-card-detalles {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.header-card-detalles button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.header-card-detalles button:first-child {
+    background-color: #2f6f7e;
+    color: white;
+}
+
+.header-card-detalles button:first-child:hover {
+    background-color: #245865;
+}
+
+.header-card-detalles button:active {
+    transform: scale(0.97);
+}
+
+.header-card-detalles button i {
+    font-size: 16px;
+}
+
+
+/* =========================
+   CAROUSEL
+========================= */
+
+.card-Proveedores .carousel {
+    position: relative;
+    width: 100%;
+    border-radius: 35px;
+    overflow: hidden;
+    border: 1px solid #e9ecef;
+}
+
+.card-Proveedores .carousel-inner {
+    border-radius: 12px;
+}
+
+.card-Proveedores .carousel-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Controles: flechas al medio + indicators abajo */
+.card-Proveedores .carousel-overlay-controls {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;   /* indicators abajo */
+    align-items: center;
+    padding: 12px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Contenedor de las flechas: centrado vertical, izquierda y derecha */
+.card-Proveedores .carousel-overlay-controls > div:first-child {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    right: 12px;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    pointer-events: auto;
+}
+
+.card-Proveedores .carousel-overlay-controls .btn-icon {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.92);
+    color: #2f3e46;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.card-Proveedores .carousel-overlay-controls .btn-icon:hover {
+    background-color: #fff;
+    transform: scale(1.08);
+}
+
+/* Flechas */
+.card-Proveedores .carousel-icon-prev,
+.card-Proveedores .carousel-icon-next {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #2f3e46;
+    border-right: 2px solid #2f3e46;
+}
+
+.card-Proveedores .carousel-icon-prev {
+    transform: rotate(-135deg);
+    margin-left: 3px;
+}
+
+.card-Proveedores .carousel-icon-next {
+    transform: rotate(45deg);
+    margin-right: 3px;
+}
+
+/* Indicators abajo */
+.card-Proveedores .carousel-indicators {
+    position: static;
+    margin: 0;
+    display: flex;
+    gap: 6px;
+    pointer-events: auto;
+}
+
+.card-Proveedores .carousel-indicators button {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.55);
+    opacity: 1;
+    padding: 0;
+    transition: 0.2s ease;
+}
+
+.card-Proveedores .carousel-indicators button.active {
+    background-color: #fff;
+    width: 20px;
+    border-radius: 10px;
+}
+
+
+/* =========================
+   LÍNEA HORIZONTAL
+========================= */
+
+.linea-horizontal {
+    margin: 0;
+    border: none;
+    border-top: 1px solid #e1e5e8;
+}
+
+
+/* =========================
+   DESCRIPCIÓN
+========================= */
+
+.card-Proveedores>p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #2f3e46;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.card-Proveedores>p i {
+    color: #2f6f7e;
+    font-size: 18px;
+}
+
+.descripcion-Proveedor {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 9px;
+    padding: 16px 18px;
+    flex: 1;
+}
+
+.descripcion-Proveedor span {
+    color: #495057;
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+
+/* =========================
+   FOOTER (DOCUMENTOS + ESTADO)
+========================= */
+
+.footer-card-detalles {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 24px;
+    margin-top: 4px;
+}
+
+.footer-card-detalles .Documentos,
+.footer-card-detalles .Estado-Detalles {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-card-detalles p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #2f3e46;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.footer-card-detalles p i {
+    color: #2f6f7e;
+    font-size: 17px;
+}
+
+
+/* Documento grande con íconos */
+.footer-card-detalles .Documentos span {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 14px 18px;
+    background-color: #f0f7f9;
+    color: #2f6f7e;
+    border: 1px solid #c5d9df;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s ease;
+    box-sizing: border-box;
+}
+
+.footer-card-detalles .Documentos span:hover {
+    background-color: #e0eef2;
+    border-color: #2f6f7e;
+}
+
+.footer-card-detalles .Documentos span .bi-filetype-pdf {
+    font-size: 22px;
+    flex-shrink: 0;
+    color: #dc3545;
+}
+
+.footer-card-detalles .Documentos span .bi-box-arrow-down {
+    margin-left: auto;
+    font-size: 18px;
+    flex-shrink: 0;
+    color: #2f6f7e;
+}
+
+
+/* Lista de estado */
+.footer-card-detalles .Estado-Detalles ul {
+    margin: 0;
+    padding: 0 0 0 18px;
+    list-style: disc;
+}
+
+.footer-card-detalles .Estado-Detalles li {
+    color: #495057;
+    font-size: 15px;
+    padding: 4px 0;
+}
+
+.footer-card-detalles .Estado-Detalles li:first-child {
+    color: #198754;
+    font-weight: 600;
+    list-style: none;
+    margin-left: -18px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+
+    .container-verDetalles {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .contenido-detalles,
+    .card-Proveedores {
+        height: auto;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .header-verDetalles,
+    .container-verDetalles {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0 16px;
+    }
+
+    .header-verDetalles {
+        margin-top: 28px;
+    }
+
+    .container-verDetalles {
+        margin-top: 18px;
+        margin-bottom: 28px;
+        gap: 18px;
+    }
+
+    .contenido-detalles {
+        padding: 20px 18px;
+    }
+
+    .contenido-detalles .titulo {
+        font-size: 24px;
+        margin-bottom: 18px;
+    }
+
+    .detalle {
+        gap: 12px;
+        padding: 12px 0;
+    }
+
+    .detalle i {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        font-size: 16px;
+    }
+
+    .detalle span {
+        font-size: 14px;
+    }
+
+    .card-Proveedores {
+        padding: 20px 18px;
+        gap: 14px;
+    }
+
+    .header-card-detalles {
+        justify-content: stretch;
+    }
+
+    .header-card-detalles button {
+        width: 100%;
+        justify-content: center;
+        padding: 11px 16px;
+        font-size: 14px;
+    }
+
+    .card-Proveedores .carousel-item img {
+        height: 220px;
+    }
+
+    .card-Proveedores>p {
+        font-size: 15px;
+    }
+
+    .descripcion-Proveedor {
+        padding: 14px 16px;
+    }
+
+    .descripcion-Proveedor span {
+        font-size: 14px;
+    }
+
+    .footer-card-detalles {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .footer-card-detalles p {
+        font-size: 14px;
+    }
+
+    .footer-card-detalles .Documentos span {
+        font-size: 14px;
+        padding: 12px 14px;
+    }
+
+    .footer-card-detalles .Documentos span .bi-filetype-pdf {
+        font-size: 20px;
+    }
+
+    .footer-card-detalles .Estado-Detalles li {
+        font-size: 14px;
+    }
+
+    .titulo-contenido.volver i {
+        font-size: 20px;
+    }
+
+    .titulo-volver {
+        font-size: 15px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .header-verDetalles,
+    .container-verDetalles {
+        padding: 0 12px;
+    }
+
+    .contenido-detalles .titulo {
+        font-size: 22px;
+    }
+
+    .detalle span {
+        font-size: 13px;
+    }
+
+    .card-Proveedores .carousel-item img {
+        height: 180px;
+    }
+
+    .descripcion-Proveedor span {
+        font-size: 13px;
+    }
+
+    .footer-card-detalles .Estado-Detalles li {
+        font-size: 13px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* --- Responsive (Móviles) --- */
 @media (max-width: 768px) {
     .navegacion {

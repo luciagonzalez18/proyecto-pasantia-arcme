@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './proyectos.html',
   styleUrl: './proyectos.css',
 })
-export class Proyectos {}
+export class Proyectos {
+  verDetalles:Boolean=false;
+}

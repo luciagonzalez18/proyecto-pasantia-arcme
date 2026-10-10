@@ -479,115 +479,766 @@ td button i {
 }
 
 
+
+
+
+
+
 /* =========================
-   RESPONSIVE
+   HEADER VOLVER
 ========================= */
 
-@media (max-width: 900px) {
+.header-verDetalles {
+    width: 100%;
+    max-width: none;
+    margin: 45px 0 0 0;
+    padding: 0 35px;
+    box-sizing: border-box;
+}
 
-    .filtros {
-        flex-wrap: wrap;
+.titulo-contenido.volver {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    width: fit-content;
+    transition: 0.2s ease;
+}
+
+.titulo-contenido.volver:hover {
+    opacity: 0.75;
+}
+
+.titulo-contenido.volver i {
+    font-size: 22px;
+    color: #2f6f7e;
+}
+
+.titulo-volver {
+    margin: 0;
+    color: #2f6f7e;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+/* =========================
+   CONTENEDOR DETALLES
+========================= */
+
+.container-verDetalles {
+    width: 100%;
+    max-width: none;
+    margin: 25px 0 45px 0;
+    padding: 0 35px;
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: stretch;
+}
+
+
+/* =========================
+   COLUMNA IZQUIERDA - DATOS
+========================= */
+
+.contenido-detalles {
+    background-color: white;
+    border: 1px solid #e1e5e8;
+    border-radius: 11px;
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.04);
+    padding: 30px 32px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.contenido-detalles .titulo {
+    margin: 0 0 8px 0;
+    color: #2f3e46;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.contenido-detalles .subtitulo {
+    margin: 0 0 24px 0;
+    color: #777777;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+/* =========================
+   ÍTEMS DE DETALLE
+========================= */
+
+.detalle {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.detalle:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.detalle i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+
+    background-color: #f0f7f9;
+    color: #2f6f7e;
+    border-radius: 9px;
+    font-size: 18px;
+}
+
+.detalle span {
+    color: #495057;
+    font-size: 16px;
+    line-height: 1.45;
+}
+
+.detalle span strong {
+    color: #2f3e46;
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+
+/* =========================
+   CARD DERECHA - CLIENTES
+========================= */
+
+.card-Clientes {
+    background-color: white;
+    border: 1px solid #e1e5e8;
+    border-radius: 11px;
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.04);
+    padding: 28px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   HEADER CARD (BOTONES)
+========================= */
+
+.header-card-detalles {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.header-card-detalles button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 18px;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+/* Botón Editar */
+.header-card-detalles button:first-child {
+    background-color: #2f6f7e;
+    color: white;
+}
+
+.header-card-detalles button:first-child:hover {
+    background-color: #245865;
+}
+
+/* Botón Eliminar */
+.header-card-detalles button:last-child {
+    background-color: #fff;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+.header-card-detalles button:last-child:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+.header-card-detalles button:active {
+    transform: scale(0.97);
+}
+
+.header-card-detalles button i {
+    font-size: 16px;
+}
+
+
+/* =========================
+   LÍNEA HORIZONTAL
+========================= */
+
+.linea-horizontal {
+    margin: 0;
+    border: none;
+    border-top: 1px solid #e1e5e8;
+}
+
+
+/* =========================
+   TÍTULO OBRAS VINCULADAS
+========================= */
+
+.card-Clientes>p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #2f3e46;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.card-Clientes>p i {
+    color: #2f6f7e;
+    font-size: 18px;
+}
+
+
+/* =========================
+   LISTA DE OBRAS
+========================= */
+
+.obras-Cliente {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+    overflow-y: auto;
+    max-height: 340px;
+    padding-right: 4px;
+}
+
+/* Scroll suave */
+.obras-Cliente::-webkit-scrollbar {
+    width: 6px;
+}
+
+.obras-Cliente::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.obras-Cliente::-webkit-scrollbar-thumb {
+    background: #c1c9ce;
+    border-radius: 10px;
+}
+
+.obras-Cliente::-webkit-scrollbar-thumb:hover {
+    background: #a8b2b8;
+}
+
+
+/* =========================
+   CARD DE CADA OBRA
+========================= */
+
+.obra {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 12px 14px;
+
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.obra:hover {
+    background-color: #f0f7f9;
+    border-color: #c5d9df;
+}
+
+.obra img {
+    width: 92px;
+    height: 92px;
+    min-width: 72px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.contenido-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.titulo-obra {
+    color: #2f3e46;
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Direccion {
+    color: #6c757d;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.estado {
+    font-size: 13px;
+    margin-top: 2px;
+}
+
+.estado strong {
+    color: #198754;
+    font-weight: 600;
+}
+
+
+/* =========================
+   FOOTER - VINCULAR OBRA
+========================= */
+
+.footer-card-detalles {
+    margin-top: auto;
+    padding-top: 4px;
+}
+
+.footer-card-detalles button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    width: 100%;
+    padding: 12px 18px;
+
+    background-color: transparent;
+    color: #2f6f7e;
+
+    border: 1.5px dashed #2f6f7e;
+    border-radius: 9px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.footer-card-detalles button:hover {
+    background-color: #f0f7f9;
+}
+
+.footer-card-detalles button:active {
+    transform: scale(0.98);
+}
+
+.footer-card-detalles button i {
+    font-size: 17px;
+}
+
+
+/* =========================
+   RESPONSIVE - CLIENTES
+   (lista + detalles)
+========================= */
+
+/* ---------- Tablet grande / laptop chica ---------- */
+@media (max-width: 1100px) {
+
+    .container-verDetalles {
+        grid-template-columns: 1fr;
+        gap: 22px;
     }
 
-    .filtros form {
-        margin-left: 0;
-        width: 100%;
+    .contenido-detalles,
+    .card-Clientes {
+        height: auto;
     }
 
-    .filtros input {
-        width: 100%;
-        min-width: 0;
-    }
-
-    .modal-dialog {
-        max-width: 95%;
+    .obras-Cliente {
+        max-height: 280px;
     }
 }
 
 
-@media (max-width: 768px) {
+/* ---------- Tablet ---------- */
+@media (max-width: 900px) {
 
-    .container {
-        margin: 30px auto;
-        padding: 0 18px;
+    .filtros {
+        flex-wrap: wrap;
+        gap: 12px 14px;
     }
 
+    .filtros form {
+        order: 3;
+        width: 100%;
+        min-width: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
 
-    /* Header */
+    .filtros input {
+        width: 100%;
+        min-width: 0;
+        flex: 1;
+    }
 
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
+    .filtros select {
+        flex: 1;
+        min-width: 140px;
+    }
 
+    .modal-dialog {
+        max-width: 95%;
+    }
+
+    table {
+        min-width: 720px;
+    }
+}
+
+
+/* ---------- Móvil / tablet chica ---------- */
+@media (max-width: 768px) {
+
+    /* Contenedores */
+    .container {
+        margin: 28px 0;
+        padding: 0 16px;
+    }
+
+    .header-verDetalles,
+    .container-verDetalles {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0 16px;
+    }
+
+    .header-verDetalles {
+        margin-top: 28px;
+    }
+
+    .container-verDetalles {
+        margin-top: 18px;
+        margin-bottom: 28px;
         gap: 18px;
     }
 
+
+    /* Header lista */
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+
     .titulo {
-        font-size: 31px;
+        font-size: 28px;
+    }
+
+    .titulo-contenido p {
+        font-size: 14px;
+    }
+
+    .header button {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 18px;
+        font-size: 15px;
     }
 
 
     /* Filtros */
-
     .filtros {
         flex-direction: column;
         align-items: stretch;
-
-        gap: 12px;
+        gap: 10px;
+        padding: 16px 18px;
+        margin-bottom: 22px;
     }
 
     .filtros p {
-        margin-left: 0;
+        margin: 0;
+        font-size: 14px;
     }
 
     .filtros select {
         width: 100%;
+        height: 40px;
+        font-size: 14px;
     }
-
-
-    /* Buscador */
 
     .filtros form {
         width: 100%;
-        margin-left: 0;
+        margin: 0;
+        flex-direction: column;
+        gap: 8px;
     }
 
     .filtros input {
-        min-width: 0;
         width: 100%;
+        min-width: 0;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .filtros form button {
+        width: 100%;
+        height: 40px;
+    }
+
+
+    /* Tabla */
+    .tabla {
+        border-radius: 10px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+        min-width: 680px;
+    }
+
+    th,
+    td {
+        padding: 13px 12px;
+        font-size: 14px;
+    }
+
+    td button {
+        padding: 7px 12px;
+        font-size: 13px;
+        white-space: nowrap;
     }
 
 
     /* Modal */
-
     .modal-dialog {
         max-width: 95%;
-        margin: 10px auto;
-    }
-
-    .modal-body {
-        padding: 22px;
+        margin: 12px auto;
     }
 
     .modal-header {
-        padding: 20px 22px;
+        padding: 18px 20px;
+    }
+
+    .modal-title {
+        font-size: 20px;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .modal-body .form-label {
+        font-size: 14px;
+    }
+
+    .modal-body .form-control {
+        min-height: 42px;
+        font-size: 14px;
     }
 
     .modal-footer {
-        padding: 17px 22px;
+        padding: 14px 20px;
+        flex-wrap: wrap;
+        gap: 8px;
     }
 
-
-    /* En móvil los campos pasan a una columna */
+    .modal-footer .btn {
+        flex: 1;
+        min-width: 0;
+    }
 
     .modal-body .col-md-6 {
         width: 100%;
     }
 
 
-    /* Tabla */
+    /* Detalles - card datos */
+    .contenido-detalles {
+        padding: 20px 18px;
+    }
 
-    .tabla {
-        overflow-x: auto;
+    .contenido-detalles .titulo {
+        font-size: 24px;
+    }
+
+    .contenido-detalles .subtitulo {
+        font-size: 14px;
+        margin-bottom: 18px;
+    }
+
+    .detalle {
+        gap: 12px;
+        padding: 12px 0;
+    }
+
+    .detalle i {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        font-size: 16px;
+    }
+
+    .detalle span {
+        font-size: 14px;
+    }
+
+
+    /* Detalles - card obras */
+    .card-Clientes {
+        padding: 20px 18px;
+        gap: 14px;
+    }
+
+    .header-card-detalles {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .header-card-detalles button {
+        width: 100%;
+        justify-content: center;
+        padding: 11px 16px;
+        font-size: 14px;
+    }
+
+    .card-Clientes > p {
+        font-size: 15px;
+    }
+
+    .card-Clientes > p i {
+        font-size: 16px;
+    }
+
+    .obras-Cliente {
+        max-height: 260px;
+        gap: 10px;
+    }
+
+    .obra {
+        padding: 10px 12px;
+        gap: 12px;
+    }
+
+    .obra img {
+        width: 64px;
+        height: 64px;
+        min-width: 64px;
+    }
+
+    .titulo-obra {
+        font-size: 14px;
+    }
+
+    .Direccion {
+        font-size: 12px;
+    }
+
+    .estado {
+        font-size: 12px;
+    }
+
+    .footer-card-detalles button {
+        padding: 11px 16px;
+        font-size: 14px;
+    }
+
+
+    /* Volver */
+    .titulo-contenido.volver i {
+        font-size: 20px;
+    }
+
+    .titulo-volver {
+        font-size: 15px;
+    }
+}
+
+
+/* ---------- Móvil chico ---------- */
+@media (max-width: 480px) {
+
+    .container,
+    .header-verDetalles,
+    .container-verDetalles {
+        padding: 0 12px;
+    }
+
+    .titulo {
+        font-size: 24px;
+    }
+
+    .header button {
+        font-size: 14px;
+        padding: 11px 16px;
+    }
+
+    .filtros {
+        padding: 14px;
+    }
+
+    table {
+        min-width: 600px;
+    }
+
+    th,
+    td {
+        padding: 11px 10px;
+        font-size: 13px;
+    }
+
+    .contenido-detalles .titulo {
+        font-size: 22px;
+    }
+
+    .detalle span {
+        font-size: 13px;
+    }
+
+    .obra img {
+        width: 56px;
+        height: 56px;
+        min-width: 56px;
+    }
+
+    .titulo-obra {
+        font-size: 13px;
+    }
+
+    .Direccion {
+        font-size: 11px;
     }
 }
