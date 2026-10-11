@@ -31,6 +31,7 @@ export class Menu {
           icon: "success"
         }).then(() => {
           this.router.navigate(['/home']);
+          
         });
       }
     });
