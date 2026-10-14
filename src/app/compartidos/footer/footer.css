@@ -3,8 +3,8 @@
 
 .footer {
     width: 100%;
-    background-color: #6f6b6b; /* Actualizado al fondo oscuro de la imagen */
-    border-top: 1px solid #6f6b6b;
+    background-color: #7d7b7b; /* Actualizado al fondo oscuro de la imagen */
+    border-top: 1px solid  #7d7b7b;
     padding: 40px 32px 20px;
     font-size: 14px;
     color: #ffffff; /* Actualizado a texto blanco */
@@ -113,7 +113,7 @@
     flex-wrap: wrap;
     gap: 12px;
     padding-top: 20px;
-    border-top: 1px solid #1a1a1a;
+    border-top: 1px solid #efebeb;
 }
 
 .footer-bottom p {
