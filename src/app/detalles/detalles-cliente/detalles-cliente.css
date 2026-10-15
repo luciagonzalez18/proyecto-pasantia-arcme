@@ -387,3 +387,336 @@
 .footer-card-detalles button i {
     font-size: 17px;
 }
+
+
+/* =========================
+   RESPONSIVE - DETALLES CLIENTE
+========================= */
+
+/* ---------- Laptop / Tablet grande ---------- */
+@media (max-width: 1100px) {
+
+    .header-verDetalles,
+    .container-verDetalles {
+        padding: 0 24px;
+    }
+
+    .container-verDetalles {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .contenido-detalles,
+    .card-Clientes {
+        height: auto;
+    }
+
+    .obras-Cliente {
+        max-height: 300px;
+    }
+}
+
+
+/* ---------- Tablet ---------- */
+@media (max-width: 900px) {
+
+    .header-verDetalles,
+    .container-verDetalles {
+        padding: 0 20px;
+    }
+
+    .container-verDetalles {
+        margin-top: 20px;
+        gap: 20px;
+    }
+
+    .contenido-detalles {
+        padding: 26px 24px;
+    }
+
+    .contenido-detalles .titulo {
+        font-size: 26px;
+    }
+
+    .card-Clientes {
+        padding: 24px;
+    }
+
+    .header-card-detalles {
+        gap: 10px;
+    }
+
+    .header-card-detalles button {
+        padding: 10px 16px;
+        font-size: 14.5px;
+    }
+
+    .obra img {
+        width: 80px;
+        height: 80px;
+        min-width: 80px;
+    }
+}
+
+
+/* ---------- Móvil / Tablet chica ---------- */
+@media (max-width: 768px) {
+
+    .header-verDetalles {
+        margin-top: 24px;
+        padding: 0 16px;
+    }
+
+    .container-verDetalles {
+        margin: 16px 0 28px 0;
+        padding: 0 16px;
+        gap: 18px;
+    }
+
+    /* Volver */
+    .titulo-contenido.volver {
+        gap: 10px;
+    }
+
+    .titulo-contenido.volver i {
+        font-size: 20px;
+    }
+
+    .titulo-volver {
+        font-size: 15px;
+    }
+
+    /* Card izquierda - Datos */
+    .contenido-detalles {
+        padding: 22px 18px;
+    }
+
+    .contenido-detalles .titulo {
+        font-size: 24px;
+        margin-bottom: 6px;
+    }
+
+    .contenido-detalles .subtitulo {
+        font-size: 14px;
+        margin-bottom: 18px;
+    }
+
+    .detalle {
+        gap: 12px;
+        padding: 13px 0;
+    }
+
+    .detalle i {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+        font-size: 17px;
+    }
+
+    .detalle span {
+        font-size: 14.5px;
+    }
+
+    /* Card derecha */
+    .card-Clientes {
+        padding: 20px 18px;
+        gap: 16px;
+    }
+
+    .header-card-detalles {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .header-card-detalles button {
+        width: 100%;
+        justify-content: center;
+        padding: 11px 16px;
+        font-size: 14px;
+    }
+
+    .card-Clientes > p {
+        font-size: 16px;
+    }
+
+    .card-Clientes > p i {
+        font-size: 17px;
+    }
+
+    .obras-Cliente {
+        max-height: 280px;
+        gap: 12px;
+    }
+
+    .obra {
+        padding: 11px 12px;
+        gap: 14px;
+    }
+
+    .obra img {
+        width: 72px;
+        height: 72px;
+        min-width: 72px;
+    }
+
+    .titulo-obra {
+        font-size: 15px;
+    }
+
+    .Direccion {
+        font-size: 13px;
+    }
+
+    .estado {
+        font-size: 12.5px;
+    }
+
+    .footer-card-detalles button {
+        padding: 11px 16px;
+        font-size: 14.5px;
+    }
+}
+
+
+/* ---------- Móvil chico ---------- */
+@media (max-width: 480px) {
+
+    .header-verDetalles,
+    .container-verDetalles {
+        padding: 0 12px;
+    }
+
+    .header-verDetalles {
+        margin-top: 20px;
+    }
+
+    .container-verDetalles {
+        margin: 14px 0 24px 0;
+        gap: 16px;
+    }
+
+    /* Volver */
+    .titulo-contenido.volver i {
+        font-size: 18px;
+    }
+
+    .titulo-volver {
+        font-size: 14px;
+    }
+
+    /* Datos */
+    .contenido-detalles {
+        padding: 18px 16px;
+    }
+
+    .contenido-detalles .titulo {
+        font-size: 22px;
+    }
+
+    .contenido-detalles .subtitulo {
+        font-size: 13.5px;
+        margin-bottom: 16px;
+    }
+
+    .detalle {
+        gap: 11px;
+        padding: 12px 0;
+    }
+
+    .detalle i {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+
+    .detalle span {
+        font-size: 13.5px;
+    }
+
+    /* Card obras */
+    .card-Clientes {
+        padding: 18px 16px;
+        gap: 14px;
+    }
+
+    .header-card-detalles button {
+        padding: 10px 14px;
+        font-size: 13.5px;
+    }
+
+    .card-Clientes > p {
+        font-size: 15px;
+    }
+
+    .obras-Cliente {
+        max-height: 260px;
+        gap: 10px;
+    }
+
+    .obra {
+        padding: 10px 11px;
+        gap: 12px;
+    }
+
+    .obra img {
+        width: 64px;
+        height: 64px;
+        min-width: 64px;
+    }
+
+    .titulo-obra {
+        font-size: 14px;
+    }
+
+    .Direccion {
+        font-size: 12.5px;
+    }
+
+    .estado {
+        font-size: 12px;
+    }
+
+    .footer-card-detalles button {
+        padding: 11px 14px;
+        font-size: 14px;
+        gap: 8px;
+    }
+
+    .footer-card-detalles button i {
+        font-size: 16px;
+    }
+}
+
+
+/* ---------- Extra pequeño ---------- */
+@media (max-width: 360px) {
+
+    .contenido-detalles .titulo {
+        font-size: 20px;
+    }
+
+    .detalle span {
+        font-size: 13px;
+    }
+
+    .obra img {
+        width: 56px;
+        height: 56px;
+        min-width: 56px;
+    }
+
+    .titulo-obra {
+        font-size: 13.5px;
+    }
+
+    .Direccion {
+        font-size: 12px;
+    }
+
+    .header-card-detalles button {
+        font-size: 13px;
+        padding: 9px 12px;
+    }
+}

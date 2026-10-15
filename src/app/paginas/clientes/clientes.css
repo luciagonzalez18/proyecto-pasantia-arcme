@@ -489,24 +489,22 @@ td button i {
 
 /* =========================
    RESPONSIVE - CLIENTES
-   (lista + detalles)
 ========================= */
 
-/* ---------- Tablet grande / laptop chica ---------- */
+/* ---------- Laptop / Tablet grande ---------- */
 @media (max-width: 1100px) {
 
-    .container-verDetalles {
-        grid-template-columns: 1fr;
-        gap: 22px;
+    .container {
+        padding: 0 24px;
     }
 
-    .contenido-detalles,
-    .card-Clientes {
-        height: auto;
+    .filtros form {
+        width: 40%;
+        min-width: 280px;
     }
 
-    .obras-Cliente {
-        max-height: 280px;
+    table {
+        min-width: 780px;
     }
 }
 
@@ -514,13 +512,28 @@ td button i {
 /* ---------- Tablet ---------- */
 @media (max-width: 900px) {
 
+    .container {
+        margin: 36px 0;
+        padding: 0 20px;
+    }
+
+    .header {
+        margin-bottom: 28px;
+    }
+
+    .titulo {
+        font-size: 32px;
+    }
+
+    /* Filtros */
     .filtros {
         flex-wrap: wrap;
         gap: 12px 14px;
+        padding: 18px 20px;
     }
 
     .filtros form {
-        order: 3;
+        order: 3;                 /* Buscador abajo */
         width: 100%;
         min-width: 0;
         margin-left: 0;
@@ -528,67 +541,56 @@ td button i {
     }
 
     .filtros input {
-        width: 100%;
-        min-width: 0;
         flex: 1;
+        min-width: 0;
+        width: 100%;
     }
 
     .filtros select {
         flex: 1;
-        min-width: 140px;
+        min-width: 150px;
     }
 
-    .modal-dialog {
-        max-width: 95%;
-    }
-
+    /* Tabla */
     table {
         min-width: 720px;
+    }
+
+    th, td {
+        padding: 15px 14px;
+    }
+
+    /* Modal */
+    .modal-dialog {
+        max-width: 94%;
+        margin: 1.5rem auto;
     }
 }
 
 
-/* ---------- Móvil / tablet chica ---------- */
+/* ---------- Móvil / Tablet chica ---------- */
 @media (max-width: 768px) {
 
-    /* Contenedores */
     .container {
-        margin: 28px 0;
+        margin: 24px 0;
         padding: 0 16px;
     }
 
-    .header-verDetalles,
-    .container-verDetalles {
-        margin-left: 0;
-        margin-right: 0;
-        padding: 0 16px;
-    }
-
-    .header-verDetalles {
-        margin-top: 28px;
-    }
-
-    .container-verDetalles {
-        margin-top: 18px;
-        margin-bottom: 28px;
-        gap: 18px;
-    }
-
-
-    /* Header lista */
+    /* Header */
     .header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 16px;
-        margin-bottom: 24px;
+        gap: 14px;
+        margin-bottom: 22px;
     }
 
     .titulo {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     .titulo-contenido p {
         font-size: 14px;
+        margin-top: 2px;
     }
 
     .header button {
@@ -598,14 +600,13 @@ td button i {
         font-size: 15px;
     }
 
-
     /* Filtros */
     .filtros {
         flex-direction: column;
         align-items: stretch;
-        gap: 10px;
-        padding: 16px 18px;
-        margin-bottom: 22px;
+        gap: 12px;
+        padding: 16px;
+        margin-bottom: 20px;
     }
 
     .filtros p {
@@ -615,43 +616,42 @@ td button i {
 
     .filtros select {
         width: 100%;
-        height: 40px;
+        height: 42px;
         font-size: 14px;
+        padding: 0 36px 0 14px;
     }
 
     .filtros form {
         width: 100%;
         margin: 0;
         flex-direction: column;
-        gap: 8px;
+        gap: 10px;
     }
 
     .filtros input {
         width: 100%;
         min-width: 0;
-        height: 40px;
+        height: 42px;
         font-size: 14px;
     }
 
     .filtros form button {
         width: 100%;
-        height: 40px;
+        height: 42px;
+        font-size: 14px;
     }
-
 
     /* Tabla */
     .tabla {
         border-radius: 10px;
-        overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }
 
     table {
-        min-width: 680px;
+        min-width: 640px;
     }
 
-    th,
-    td {
+    th, td {
         padding: 13px 12px;
         font-size: 14px;
     }
@@ -662,148 +662,50 @@ td button i {
         white-space: nowrap;
     }
 
-
     /* Modal */
     .modal-dialog {
-        max-width: 95%;
+        max-width: 96%;
         margin: 12px auto;
     }
 
     .modal-header {
-        padding: 18px 20px;
+        padding: 16px 18px;
     }
 
     .modal-title {
-        font-size: 20px;
+        font-size: 19px;
     }
 
     .modal-body {
-        padding: 20px;
+        padding: 18px 18px 10px;
     }
 
     .modal-body .form-label {
         font-size: 14px;
+        margin-bottom: 6px;
     }
 
     .modal-body .form-control {
         min-height: 42px;
         font-size: 14px;
-    }
-
-    .modal-footer {
-        padding: 14px 20px;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .modal-footer .btn {
-        flex: 1;
-        min-width: 0;
+        padding: 9px 13px;
     }
 
     .modal-body .col-md-6 {
         width: 100%;
     }
 
-
-    /* Detalles - card datos */
-    .contenido-detalles {
-        padding: 20px 18px;
-    }
-
-    .contenido-detalles .titulo {
-        font-size: 24px;
-    }
-
-    .contenido-detalles .subtitulo {
-        font-size: 14px;
-        margin-bottom: 18px;
-    }
-
-    .detalle {
-        gap: 12px;
-        padding: 12px 0;
-    }
-
-    .detalle i {
-        width: 36px;
-        height: 36px;
-        min-width: 36px;
-        font-size: 16px;
-    }
-
-    .detalle span {
-        font-size: 14px;
-    }
-
-
-    /* Detalles - card obras */
-    .card-Clientes {
-        padding: 20px 18px;
-        gap: 14px;
-    }
-
-    .header-card-detalles {
-        flex-direction: column;
+    .modal-footer {
+        padding: 14px 18px;
         gap: 10px;
+        flex-wrap: nowrap;
     }
 
-    .header-card-detalles button {
-        width: 100%;
-        justify-content: center;
-        padding: 11px 16px;
+    .modal-footer .btn {
+        flex: 1;
+        min-width: 0;
+        padding: 10px 14px;
         font-size: 14px;
-    }
-
-    .card-Clientes > p {
-        font-size: 15px;
-    }
-
-    .card-Clientes > p i {
-        font-size: 16px;
-    }
-
-    .obras-Cliente {
-        max-height: 260px;
-        gap: 10px;
-    }
-
-    .obra {
-        padding: 10px 12px;
-        gap: 12px;
-    }
-
-    .obra img {
-        width: 64px;
-        height: 64px;
-        min-width: 64px;
-    }
-
-    .titulo-obra {
-        font-size: 14px;
-    }
-
-    .Direccion {
-        font-size: 12px;
-    }
-
-    .estado {
-        font-size: 12px;
-    }
-
-    .footer-card-detalles button {
-        padding: 11px 16px;
-        font-size: 14px;
-    }
-
-
-    /* Volver */
-    .titulo-contenido.volver i {
-        font-size: 20px;
-    }
-
-    .titulo-volver {
-        font-size: 15px;
     }
 }
 
@@ -811,14 +713,17 @@ td button i {
 /* ---------- Móvil chico ---------- */
 @media (max-width: 480px) {
 
-    .container,
-    .header-verDetalles,
-    .container-verDetalles {
+    .container {
         padding: 0 12px;
+        margin: 20px 0;
     }
 
     .titulo {
-        font-size: 24px;
+        font-size: 23px;
+    }
+
+    .titulo-contenido p {
+        font-size: 13px;
     }
 
     .header button {
@@ -828,37 +733,71 @@ td button i {
 
     .filtros {
         padding: 14px;
+        gap: 10px;
+    }
+
+    .filtros select,
+    .filtros input,
+    .filtros form button {
+        height: 40px;
+        font-size: 13.5px;
     }
 
     table {
-        min-width: 600px;
+        min-width: 580px;
     }
 
-    th,
-    td {
+    th, td {
         padding: 11px 10px;
         font-size: 13px;
     }
 
-    .contenido-detalles .titulo {
-        font-size: 22px;
+    td button {
+        padding: 6px 10px;
+        font-size: 12.5px;
     }
 
-    .detalle span {
-        font-size: 13px;
+    /* Modal */
+    .modal-header {
+        padding: 14px 16px;
     }
 
-    .obra img {
-        width: 56px;
-        height: 56px;
-        min-width: 56px;
+    .modal-title {
+        font-size: 18px;
     }
 
-    .titulo-obra {
-        font-size: 13px;
+    .modal-body {
+        padding: 16px 16px 8px;
     }
 
-    .Direccion {
-        font-size: 11px;
+    .modal-footer {
+        padding: 12px 16px;
+    }
+
+    .modal-footer .btn {
+        font-size: 13.5px;
+        padding: 9px 12px;
+    }
+}
+
+
+/* ---------- Extra pequeño (opcional) ---------- */
+@media (max-width: 360px) {
+
+    .titulo {
+        font-size: 21px;
+    }
+
+    .header button {
+        font-size: 13.5px;
+    }
+
+    table {
+        min-width: 520px;
+    }
+
+    th, td {
+        padding: 10px 8px;
+        font-size: 12.5px;
     }
 }

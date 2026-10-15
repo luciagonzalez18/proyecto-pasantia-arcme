@@ -153,27 +153,36 @@
 
 
 /* =========================
-   HEADER CARD (BOTONES)
+   HEADER CARD (BOTONES) - CORREGIDO
 ========================= */
 
 .header-card-detalles {
     display: flex;
     gap: 12px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    /* ← Impide que se apilen */
     justify-content: space-between;
+    align-items: center;
 }
 
 .header-card-detalles button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    padding: 10px 18px;
+    padding: 10px 16px;
+    /* un poco más compacto */
     border: none;
     border-radius: 8px;
-    font-size: 15px;
+    font-size: 14.5px;
     font-weight: 500;
     cursor: pointer;
     transition: 0.2s ease;
+    white-space: nowrap;
+    /* ← No corta el texto */
+    flex-shrink: 1;
+    /* Permite que se achiquen un poco si hace falta */
+    min-width: 0;
 }
 
 .header-card-detalles button:first-child {
@@ -204,7 +213,6 @@
     font-size: 16px;
 }
 
-
 /* =========================
    LÍNEA HORIZONTAL
 ========================= */
@@ -220,7 +228,7 @@
    DESCRIPCIÓN
 ========================= */
 
-.card-Proveedores > p {
+.card-Proveedores>p {
     margin: 0;
     display: flex;
     align-items: center;
@@ -230,7 +238,7 @@
     font-weight: 600;
 }
 
-.card-Proveedores > p i {
+.card-Proveedores>p i {
     color: #2f6f7e;
     font-size: 18px;
 }
@@ -304,4 +312,328 @@
     color: #495057;
     font-size: 15px;
     padding: 4px 0;
+}
+
+
+/* =========================
+   RESPONSIVE - DETALLES PROVEEDOR
+========================= */
+
+/* ---------- Laptop / Tablet grande ---------- */
+@media (max-width: 1100px) {
+
+    .header-verDetalles,
+    .container-verDetalles {
+        padding: 0 24px;
+    }
+
+    .container-verDetalles {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .contenido-detalles,
+    .card-Proveedores {
+        height: auto;
+    }
+}
+
+
+/* ---------- Tablet ---------- */
+@media (max-width: 900px) {
+
+    .header-verDetalles,
+    .container-verDetalles {
+        padding: 0 20px;
+    }
+
+    .container-verDetalles {
+        margin-top: 20px;
+        gap: 20px;
+    }
+
+    .contenido-detalles {
+        padding: 26px 24px;
+    }
+
+    .contenido-detalles .titulo {
+        font-size: 26px;
+    }
+
+    .card-Proveedores {
+        padding: 24px;
+    }
+
+    /* Botones: se reparten el ancho */
+    .header-card-detalles {
+        gap: 10px;
+    }
+
+    .header-card-detalles button {
+        flex: 1;
+        justify-content: center;
+        padding: 10px 14px;
+        font-size: 14.5px;
+        min-width: 0;
+    }
+
+    .descripcion-Proveedor {
+        padding: 14px 16px;
+    }
+
+    .descripcion-Proveedor span {
+        font-size: 15.5px;
+    }
+
+    .footer-card-detalles {
+        gap: 20px;
+    }
+}
+
+
+/* ---------- Móvil / Tablet chica ---------- */
+@media (max-width: 768px) {
+
+    .header-verDetalles {
+        margin-top: 24px;
+        padding: 0 16px;
+    }
+
+    .container-verDetalles {
+        margin: 16px 0 28px 0;
+        padding: 0 16px;
+        gap: 18px;
+    }
+
+    /* Volver */
+    .titulo-contenido.volver {
+        gap: 10px;
+    }
+
+    .titulo-contenido.volver i {
+        font-size: 20px;
+    }
+
+    .titulo-volver {
+        font-size: 15px;
+    }
+
+    /* Card izquierda - Datos */
+    .contenido-detalles {
+        padding: 22px 18px;
+    }
+
+    .contenido-detalles .titulo {
+        font-size: 24px;
+        margin-bottom: 6px;
+    }
+
+    .contenido-detalles .subtitulo {
+        font-size: 14px;
+        margin-bottom: 18px;
+    }
+
+    .detalle {
+        gap: 12px;
+        padding: 13px 0;
+    }
+
+    .detalle i {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+        font-size: 17px;
+    }
+
+    .detalle span {
+        font-size: 14.5px;
+    }
+
+    /* Card derecha */
+    .card-Proveedores {
+        padding: 20px 18px;
+        gap: 16px;
+    }
+
+    /* Botones apilados a ancho completo */
+    .header-card-detalles {
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: stretch;
+    }
+
+    .header-card-detalles button {
+        width: 100%;
+        flex: none;
+        justify-content: center;
+        padding: 12px 16px;
+        font-size: 14px;
+        white-space: normal;
+    }
+
+    .card-Proveedores>p {
+        font-size: 16px;
+    }
+
+    .card-Proveedores>p i {
+        font-size: 17px;
+    }
+
+    .descripcion-Proveedor {
+        padding: 14px 16px;
+    }
+
+    .descripcion-Proveedor span {
+        font-size: 14.5px;
+        line-height: 1.6;
+    }
+
+    /* Footer categoría + productos → apilar */
+    .footer-card-detalles {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .footer-card-detalles p {
+        font-size: 15px;
+    }
+
+    .footer-card-detalles .categoria span {
+        font-size: 14px;
+        padding: 6px 14px;
+    }
+
+    .footer-card-detalles .productos li {
+        font-size: 14px;
+    }
+}
+
+
+/* ---------- Móvil chico ---------- */
+@media (max-width: 480px) {
+
+    .header-verDetalles,
+    .container-verDetalles {
+        padding: 0 12px;
+    }
+
+    .header-verDetalles {
+        margin-top: 20px;
+    }
+
+    .container-verDetalles {
+        margin: 14px 0 24px 0;
+        gap: 16px;
+    }
+
+    /* Volver */
+    .titulo-contenido.volver i {
+        font-size: 18px;
+    }
+
+    .titulo-volver {
+        font-size: 14px;
+    }
+
+    /* Datos */
+    .contenido-detalles {
+        padding: 18px 16px;
+    }
+
+    .contenido-detalles .titulo {
+        font-size: 22px;
+    }
+
+    .contenido-detalles .subtitulo {
+        font-size: 13.5px;
+        margin-bottom: 16px;
+    }
+
+    .detalle {
+        gap: 11px;
+        padding: 12px 0;
+    }
+
+    .detalle i {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+
+    .detalle span {
+        font-size: 13.5px;
+    }
+
+    /* Card derecha */
+    .card-Proveedores {
+        padding: 18px 16px;
+        gap: 14px;
+    }
+
+    .header-card-detalles {
+        gap: 8px;
+    }
+
+    .header-card-detalles button {
+        padding: 11px 14px;
+        font-size: 13.5px;
+    }
+
+    .card-Proveedores>p {
+        font-size: 15px;
+    }
+
+    .descripcion-Proveedor {
+        padding: 12px 14px;
+    }
+
+    .descripcion-Proveedor span {
+        font-size: 13.5px;
+    }
+
+    .footer-card-detalles {
+        gap: 16px;
+    }
+
+    .footer-card-detalles p {
+        font-size: 14.5px;
+    }
+
+    .footer-card-detalles .categoria span {
+        font-size: 13.5px;
+        padding: 6px 12px;
+    }
+
+    .footer-card-detalles .productos li {
+        font-size: 13.5px;
+    }
+}
+
+
+/* ---------- Extra pequeño ---------- */
+@media (max-width: 360px) {
+
+    .contenido-detalles .titulo {
+        font-size: 20px;
+    }
+
+    .detalle span {
+        font-size: 13px;
+    }
+
+    .header-card-detalles button {
+        font-size: 13px;
+        padding: 9px 12px;
+    }
+
+    .descripcion-Proveedor span {
+        font-size: 13px;
+    }
+
+    .footer-card-detalles .productos li {
+        font-size: 13px;
+    }
 }

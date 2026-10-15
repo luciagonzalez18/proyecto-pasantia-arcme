@@ -362,9 +362,23 @@ td button i {
    RESPONSIVE - PROVEEDORES
 ========================= */
 
-/* Tablet grande */
+/* ---------- Laptop / Tablet grande ---------- */
 @media (max-width: 1100px) {
 
+    .container {
+        padding: 0 24px;
+    }
+
+    .filtros form {
+        width: 40%;
+        min-width: 280px;
+    }
+
+    table {
+        min-width: 780px;
+    }
+
+    /* Detalles */
     .container-verDetalles {
         grid-template-columns: 1fr;
         gap: 22px;
@@ -377,9 +391,23 @@ td button i {
 }
 
 
-/* ~800px - filtros ordenados */
+/* ---------- Tablet ---------- */
 @media (max-width: 900px) {
 
+    .container {
+        margin: 36px 0;
+        padding: 0 20px;
+    }
+
+    .header {
+        margin-bottom: 28px;
+    }
+
+    .titulo {
+        font-size: 32px;
+    }
+
+    /* Filtros - layout en grid limpio */
     .filtros {
         display: grid;
         grid-template-columns: auto 1fr;
@@ -391,15 +419,17 @@ td button i {
     .filtros p {
         margin: 0;
         white-space: nowrap;
+        font-size: 14.5px;
     }
 
     .filtros select {
         width: 100%;
         min-width: 0;
+        height: 42px;
     }
 
     .filtros form {
-        grid-column: 1 / -1;
+        grid-column: 1 / -1;          /* Ocupa todo el ancho */
         width: 100%;
         min-width: 0;
         margin: 0;
@@ -417,55 +447,46 @@ td button i {
         flex-shrink: 0;
     }
 
-    .modal-dialog {
-        max-width: 95%;
-    }
-
+    /* Tabla */
     table {
         min-width: 720px;
+    }
+
+    th, td {
+        padding: 15px 14px;
+    }
+
+    /* Modal */
+    .modal-dialog {
+        max-width: 94%;
+        margin: 1.5rem auto;
     }
 }
 
 
-/* Móvil / tablet chica */
+/* ---------- Móvil / Tablet chica ---------- */
 @media (max-width: 768px) {
 
     .container {
-        margin: 28px 0;
+        margin: 24px 0;
         padding: 0 16px;
-    }
-
-    .header-verDetalles,
-    .container-verDetalles {
-        margin-left: 0;
-        margin-right: 0;
-        padding: 0 16px;
-    }
-
-    .header-verDetalles {
-        margin-top: 28px;
-    }
-
-    .container-verDetalles {
-        margin-top: 18px;
-        margin-bottom: 28px;
-        gap: 18px;
     }
 
     /* Header lista */
     .header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 16px;
-        margin-bottom: 24px;
+        gap: 14px;
+        margin-bottom: 22px;
     }
 
     .titulo {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     .titulo-contenido p {
         font-size: 14px;
+        margin-top: 2px;
     }
 
     .header button {
@@ -475,14 +496,14 @@ td button i {
         font-size: 15px;
     }
 
-    /* Filtros columna */
+    /* Filtros en columna */
     .filtros {
         display: flex;
         flex-direction: column;
         align-items: stretch;
-        gap: 10px;
-        padding: 16px 18px;
-        margin-bottom: 22px;
+        gap: 12px;
+        padding: 16px;
+        margin-bottom: 20px;
     }
 
     .filtros p {
@@ -492,44 +513,44 @@ td button i {
 
     .filtros select {
         width: 100%;
-        height: 40px;
+        height: 42px;
         font-size: 14px;
+        padding: 0 36px 0 14px;
     }
 
     .filtros form {
         width: 100%;
         margin: 0;
         display: flex;
-        flex-direction: row;
+        flex-direction: row;          /* Input + botón en la misma línea */
         gap: 8px;
     }
 
     .filtros input {
         flex: 1;
         min-width: 0;
-        height: 40px;
+        height: 42px;
         font-size: 14px;
     }
 
     .filtros form button {
         flex-shrink: 0;
-        height: 40px;
+        height: 42px;
         white-space: nowrap;
+        font-size: 14px;
     }
 
     /* Tabla */
     .tabla {
         border-radius: 10px;
-        overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }
 
     table {
-        min-width: 680px;
+        min-width: 640px;
     }
 
-    th,
-    td {
+    th, td {
         padding: 13px 12px;
         font-size: 14px;
     }
@@ -542,51 +563,72 @@ td button i {
 
     /* Modal */
     .modal-dialog {
-        max-width: 95%;
+        max-width: 96%;
         margin: 12px auto;
     }
 
     .modal-header {
-        padding: 18px 20px;
+        padding: 16px 18px;
     }
 
     .modal-title {
-        font-size: 20px;
+        font-size: 19px;
     }
 
     .modal-body {
-        padding: 20px;
+        padding: 18px 18px 10px;
     }
 
     .modal-body .form-label {
         font-size: 14px;
+        margin-bottom: 6px;
     }
 
     .modal-body .form-control {
         min-height: 42px;
         font-size: 14px;
+        padding: 9px 13px;
     }
 
     .modal-body textarea {
         min-height: 90px;
     }
 
+    .modal-body .col-md-6 {
+        width: 100%;
+    }
+
     .modal-footer {
-        padding: 14px 20px;
-        flex-wrap: wrap;
-        gap: 8px;
+        padding: 14px 18px;
+        gap: 10px;
+        flex-wrap: nowrap;
     }
 
     .modal-footer .btn {
         flex: 1;
         min-width: 0;
+        padding: 10px 14px;
+        font-size: 14px;
     }
 
-    .modal-body .col-md-6 {
-        width: 100%;
+    /* ========== DETALLES ========== */
+    .header-verDetalles,
+    .container-verDetalles {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0 16px;
     }
 
-    /* Detalles */
+    .header-verDetalles {
+        margin-top: 24px;
+    }
+
+    .container-verDetalles {
+        margin-top: 16px;
+        margin-bottom: 24px;
+        gap: 18px;
+    }
+
     .contenido-detalles {
         padding: 20px 18px;
     }
@@ -677,7 +719,7 @@ td button i {
 }
 
 
-/* Móvil chico */
+/* ---------- Móvil chico ---------- */
 @media (max-width: 480px) {
 
     .container,
@@ -687,7 +729,11 @@ td button i {
     }
 
     .titulo {
-        font-size: 24px;
+        font-size: 23px;
+    }
+
+    .titulo-contenido p {
+        font-size: 13px;
     }
 
     .header button {
@@ -697,26 +743,63 @@ td button i {
 
     .filtros {
         padding: 14px;
+        gap: 10px;
     }
 
+    .filtros select,
+    .filtros input {
+        height: 40px;
+        font-size: 13.5px;
+    }
+
+    /* En pantallas muy chicas el botón de buscar pasa abajo */
     .filtros form {
         flex-direction: column;
+        gap: 8px;
     }
 
     .filtros form button {
         width: 100%;
+        height: 40px;
     }
 
     table {
-        min-width: 600px;
+        min-width: 580px;
     }
 
-    th,
-    td {
+    th, td {
         padding: 11px 10px;
         font-size: 13px;
     }
 
+    td button {
+        padding: 6px 10px;
+        font-size: 12.5px;
+    }
+
+    /* Modal */
+    .modal-header {
+        padding: 14px 16px;
+    }
+
+    .modal-title {
+        font-size: 18px;
+    }
+
+    .modal-body {
+        padding: 16px 16px 8px;
+    }
+
+    .modal-footer {
+        padding: 12px 16px;
+    }
+
+    .modal-footer .btn {
+        font-size: 13.5px;
+        padding: 9px 12px;
+    }
+
+    /* Detalles */
     .contenido-detalles .titulo {
         font-size: 22px;
     }
@@ -731,5 +814,27 @@ td button i {
 
     .footer-card-detalles .productos li {
         font-size: 13px;
+    }
+}
+
+
+/* ---------- Extra pequeño (opcional) ---------- */
+@media (max-width: 360px) {
+
+    .titulo {
+        font-size: 21px;
+    }
+
+    .header button {
+        font-size: 13.5px;
+    }
+
+    table {
+        min-width: 520px;
+    }
+
+    th, td {
+        padding: 10px 8px;
+        font-size: 12.5px;
     }
 }
