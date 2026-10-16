@@ -239,6 +239,32 @@ form {
     width: 100%;
 }
 
+/* ============================= */
+/*       MENSAJES DE ERROR        */
+/* ============================= */
+
+form small {
+    display: block;
+    color: #d93025;
+    font-size: 12px;
+    margin-top: -12px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+/* Resaltar el campo cuando tenga un error */
+form input.ng-invalid.ng-touched {
+    border-color: #d93025;
+    outline: none;
+}
+
+/* Efecto al seleccionar el campo con error */
+form input.ng-invalid.ng-touched:focus {
+    border-color: #d93025;
+    box-shadow: 0 0 0 2px rgba(217, 48, 37, 0.12);
+}
+
 
 /* Textos que están encima de los campos */
 label {
