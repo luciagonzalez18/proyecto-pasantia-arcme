@@ -189,3 +189,14 @@ aside h2 {
     border-radius: 50%;
     background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
 }
+
+.contenido {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-top: 25px;
+}
+.contenido p {
+
+    font-size: 19px;
+}

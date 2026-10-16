@@ -314,13 +314,13 @@ input {
 /*           BOTÓN GUARDAR CAMBIOS           */
 /* ========================================= */
 
-.guardar {
+/* .guardar {
     border: 1px solid #ccc;
 
     background-color: #eee;
 
     color: #bbb;
-}
+} */
 
 .imagen-principal {
     width: 100%;
@@ -332,3 +332,14 @@ input {
     justify-content: center;
     color: #888888;
 }
+
+.contenido {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-top: 25px;
+}
+.contenido p {
+
+    font-size: 19px;
+} 
