@@ -13,6 +13,7 @@ import { Ingresos } from './paginas/ingresos/ingresos';
 import { Agenda } from './compartidos/agenda/agenda';
 import { PreguntasFrecuentes } from './compartidos/preguntas-frecuentes/preguntas-frecuentes';
 
+
 export const routes: Routes = [
     { path: '', redirectTo: 'inicio', pathMatch: 'full' },
     { path: "inicio", component: Inicio },
@@ -27,6 +28,9 @@ export const routes: Routes = [
     { path: "portfolio", component: Porfolio },
     { path: "ingresos", component: Ingresos },
     { path: "agenda", component: Agenda },
+    { path: "porfolio", component: Porfolio },
+    {path: "preguntas-frecuentes", component: PreguntasFrecuentes },
+    {path: "ingresos", component: Ingresos },
     { path: "preguntas-frecuentes", component: PreguntasFrecuentes },
     { path: '**', redirectTo: 'inicio' }
 

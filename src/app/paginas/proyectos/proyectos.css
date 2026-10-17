@@ -1,29 +1,71 @@
-.navegacion {
+.titulo {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
 }
 
+.titulo p {
+     margin: 4px 0 0 0;
+
+    color: #777777;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.boton_agregarProyecto {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 13px 21px;
+
+    background-color: #2f6f7e;
+    color: white;
+
+    border: none;
+    border-radius: 9px;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.boton_agregarProyecto:hover {
+    background-color: #245865;
+}
+
+.boton_agregarProyecto:active {
+    transform: scale(0.97);
+}
+
+.boton_agregarProyecto i {
+    font-size: 16px;
+}
 .dropdown button {
     border-radius: 15px;
 }
 
 /* --- General / Contenedor principal --- */
 .container {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #333333;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px;
+    width: 100%;
+    max-width: none;
+    margin: 45px 0;
+    padding: 0 35px;
+    box-sizing: border-box;
 }
 
 .container h2 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #111111;
-    margin-bottom: 25px;
+    margin: 0;
+    color: #2f3e46;
+    font-size: 36px;
+    font-weight: 600;
 }
 
-/* --- Carrusel / Historial de proyectos superior --- */
+/* Contenedor del carrusel */
 #carouselExample {
+    margin-top: 35px;
     position: relative;
     margin-bottom: 30px;
 }
@@ -31,42 +73,39 @@
 .carousel-inner img {
     border-radius: 8px !important;
     object-fit: cover;
-    box-shadow: none !important; /* Elimina sombras pesadas para un diseño limpio */
+    box-shadow: none !important;
+    /* Elimina sombras pesadas para un diseño limpio */
 }
 
 /* Flechas/Controles del Carrusel */
 .carousel-control-prev,
 .carousel-control-next {
-    width: 5%;
-    opacity: 0.8;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: transparent !important;
-    background-image: none !important;
-    color: #000000;
-    font-size: 2rem;
-    padding: 0 !important;
+    width: 8%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 5;
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0.8;
 }
 
-/* Icono de flecha tipo la imagen */
-.carousel-control-next-icon::after {
-    content: "→";
-    font-size: 2.5rem;
-    color: #000;
-    font-weight: 300;
+.carousel-control-prev {
+    left: -20px;
 }
 
-.carousel-control-prev-icon::after {
-    content: "←";
-    font-size: 2.5rem;
-    color: #000;
-    font-weight: 300;
+.carousel-control-next {
+    right: -20px;
 }
+
+.carousel-inner img {
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: none;
+}
+
+
 
 /* --- Barra de Navegación / Buscador y Filtros --- */
 .navegacion {
@@ -84,65 +123,70 @@
 }
 
 .navegacion form input[type="search"] {
+   height: 50px;
+
+    min-width: 260px;
+
+    border-radius: 8px;
+    border-color: #b4b8bd;
+    font-size: 15px;
+}
+
+.input-group-text {
+    border-style: none;
     background-color: #e0e0e0;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px 10px 45px; /* Espacio para el ícono de lupa */
-    font-size: 0.95rem;
-    color: #333;
-}
-
-.navegacion form input[type="search"]::placeholder {
-    color: #666;
-}
-
-
-/* Ocultar el botón original de submit de búsqueda para calzar con la imagen */
-.navegacion form button {
-    display: none;
 }
 
 /* Botón Filtro (Dropdown) */
 .navegacion .dropdown button {
-    background-color: #dcdcdc;
-    color: #222222;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
+    background-color: white;
+    color: #020202;
+    border: none solid #ced4da;
+    border-radius: 9px;
+    padding: 13px 21px;
     font-weight: 500;
+    font-size: 16px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .navegacion .dropdown button:hover,
 .navegacion .dropdown button:focus {
-    background-color: #cfcfcf;
-    color: #000;
+    border-color: #2f6f7e;
+
+    box-shadow: 0 0 0 3px rgba(47, 111, 126, 0.12);
 }
 
 /* Botón Agregar Proyecto */
 .navegacion .btn-outline-success {
-    background-color: #a8ebd1;
-    color: #1b5e3b;
-    border: 1px solid #7cdbaa;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font-weight: 500;
+
     display: flex;
     align-items: center;
-    gap: 8px;
-    text-decoration: none;
+    gap: 10px;
+
+    padding: 13px 21px;
+
+    background-color: #2f6f7e;
+    color: white;
+
+    border: none;
+    border-radius: 9px;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 0.2s ease;
 }
+
 
 .navegacion .btn-outline-success:hover {
-    background-color: #92e4c3;
-    color: #124228;
+    background-color: #245865;
 }
 
-.navegacion .btn-outline-success a {
-    color: inherit;
-    text-decoration: none;
+.navegacion .btn-outline-success:active {
+    transform: scale(0.97);
 }
 
 /* --- Cards / Tarjetas de Proyecto --- */
@@ -158,19 +202,20 @@
     box-shadow: none;
 }
 
-.card > div:first-child {
+.card>div:first-child {
     width: 140px;
     height: 110px;
     flex-shrink: 0;
     margin-right: 25px;
 }
 
-.card > div:first-child img {
+.card>div:first-child img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 2px;
 }
+
 
 .card .datos {
     display: flex;
@@ -180,7 +225,7 @@
 }
 
 /* Título de la obra */
-.card .datos > p {
+.card .datos>p {
     font-size: 1.15rem;
     font-weight: bold;
     color: #111111;
@@ -196,34 +241,51 @@
 
 .card .datos ul li {
     font-size: 0.9rem;
-    color: #e57373; /* Color rojizo/rosado para los textos secundarios como en la imagen */
+    color: #e57373;
+    /* Color rojizo/rosado para los textos secundarios como en la imagen */
     margin-bottom: 2px;
 }
 
 .card .datos ul li:first-child {
-    color: #777777; /* La superficie se mantiene en gris */
+    color: #777777;
+    /* La superficie se mantiene en gris */
 }
 
 /* Botón "Ver detalles" */
 .card .datos button {
-    align-self: flex-start;
-    background-color: #e0e0e0;
-    color: #444444;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    padding: 6px 16px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 8px 15px;
+    width: fit-content;
+
+    background-color: transparent;
+
+    color: #475569;
+
+    border: 1.5px solid #475569;
+    border-radius: 7px;
+
+    font-size: 15px;
+
     cursor: pointer;
-    transition: background-color 0.2s ease;
+
+    transition: 0.2s ease;
+}
+
+.card .datos button i {
+    font-size: 16px;
 }
 
 .card .datos button:hover {
-    background-color: #d0d0d0;
-    color: #111111;
+    background-color: #475569;
+    color: white;
 }
 
+.card .datos button:active {
+    transform: scale(0.97);
+}
 /* --- Responsive (Móviles) --- */
 @media (max-width: 768px) {
     .navegacion {
@@ -236,7 +298,7 @@
         align-items: flex-start;
     }
 
-    .card > div:first-child {
+    .card>div:first-child {
         width: 100%;
         height: 180px;
         margin-right: 0;

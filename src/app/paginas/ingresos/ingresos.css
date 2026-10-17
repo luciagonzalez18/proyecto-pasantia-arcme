@@ -2,19 +2,25 @@
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    padding: 30px 4%;
-    font-family: Arial, sans-serif;
-    background-color: white;
+.container {
+    width: 100%;
+    max-width: none;
+    margin: 45px 0;
+    padding: 0 35px;
+    box-sizing: border-box;
+    
 }
 
 
-/* TITULO */
+/* =========================================
+   TITULO
+   ========================================= */
 
 h1 {
-    font-size: 32px;
     margin: 0;
+    color: #2f3e46;
+    font-size: 36px;
+    font-weight: 600;
 }
 
 .descripcion {
@@ -23,97 +29,155 @@ h1 {
 }
 
 
-/* PARTE DE ARRIBA */
+/* =========================================
+   PARTE SUPERIOR
+   ========================================= */
 
 .parte-superior {
     display: flex;
-    gap: 20px;
+    gap: 24px;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 25px;
+    align-items: stretch;
 }
 
 
-/* INGRESOS */
+/* =========================================
+   INGRESOS
+   ========================================= */
 
 .ingresos {
-    width: 55%;
-    background-color: #eeeeee;
-    border-radius: 12px;
+    width: 58%;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
     overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .ingresos h2 {
     font-size: 18px;
-    padding: 15px;
+    font-weight: 600;
+    color: #1f2937;
+    padding: 20px 22px;
     margin: 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eeeeee;
 }
 
 
-/* TABLA */
+/* =========================================
+   TABLA DE INGRESOS
+   ========================================= */
 
-table {
+.ingresos table {
     width: 100%;
     border-collapse: collapse;
 }
 
-th {
-    background-color: #bdbdbd;
-    padding: 8px;
+.ingresos th {
+    background-color: #f8fafc;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 12px 16px;
     text-align: left;
+    border-bottom: 1px solid #e5e7eb;
 }
 
-td {
-    padding: 7px;
-    border-bottom: 1px solid #ccc;
+.ingresos td {
+    padding: 11px 16px;
+    color: #374151;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
 }
 
 
-/* CLASES PARA LOS NUMEROS */
+/* =========================================
+   NUMEROS DE LA TABLA
+   ========================================= */
 
-.numero-tabla {
+.ingresos .numero-tabla {
     text-align: center;
+    font-weight: 500;
+    color: #1f2937;
 }
 
 
-/* TOTAL */
+/* =========================================
+   HOVER DE LAS FILAS
+   ========================================= */
 
-.total {
-    background-color: #bdbdbd;
-    font-weight: bold;
+.ingresos tr:not(.total):hover td {
+    background-color: #f8fafc;
 }
 
 
-/* ALERTAS */
+/* =========================================
+   TOTAL
+   ========================================= */
+
+.ingresos .total td {
+    background-color: #f1f5f9;
+    color: #111827;
+    font-weight: 700;
+    border-top: 2px solid #e2e8f0;
+    border-bottom: none;
+}
+
+.ingresos .total .numero-tabla {
+    color: #2563eb;
+    font-size: 15px;
+}
+
+
+/* =========================================
+   ALERTAS
+   ========================================= */
 
 .alertas {
-    width: 45%;
-    background-color: #eeeeee;
-    border-radius: 12px;
-    padding: 15px;
+    width: 42%;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .alertas h2 {
     font-size: 18px;
-    margin-top: 0;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 18px 0;
 }
 
 
-/* ALERTA */
+/* =========================================
+   ALERTAS INDIVIDUALES
+   ========================================= */
 
 .alerta {
-    padding: 15px;
+    padding: 17px;
     border-radius: 12px;
     margin-bottom: 12px;
     position: relative;
     min-height: 115px;
+    box-sizing: border-box;
 }
 
 .alerta h3 {
-    margin: 0 0 8px 0;
+    margin: 0 0 7px 0;
+    font-size: 15px;
+    font-weight: 600;
 }
 
 .alerta p {
     font-size: 13px;
+    line-height: 1.4;
+    margin: 0 0 10px 0;
 }
 
 .alerta strong {
@@ -121,108 +185,313 @@ td {
 }
 
 
-/* ALERTA ROJA */
+/* =========================================
+   ALERTA CUOTAS VENCIDAS
+   ========================================= */
 
 .vencidas {
-    background-color: #f77d82;
-    border: 1px solid #d64e54;
+    background-color: #fff5f5;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+}
+
+.vencidas strong {
+    color: #b91c1c;
 }
 
 
-/* ALERTA AMARILLA */
+/* =========================================
+   ALERTA POR VENCER
+   ========================================= */
 
 .por-vencer {
-    background-color: #ffe56b;
-    border: 1px solid #d5b900;
+    background-color: #fffbeb;
+    border: 1px solid #fde68a;
+    color: #92400e;
 }
 
+.por-vencer strong {
+    color: #b45309;
+}
 
-/* NUMERO DE LA ALERTA */
+/* =========================================
+   CUOTAS PAGADAS
+   ========================================= */
+
+.pagadas {
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+}
+
+.pagadas strong {
+    color: #16a34a;
+}
+
+/* =========================================
+   NUMERO DE LA ALERTA
+   ========================================= */
 
 .numero {
     float: right;
-    font-size: 17px;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 9px;
+    border-radius: 20px;
 }
 
 
-/* BOTONES DE ALERTA */
+/* =========================================
+   BOTONES DE ALERTA
+   ========================================= */
 
 .alerta button {
     float: right;
     border: none;
     background-color: transparent;
     cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: inherit;
+    padding: 3px 0;
+}
+
+.alerta button:hover {
+    text-decoration: underline;
 }
 
 
-/* CLIENTES */
+/* =========================================
+   CLIENTES
+   ========================================= */
 
 .clientes {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 28px;
 }
 
 
-/* TITULO DE CLIENTES */
+/* =========================================
+   TITULO DE CLIENTES
+   ========================================= */
 
 .titulo-clientes {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 14px;
 }
 
 .titulo-clientes h2 {
     font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
 }
 
 
-/* BOTON VER TODOS */
+/* =========================================
+   BOTON VER TODOS
+   ========================================= */
 
 .ver-todos {
-    padding: 7px 15px;
+    padding: 8px 16px;
     background-color: white;
-    border: 1px solid #999;
-    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    color: #374151;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ver-todos:hover {
+    background-color: #f8fafc;
+    border-color: #9ca3af;
 }
 
 
-/* TABLA DE CLIENTES */
+/* =========================================
+   TABLA DE CLIENTES
+   ========================================= */
 
 .tabla-clientes {
-    border: 1px solid #ccc;
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    overflow: hidden;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
 }
+
+
+/* =========================================
+   ENCABEZADO DE TABLA
+   ========================================= */
 
 .tabla-clientes th {
-    background-color: white;
+    background-color: #f8fafc;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
 }
+
+
+/* =========================================
+   FILAS
+   ========================================= */
 
 .tabla-clientes td {
-    background-color: #f5f5f5;
+    background-color: #ffffff;
+    color: #374151;
+    font-size: 14px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
 }
 
 
-/* ESTADOS */
+/* =========================================
+   HOVER
+   ========================================= */
+
+.tabla-clientes tr:hover td {
+    background-color: #f8fafc;
+}
+
+
+/* =========================================
+   ULTIMA FILA
+   ========================================= */
+
+.tabla-clientes tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================
+   NOMBRES DE CLIENTES
+   ========================================= */
+
+.tabla-clientes td:first-child {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+
+/* =========================================
+   CUOTA
+   ========================================= */
+
+.tabla-clientes td:nth-child(3) {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+
+/* =========================================
+   ESTADOS
+   ========================================= */
 
 .estado {
-    padding: 5px 10px;
-    border-radius: 10px;
+    display: inline-block;
+    padding: 5px 11px;
+    border-radius: 20px;
     font-size: 12px;
+    font-weight: 600;
 }
+
+
+/* =========================================
+   VENCIDO
+   ========================================= */
 
 .vencido {
-    background-color: #ff7777;
+    background-color: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
 }
+
+
+/* =========================================
+   POR VENCER
+   ========================================= */
 
 .por-vencer-estado {
-    background-color: #ffe36b;
+    background-color: #fffbeb;
+    color: #d97706;
+    border: 1px solid #fde68a;
 }
 
 
-/* BOTON VER CLIENTE */
+/* =========================================
+   BOTON VER CLIENTE
+   ========================================= */
 
 .cliente-boton {
     background-color: white;
-    border: 1px solid #aaa;
-    border-radius: 6px;
-    padding: 5px 12px;
+    color: #2563eb;
+    border: 1px solid #bfdbfe;
+    border-radius: 7px;
+    padding: 7px 13px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cliente-boton:hover {
+    background-color: #eff6ff;
+    border-color: #93c5fd;
+}
+
+
+/* =========================================
+   FECHAS
+   ========================================= */
+
+.tabla-clientes td:nth-child(4) {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   OBRA
+   ========================================= */
+
+.tabla-clientes td:nth-child(2) {
+    color: #6b7280;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .parte-superior {
+        flex-direction: column;
+    }
+
+    .ingresos,
+    .alertas {
+        width: 100%;
+    }
+
+    .tabla-clientes {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 }

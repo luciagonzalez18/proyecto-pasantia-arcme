@@ -1,66 +1,91 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agenda</title>
-  <link rel="stylesheet" href="agenda.css">
-</head>
-<body>
-
-<div class="container">
-  
-  <!-- contenedor de la agenda -->
-  <div class="card">
-    <div class="header">
-      <div class="header-title">
-       <h2><i class="bi bi-calendar-date-fill"></i> Agenda</h2> 
-      </div>
-      <!--boton de nuevo evento con click para llamar al metodo abrirModal()  
-      llama al formulario a traves de getelement seleccionandolo por id-->
-      
-      <button class="btn btn-dark" onclick="document.getElementById('modal-nuevo-evento').showModal()">+ Nuevo evento</button>
+<div class="contenedor">
+<section class="agenda">
+  <header class="barra">
+    
+     <span class="titulo-agenda">Agenda</span>
+    <h1>{{ tituloMes }}</h1>
+    <div class="controles">
+      <button type="button" (click)="cambiarMes(-1)" aria-label="Mes anterior">‹</button>
+      <button type="button" (click)="irAHoy()">Hoy</button>
+      <button type="button" (click)="cambiarMes(1)" aria-label="Mes siguiente">›</button>
+      <button type="button" class="primario" (click)="abrirModal()">Nuevo evento</button>
     </div>
+  </header>
 
-    <!-- Formulario Modal -->
-    <dialog id="modal-nuevo-evento" class="modal-dialog">
+  <div class="grilla">
+    @for (n of nombresDias; track n) {
+      <div class="cabecera">{{ n }}</div>
+    }
+
+    @for (dia of dias; track $index) {
+      @if (dia) {
+        <div
+          class="celda"
+          [class.hoy]="esHoy(dia)"
+          tabindex="0"
+          (click)="abrirModal(dia)"
+          (keydown.enter)="abrirModal(dia)"
+        >
+          <span class="numero">{{ dia.getDate() }}</span>
+
+          @for (ev of eventosDelDia(dia); track ev.id) {
+            <div class="evento" [attr.dato-cat]="ev.categoria" [title]="ev.descripcion">
+              <span class="texto"><b>{{ ev.hora }}</b> {{ ev.titulo }}</span>
+              <button
+                type="button"
+                class="borrar"
+                aria-label="Eliminar evento"
+                (click)="eliminar(ev.id, $event)"
+              >×</button>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="celda vacia"></div>
+      }
+    }
+  </div>
+</section>
+
+<!--aca empieza el modal-->
+<dialog #modal id="modal-nuevo-evento" class="modal-dialog">
       <div class="modal-content">
         
         <!-- Encabezado del modal -->
         <div class="modal-header">
-          <h2><i class="bi bi-calendar-date-fill"></i> Nuevo evento</h2>
+          <h2><i class="bi bi-calendar"></i> Nuevo evento</h2>
           <form method="dialog">
             <button class="btn-close" aria-label="Cerrar">✕</button>
           </form>
         </div>
 
         <!-- Cuerpo con el formulario -->
-        <form method="dialog" class="modal-body">
+        <form [formGroup]="eventoForm"  class="modal-body">
           
           <!-- Columna Izquierda inputs -->
           <div class="modal-col">
             <div class="form-group">
-              <label>✏️ Título</label>
-              <input type="text" placeholder="Ingresar título" required>
+              <label><i class="bi bi-pencil"></i> Título</label>
+              <input type="text" formControlName="titulo" placeholder="Ingresar título">
             </div>
 
             <div class="form-group">
-              <label><i class="bi bi-calendar-date-fill"></i> Fecha</label>
-              <input type="date" required>
+              <label><i class="bi bi-calendar2-week"></i> Fecha</label>
+              <input type="date" formControlName="fecha">
             </div>
 
             <div class="form-group">
-              <label>⏱️ Hora</label>
-              <input type="time" required>
+              <label><i class="bi bi-stopwatch"></i> Hora</label>
+              <input type="time" formControlName="hora">
             </div>
 
             <div class="form-group">
-              <label>☑️ Categoría</label>
-              <select required>
-                <option value="" disabled selected>Seleccione una categoría</option>
-                <option value="trabajo">Trabajo</option>
-                <option value="personal">Personal</option>
-                <option value="reunion">Reunión</option>
+              <label><i class="bi bi-filter"></i>Categoría</label>
+              <select formControlName="categoria">
+                <option value="" disabled selected>Seleccione una prioridad</option>
+                <option value="alta">Alta</option>
+                <option value="media">Media</option>
+                <option value="baja">baja  </option>
               </select>
             </div>
           </div>
@@ -68,183 +93,51 @@
           <!-- Columna derecha Descripción y botones -->
           <div class="modal-col col-right">
             <div class="form-group group-full">
-              <label>✏️ Descripción</label>
-              <textarea placeholder="Ingresar descripción..."></textarea>
+              <label><i class="bi bi-pencil-square"></i> Descripción</label>
+              <textarea formControlName="descripcion" placeholder="Ingresar descripción..."></textarea>
             </div>
 
-            <!-- Botones de cerrar y cancelar -->
+            <!-- Mensaje de error general -->
+            @if (mensajeError) {
+  <p class="error">{{ mensajeError }}</p>
+}
+
+            <!-- Botones de cancelar y crear -->
             <div class="modal-actions">
-              <button type="submit" value="cancel" class="btn-cancel">Cancelar</button>
-              <button type="submit" value="default" class="btn-submit">Crear</button>
+            <button type="button" class="btn-cancel" (click)="cerrarModal()">Cancelar</button>
+              <button type="submit" class="btn-submit" (click)="agregarEvento()">Crear</button>
             </div>
           </div>
 
         </form>
       </div>
-    </dialog>
-    <!--cierre del formulario modal-->
+    </dialog>  
+<!--aca termina el modal-->
 
-    <!-- Navegación de Fechas -->
-    <div class="agenda-nav">
-      <div class="nav-left">
-        <button class="btn">hoy</button>
-        <button class="btn">&lt;</button>
-        <button class="btn">&gt;</button>
+
+<!--seccion que va a mostrar los eventos mas cercanos a la fecha-->
+<section class="seccionAbajo">
+ <div class="proximos-lista">
+  <h3><i class="bi bi-calendar4-week"></i><b>Proximos eventos</b></h3>
+    @for (ev of Proximosevent; track ev.id) {
+      <div class="proximo" [attr.dato-cat]="ev.categoria">
+        <span class="fecha" class="hora">{{ formatoFecha(ev.fecha) }}- {{ ev.hora }} hs</span>
+        <span class="titulo">{{ ev.titulo }}</span>
+        <p class="descripcion">{{ ev.descripcion }}</p>
       </div>
-      <div class="nav-center">
-        <h2>26 mayo - 1 junio 2026</h2>
-      </div>
-      <div class="nav-right">
-        <button class="btn">Día</button>
-        <button class="btn active">Semana</button>
-        <button class="btn">mes</button>
-      </div>
-    </div>
-
-    <!-- Agenda Semanal en estructura de tabla -->
-    <table class="agenda-table">
-      <thead>
-        <tr> <!--dentro del thead los tr con los dias de la semana-->
-          <th class="cell cell-header cell-time-header"></th>
-          <th class="cell cell-header">Lunes 26/05</th>
-          <th class="cell cell-header">Martes 27/05</th>
-          <th class="cell cell-header wed">Miércoles 28/05</th>
-          <th class="cell cell-header">Jueves 29/05</th>
-          <th class="cell cell-header">Viernes 30/05</th>
-          <th class="cell cell-header sat">Sábado 31/05</th>
-          <th class="cell cell-header sun">Domingo 01/06</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Fila 8:00 -->
-        <tr>
-          <td class="cell cell-time">8:00</td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-        </tr>
-
-        <!-- Fila 9:00 -->
-        <tr>
-          <td class="cell cell-time">9:00</td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-        </tr>
-
-        <!-- Fila 10:00 -->
-        <tr>
-          <td class="cell cell-time">10:00</td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-        </tr>
-
-        <!-- Fila 11:00 -->
-        <tr>
-          <td class="cell cell-time">11:00</td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-        </tr>
-
-        <!-- Fila 12:00 -->
-        <tr>
-          <td class="cell cell-time">12:00</td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell">
-            <div class="cal-event cal-event-yellow">
-              <strong>12:00-13:00</strong><br>Seguimiento cliente<br>cliente:Todo hogar
-            </div>
-          </td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-        </tr>
-
-        <!-- Fila 13:00 -->
-        <tr>
-          <td class="cell cell-time">13:00</td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-          <td class="cell"></td>
-        </tr>
-      </tbody>
-    </table>
-
-  </div> <!--cierre del contenedor de agenda-->
-
-  <!-- seccion inferior -->
-  <div class="bottom-section">
-    
-    <!-- Próximos Eventos -->
-    <div class="card">
-      <div class="events-list-header">
-        <h3><i class="bi bi-calendar-date-fill"></i> Próximos eventos</h3>
-        <a href="#" class="view-all">Ver agenda completa</a>
-      </div>
-      <div class="event-row">
-        <div class="event-info">
-          <div class="dot dot-yellow"></div>
-          <div class="event-details">
-            <!-- Detalles del evento si fuera necesario -->
-          </div>
-        </div>
-        <div class="event-actions">
-          <button class="btn-edit">✏️</button>
-          <button class="btn-delete">Eliminar</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sidebar (Filtros) -->
-    <div class="sidebar">
-      <div class="card">
-        <h3><i class="bi bi-funnel-fill"></i> Filtros</h3>
-        <div class="filter-group">
-          <label>tipo de evento</label>
-          <select class="filter-select">
-            <option>todos</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label>categoría</label>
-          <select class="filter-select">
-            <option>todas</option>
-          </select>
-        </div>
-        <div class="checkbox-container">
-          <input type="checkbox" id="mis-eventos">
-          <label for="mis-eventos">Mostrar solo mis eventos</label>
-        </div>
-      </div>
-    </div>
-
+    } @empty {
+      <p>No hay eventos próximos.</p>
+    }
+ </div>
+  <div class="filtro">
+    <label for="filtroCat"><i class="bi bi-funnel"></i>   Filtrar eventos</label>
+    <select id="filtroCat" (change)="filtrar($event)">
+      <option value="">Todas</option>
+      <option value="alta">Alta</option>
+      <option value="media">Media</option>
+      <option value="baja">Baja</option>
+    </select>
   </div>
+</section>
 
 </div>
-
-</body>
-</html>
