@@ -89,7 +89,7 @@ export class Agenda {
 
   // texto del encabezado, ej: "octubre de 2026"
   get tituloMes(): string {
-    return this.mesActual.toLocaleDateString('es-AR', {day: 'numeric', month: 'long', year: 'numeric' });
+    return this.mesActual.toLocaleDateString('es-AR', { month: 'long', year: 'numeric' });
   }
 
   esHoy(dia: Date): boolean {
@@ -171,7 +171,6 @@ export class Agenda {
   }
 
 
-  // guarda en Proximosevent los eventos de hoy en adelante, ordenados
 
 
 // pasa "2026-10-16" a "16/10/2026" para mostrarlo
@@ -188,10 +187,18 @@ filtrar(e: Event) {
 }
 
 actualizarProximos() {
-  const hoy = this.fechaTexto(new Date());
+  // 1. Creamos la fecha de hoy
+  const hoy = new Date();
+  const hoyStr = this.fechaTexto(hoy);
 
+  // 2. Creamos la fecha de dentro de 7 días
+  const semana = new Date();
+  semana.setDate(hoy.getDate() + 7);
+  const semanaStr = this.fechaTexto(semana);
+
+  // 3. Filtramos los eventos entre hoy y la próxima semana
   this.Proximosevent = this.eventos
-    .filter(ev => ev.fecha >= hoy)
+    .filter(ev => ev.fecha >= hoyStr && ev.fecha <= semanaStr)
     .filter(ev => this.filtroCategoria === '' || ev.categoria === this.filtroCategoria)
     .sort((a, b) => (a.fecha + a.hora).localeCompare(b.fecha + b.hora));
 }

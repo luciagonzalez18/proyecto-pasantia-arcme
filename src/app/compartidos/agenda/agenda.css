@@ -1,3 +1,4 @@
+
 :host {
   --tinta: #1d2733;
   --suave: #6b7785;
@@ -9,8 +10,11 @@
   display: block;
 }
 .contenedor {
-  max-width: 1000px;
-  margin: 20px;
+  width: 100%;
+    max-width: none;
+    margin: 45px 0;
+    padding: 0 35px;
+    box-sizing: border-box;
 }
 .agenda {  padding: 16px; }
 

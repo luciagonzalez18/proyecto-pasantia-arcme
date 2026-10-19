@@ -124,6 +124,8 @@
         <span class="fecha" class="hora">{{ formatoFecha(ev.fecha) }}- {{ ev.hora }} hs</span>
         <span class="titulo">{{ ev.titulo }}</span>
         <p class="descripcion">{{ ev.descripcion }}</p>
+         <button>eliminar</button>
+    <button>editar</button>
       </div>
     } @empty {
       <p>No hay eventos próximos.</p>
@@ -137,6 +139,7 @@
       <option value="media">Media</option>
       <option value="baja">Baja</option>
     </select>
+   
   </div>
 </section>
 
