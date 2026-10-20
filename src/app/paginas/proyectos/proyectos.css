@@ -6,7 +6,7 @@
 }
 
 .titulo p {
-     margin: 4px 0 0 0;
+    margin: 4px 0 0 0;
 
     color: #777777;
     font-size: 16px;
@@ -32,6 +32,7 @@
     cursor: pointer;
     transition: 0.2s ease;
 }
+
 .boton_agregarProyecto:hover {
     background-color: #245865;
 }
@@ -43,6 +44,7 @@
 .boton_agregarProyecto i {
     font-size: 16px;
 }
+
 .dropdown button {
     border-radius: 15px;
 }
@@ -123,7 +125,7 @@
 }
 
 .navegacion form input[type="search"] {
-   height: 50px;
+    height: 50px;
 
     min-width: 260px;
 
@@ -286,6 +288,28 @@
 .card .datos button:active {
     transform: scale(0.97);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* --- Responsive (Móviles) --- */
 @media (max-width: 768px) {
     .navegacion {

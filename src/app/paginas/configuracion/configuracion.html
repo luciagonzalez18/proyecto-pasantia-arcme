@@ -20,8 +20,16 @@
     <!-- ============================= -->
     <aside>
         <!-- aside representa una sección lateral de la página -->
+        <div class="titulo-contenido volver">
+            <div class="contenido">
+                <i class="bi bi-arrow-left" style="padding-bottom: 14px; margin-left: 15px; cursor: pointer"
+                    routerLink="/proyectos"></i>
+                <p class="titulo-volver">Configuración</p>
+            </div>
 
-        <h2><b>Configuración</b></h2>
+
+        </div>
+
         <!-- Título del menú -->
 
         <p class="titulo">Mi cuenta</p>
@@ -77,8 +85,8 @@
                     <!--Hacemos que al tocar el botón se abra el selector de archivos -->
                     <input type="file" style="display: none;">
                     <i class="bi bi-card-image"></i>
-    
-                   
+
+
                 </button>
                 <!-- Botón azul para cargar el logo -->
 
@@ -102,14 +110,23 @@
             <!--          FORMULARIO            -->
             <!-- ============================= -->
 
-            <form>
+            <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
                 <!-- form representa el formulario -->
 
 
                 <label><span style="color: red;">*</span> Nombre</label>
                 <!-- Texto que está arriba del campo (con el span colocamos el * en rojo) -->
 
-                <input type="text" placeholder="Ingrese nombre">
+                <input type="text" placeholder="Ingrese nombre" formControlName="nombre">
+                @if (formulario.controls.nombre.invalid && formulario.controls.nombre.touched) {
+                @if (formulario.controls.nombre.hasError('required') && formulario.controls.nombre.touched) {
+                <small>Ingrese un nombre</small>
+                }
+                }@else if (formulario.controls.nombre.hasError('maxlength')) {
+                <small>El nombre no puede superar los 12 caracteres</small>
+                }
+
+
                 <!-- Campo para escribir el nombre.
                      value="Octavio" hace que aparezca Octavio -->
 
@@ -127,14 +144,31 @@
 
                 <label>Correo electrónico</label>
 
-                <input type="email" placeholder="Ingrese correo electronico">
+                <input type="email" placeholder="Ingrese correo electronico" formControlName="correo">
                 <!-- Campo para escribir un correo -->
+
+                @if (formulario.controls.correo.hasError('email') && formulario.controls.correo.touched) {
+                <small>Ingrese un correo electronico valido</small>
+                }
 
 
                 <label>Teléfono</label>
 
-                <input type="tel" placeholder="Ingrese numero de teléfono">
+                <input type="tel" placeholder="Ingrese numero de teléfono" formControlName="telefono">
                 <!-- Campo para escribir un teléfono -->
+                @if (formulario.controls.telefono.invalid && formulario.controls.telefono.touched) {
+
+                @if (formulario.controls.telefono.hasError('minlength') ) {
+                <small>El numero de telefono debe tener al menos 10 digitos</small>
+                }@else if (formulario.controls.telefono.hasError('pattern') ) {
+                <small>Ingrese un numero de telefono valido</small>
+                }
+                }
+
+
+
+
+
 
 
                 <!-- ============================= -->
@@ -148,7 +182,7 @@
                         Descartar
                     </button>
 
-                    <button type="button" class="guardar" disabled>
+                    <button type="button" class="guardar" [disabled]="formulario.invalid" (click)="onSubmit()">
                         Guardar cambios
                     </button>
 
