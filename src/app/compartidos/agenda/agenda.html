@@ -1,146 +1,143 @@
 <div class="contenedor">
-<section class="agenda">
-  <header class="barra">
-    
-     <span class="titulo-agenda">Agenda</span>
-    <h1>{{ tituloMes }}</h1>
-    <div class="controles">
-      <button type="button" (click)="cambiarMes(-1)" aria-label="Mes anterior">‹</button>
-      <button type="button" (click)="irAHoy()">Hoy</button>
-      <button type="button" (click)="cambiarMes(1)" aria-label="Mes siguiente">›</button>
-      <button type="button" class="primario" (click)="abrirModal()">Nuevo evento</button>
-    </div>
-  </header>
+  <section class="agenda">
+    <header class="barra">
 
-  <div class="grilla">
-    @for (n of nombresDias; track n) {
+      <span class="titulo-agenda">Agenda</span>
+      <h1>{{ tituloMes }}</h1>
+      <div class="controles">
+        <button type="button" (click)="cambiarMes(-1)" aria-label="Mes anterior">‹</button>
+        <button type="button" (click)="irAHoy()">Hoy</button>
+        <button type="button" (click)="cambiarMes(1)" aria-label="Mes siguiente">›</button>
+        <button type="button" class="primario" (click)="abrirModal()">Nuevo evento</button>
+      </div>
+    </header>
+
+    <div class="grilla">
+      @for (n of nombresDias; track n) {
       <div class="cabecera">{{ n }}</div>
-    }
-
-    @for (dia of dias; track $index) {
-      @if (dia) {
-        <div
-          class="celda"
-          [class.hoy]="esHoy(dia)"
-          tabindex="0"
-          (click)="abrirModal(dia)"
-          (keydown.enter)="abrirModal(dia)"
-        >
-          <span class="numero">{{ dia.getDate() }}</span>
-
-          @for (ev of eventosDelDia(dia); track ev.id) {
-            <div class="evento" [attr.dato-cat]="ev.categoria" [title]="ev.descripcion">
-              <span class="texto"><b>{{ ev.hora }}</b> {{ ev.titulo }}</span>
-              <button
-                type="button"
-                class="borrar"
-                aria-label="Eliminar evento"
-                (click)="eliminar(ev.id, $event)"
-              >×</button>
-            </div>
-          }
-        </div>
-      } @else {
-        <div class="celda vacia"></div>
       }
-    }
-  </div>
-</section>
 
-<!--aca empieza el modal-->
-<dialog #modal id="modal-nuevo-evento" class="modal-dialog">
-      <div class="modal-content">
-        
-        <!-- Encabezado del modal -->
-        <div class="modal-header">
-          <h2><i class="bi bi-calendar"></i> Nuevo evento</h2>
-          <form method="dialog">
-            <button class="btn-close" aria-label="Cerrar">✕</button>
-          </form>
+      @for (dia of dias; track $index) {
+      @if (dia) {
+      <div class="celda" [class.hoy]="esHoy(dia)" tabindex="0" (click)="abrirModal(dia)"
+        (keydown.enter)="abrirModal(dia)">
+        <span class="numero">{{ dia.getDate() }}</span>
+
+        @for (ev of eventosDelDia(dia); track ev.id) {
+        <div class="evento" [attr.dato-cat]="ev.categoria" [title]="ev.descripcion">
+          <span class="texto"><b>{{ ev.hora }}</b> {{ ev.titulo }}</span>
+          <button type="button" class="borrar" aria-label="Eliminar evento" ></button>
         </div>
+        }
+      </div>
+      } @else {
+      <div class="celda vacia"></div>
+      }
+      }
+    </div>
+  </section>
 
-        <!-- Cuerpo con el formulario -->
-        <form [formGroup]="eventoForm"  class="modal-body">
-          
-          <!-- Columna Izquierda inputs -->
-          <div class="modal-col">
-            <div class="form-group">
-              <label><i class="bi bi-pencil"></i> Título</label>
-              <input type="text" formControlName="titulo" placeholder="Ingresar título">
-            </div>
+  <!--aca empieza el modal-->
+  <dialog #modal id="modal-nuevo-evento" class="modal-dialog">
+    <div class="modal-content">
 
-            <div class="form-group">
-              <label><i class="bi bi-calendar2-week"></i> Fecha</label>
-              <input type="date" formControlName="fecha">
-            </div>
-
-            <div class="form-group">
-              <label><i class="bi bi-stopwatch"></i> Hora</label>
-              <input type="time" formControlName="hora">
-            </div>
-
-            <div class="form-group">
-              <label><i class="bi bi-filter"></i>Categoría</label>
-              <select formControlName="categoria">
-                <option value="" disabled selected>Seleccione una prioridad</option>
-                <option value="alta">Alta</option>
-                <option value="media">Media</option>
-                <option value="baja">baja  </option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Columna derecha Descripción y botones -->
-          <div class="modal-col col-right">
-            <div class="form-group group-full">
-              <label><i class="bi bi-pencil-square"></i> Descripción</label>
-              <textarea formControlName="descripcion" placeholder="Ingresar descripción..."></textarea>
-            </div>
-
-            <!-- Mensaje de error general -->
-            @if (mensajeError) {
-  <p class="error">{{ mensajeError }}</p>
-}
-
-            <!-- Botones de cancelar y crear -->
-            <div class="modal-actions">
-            <button type="button" class="btn-cancel" (click)="cerrarModal()">Cancelar</button>
-              <button type="submit" class="btn-submit" (click)="agregarEvento()">Crear</button>
-            </div>
-          </div>
-
+      <!-- Encabezado del modal -->
+      <div class="modal-header">
+        <h2><i class="bi bi-calendar"></i> Nuevo evento</h2>
+        <form method="dialog">
+          <button class="btn-close" aria-label="Cerrar">✕</button>
         </form>
       </div>
-    </dialog>  
-<!--aca termina el modal-->
+
+      <!-- Cuerpo con el formulario -->
+      <form [formGroup]="eventoForm" class="modal-body">
+
+        <!-- Columna Izquierda inputs -->
+        <div class="modal-col">
+          <div class="form-group">
+            <label><i class="bi bi-pencil"></i> Título</label>
+            <input type="text" formControlName="titulo" placeholder="Ingresar título">
+          </div>
+
+          <div class="form-group">
+            <label><i class="bi bi-calendar2-week"></i> Fecha</label>
+            <input type="date" formControlName="fecha">
+          </div>
+
+          <div class="form-group">
+            <label><i class="bi bi-stopwatch"></i> Hora</label>
+            <input type="time" formControlName="hora">
+          </div>
+
+          <div class="form-group">
+            <label><i class="bi bi-filter"></i>Categoría</label>
+            <select formControlName="categoria">
+              <option value="" disabled selected>Seleccione una prioridad</option>
+              <option value="alta">Alta</option>
+              <option value="media">Media</option>
+              <option value="baja">baja </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Columna derecha Descripción y botones -->
+        <div class="modal-col col-right">
+          <div class="form-group group-full">
+            <label><i class="bi bi-pencil-square"></i> Descripción</label>
+            <textarea formControlName="descripcion" placeholder="Ingresar descripción..."></textarea>
+          </div>
+
+          <!-- Mensaje de error general -->
+          @if (mensajeError) {
+          <p class="error">{{ mensajeError }}</p>
+          }
+
+          <!-- Botones de cancelar y crear -->
+          <div class="modal-actions">
+            <button type="button" class="btn-cancel" (click)="cerrarModal()">Cancelar</button>
+            <button type="submit" class="btn-submit" (click)="agregarEvento()">Crear</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </dialog>
+  <!--aca termina el modal-->
 
 
-<!--seccion que va a mostrar los eventos mas cercanos a la fecha-->
-<section class="seccionAbajo">
- <div class="proximos-lista">
-  <h3><i class="bi bi-calendar4-week"></i><b>Proximos eventos</b></h3>
-    @for (ev of Proximosevent; track ev.id) {
+  <!--seccion que va a mostrar los eventos mas cercanos a la fecha-->
+  <section class="seccionAbajo">
+    <!--<div class="proximos-lista">
+      <h3><i class="bi bi-calendar4-week"></i><b>Proximos eventos</b></h3>
+      @for (ev of Proximosevent; track ev.id) {
       <div class="proximo" [attr.dato-cat]="ev.categoria">
-        <span class="fecha" class="hora">{{ formatoFecha(ev.fecha) }}- {{ ev.hora }} hs</span>
-        <span class="titulo">{{ ev.titulo }}</span>
-        <p class="descripcion">{{ ev.descripcion }}</p>
-         <button>eliminar</button>
-    <button>editar</button>
+        <div class="info">
+          <span class="fecha" class="hora">{{ formatoFecha(ev.fecha) }}- {{ ev.hora }} hs</span>
+          <span class="titulo">{{ ev.titulo }}</span>
+          <p class="descripcion">{{ ev.descripcion }}</p>
+        </div>
+
+        <div class="indexBotones">
+          <button class="btn-eliminar" (click)="eliminar(ev.id, $event)"><i class="bi bi-trash"></i></button>
+          <button class="btn-editar" (click)="editar(ev, $event)"><i class="bi bi-pencil-square"></i></button>
+        </div>
+
       </div>
-    } @empty {
+      } @empty {
       <p>No hay eventos próximos.</p>
-    }
- </div>
-  <div class="filtro">
-    <label for="filtroCat"><i class="bi bi-funnel"></i>   Filtrar eventos</label>
-    <select id="filtroCat" (change)="filtrar($event)">
-      <option value="">Todas</option>
-      <option value="alta">Alta</option>
-      <option value="media">Media</option>
-      <option value="baja">Baja</option>
-    </select>
-   
-  </div>
-</section>
+      }
+    </div>
+  -->
+    <div class="filtro">
+      <label for="filtroCat"><i class="bi bi-funnel"></i> Filtrar eventos</label>
+     <!--<select id="filtroCat" (change)="filtrar($event)">
+        <option value="">Todas</option>
+        <option value="alta">Alta</option>
+        <option value="media">Media</option>
+        <option value="baja">Baja</option>
+      </select>
+    --> 
+    </div>
+  </section>
 
 </div>

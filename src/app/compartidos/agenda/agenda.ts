@@ -17,26 +17,29 @@ export interface EventoAgenda {
   templateUrl: './agenda.html',
   styleUrl: './agenda.css',
 })
-export class Agenda {
+export class Agenda implements OnInit {
   //modal empieza en false cuando tocas el boton de nuevo evento cambia a true
-@ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
+  @ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
+
+  // direccion de la api php
+  private readonly API_URL = 'http://localhost/api/agregarEvento.php';
 
   // ---- datos del calendario ----
 
-    //el arreglo eventos arranca vacío y es de tipo EventoAgenda
-  eventos: EventoAgenda[] = [];         
+  //el arreglo eventos arranca vacío y es de tipo EventoAgenda
+  eventos: EventoAgenda[] = [];
 
   // guarda una fecha cualquiera del mes que se
   //esta viendo
-  mesActual: Date = new Date();  
+  mesActual: Date = new Date();
 
-  //es la lista de casillas de la agenda  null es un casillero vacio               
-  dias: (Date | null)[] = [];         
+  //es la lista de casillas de la agenda  null es un casillero vacio
+  dias: (Date | null)[] = [];
 
-  //arreglo con los dias de la semana  
+  //arreglo con los dias de la semana
   nombresDias = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
 
-   Proximosevent:EventoAgenda[]=[];
+  Proximosevent: EventoAgenda[] = [];
 
   // validación de los campos del formulario de agregar evento
   eventoForm = new FormGroup({
@@ -48,14 +51,15 @@ export class Agenda {
   });
 
   mensajeError: string = '';
-// angular ejecuta una sola vez el metodo generarmes
+  idEditando: number | null = null;
+
+  // angular ejecuta una sola vez el metodo generarmes
   ngOnInit() {
     this.generarMes();
     this.actualizarProximos();
   }
 
   //logica del calendario
-
 
   // arma la lista de celdas del mes: primero las vacías, después los días
   generarMes() {
@@ -72,9 +76,6 @@ export class Agenda {
     for (let i = 0; i < celdasVacias; i++) this.dias.push(null);
     for (let d = 1; d <= cantidadDias; d++) this.dias.push(new Date(anio, mes, d));
   }
-
-
-
 
   // navegación: no hay límite de meses para adelante ni para atrás
   cambiarMes(n: number) {
@@ -101,8 +102,8 @@ export class Agenda {
     const fechaStr = this.fechaTexto(dia);
     return this.eventos
 
-    // filtra todos los eventos que son del mismo dia y los muestra en su casilla
-    //correspondiente
+      // filtra todos los eventos que son del mismo dia y los muestra en su casilla
+      //correspondiente
       .filter(ev => ev.fecha === fechaStr)
       //sort es para ordenar compara dos objetos a y b
       .sort((a, b) => a.hora.localeCompare(b.hora));
@@ -111,8 +112,8 @@ export class Agenda {
   // convierte una fecha en el formato dia-mes-año
   fechaTexto(fecha: Date): string {
     const yyyy = fecha.getFullYear();
-    const mm = String(fecha.getMonth() + 1).padStart(2, '0')// padstart asegura q tenga dos caracteres si tiene uno pone un 0
-    const dd = String(fecha.getDate()).padStart(2, '0');// adelante por ejemplo 01/09
+    const mm = String(fecha.getMonth() + 1).padStart(2, '0'); // padstart asegura q tenga dos caracteres si tiene uno pone un 0
+    const dd = String(fecha.getDate()).padStart(2, '0');      // adelante por ejemplo 01/09
     return `${yyyy}-${mm}-${dd}`;
   }
 
@@ -120,6 +121,7 @@ export class Agenda {
 
   // si viene un día (clic en una celda) la fecha queda cargada en el formulario
   abrirModal(dia?: Date) {
+    this.idEditando = null;
     this.mensajeError = '';
     this.eventoForm.reset({
       titulo: '',
@@ -134,8 +136,9 @@ export class Agenda {
   cerrarModal() {
     this.modal.nativeElement.close();
   }
-//aca abajo esta la logica que crea y  agrega el evento al formulario
-  agregarEvento() {
+
+  //aca abajo esta la logica que crea y agrega el evento (al formulario, a la base y a la pantalla)
+  async agregarEvento() {
     if (this.eventoForm.invalid) {
       this.mensajeError = 'Por favor completá todos los campos obligatorios';
       return;
@@ -143,21 +146,65 @@ export class Agenda {
 
     this.mensajeError = '';
 
+    // objeto normal con los datos del formulario (lo usamos para la pantalla)
     const valores = this.eventoForm.value;
-    const nuevoEvento: EventoAgenda = {
-      id: Date.now(),
-      titulo: valores.titulo ?? '',
-      fecha: valores.fecha ?? '',
-      hora: valores.hora ?? '',
-      categoria: valores.categoria ?? '',
-      descripcion: valores.descripcion ?? ''
+    const datos = {
+      titulo: valores.titulo || '',
+      fecha: valores.fecha || '',
+      hora: valores.hora || '',
+      categoria: valores.categoria || '',
+      descripcion: valores.descripcion || ''
     };
 
-    this.eventos.push(nuevoEvento);
+    if (this.idEditando !== null) {
+      // editando: reemplaza los datos del evento que tiene ese id
+      // (ojo: esto solo cambia la pantalla, falta un php para actualizar la base)
+      this.eventos = this.eventos.map(ev =>
+        ev.id === this.idEditando ? { ...ev, ...datos } : ev
+      );
+    } else {
+      // nuevo evento: primero se manda a la base de datos
+      // FormData es solo para enviar a php, por eso se arma aparte
+      const formData = new FormData();
+      formData.append('titulo', datos.titulo);
+      formData.append('fecha', datos.fecha);
+      formData.append('hora', datos.hora);
+      formData.append('categoria', datos.categoria);
+      formData.append('descripcion', datos.descripcion);
+
+      try {
+        const respuesta = await fetch(this.API_URL, {
+          method: 'POST',
+          body: formData
+        });
+
+        if (!respuesta.ok) {
+          throw new Error('Error del servidor: ' + respuesta.status);
+        }
+
+        // si el php devuelve el id del evento nuevo en un json ({"id": 5}) lo usamos,
+        // si no devuelve nada, usamos Date.now() como antes
+        let id = Date.now();
+        try {
+          const json = await respuesta.json();
+          if (json && json.id) id = Number(json.id);
+        } catch {
+          // el php no devolvió json, no pasa nada
+        }
+
+        // solo si se guardó bien en la base, lo agregamos a la pantalla
+        this.eventos.push({ id, ...datos });
+      } catch (error) {
+        console.error(error);
+        this.mensajeError = 'No se pudo guardar el evento. Revisá que el servidor esté funcionando';
+        return; // no cerramos el modal para que no pierda lo que escribió
+      }
+    }
+
+    this.idEditando = null;
     this.actualizarProximos();
 
-    // si el evento es de otro mes, mostramos ese mes para que se vea
-    const [anio, mes] = nuevoEvento.fecha.split('-').map(Number);
+    const [anio, mes] = datos.fecha.split('-').map(Number);
     this.mesActual = new Date(anio, mes - 1, 1);
     this.generarMes();
 
@@ -170,41 +217,47 @@ export class Agenda {
     this.actualizarProximos();
   }
 
+  // pasa "2026-10-16" a "16/10/2026" para mostrarlo
+  formatoFecha(fecha: string): string {
+    return fecha.split('-').reverse().join('/');
+  }
 
+  //logica del filtro por categoria
+  filtroCategoria: string = '';
 
+  filtrar(e: Event) {
+    this.filtroCategoria = (e.target as HTMLSelectElement).value;
+    this.actualizarProximos();
+  }
 
-// pasa "2026-10-16" a "16/10/2026" para mostrarlo
-formatoFecha(fecha: string): string {
-  return fecha.split('-').reverse().join('/');
-}
+  actualizarProximos() {
+    // 1. Creamos la fecha de hoy
+    const hoy = new Date();
+    const hoyStr = this.fechaTexto(hoy);
 
-//logica del filtro por categoria 
-filtroCategoria: string = '';
+    // 2. Creamos la fecha de dentro de 7 días
+    const semana = new Date();
+    semana.setDate(hoy.getDate() + 7);
+    const semanaStr = this.fechaTexto(semana);
 
-filtrar(e: Event) {
-  this.filtroCategoria = (e.target as HTMLSelectElement).value;
-  this.actualizarProximos();
-}
+    // 3. Filtramos los eventos entre hoy y la próxima semana
+    this.Proximosevent = this.eventos
+      .filter(ev => ev.fecha >= hoyStr && ev.fecha <= semanaStr)
+      .filter(ev => this.filtroCategoria === '' || ev.categoria === this.filtroCategoria)
+      .sort((a, b) => (a.fecha + a.hora).localeCompare(b.fecha + b.hora));
+  }
 
-actualizarProximos() {
-  // 1. Creamos la fecha de hoy
-  const hoy = new Date();
-  const hoyStr = this.fechaTexto(hoy);
-
-  // 2. Creamos la fecha de dentro de 7 días
-  const semana = new Date();
-  semana.setDate(hoy.getDate() + 7);
-  const semanaStr = this.fechaTexto(semana);
-
-  // 3. Filtramos los eventos entre hoy y la próxima semana
-  this.Proximosevent = this.eventos
-    .filter(ev => ev.fecha >= hoyStr && ev.fecha <= semanaStr)
-    .filter(ev => this.filtroCategoria === '' || ev.categoria === this.filtroCategoria)
-    .sort((a, b) => (a.fecha + a.hora).localeCompare(b.fecha + b.hora));
-}
-
-
-
-
-
+  editar(ev: EventoAgenda, e: Event) {
+    e.stopPropagation();
+    this.idEditando = ev.id;
+    this.mensajeError = '';
+    this.eventoForm.setValue({
+      titulo: ev.titulo,
+      fecha: ev.fecha,
+      hora: ev.hora,
+      categoria: ev.categoria,
+      descripcion: ev.descripcion
+    });
+    this.modal.nativeElement.showModal();
+  }
 }

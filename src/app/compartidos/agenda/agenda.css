@@ -318,3 +318,34 @@ button:focus-visible, .celda:focus-visible {
   margin-bottom: 12px;   /* antes 6px, subilo hasta que te guste */
   font-weight: bold;
 }
+
+  .proximo {
+  display: flex;
+  justify-content: space-between; /* info a la izquierda, botones a la derecha */
+  align-items: center;            /* centrados verticalmente */
+  gap: 12px;
+}
+
+.proximo .info {
+  flex: 1;                        /* ocupa todo el espacio disponible */
+}
+
+.proximo .indexBotones {
+  display: flex;
+  flex-direction: column;         /* uno debajo del otro */
+  gap: 8px;
+}
+.btn-eliminar {
+ background: transparent; /* Quita el color de fondo */
+  border: none;            /* Quita el borde predeterminado */
+  padding: 0;             /* Quita el espacio interno si es necesario */
+  cursor: pointer;         /* Mantiene la manito al pasar el mouse */
+
+}
+.btn-editar{
+ background: transparent; /* Quita el color de fondo */
+  border: none;            /* Quita el borde predeterminado */
+  padding: 0;             /* Quita el espacio interno si es necesario */
+  cursor: pointer;         /* Mantiene la manito al pasar el mouse */
+
+}
