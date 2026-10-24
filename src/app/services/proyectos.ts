@@ -9,7 +9,7 @@ export class ProyectosService {
 
   private http = inject(HttpClient);
 
-  private apiUrl = '/apiArcme/public/index.php/proyectos';
+  private apiUrl = '/api_proyectoLucia/public/index.php/proyectos';
 
   listar() {
     return this.http.get(this.apiUrl);

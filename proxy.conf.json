@@ -1,6 +1,6 @@
 
 {
-  "/apiArcme": {
+  "/api_proyectoLucia": {
     "target": "http://localhost",
     "secure": false,
     "changeOrigin": true,
