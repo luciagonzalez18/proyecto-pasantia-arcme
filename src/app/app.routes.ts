@@ -11,9 +11,8 @@ import { Personalizacion } from './paginas/personalizacion/personalizacion';
 import { Porfolio } from './paginas/porfolio/porfolio';
 import { Ingresos } from './paginas/ingresos/ingresos';
 import { Agenda } from './compartidos/agenda/agenda';
-import { Porfolio } from './paginas/porfolio/porfolio';
 import { PreguntasFrecuentes } from './compartidos/preguntas-frecuentes/preguntas-frecuentes';
-import { Ingresos } from './paginas/ingresos/ingresos';
+
 
 export const routes: Routes = [
     { path: '', redirectTo: 'inicio', pathMatch: 'full' },

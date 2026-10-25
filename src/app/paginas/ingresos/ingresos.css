@@ -8,12 +8,50 @@
     margin: 45px 0;
     padding: 0 35px;
     box-sizing: border-box;
-    
+}
+
+/* =========================================
+   CABECERA (HEADER) Y BOTÓN PRINCIPAL
+   ========================================= */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+    flex-wrap: wrap; 
+    gap: 20px;
 }
 
 
+.header button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 21px;
+    background-color: #2f6f7e;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s ease;
+    white-space: nowrap;
+}
+
+.header button:hover {
+    background-color: #245865;
+}
+
+.header button:active {
+    transform: scale(0.97);
+}
+
+.header button i {
+    font-size: 16px;
+}
+
 /* =========================================
-   TITULO
+   TITULO Y DESCRIPCIÓN
    ========================================= */
 
 h1 {
@@ -26,6 +64,8 @@ h1 {
 .descripcion {
     color: #666;
     font-size: 15px;
+    margin-top: 5px;
+    margin-bottom: 0;
 }
 
 
@@ -434,6 +474,128 @@ h1 {
 
 
 /* =========================================
+   MODALES Y FORMULARIOS (ESTILOS BOOTSTRAP)
+   ========================================= */
+
+.modal-dialog {
+    max-width: 950px;
+}
+
+.modal-content {
+    border: none;
+    border-radius: 13px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 23px 28px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e1e5e8;
+}
+
+.modal-title {
+    margin: 0;
+    color: #2f3e46;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.modal-header .btn-close {
+    opacity: 0.6;
+    transform: scale(1.1);
+}
+
+.modal-header .btn-close:hover {
+    opacity: 1;
+}
+
+.modal-body {
+    padding: 28px 34px;
+    background-color: white;
+}
+
+.modal-body .form-label {
+    margin-bottom: 8px;
+    color: #2f3e46;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* Hace que los inputs de cuotas sean más cortos y elegantes */
+.input-cuota {
+    max-width: 90px;
+}
+
+/* Inputs generales del modal y datalist */
+.modal-body .form-control {
+    padding: 12px 16px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 9px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-body .form-control:focus {
+    border-color: #2f6f7e;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(47, 111, 126, 0.25);
+}
+
+.modal-body .form-control::placeholder {
+    color: #adb5bd;
+}
+
+.modal-body .row {
+    margin-bottom: 3px;
+}
+
+.modal-footer {
+    padding: 19px 28px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e1e5e8;
+}
+
+.modal-footer .btn {
+    min-width: 100px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.modal-footer .btn-primary {
+    background-color: #2f6f7e;
+    border-color: #2f6f7e;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #245865;
+    border-color: #245865;
+}
+
+.modal-footer .btn-primary:active {
+    transform: scale(0.97);
+}
+
+.modal-footer .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #5c636a;
+}
+
+.modal-footer .btn-secondary:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================
    BOTON VER CLIENTE
    ========================================= */
 
@@ -456,18 +618,13 @@ h1 {
 
 
 /* =========================================
-   FECHAS
+   FECHAS Y OBRA (TABLA CLIENTES)
    ========================================= */
 
 .tabla-clientes td:nth-child(4) {
     color: #6b7280;
     font-size: 13px;
 }
-
-
-/* =========================================
-   OBRA
-   ========================================= */
 
 .tabla-clientes td:nth-child(2) {
     color: #6b7280;
@@ -479,7 +636,6 @@ h1 {
    ========================================= */
 
 @media (max-width: 900px) {
-
     .parte-superior {
         flex-direction: column;
     }

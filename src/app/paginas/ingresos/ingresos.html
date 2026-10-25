@@ -1,13 +1,20 @@
 <div class="container">
-    <h1>Ingresos</h1>
-    <p class="descripcion">Registro de ingresos mensuales de los clientes y resumen general.</p>
+    <div class="header">
+        <div class="header-info">
+            <h1>Ingresos</h1>
+            <p class="descripcion">Registro de ingresos mensuales de los clientes y resumen general.</p>
+        </div>
+        <button data-bs-toggle="modal" data-bs-target="#formIngresoModal">
+            <i class="bi bi-plus-lg"></i> Agregar ingreso
+        </button>
+    </div>
 
     <!-- PARTE SUPERIOR -->
     <div class="parte-superior">
 
         <!-- INGRESOS MENSUALES -->
         <div class="ingresos">
-            <h2><i class="bi bi-currency-dollar"></i>  Ingresos mensuales de clientes</h2>
+            <h2><i class="bi bi-currency-dollar"></i> Ingresos mensuales de clientes</h2>
 
             <table>
                 <tr>
@@ -126,6 +133,91 @@
 
     </div>
 
+    <div class="modal fade" id="formIngresoModal" tabindex="-1" aria-labelledby="formIngresoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+
+            <!-- El form envuelve todo el contenido del modal -->
+            <form id="formNuevoIngreso" method="POST">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="formIngresoModalLabel">Nuevo ingreso</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <!-- Campo Cliente -->
+                        <div class="mb-3">
+                            <label for="clienteBusqueda" class="form-label">Nombre del cliente</label>
+
+                            <input class="form-control" list="listaClientes" id="clienteBusqueda"
+                                placeholder="Escribe para buscar cliente..." [(ngModel)]="clienteBusqueda"
+                                name="clienteBusqueda">
+
+                            <datalist id="listaClientes">
+                                <option value="Juan Pérez">
+                                <option value="María García">
+                                <option value="Carlos López">
+                            </datalist>
+                        </div>
+
+                        <!-- Campo Obra (Se habilita solo si clienteBusqueda tiene texto) -->
+                        <div class="mb-3">
+                            <label for="obra" class="form-label">Obra</label>
+
+                            <input class="form-control" list="listaObras" id="obra"
+                                placeholder="Escribe para buscar obra..." [disabled]="!clienteBusqueda">
+
+                            <datalist id="listaObras">
+                                <option value="Obra 1">
+                                <option value="Obra 2">
+                                <option value="Obra 3">
+                            </datalist>
+                        </div>
+
+                        <!-- Fila Teléfono y Correo -->
+                        <div class="row">
+                            <!-- Bloque de Cuotas (Actual de Total) -->
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Cuota</label>
+                                <div class="d-flex align-items-center gap-2">
+                                    <input type="text" class="form-control text-center input-cuota" id="cuotaActual"
+                                        value="1" disabled style="background-color: #E0E0E0;">
+                                    <span class="text-muted fw-medium px-1">de</span>
+                                    <input type="text" class="form-control text-center input-cuota" id="cuotaTotal"
+                                        value="12" disabled style="background-color: #E0E0E0;">
+                                </div>
+                            </div>
+
+                            <!-- Campo Precio de la cuota -->
+                            <div class="col-md-4 mb-3">
+                                <label for="precioCuota" class="form-label">Precio de la cuota</label>
+                                <input type="text" class="form-control" id="precioCuota" placeholder="Ej: $232.676">
+                            </div>
+
+                            <!-- Campo Fecha de cobro -->
+                            <div class="col-md-4 mb-3">
+                                <label for="fechaCobro" class="form-label">Fecha de cobro</label>
+                                <input type="date" class="form-control" id="fechaCobro">
+                            </div>
+                        </div>
+
+
+                    </div> <!-- Fin de modal-body -->
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <!-- Cambiado a type="submit" para que envíe el formulario -->
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+
+                </div> <!-- Fin de modal-content -->
+            </form> <!-- Aquí se cierra correctamente el form -->
+
+        </div>
+    </div>
 
     <!-- CLIENTES CON CUOTAS PENDIENTES -->
     <div class="clientes">
@@ -204,7 +296,7 @@
 
         </table>
 
+
+
     </div>
-
-
 </div>
