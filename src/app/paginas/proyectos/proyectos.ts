@@ -11,9 +11,9 @@ import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } 
 })
 export class Proyectos implements OnInit {
 
-  //private proyectosService = inject(ProyectosService);
   constructor(private proyectosService: ProyectosService, private cdr: ChangeDetectorRef) { }
-  //private cdr = inject(ChangeDetectorRef);
+
+  //ChangeDetectorRef: actualiza la vista de este componente, se utiliza cuando los datos llegan en un subscribe() y la vista no se actualiza aña
 
   proyectos: any[] = [];
   // nuevoProyecto = {
@@ -66,18 +66,18 @@ export class Proyectos implements OnInit {
   ngOnInit(): void {
     console.log('Se inicializó el componente Proyectos');
 
-    this.proyectosService.listar().subscribe({
+    this.proyectosService.listar().subscribe({ //se accede al metodo "listar()" del servicio "proyectosService" y se suscribe al Observable para recibir ña respuesta de esa peticion y manejar el resultado
       next: (respuesta: any) => {
         console.log('Respuesta de la API:', respuesta);
 
-        this.proyectos = respuesta;
+        this.proyectos = respuesta; //Se guarda lo recibido en el arreglo proyectos para poder mostrarlo en el html
 
         console.log('Proyectos cargados:', this.proyectos);
 
         // Avisar a Angular que debe actualizar la vista.
         this.cdr.markForCheck();
       },
-      error: (error) => {
+      error: (error) => {//Si la peticion falla *dios quiera q no* se muestra el mensaje de error
         console.error('Error al obtener los proyectos:', error);
       }
     })
