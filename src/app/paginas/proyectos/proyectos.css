@@ -531,3 +531,51 @@
 .modal-footer .btn-secondary:active {
     transform: scale(0.97);
 }
+
+
+/* Paginación */
+.paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin: 40px auto 20px;
+}
+
+.pagina {
+    background-color: white;
+    border: none;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: #222222;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.pagina:hover {
+    background-color: #eeeeee;
+}
+
+.pagina-activa {
+    background-color: #292929;
+    color: white;
+}
+
+.pagina-activa:hover {
+    background-color: #292929;
+}
+
+.anterior,
+.siguiente {
+    padding: 9px 12px;
+}
+
+.anterior {
+    color: #aaaaaa;
+}
+
+.puntos {
+    padding: 8px;
+    font-size: 14px;
+}
