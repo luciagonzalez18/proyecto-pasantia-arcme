@@ -1,4 +1,3 @@
-
 <div class="container">
 
     <div class="titulo">
@@ -189,6 +188,28 @@
 
     </div>
 
+    @for (proyecto of proyectos; track proyecto.id_obra) {
+    <div class="card">
+        <div>
+            <img [src]="proyecto.imagen" [alt]="proyecto.nombre">
+        </div>
+
+        <div class="datos">
+            <p>{{ proyecto.titulo }}</p>
+
+            <ul>
+                <li>Superficie: {{ proyecto.superficie }} m²</li>
+                <li>Cliente: {{ proyecto.cliente }}</li>
+            </ul>
+
+            <button routerLink="/detalles-proyectos">
+                Ver detalles
+                <i class="bi bi-caret-right-fill"></i>
+            </button>
+        </div>
+    </div>
+    }
+
 
     <div class="card">
         <div>
@@ -242,22 +263,109 @@
         </div>
     </div>
 
-    <div class="paginacion">
-        <button class="pagina anterior">
-            <i class="bi bi-arrow-left"></i> Anterior
-        </button>
 
-        <button class="pagina pagina-activa">1</button>
-        <button class="pagina">2</button>
-        <button class="pagina">3</button>
 
-        <span class="puntos">...</span>
+    <!--Modal agregar proyectos-->
 
-        <button class="pagina">67</button>
-        <button class="pagina">68</button>
+    <div class="modal fade" id="formProyectoModal" tabindex="-1" aria-labelledby="formProyectoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="formProyectoModalLabel">Nuevo proyecto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="formNuevoProyecto">
+                        <!-- Nombre del proyecto -->
+                        <div class="mb-3">
+                            <label for="nombreProyecto" class="form-label">Nombre del proyecto</label>
+                            <input type="text" class="form-control" id="nombreProyecto" formControlName="titulo"
+                                placeholder="Ej: Residencial Los Álamos">
+                        </div>
 
-        <button class="pagina siguiente">
-            Siguiente <i class="bi bi-arrow-right"></i>
-        </button>
+                        <div class="row">
+                            <!-- Superficie -->
+                            <div class="col-md-6 mb-3">
+                                <label for="superficie" class="form-label">Superficie</label>
+                                <input type="text" class="form-control" id="superficie" placeholder="Ej: 120 m²" formControlName="superficie"
+                                    name="superficie" >
+                            </div>
+
+                            <!-- Ubicación -->
+                            <div class="col-md-6 mb-3">
+                                <label for="ubicacion" class="form-label">Ubicación</label>
+                                <input type="text" class="form-control" id="ubicacion" placeholder="Ej: Neuquén" formControlName="ubicacion"
+                                    name="ubicacion" >
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Precio -->
+                            <div class="col-md-6 mb-3">
+                                <label for="precio" class="form-label">Precio</label>
+                                <input type="number" class="form-control" id="precio" placeholder="Ej: 50000" formControlName="precio"
+                                    name="precio" >
+                            </div>
+
+                            <!-- Nomenclatura -->
+                            <div class="col-md-6 mb-3">
+                                <label for="nomenclatura" class="form-label">Nomenclatura</label>
+                                <input type="text" class="form-control" id="nomenclatura"  formControlName="nomenclatura"
+                                     placeholder="Ej: Nomenclatura catastral">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Fecha de inicio -->
+                            <div class="col-md-6 mb-3">
+                                <label for="fechaInicio" class="form-label">Fecha de inicio</label>
+                                <input type="date" class="form-control" id="fechaInicio"  formControlName="fecha_inicio"
+                                   >
+                            </div>
+
+                            <!-- Fecha estimada de finalización -->
+                            <div class="col-md-6 mb-3">
+                                <label for="fechaFin" class="form-label">Fecha estimada de finalización</label>
+                                <input type="date" class="form-control" id="fechaFin" formControlName="fecha_finalizacion"
+                                    >
+                            </div>
+                        </div>
+
+                        <!-- Estado -->
+                        <div class="mb-3">
+                            <label for="estado" class="form-label">Estado</label>
+                            <select class="form-select" id="estado"  formControlName="estado"> 
+                                <option value="" selected disabled>Seleccione un estado</option>
+                                <option value="Finalizada">Finalizada</option>
+                                <option value="En proceso">En proceso</option>
+                                <option value="Pausada">Pausada</option>
+                                <option value="Cancelada">Cancelada</option>
+                            </select>
+                        </div>
+
+                        <!-- Memoria (Archivo PDF) -->
+                        <div class="mb-3">
+                            <label for="memoriaPdf" class="form-label">Memoria (Archivo PDF)</label> <!--Cambie el type de file a text polque no se, cositas :v-->
+                            <input type="text" class="form-control" id="memoriaPdf" accept=".pdf" formControlName="memoria">
+                        </div>
+
+                        <!-- Descripción -->
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="descripcion" rows="3"formControlName="descripcion"
+                                
+                                placeholder="Detalles o descripción del proyecto..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" (click)="crearNuevoProyecto()" data-bs-dismiss="modal" [disabled]="formNuevoProyecto.invalid" >Guardar</button>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
-</div>
