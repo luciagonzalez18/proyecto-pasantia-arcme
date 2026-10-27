@@ -93,12 +93,20 @@
     opacity: 0.8;
 }
 
+/* Cambia el tamaño del icono aquí */
+.carousel-control-prev i,
+.carousel-control-next i {
+    font-size: 2.5rem;
+}
+
 .carousel-control-prev {
     left: -20px;
+    margin-left: 10px;
 }
 
 .carousel-control-next {
     right: -20px;
+    margin-right: 10px;
 }
 
 .carousel-inner img {
@@ -199,9 +207,16 @@
     background-color: #ffffff;
     border: 1px solid #e2e2e2;
     border-radius: 4px;
+    align-items: flex-end; /* Alinea los contenidos al fondo de la card */
     padding: 20px;
+    padding-bottom: 25px;
+    /* Espacio extra abajo para que los botones no peguen con el borde */
+    padding-right: 170px;
+    /* Espacio a la derecha para que el texto no pase por debajo de los botones */
     margin-bottom: 20px;
     box-shadow: none;
+    position: relative;
+    /* Clave: permite posicionar elementos absolutos dentro de la card */
 }
 
 .card>div:first-child {
@@ -258,23 +273,18 @@
     display: inline-flex;
     align-items: center;
     gap: 7px;
-
     padding: 8px 15px;
     width: fit-content;
-
     background-color: transparent;
-
     color: #475569;
-
     border: 1.5px solid #475569;
     border-radius: 7px;
-
     font-size: 15px;
-
     cursor: pointer;
-
     transition: 0.2s ease;
+     height: 38px;
 }
+
 
 .card .datos button i {
     font-size: 16px;
@@ -292,12 +302,25 @@
 
 
 
+/* Acciones Card */
+.acciones {
+    position: absolute;
+    bottom: 25px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+    /* Espacio entre el botón de editar y el de eliminar */
+}
 
-
-
-
-
-
+/* Opcional: Ajustar el tamaño de los botones si los notas muy grandes para la card */
+.acciones button {
+     height: 38px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.875rem;
+    padding: 8px 15px;
+}
 
 
 
@@ -328,4 +351,231 @@
         margin-right: 0;
         margin-bottom: 15px;
     }
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal-dialog {
+    max-width: 950px;
+}
+
+
+.modal-content {
+    border: none;
+    border-radius: 13px;
+
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.18);
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   CABECERA MODAL
+========================= */
+
+.modal-header {
+    padding: 23px 28px;
+
+    background-color: #f8f9fa;
+
+    border-bottom: 1px solid #e1e5e8;
+}
+
+.modal-title {
+    margin: 0;
+
+    color: #2f3e46;
+
+    font-size: 23px;
+    font-weight: 600;
+}
+
+
+/* Botón Cancelar */
+
+.modal-header .btn-close {
+    opacity: 0.6;
+
+    transform: scale(1.1);
+}
+
+.modal-header .btn-close:hover {
+    opacity: 1;
+}
+
+
+/* =========================
+   CUERPO MODAL
+========================= */
+
+.modal-body {
+    padding: 28px 34px;
+
+    background-color: white;
+}
+
+
+/* Labels */
+
+.modal-body .form-label {
+    margin-bottom: 8px;
+
+    color: #2f3e46;
+
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+/* Inputs */
+
+.modal-body .form-control {
+    min-height: 45px;
+
+    padding: 10px 14px;
+
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+
+    color: #495057;
+
+    font-size: 15px;
+
+    transition: 0.2s ease;
+}
+
+
+/* Focus de inputs */
+
+.modal-body .form-control:focus {
+    border-color: #2f6f7e;
+
+    box-shadow: 0 0 0 3px rgba(47, 111, 126, 0.12);
+}
+
+
+/* Placeholder */
+
+.modal-body .form-control::placeholder {
+    color: #adb5bd;
+}
+
+
+/* Espaciado entre filas */
+
+.modal-body .row {
+    margin-bottom: 3px;
+}
+
+
+/* =========================
+   FOOTER MODAL
+========================= */
+
+.modal-footer {
+    padding: 19px 28px;
+
+    background-color: #f8f9fa;
+
+    border-top: 1px solid #e1e5e8;
+}
+
+
+/* Botones del modal */
+
+.modal-footer .btn {
+    min-width: 100px;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+/* Botón guardar */
+
+.modal-footer .btn-primary {
+    background-color: #2f6f7e;
+
+    border-color: #2f6f7e;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #245865;
+
+    border-color: #245865;
+}
+
+.modal-footer .btn-primary:active {
+    transform: scale(0.97);
+}
+
+/* Botón cerrar */
+
+.modal-footer .btn-secondary {
+    background-color: #6c757d;
+
+    border-color: #6c757d;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #5c636a;
+}
+
+.modal-footer .btn-secondary:active {
+    transform: scale(0.97);
+}
+
+
+/* Paginación */
+.paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin: 40px auto 20px;
+}
+
+.pagina {
+    background-color: white;
+    border: none;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: #222222;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.pagina:hover {
+    background-color: #eeeeee;
+}
+
+.pagina-activa {
+    background-color: #292929;
+    color: white;
+}
+
+.pagina-activa:hover {
+    background-color: #292929;
+}
+
+.anterior,
+.siguiente {
+    padding: 9px 12px;
+}
+
+.anterior {
+    color: #aaaaaa;
+}
+
+.puntos {
+    padding: 8px;
+    font-size: 14px;
 }
