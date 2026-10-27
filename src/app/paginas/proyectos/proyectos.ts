@@ -3,6 +3,8 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ProyectosService } from '../../services/proyectos';
 import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-proyectos',
   imports: [RouterLink, FormsModule, ReactiveFormsModule],
@@ -81,6 +83,8 @@ export class Proyectos implements OnInit {
         console.error('Error al obtener los proyectos:', error);
       }
     })
+
+
   }
 
   crearNuevoProyecto() {
@@ -108,12 +112,56 @@ export class Proyectos implements OnInit {
       next: (respuesta) => {
         console.log('Proyecto creado:', respuesta);
         this.formNuevoProyecto.reset();
+        Swal.fire({
+          title: "Proyecto Cargado!",
+          icon: "success",
+          draggable: true
+        });
       },
       error: (error) => {
         console.error('Error al crear el proyecto:', error);
         console.log('Respuesta del servidor:', error.error);
       }
     });
+
   }
+
+  agregarPortfolio(id: number) {
+    console.log('id del proyecto', id);
+
+
+    this.proyectosService.agregarPortfolio(id).subscribe({
+      next: (respuesta) => {
+        console.log('Visualizacion cambiada:', respuesta);
+        const proyecto = this.proyectos.find(p => p.id_obra === id);
+
+        if (proyecto) {
+          proyecto.visible_catalogo = Number(proyecto.visible_catalogo) === 1 ? 0 : 1;
+          this.cdr.markForCheck();
+          Swal.fire({
+            title: "El proyecto ya esta en su Portfolio!",
+            icon: "success",
+            draggable: true
+          });
+
+          if(proyecto.visible_catalogo==0){
+            Swal.fire({
+            title: "Se quito el proyecto de Portfolio!",
+            icon: "success",
+            draggable: true
+          });
+          }
+        }
+
+
+      },
+      error: (error) => {
+        console.error('Error al cambiar visualizacion del proyecto:', error);
+        console.log('Respuesta del servidor:', error.error);
+      }
+    })
+  }
+
+  
 }
 
