@@ -18,6 +18,9 @@ export class Proyectos implements OnInit {
   //ChangeDetectorRef: actualiza la vista de este componente, se utiliza cuando los datos llegan en un subscribe() y la vista no se actualiza aña
 
   proyectos: any[] = [];
+  fotosSeleccionadas: File[] = [];
+
+  enviandoProyecto = false;
   // nuevoProyecto = {
   //   titulo: '',
   //   ubicacion: '',
@@ -87,13 +90,18 @@ export class Proyectos implements OnInit {
 
   }
 
-  crearNuevoProyecto() {
+  crearNuevoProyecto(): void {
+
     if (this.formNuevoProyecto.invalid) {
       this.formNuevoProyecto.markAllAsTouched();
       return;
     }
 
-    const valores = this.formNuevoProyecto.value;
+    if (this.enviandoProyecto) {
+      return;
+    }
+
+    const valores = this.formNuevoProyecto.getRawValue();
 
     const proyecto = {
       titulo: valores.titulo,
@@ -108,24 +116,99 @@ export class Proyectos implements OnInit {
       fecha_finalizacion: valores.fecha_finalizacion
     };
 
-    this.proyectosService.crear(proyecto).subscribe({
+    this.enviandoProyecto = true;
+
+    this.proyectosService.crear(
+      proyecto,
+      this.fotosSeleccionadas
+    ).subscribe({
+
       next: (respuesta) => {
+
         console.log('Proyecto creado:', respuesta);
+
         this.formNuevoProyecto.reset();
-        Swal.fire({
-          title: "Proyecto Cargado!",
-          icon: "success",
-          draggable: true
+        this.fotosSeleccionadas = [];
+
+        // Limpiar el selector de archivos.
+        const input = document.getElementById('fotos') as HTMLInputElement | null;
+
+        if (input) {
+          input.value = '';
+        }
+
+        // Volver a consultar los proyectos.
+        this.proyectosService.listar().subscribe({
+
+          next: (respuesta: any[]) => {
+            this.proyectos = respuesta;
+            this.cdr.markForCheck();
+          },
+
+          error: (error) => {
+            console.error('Error al actualizar los proyectos:', error);
+          }
+
         });
+
+        Swal.fire({
+          title: '¡Proyecto cargado!',
+          text: 'El proyecto y sus fotografías se enviaron correctamente.',
+          icon: 'success'
+        });
+
       },
+
       error: (error) => {
-        console.error('Error al crear el proyecto:', error);
-        console.log('Respuesta del servidor:', error.error);
+
+        console.error('Error HTTP:', error);
+        console.error('Código de estado:', error.status);
+        console.error('Respuesta del servidor:', error.error);
+
+        Swal.fire({
+          title: 'Error al crear el proyecto',
+          text: error.error?.mensaje ||
+            'No se pudo guardar el proyecto. Revisá la respuesta de la API.',
+          icon: 'error'
+        });
+
+      },
+
+      complete: () => {
+        this.enviandoProyecto = false;
       }
+
     });
-
   }
+  seleccionarFotos(event: Event): void {
+    const input = event.target as HTMLInputElement;
 
+    if (!input.files) {
+      this.fotosSeleccionadas = [];
+      return;
+    }
+
+    const archivos = Array.from(input.files);
+
+    // Comprobar que todos los archivos sean imágenes.
+    const archivosValidos = archivos.every((archivo) =>
+      ['image/jpeg', 'image/png', 'image/webp'].includes(archivo.type)
+    );
+
+    if (!archivosValidos) {
+      Swal.fire({
+        title: 'Archivo no válido',
+        text: 'Seleccioná únicamente imágenes JPG, PNG o WEBP.',
+        icon: 'warning'
+      });
+
+      input.value = '';
+      this.fotosSeleccionadas = [];
+      return;
+    }
+
+    this.fotosSeleccionadas = archivos;
+  }
   agregarPortfolio(id: number) {
     console.log('id del proyecto', id);
 
@@ -144,12 +227,12 @@ export class Proyectos implements OnInit {
             draggable: true
           });
 
-          if(proyecto.visible_catalogo==0){
+          if (proyecto.visible_catalogo == 0) {
             Swal.fire({
-            title: "Se quito el proyecto de Portfolio!",
-            icon: "success",
-            draggable: true
-          });
+              title: "Se quito el proyecto de Portfolio!",
+              icon: "success",
+              draggable: true
+            });
           }
         }
 
@@ -162,6 +245,6 @@ export class Proyectos implements OnInit {
     })
   }
 
-  
+
 }
 

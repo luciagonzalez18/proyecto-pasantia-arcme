@@ -33,6 +33,9 @@
 
     <!-- Grilla de tarjetas -->
     <div class="contenedor-grilla">
+        @if(proyectoPortfolio.length===0){
+        <h1>No tiene proyectos en su Portfolio</h1>
+        }@else{
         @for(p of proyectoPortfolio; track p.id_obra){
         <div class="tarjeta">
             <div class="cabecera-tarjeta">
@@ -82,6 +85,8 @@
             </div>
         </div>
         }
+        }
+
     </div>
 
 </body>

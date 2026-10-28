@@ -102,9 +102,9 @@
 
     @for (proyecto of proyectos; track proyecto.id_obra) {
     <div class="card">
-        <div>
-            <img [src]="proyecto.imagen" [alt]="proyecto.nombre">
-        </div>
+        @if (proyecto.fotos && proyecto.fotos.length > 0) {
+        <img [src]="proyecto.fotos[0].url_foto" [alt]="proyecto.titulo" class="imagen-proyecto">
+        } 
 
         <div class="datos">
             <p>{{ proyecto.titulo }}</p>
@@ -121,7 +121,8 @@
         </div>
         <div class="acciones">
             @if(proyecto.visible_catalogo){
-            <button class="btn btn-outline-danger"(click)="agregarPortfolio(proyecto.id_obra)"  ><i class="bi bi-trash-fill"></i>Quitar de Portfolio</button>
+            <button class="btn btn-outline-danger" (click)="agregarPortfolio(proyecto.id_obra)"><i
+                    class="bi bi-trash-fill"></i>Quitar de Portfolio</button>
             }@else{
             <button class="btn btn-outline-primary" (click)="agregarPortfolio(proyecto.id_obra)"><i
                     class="bi bi-pencil-fill"></i>Agregar a Portfolio</button>
@@ -270,7 +271,48 @@
                         <div class="mb-3">
                             <label for="memoriaPdf" class="form-label">Memoria (Archivo PDF)</label>
                             <!--Cambie el type de file a text polque no se, cositas :v-->
-                            <input type="text" class="form-control" id="memoriaPdf" formControlName="memoria">
+                            <input type="file" class="form-control" id="memoriaPdf" formControlName="memoria"  accept="application/pdf">
+                        </div>
+
+                        <!-- Fotografías del proyecto -->
+                        <div class="mb-3">
+
+                            <label for="fotos" class="form-label">
+                                Fotografías del proyecto
+                            </label>
+
+                            <input type="file" class="form-control" id="fotos" accept="image/jpeg,image/png,image/webp"
+                                multiple (change)="seleccionarFotos($event)">
+
+                            <small class="text-muted">
+                                Seleccioná una o varias fotografías del proyecto.
+                                Formatos permitidos: JPG, PNG y WEBP.
+                            </small>
+
+                            @if (fotosSeleccionadas.length > 0) {
+
+                            <div class="mt-3">
+
+                                <p class="fw-bold">
+                                    Fotografías seleccionadas:
+                                </p>
+
+                                @for (foto of fotosSeleccionadas; track $index) {
+
+                                <div class="d-flex align-items-center gap-2 mb-2">
+
+                                    <i class="bi bi-image"></i>
+
+                                    <span>{{ foto.name }}</span>
+
+                                </div>
+
+                                }
+
+                            </div>
+
+                            }
+
                         </div>
 
                         <!-- Descripción -->
@@ -279,12 +321,20 @@
                             <textarea class="form-control" id="descripcion" rows="3" formControlName="descripcion"
                                 placeholder="Detalles o descripción del proyecto..."></textarea>
                         </div>
+
+
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary" (click)="crearNuevoProyecto()" data-bs-dismiss="modal"
-                        [disabled]="formNuevoProyecto.invalid">Guardar</button>
+                    <button type="button" class="btn btn-primary" (click)="crearNuevoProyecto()"
+                        [disabled]="formNuevoProyecto.invalid || enviandoProyecto">
+                        @if (enviandoProyecto) {
+                        Guardando...
+                        } @else {
+                        Guardar
+                        }
+                    </button>
                 </div>
             </div>
         </div>

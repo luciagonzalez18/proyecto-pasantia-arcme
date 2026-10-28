@@ -322,7 +322,114 @@
     padding: 8px 15px;
 }
 
+/* =========================
+   IMAGEN DE LOS PROYECTOS
+========================= */
 
+.card .imagen-proyecto {
+    display: block;
+
+    width: 160px;
+    height: 130px;
+
+    flex-shrink: 0;
+    margin-right: 25px;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 8px;
+    background-color: #f1f3f5;
+
+    border: 1px solid #e2e8f0;
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Efecto al pasar el cursor */
+.card .imagen-proyecto:hover {
+    transform: scale(1.04);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   AJUSTES PARA LAS TARJETAS
+========================= */
+
+.card {
+    align-items: center;
+    gap: 0;
+}
+
+.card .datos {
+    min-width: 0;
+}
+
+/* =========================
+   RESPONSIVE - TABLETS Y MÓVILES
+========================= */
+
+@media (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+    }
+
+    .card .imagen-proyecto {
+        width: 100%;
+        height: 220px;
+
+        margin-right: 0;
+        margin-bottom: 16px;
+
+        border-radius: 10px;
+    }
+
+    .card .imagen-proyecto:hover {
+        transform: none;
+    }
+
+    .card .datos {
+        width: 100%;
+    }
+
+    .card .acciones {
+        position: static;
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+
+        margin-top: 16px;
+    }
+
+    .card .acciones button {
+        max-width: 100%;
+        height: auto;
+        min-height: 38px;
+        white-space: normal;
+    }
+}
+
+/* =========================
+   PANTALLAS PEQUEÑAS
+========================= */
+
+@media (max-width: 480px) {
+    .card .imagen-proyecto {
+        height: 190px;
+    }
+
+    .card .acciones {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .card .acciones button {
+        justify-content: center;
+    }
+}
 
 
 
