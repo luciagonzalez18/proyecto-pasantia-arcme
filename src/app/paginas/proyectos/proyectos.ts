@@ -1,6 +1,6 @@
 
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { ProyectosService } from '../../services/proyectos';
 import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class Proyectos implements OnInit {
 
-  constructor(private proyectosService: ProyectosService, private cdr: ChangeDetectorRef) { }
+  constructor(private proyectosService: ProyectosService, private cdr: ChangeDetectorRef, private router: Router) { }
 
   //ChangeDetectorRef: actualiza la vista de este componente, se utiliza cuando los datos llegan en un subscribe() y la vista no se actualiza aña
 
@@ -71,6 +71,11 @@ export class Proyectos implements OnInit {
   ngOnInit(): void {
     console.log('Se inicializó el componente Proyectos');
 
+    this.cargarProyectos();
+
+
+  }
+  cargarProyectos() {
     this.proyectosService.listar().subscribe({ //se accede al metodo "listar()" del servicio "proyectosService" y se suscribe al Observable para recibir ña respuesta de esa peticion y manejar el resultado
       next: (respuesta: any) => {
         console.log('Respuesta de la API:', respuesta);
@@ -86,8 +91,20 @@ export class Proyectos implements OnInit {
         console.error('Error al obtener los proyectos:', error);
       }
     })
+  }
+  obtenerProyecto(id: number) {
 
+    this.proyectosService.buscar(id).subscribe({
+      next: (respuesta: any) => {
+        this.proyectosService.proyectoSeleccionado = respuesta;
+        console.log("producto obtenido", respuesta)
+        this.router.navigate(['/detalles-proyectos']);
 
+      },
+      error: (error) => {
+        console.error('Error al obtener el proyecto:', error);
+      }
+    })
   }
 
   crearNuevoProyecto(): void {
@@ -118,45 +135,18 @@ export class Proyectos implements OnInit {
 
     this.enviandoProyecto = true;
 
-    this.proyectosService.crear(
-      proyecto,
-      this.fotosSeleccionadas
-    ).subscribe({
+    this.proyectosService.crear(proyecto).subscribe({
 
       next: (respuesta) => {
 
         console.log('Proyecto creado:', respuesta);
 
         this.formNuevoProyecto.reset();
-        this.fotosSeleccionadas = [];
-
-        // Limpiar el selector de archivos.
-        const input = document.getElementById('fotos') as HTMLInputElement | null;
-
-        if (input) {
-          input.value = '';
-        }
-
-        // Volver a consultar los proyectos.
-        this.proyectosService.listar().subscribe({
-
-          next: (respuesta: any[]) => {
-            this.proyectos = respuesta;
-            this.cdr.markForCheck();
-          },
-
-          error: (error) => {
-            console.error('Error al actualizar los proyectos:', error);
-          }
-
-        });
-
         Swal.fire({
-          title: '¡Proyecto cargado!',
-          text: 'El proyecto y sus fotografías se enviaron correctamente.',
-          icon: 'success'
+          title: "Proyecto Cargado!",
+          icon: "success",
         });
-
+        this.cargarProyectos()
       },
 
       error: (error) => {
@@ -180,35 +170,7 @@ export class Proyectos implements OnInit {
 
     });
   }
-  seleccionarFotos(event: Event): void {
-    const input = event.target as HTMLInputElement;
-
-    if (!input.files) {
-      this.fotosSeleccionadas = [];
-      return;
-    }
-
-    const archivos = Array.from(input.files);
-
-    // Comprobar que todos los archivos sean imágenes.
-    const archivosValidos = archivos.every((archivo) =>
-      ['image/jpeg', 'image/png', 'image/webp'].includes(archivo.type)
-    );
-
-    if (!archivosValidos) {
-      Swal.fire({
-        title: 'Archivo no válido',
-        text: 'Seleccioná únicamente imágenes JPG, PNG o WEBP.',
-        icon: 'warning'
-      });
-
-      input.value = '';
-      this.fotosSeleccionadas = [];
-      return;
-    }
-
-    this.fotosSeleccionadas = archivos;
-  }
+  
   agregarPortfolio(id: number) {
     console.log('id del proyecto', id);
 
@@ -222,16 +184,19 @@ export class Proyectos implements OnInit {
           proyecto.visible_catalogo = Number(proyecto.visible_catalogo) === 1 ? 0 : 1;
           this.cdr.markForCheck();
           Swal.fire({
-            title: "El proyecto ya esta en su Portfolio!",
+            title: "El proyecto se agrego a su Portfolio!",
             icon: "success",
-            draggable: true
+            confirmButtonText: "Continuar",
+            confirmButtonColor: "#2f6f7e",
+            
           });
 
           if (proyecto.visible_catalogo == 0) {
             Swal.fire({
-              title: "Se quito el proyecto de Portfolio!",
+              title: "El proyecto se borro del Portfolio!",
               icon: "success",
-              draggable: true
+              confirmButtonText: "Continuar",
+              confirmButtonColor: "#2f6f7e",
             });
           }
         }
@@ -243,6 +208,46 @@ export class Proyectos implements OnInit {
         console.log('Respuesta del servidor:', error.error);
       }
     })
+  }
+
+  eliminarProyecto(id: number) {
+    const proyecto = this.proyectos.find(p => p.id_obra === id);
+    if (proyecto) {
+      Swal.fire({
+        title: "¿Deseas eliminar este proyecto?",
+        text: "Esta acción no se puede revertir! ",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#2f6f7e",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, quiero borralo!",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) Swal.fire({
+          title: "¡Proyecto eliminado!",
+          confirmButtonText: "Continuar",
+          text: "Su proyecto fue eliminado con exito",
+          icon: "success",
+
+        }).then(() => {
+          this.proyectosService.eliminar(id).subscribe({
+
+            next: (respuesta) => {
+              this.cargarProyectos()
+
+              console.log("proyecto eliminado", respuesta)
+            },
+            error: (error) => {
+              console.error('Error al eliminar el proyecto:', error);
+              console.log('Respuesta del servidor:', error.error);
+            }
+          })
+        })
+
+      });
+
+    }
+
   }
 
 

@@ -11,7 +11,10 @@ import Swal from 'sweetalert2';
 export class Menu {
   paso: number = 1;
 
+
   constructor(private router: Router) {}
+
+ 
 
   cerrarSesion() {
     Swal.fire({

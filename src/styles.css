@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+/* Fondo oscuro detrás del modal */
+.modal-backdrop {
+    z-index: 1050 !important;
+}
+
+/* Ventana del modal */
+.modal {
+    z-index: 1060 !important;
+}
+
+/* Contenido blanco del modal */
+.modal .modal-content {
+    background-color: #fff !important;
+    opacity: 1 !important;
+    filter: none !important;
+}

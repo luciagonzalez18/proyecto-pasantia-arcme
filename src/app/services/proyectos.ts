@@ -8,7 +8,9 @@ export class ProyectosService {
 
   private http = inject(HttpClient);
 
-  private apiUrl = '/apiArcme/public/index.php/proyectos';
+  private apiUrl = '/apiArcme/public/index.php/proyectos';//Se guarda esta url base de la api para utilizarla en los metodos del servicio
+  // Guardar el proyecto seleccionado.
+  proyectoSeleccionado: any = null;
 
   // Listar todos los proyectos.
   listar() {
@@ -17,31 +19,15 @@ export class ProyectosService {
 
   // Buscar un proyecto por su ID.
   buscar(id: number) {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+    return this.http.get(`${this.apiUrl}/${id}`);
+
   }
 
   // Crear un proyecto junto con sus fotografías.
-  crear(proyecto: any, fotos: File[]) {
-    const formData = new FormData();
-
-    // Agregar los datos del proyecto.
-    Object.keys(proyecto).forEach((campo) => {
-      const valor = proyecto[campo];
-
-      if (valor !== null && valor !== undefined) {
-        formData.append(campo, String(valor));
-      }
-    });
-
-    // Agregar las fotografías.
-    fotos.forEach((foto) => {
-      formData.append('fotos[]', foto);
-    });
-
-    return this.http.post(this.apiUrl, formData);
+  crear(proyecto: any) {
+   return this.http.post(this.apiUrl,proyecto)
   }
 
-  // Cambiar la visibilidad en el catálogo.
   agregarPortfolio(id: number) {
     return this.http.patch(`${this.apiUrl}/${id}/catalogo`, {});
   }
