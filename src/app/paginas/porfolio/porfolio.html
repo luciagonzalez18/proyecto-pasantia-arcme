@@ -33,6 +33,20 @@
 
     <!-- Grilla de tarjetas -->
     <div class="contenedor-grilla">
+        @if(proyectoPortfolio.length===0){
+        <div class="portfolio-vacio">
+            <div class="icono-vacio">
+                <i class="bi bi-buildings"></i>
+            </div>
+
+            <h2>Tu portfolio está vacío</h2>
+
+            <p>
+                Todavía no agregaste proyectos a tu portfolio.
+                Cuando lo hagas, aparecerán aquí para que puedas compartirlos.
+            </p>
+        </div>
+        }@else{
         @for(p of proyectoPortfolio; track p.id_obra){
         <div class="tarjeta">
             <div class="cabecera-tarjeta">
@@ -74,7 +88,7 @@
             </div>
 
             <div class="fila-acciones">
-                <button class="boton-icono"><i class="bi bi-trash-fill"></i></button>
+                <button class="boton-icono" (click)="quitarPortfolio(p.id_obra)"><i class="bi bi-trash-fill"></i></button>
                 <div class="acciones-derecha">
                     <button class="boton-texto"><i class="bi bi-link-45deg"></i> Compartir</button>
                     <button class="boton-texto texto-negrita">Ver Más »</button>
@@ -82,6 +96,8 @@
             </div>
         </div>
         }
+        }
+
     </div>
 
 </body>

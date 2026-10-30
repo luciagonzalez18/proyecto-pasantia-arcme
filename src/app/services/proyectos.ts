@@ -10,6 +10,8 @@ export class ProyectosService {
   private http = inject(HttpClient);
 
   private apiUrl = '/apiArcme/public/index.php/proyectos';//Se guarda esta url base de la api para utilizarla en los metodos del servicio
+  // Guardar el proyecto seleccionado.
+  proyectoSeleccionado: any = null;
 
   listar() {
     return this.http.get(this.apiUrl);
@@ -22,18 +24,15 @@ export class ProyectosService {
 
   buscar(id: number) {
     return this.http.get(`${this.apiUrl}/${id}`);
+
   }
 
   crear(proyecto: any) {
     return this.http.post(this.apiUrl, proyecto);
   }
 
-  agregarPortfolio(id:number){
-    return this.http.patch(`${this.apiUrl}/${id}/catalogo`,{});
-  }
-  
-  quitarPortfolio(id:number){
-    
+  agregarPortfolio(id: number) {
+    return this.http.patch(`${this.apiUrl}/${id}/catalogo`, {});
   }
 
   actualizar(id: number, proyecto: any) {

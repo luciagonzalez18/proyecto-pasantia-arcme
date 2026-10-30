@@ -16,6 +16,19 @@
 
     <hr class="linea-horizontal">
 
+    @if (proyectos.length === 0) {
+    <div class="sin-proyectos">
+        <i class="bi bi-folder2-open"></i>
+
+        <h3>No hay proyectos disponibles</h3>
+
+        <p>
+            Todavía no cargaste ningún proyecto.
+            ¡Comenzá agregando tu primer proyecto!
+        </p>
+
+    </div>
+    }@else{
     <h4>Historial de proyectos:</h4>
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -114,21 +127,23 @@
                 <li>Cliente: {{ proyecto.cliente }}</li>
             </ul>
 
-            <button routerLink="/detalles-proyectos">
+            <button (click)="obtenerProyecto(proyecto.id_obra)">
                 Ver detalles
                 <i class="bi bi-caret-right-fill"></i>
             </button>
         </div>
         <div class="acciones">
             @if(proyecto.visible_catalogo){
-            <button class="btn btn-outline-danger"(click)="agregarPortfolio(proyecto.id_obra)"  ><i class="bi bi-trash-fill"></i>Quitar de Portfolio</button>
+            <button class="btn btn-outline-danger" (click)="agregarPortfolio(proyecto.id_obra)"><i
+                    class="bi bi-trash-fill"></i>Quitar de Portfolio</button>
             }@else{
             <button class="btn btn-outline-primary" (click)="agregarPortfolio(proyecto.id_obra)"><i
                     class="bi bi-pencil-fill"></i>Agregar a Portfolio</button>
             }
 
 
-            <button class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
+            <button class="btn btn-outline-danger" (click)="eliminarProyecto(proyecto.id_obra)"><i
+                    class="bi bi-trash-fill"></i></button>
         </div>
     </div>
     }
@@ -154,37 +169,6 @@
         </div>
     </div>
 
-    <div class="card">
-        <div>
-            <img src="https://imgs.search.brave.com/BwmctwcepNBXgpiXY08CnspF3dUGFbF628Q8jkAN5G0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tYXJr/ZXRwbGFjZS5jYW52/YS5jb20vTUFCbHNL/ZFZ2NlEvMS90aHVt/Ym5haWxfbGFyZ2Ut/MS9jYW52YS1jYXNh/LU1BQmxzS2RWdjZR/LmpwZw"
-                alt="">
-        </div>
-        <div class="datos">
-            <p>Obra, Roca 295</p>
-            <ul>
-                <li>Superficie: 200 m²</li>
-                <li>Cliente: Juan Villacorta</li>
-                <li>Cuotas 6/16</li>
-            </ul>
-            <button routerLink="/detalles-proyectos">Ver detalles <i class="bi bi-caret-right-fill"></i></button>
-        </div>
-    </div>
-
-    <div class="card">
-        <div>
-            <img src="https://imgs.search.brave.com/33pidPpO6-owcHOHT2t8Il1XI737fVayWgDKDrywsbA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tYXJr/ZXRwbGFjZS5jYW52/YS5jb20vTUFER3hy/aGpaOEEvNC90aHVt/Ym5haWxfbGFyZ2Uv/Y2FudmEtY2FzYS1k/ZS1jb25jcmV0by1h/enVsLWUtY2luemEt/Y29tLXMlQzMlQjN0/JUMzJUEzby1hby1l/bnRhcmRlY2VyLU1B/REd4cmhqWjhBLmpw/Zw"
-                alt="">
-        </div>
-        <div class="datos">
-            <p>Obra, Buenos aires 600</p>
-            <ul>
-                <li>Superficie: 500 m²</li>
-                <li>Cliente: Javier Juancho</li>
-                <li>Cuotas 15 / 16</li>
-            </ul>
-            <button routerLink="/detalles-proyectos">Ver detalles <i class="bi bi-caret-right-fill"></i></button>
-        </div>
-    </div>
 
 
 
@@ -270,7 +254,8 @@
                         <div class="mb-3">
                             <label for="memoriaPdf" class="form-label">Memoria (Archivo PDF)</label>
                             <!--Cambie el type de file a text polque no se, cositas :v-->
-                            <input type="text" class="form-control" id="memoriaPdf" formControlName="memoria">
+                            <input type="file" class="form-control" id="memoriaPdf" accept=".pdf,application/pdf"
+                                formControlName="memoria">
                         </div>
 
                         <!-- Descripción -->
@@ -292,3 +277,8 @@
 
 
     </div>
+    }
+    <button class="boton-subir" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+</div>

@@ -382,6 +382,64 @@ body {
     outline-offset: 2px;
 }
 
+/*============================================
+    MODAL
+===============================================*/
+#formProyectoModal {
+    z-index: 1055;
+}
+
+#formProyectoModal .modal-dialog {
+    max-width: 850px;
+    margin: 1.75rem auto;
+}
+
+#formProyectoModal .modal-content {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+#formProyectoModal .modal-header {
+    padding: 20px 25px;
+    border-bottom: 1px solid #e9edef;
+}
+
+#formProyectoModal .modal-title {
+    font-weight: 700;
+    color: #303d43;
+}
+
+#formProyectoModal .modal-body {
+    padding: 25px;
+}
+
+#formProyectoModal .modal-footer {
+    padding: 15px 25px;
+    border-top: 1px solid #e9edef;
+}
+
+#formProyectoModal .form-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #46545a;
+}
+
+#formProyectoModal .form-control,
+#formProyectoModal .form-select {
+    font-size: 14px;
+    padding: 10px 12px;
+    border-radius: 7px;
+}
+
+#formProyectoModal .form-control:focus,
+#formProyectoModal .form-select:focus {
+    border-color: #2f6f7e;
+    box-shadow: 0 0 0 0.2rem rgba(47, 111, 126, 0.15);
+}
+
+
 
 /* =========================================
    RESPONSIVE
@@ -409,5 +467,15 @@ body {
     .container ul li {
         padding-top: 6px;
         padding-bottom: 6px;
+    }
+}
+
+@media (max-width: 768px) {
+    #formProyectoModal .modal-dialog {
+        margin: 12px;
+    }
+
+    #formProyectoModal .modal-body {
+        padding: 18px;
     }
 }

@@ -1,4 +1,5 @@
 <div class="container">
+    @if(proyecto){
     <div class="header-verDetalles">
 
         <div class="titulo-contenido volver" routerLink="/proyectos">
@@ -16,7 +17,7 @@
 
             <div class="detalle">
                 <i class="bi bi-buildings"></i>
-                <span><strong>Nombre del Proyecto: </strong> Vivienda Familiar Los Alamos</span>
+                <span><strong>Nombre del Proyecto: </strong>{{proyecto.titulo}}</span>
             </div>
 
             <div class="detalle">
@@ -26,40 +27,45 @@
 
             <div class="detalle">
                 <i class="bi bi-arrows-fullscreen"></i>
-                <span><strong>Superficie: </strong>100 m²</span>
+                <span><strong>Superficie: </strong>{{proyecto.superficie}} m²</span>
             </div>
 
             <div class="detalle">
                 <i class="bi bi-geo-alt"></i>
-                <span><strong>Ubicación: </strong> Los Alamos 2345, Cipolletti - Rio Negro</span>
+                <span><strong>Ubicación: </strong>{{proyecto.ubicacion}}</span>
             </div>
 
             <div class="detalle">
                 <i class="bi bi-currency-dollar"></i>
-                <span><strong>Precio: </strong>$85.000.000</span>
+                <span><strong>Precio: </strong>${{proyecto.precio}}</span>
             </div>
 
             <div class="detalle">
                 <i class="bi bi-file-earmark"></i>
-                <span><strong>Nomenclatura: </strong>L-2345-001</span>
+                <span><strong>Nomenclatura: </strong>{{proyecto.nomenclatura}}</span>
             </div>
 
             <div class="detalle">
                 <i class="bi bi-tag"></i>
-                <span><strong>Estado: </strong>En proceso</span>
+                <span><strong>Estado: </strong>{{proyecto.estado}}</span>
             </div>
 
             <div class="detalle">
                 <i class="bi bi-calendar"></i>
-                <span><strong>Fecha de inicio: </strong>29/04/2024</span>
+                <span><strong>Fecha de inicio: </strong>{{proyecto.fecha_inicio}}</span>
             </div>
 
         </div>
         <div class="card-Proveedores">
             <header class="header-card-detalles" style="justify-content: space-between;">
-                <button><i class="bi bi-pencil-square"></i>Editar Proyecto</button>
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#formEditarProyecto">
+
+                    <i class="bi bi-pencil-square"></i>
+                    Editar Proyecto
+
+                </button>
                 <!--<button><i class="bi bi-trash-fill"></i>Eliminar Proveedor</button>-->
-                <button (click)="Eliminar()"><i class="bi bi-trash-fill"></i>Eliminar Proyecto</button>
+                <button (click)="Eliminar(proyecto.id_obra)"><i class="bi bi-trash-fill"></i>Eliminar Proyecto</button>
             </header>
 
             <hr class="linea-horizontal">
@@ -111,34 +117,145 @@
             <p> <i class="bi bi-clipboard"></i>Descripcion</p>
             <div class="descripcion-Proveedor">
 
-                <span> Proyecto de vivienda unifamiliar de dos plantas, diseñado con un estilo moderno y funcional.
-                    Cuenta
-                    con amplios espacios interiores, tres dormitorios, dos baños, cocina integrada al living-comedor y
-                    un
-                    patio con parrilla. La construcción combina hormigón, madera y amplias aberturas para aprovechar la
-                    iluminación natural y lograr una conexión armoniosa con el entorno. El objetivo es ofrecer
-                    comodidad,
-                    eficiencia y calidad en cada espacio.
+                <span>{{proyecto.descripcion}}
                 </span>
             </div>
             <div class="footer-card-detalles">
                 <div class="Documentos">
                     <p><i class="bi bi-paperclip"></i>Documentos</p>
                     <hr class="linea-horizontal">
-                    <span><i class="bi bi-filetype-pdf"></i>memoriaDelProyecto.pdf<i
+                    <span><i class="bi bi-filetype-pdf"></i>{{proyecto.memoria}}<i
                             class="bi bi-box-arrow-down"></i></span>
                 </div>
                 <div class="Estado-Detalles">
                     <p><i class="bi bi-box-fill"></i>Estado y Detalles</p>
                     <hr class="linea-horizontal">
                     <ul>
-                        <li>En proceso</li>
-                        <li>Nomenclatura: L-2345-001</li>
-                        <li>Fecha de inicio: 29/04/2024</li>
+                        <li>{{proyecto.estado}}</li>
+                        <li>Nomenclatura:{{proyecto.nomenclatura}}</li>
+                        <li>Fecha de inicio:{{proyecto.fecha_inicio}}</li>
                     </ul>
                 </div>
 
             </div>
         </div>
     </div>
+
+ <!--Modal editar proyecto-->
+
+    <div class="modal fade" id="formEditarProyecto" tabindex="-1" aria-labelledby="formEditarProyectoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="formEditarProyectoModalLabel">Editar Proyecto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="editarProyecto">
+                        <!-- Nombre del proyecto -->
+                        <div class="mb-3">
+                            <label for="nombreProyecto" class="form-label">Nombre del proyecto</label>
+                            <input type="text" class="form-control" id="nombreProyecto" formControlName="titulo"
+                                placeholder="Ej: Residencial Los Álamos">
+                        </div>
+
+                        <div class="row">
+                            <!-- Superficie -->
+                            <div class="col-md-6 mb-3">
+                                <label for="superficie" class="form-label">Superficie</label>
+                                <input type="text" class="form-control" id="superficie" placeholder="Ej: 120 m²"
+                                    formControlName="superficie" name="superficie">
+                            </div>
+
+                            <!-- Ubicación -->
+                            <div class="col-md-6 mb-3">
+                                <label for="ubicacion" class="form-label">Ubicación</label>
+                                <input type="text" class="form-control" id="ubicacion" placeholder="Ej: Neuquén"
+                                    formControlName="ubicacion" name="ubicacion">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Precio -->
+                            <div class="col-md-6 mb-3">
+                                <label for="precio" class="form-label">Precio</label>
+                                <input type="number" class="form-control" id="precio" placeholder="Ej: 50000"
+                                    formControlName="precio" name="precio">
+                            </div>
+
+                            <!-- Nomenclatura -->
+                            <div class="col-md-6 mb-3">
+                                <label for="nomenclatura" class="form-label">Nomenclatura</label>
+                                <input type="text" class="form-control" id="nomenclatura" formControlName="nomenclatura"
+                                    placeholder="Ej: Nomenclatura catastral">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Fecha de inicio -->
+                            <div class="col-md-6 mb-3">
+                                <label for="fechaInicio" class="form-label">Fecha de inicio</label>
+                                <input type="date" class="form-control" id="fechaInicio" formControlName="fecha_inicio">
+                            </div>
+
+                            <!-- Fecha estimada de finalización -->
+                            <div class="col-md-6 mb-3">
+                                <label for="fechaFin" class="form-label">Fecha estimada de finalización</label>
+                                <input type="date" class="form-control" id="fechaFin"
+                                    formControlName="fecha_finalizacion">
+                            </div>
+                        </div>
+
+                        <!-- Estado -->
+                        <div class="mb-3">
+                            <label for="estado" class="form-label">Estado</label>
+                            <select class="form-select" id="estado" formControlName="estado">
+                                <option value="" selected disabled>Seleccione un estado</option>
+                                <option value="Finalizada">Finalizada</option>
+                                <option value="En proceso">En proceso</option>
+                                <option value="Pausada">Pausada</option>
+                                <option value="Cancelada">Cancelada</option>
+                            </select>
+                        </div>
+
+                        <!-- Memoria (Archivo PDF) -->
+                        <div class="mb-3">
+                            <label for="memoriaPdf" class="form-label">
+                                Memoria (Archivo PDF)
+                            </label>
+
+                            <input type="file" class="form-control" id="memoriaPdf" accept=".pdf,application/pdf"
+                                formControlName="memoria">
+
+                            @if (proyecto.memoria) {
+                            <small class="text-muted">
+                                Archivo actual: {{ proyecto.memoria }}
+                            </small>
+                            }
+                        </div>
+
+                        <!-- Descripción -->
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="descripcion" rows="3" formControlName="descripcion"
+                                placeholder="Detalles o descripción del proyecto..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="modificarProyecto(proyecto.id_obra)"
+                        [disabled]="editarProyecto.invalid">Guardar</button>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    }
+   
 </div>
