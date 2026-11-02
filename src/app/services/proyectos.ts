@@ -2,6 +2,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';//Para poder hacer peticiones http
 
+//bug arreglar el boton de agregar al portfolio al crear el proyecto 
 @Injectable({
   providedIn: 'root'
 })

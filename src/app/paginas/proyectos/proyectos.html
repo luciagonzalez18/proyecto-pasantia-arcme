@@ -133,7 +133,7 @@
             </button>
         </div>
         <div class="acciones">
-            @if(proyecto.visible_catalogo){
+            @if(proyecto.visible_catalogo===1){
             <button class="btn btn-outline-danger" (click)="agregarPortfolio(proyecto.id_obra)"><i
                     class="bi bi-trash-fill"></i>Quitar de Portfolio</button>
             }@else{
