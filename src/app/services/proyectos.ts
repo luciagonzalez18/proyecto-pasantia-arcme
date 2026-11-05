@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+//bug arreglar el boton de agregar al portfolio al crear el proyecto 
 @Injectable({
   providedIn: 'root'
 })
