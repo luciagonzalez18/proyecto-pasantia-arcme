@@ -514,61 +514,184 @@
 }
 
 /* =========================
-   MODAL EDITAR PROYECTO
+   MODAL
 ========================= */
 
-#formEditarProyecto .modal-content {
+.modal-dialog {
+    max-width: 950px;
+}
+
+
+.modal-content {
     border: none;
-    border-radius: 12px;
+    border-radius: 13px;
+
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.18);
+
     overflow: hidden;
 }
 
-#formEditarProyecto .modal-header {
-    padding: 18px 22px;
-    border-bottom: 1px solid var(--color-borde);
+
+/* =========================
+   CABECERA MODAL
+========================= */
+
+.modal-header {
+    padding: 23px 28px;
+
+    background-color: #f8f9fa;
+
+    border-bottom: 1px solid #e1e5e8;
 }
 
-#formEditarProyecto .modal-title {
-    color: var(--color-texto);
+.modal-title {
+    margin: 0;
+
+    color: #2f3e46;
+
+    font-size: 23px;
     font-weight: 600;
 }
 
-#formEditarProyecto .modal-body {
-    padding: 22px;
+
+/* Botón Cancelar */
+
+.modal-header .btn-close {
+    opacity: 0.6;
+  
+    transform: scale(1.1);
 }
 
-#formEditarProyecto .form-label {
-    color: var(--color-texto);
+.modal-header .btn-close:hover {
+    opacity: 1;
+}
+
+
+/* =========================
+   CUERPO MODAL
+========================= */
+
+.modal-body {
+    padding: 28px 34px;
+
+    background-color: white;
+}
+
+
+/* Labels */
+
+.modal-body .form-label {
+    margin-bottom: 8px;
+
+    color: #2f3e46;
+
+    font-size: 15px;
     font-weight: 500;
 }
 
-#formEditarProyecto .form-control,
-#formEditarProyecto .form-select {
-    min-height: 40px;
-    border-color: #ced4da;
-    border-radius: 7px;
+
+/* Inputs */
+
+.modal-body .form-control {
+    min-height: 45px;
+
+    padding: 10px 14px;
+
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+
+    color: #495057;
+
+    font-size: 15px;
+
+    transition: 0.2s ease;
 }
 
-#formEditarProyecto .form-control:focus,
-#formEditarProyecto .form-select:focus {
-    border-color: var(--color-principal);
-    box-shadow: 0 0 0 0.2rem rgba(47, 111, 126, 0.15);
+
+/* Focus de inputs */
+
+.modal-body .form-control:focus {
+    border-color: #2f6f7e;
+
+    box-shadow: 0 0 0 3px rgba(47, 111, 126, 0.12);
 }
 
-#formEditarProyecto .modal-footer {
-    padding: 15px 22px;
-    border-top: 1px solid var(--color-borde);
+
+/* Placeholder */
+
+.modal-body .form-control::placeholder {
+    color: #adb5bd;
 }
 
-#formEditarProyecto .modal-footer .btn-primary {
-    background-color: var(--color-principal);
-    border-color: var(--color-principal);
+
+/* Espaciado entre filas */
+
+.modal-body .row {
+    margin-bottom: 3px;
 }
 
-#formEditarProyecto .modal-footer .btn-primary:hover {
-    background-color: var(--color-hover);
-    border-color: var(--color-hover);
+
+/* =========================
+   FOOTER MODAL
+========================= */
+
+.modal-footer {
+    padding: 19px 28px;
+
+    background-color: #f8f9fa;
+
+    border-top: 1px solid #e1e5e8;
 }
+
+
+/* Botones del modal */
+
+.modal-footer .btn {
+    min-width: 100px;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+   
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+/* Botón guardar */
+
+.modal-footer .btn-primary {
+    background-color: #2f6f7e;
+
+    border-color: #2f6f7e;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #245865;
+
+    border-color: #245865;
+}
+
+.modal-footer .btn-primary:active {
+    transform: scale(0.97);
+}
+
+/* Botón cerrar */
+
+.modal-footer .btn-secondary {
+    background-color:#cf5050;
+
+    border-color: #d36e6e;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #9c3a3a;
+}
+
+.modal-footer .btn-secondary:active {
+    transform: scale(0.97);
+}
+
 
 /* =========================
    LAPTOP

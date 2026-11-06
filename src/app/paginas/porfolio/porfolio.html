@@ -17,7 +17,7 @@
     <!-- Encabezado -->
     <div class="encabezado-portfolio">
         <h1 class="logotipo">Porfolio</h1>
-
+        @if(proyectoPortfolio.length){
         <div class="botones-encabezado">
             <button class="boton-borde">
                 <i class="bi bi-pencil-square"></i> Editar Porfolio
@@ -27,6 +27,7 @@
                 <i class="bi bi-link-45deg"></i> Compartir Porfolio
             </button>
         </div>
+        }
     </div>
 
     <div class="barra-separadora-superior"></div>
@@ -34,9 +35,6 @@
     <!-- Grilla de tarjetas -->
     <div class="contenedor-grilla">
         @if(proyectoPortfolio.length===0){
-<<<<<<< HEAD
-        <h1>No tiene proyectos en su Portfolio</h1>
-=======
         <div class="portfolio-vacio">
             <div class="icono-vacio">
                 <i class="bi bi-buildings"></i>
@@ -49,7 +47,6 @@
                 Cuando lo hagas, aparecerán aquí para que puedas compartirlos.
             </p>
         </div>
->>>>>>> dae3282684074cfc263bdea57dc0530b9cd45686
         }@else{
         @for(p of proyectoPortfolio; track p.id_obra){
         <div class="tarjeta">
@@ -58,7 +55,7 @@
                     <h2>{{p.titulo}}</h2>
                     <p class="subtitulo">Última actualización</p>
                 </div>
-                <i class="bi bi-gear-fill icono-configuracion"></i>
+               
             </div>
 
             <div class="imagen-principal">
@@ -92,7 +89,8 @@
             </div>
 
             <div class="fila-acciones">
-                <button class="boton-icono" (click)="quitarPortfolio(p.id_obra)"><i class="bi bi-trash-fill"></i></button>
+                <button class="boton-icono" (click)="quitarPortfolio(p.id_obra)"><i
+                        class="bi bi-trash-fill"></i></button>
                 <div class="acciones-derecha">
                     <button class="boton-texto"><i class="bi bi-link-45deg"></i> Compartir</button>
                     <button class="boton-texto texto-negrita">Ver Más »</button>

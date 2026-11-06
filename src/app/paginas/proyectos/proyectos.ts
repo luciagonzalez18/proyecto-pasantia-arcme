@@ -18,9 +18,9 @@ export class Proyectos implements OnInit {
   //ChangeDetectorRef: actualiza la vista de este componente, se utiliza cuando los datos llegan en un subscribe() y la vista no se actualiza aña
 
   proyectos: any[] = [];
-  fotosSeleccionadas: File[] = [];
 
-  enviandoProyecto = false;
+
+
   // nuevoProyecto = {
   //   titulo: '',
   //   ubicacion: '',
@@ -80,9 +80,8 @@ export class Proyectos implements OnInit {
       next: (respuesta: any) => {
         console.log('Respuesta de la API:', respuesta);
 
-        this.proyectos = respuesta; //Se guarda lo recibido en el arreglo proyectos para poder mostrarlo en el html
+        this.proyectos = respuesta;//Se guarda lo recibido en el arreglo proyectos para poder mostrarlo en el html
 
-        console.log('Proyectos cargados:', this.proyectos);
 
         // Avisar a Angular que debe actualizar la vista.
         this.cdr.markForCheck();
@@ -114,9 +113,6 @@ export class Proyectos implements OnInit {
       return;
     }
 
-    if (this.enviandoProyecto) {
-      return;
-    }
 
     const valores = this.formNuevoProyecto.getRawValue();
 
@@ -133,20 +129,20 @@ export class Proyectos implements OnInit {
       fecha_finalizacion: valores.fecha_finalizacion
     };
 
-    this.enviandoProyecto = true;
 
     this.proyectosService.crear(proyecto).subscribe({
 
       next: (respuesta) => {
 
         console.log('Proyecto creado:', respuesta);
-
+        this.cargarProyectos()
+        console.log('Proyectos después de crear:', this.proyectos);
         this.formNuevoProyecto.reset();
         Swal.fire({
           title: "Proyecto Cargado!",
           icon: "success",
         });
-        this.cargarProyectos()
+
       },
 
       error: (error) => {
@@ -164,13 +160,11 @@ export class Proyectos implements OnInit {
 
       },
 
-      complete: () => {
-        this.enviandoProyecto = false;
-      }
+
 
     });
   }
-  
+
   agregarPortfolio(id: number) {
     console.log('id del proyecto', id);
 
@@ -188,7 +182,7 @@ export class Proyectos implements OnInit {
             icon: "success",
             confirmButtonText: "Continuar",
             confirmButtonColor: "#2f6f7e",
-            
+
           });
 
           if (proyecto.visible_catalogo == 0) {
@@ -250,6 +244,91 @@ export class Proyectos implements OnInit {
 
   }
 
+  textoBusqueda: string = '';
 
+  nombreFiltro: string = 'Filtrar';
+  ordenSeleccionado: string = 'todos';
+
+  buscarProyecto(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.textoBusqueda = input.value ?? '';
+  }
+
+  filtrarProyectos(opcion: string) {
+
+    this.ordenSeleccionado = opcion;
+
+    switch (opcion) {
+
+      case 'todos':
+        this.nombreFiltro = 'Todos';
+        break;
+
+      case 'recientes':
+        this.nombreFiltro = 'Más recientes';
+        break;
+
+      case 'antiguos':
+        this.nombreFiltro = 'Más antiguos';
+        break;
+
+      case 'az':
+        this.nombreFiltro = 'De la A - Z';
+        break;
+
+      case 'za':
+        this.nombreFiltro = 'De la Z - A';
+        break;
+    }
+  }
+
+  get proyectosFiltrados() {
+
+    const texto = this.textoBusqueda.trim().toLowerCase();
+
+    // Buscar proyectos por título
+    let resultado = this.proyectos.filter(p => p.titulo.toLowerCase().includes(texto)
+    );
+    //p: representa cada proyecto que se está evaluando.
+    //p.titulo: accede al título del proyecto.
+
+    // Ordenar proyectos
+    switch (this.ordenSeleccionado) {
+
+      case 'recientes':
+        resultado.sort((a, b) => //sort() metodo de javaScript para ordernar elementos de un array
+          new Date(b.fecha_inicio).getTime() -  //(a, b): JavaScript va comparando los proyectos de a pares para determinar en qué orden deben quedar
+          new Date(a.fecha_inicio).getTime()
+          //se realiza una resta (b-a) para determinar el orden de los proyectos.
+          //Si el resultado es negativo el proyecto A se coloca antes que el B.
+          //Si el resultado es positivo el proyecto B se coloca antes que el A.
+          //Si da cero, los considera iguales para el ordenamiento.
+          //JavaScript utiliza su propio algoritmo de ordenamiento
+        );
+        break;
+
+      case 'antiguos':
+        resultado.sort((a, b) =>//(a, b) Parámetros de comparación
+          new Date(a.fecha_inicio).getTime() -
+          new Date(b.fecha_inicio).getTime()
+        );
+        break;
+
+      case 'az':
+        resultado.sort((a, b) =>
+          a.titulo.localeCompare(b.titulo) //localeCompare() es un método de JavaScript que permite comparar dos textos alfabéticamente.
+        );
+        break;
+
+      case 'za':
+
+        resultado.sort((a, b) =>
+          b.titulo.localeCompare(a.titulo)
+        );
+        break;
+    }
+
+    return resultado;
+  }
 }
 

@@ -91,7 +91,7 @@
         <form class="d-flex" role="search">
             <div class="input-group">
                 <input class="form-control" type="search" placeholder="Buscar proyecto" aria-label="Search"
-                    aria-describedby="basic-addon1" />
+                    (input)="buscarProyecto($event)" aria-describedby="basic-addon1" />
                 <button class="btn btn-outline-success" type="submit">Buscar</button>
             </div>
         </form>
@@ -99,21 +99,27 @@
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle bi bi-list-ul" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                Filtrar
+                {{nombreFiltro}}
             </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Todos</a></li>
-                <li><a class="dropdown-item" href="#">Mas recientes</a></li>
-                <li><a class="dropdown-item" href="#">Mas antiguos</a></li>
-                <li><a class="dropdown-item" href="#">De la A - Z</a></li>
-                <li><a class="dropdown-item" href="#">De la Z - A</a></li>
 
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" (click)="filtrarProyectos('todos')">Todos</a></li>
+                <li><a class="dropdown-item" (click)="filtrarProyectos('recientes')">Más recientes</a></li>
+                <li><a class="dropdown-item" (click)="filtrarProyectos('antiguos')">Más antiguos</a></li>
+                <li><a class="dropdown-item" (click)="filtrarProyectos('az')">De la A - Z</a></li>
+                <li><a class="dropdown-item" (click)="filtrarProyectos('za')">De la Z - A</a></li>
             </ul>
         </div>
 
     </div>
+    @if (proyectosFiltrados.length === 0 ) {
+    <div class="sin-proyectos">
+        <h3>No se encontraron proyectos</h3>
+        <p>Intente buscar con otro nombre.</p>
+    </div>
+    }@else{
+    @for (proyecto of proyectosFiltrados; track proyecto.id_obra) {
 
-    @for (proyecto of proyectos; track proyecto.id_obra) {
     <div class="card">
         <div>
             <img [src]="proyecto.imagen" [alt]="proyecto.nombre">
@@ -126,6 +132,7 @@
             <ul>
                 <li>Superficie: {{ proyecto.superficie }} m²</li>
                 <li>Cliente: {{ proyecto.cliente }}</li>
+                <li>Fecha de inicio: {{proyecto.fecha_inicio}}</li>
             </ul>
 
             <button (click)="obtenerProyecto(proyecto.id_obra)">
@@ -169,10 +176,12 @@
             <button class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
         </div>
     </div>
+    }
 
 
 
 
+    }
     <!--Modal agregar proyectos-->
 
     <div class="modal fade" id="formProyectoModal" tabindex="-1" aria-labelledby="formProyectoModalLabel"
@@ -271,13 +280,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" (click)="crearNuevoProyecto()"
-                        [disabled]="formNuevoProyecto.invalid || enviandoProyecto">
-                        @if (enviandoProyecto) {
-                        Guardando...
-                        } @else {
-                        Guardar
-                        }
+                    <button type="button" class="btn btn-primary" (click)="crearNuevoProyecto()" data-bs-dismiss="modal"
+                        [disabled]="formNuevoProyecto.invalid">Guardar
+
                     </button>
                 </div>
             </div>
@@ -286,7 +291,6 @@
 
 
     </div>
-    }
     <button class="boton-subir" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
         <i class="bi bi-arrow-up"></i>
     </button>
