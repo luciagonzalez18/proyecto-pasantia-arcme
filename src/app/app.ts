@@ -15,7 +15,7 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
 export class App {
   protected readonly title = signal('proyecto-pasantia');
 
-  constructor(private proyectosService:ProyectosService){}
+  constructor(private proyectosService: ProyectosService) { }
   router = inject(Router) // Inyecta el Router de Angular para poder acceder a la ruta actual de la aplicación.
 
   mostrarMenu(): boolean {
@@ -76,18 +76,18 @@ export class App {
     };
     this.proyectosService.crear(proyecto).subscribe({
       next: (respuesta) => {
-              console.log('Proyecto creado:', respuesta);
-              this.nuevoProyecto.reset();
-              Swal.fire({
-                title: "Proyecto Cargado!",
-                icon: "success"
-              });
-             
-            },
-            error: (error) => {
-              console.error('Error al crear el proyecto:', error);
-              console.log('Respuesta del servidor:', error.error);
-            }
+        console.log('Proyecto creado:', respuesta);
+        this.nuevoProyecto.reset();
+        Swal.fire({
+          title: "Proyecto Cargado!",
+          icon: "success"
+        });
+
+      },
+      error: (error) => {
+        console.error('Error al crear el proyecto:', error);
+        console.log('Respuesta del servidor:', error.error);
+      }
     })
   }
 }

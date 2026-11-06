@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { ProyectosService } from '../../services/proyectos';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { Location } from '@angular/common';
 
 import Swal from 'sweetalert2';
 @Component({
@@ -11,7 +12,7 @@ import Swal from 'sweetalert2';
   styleUrl: './detalles-proyecto.css',
 })
 export class DetallesProyecto implements OnInit {
-  constructor(private proyectoService: ProyectosService, private router: Router, private cdr: ChangeDetectorRef) { }
+  constructor(private proyectoService: ProyectosService, private router: Router, private cdr: ChangeDetectorRef, private location: Location) { }
   proyecto: any = null
   ngOnInit(): void {
 
@@ -36,7 +37,9 @@ export class DetallesProyecto implements OnInit {
     this.cdr.markForCheck();
     console.log(this.proyectoService.proyectoSeleccionado)
   }
-
+  volverAtras() {
+    this.location.back();
+  }
   editarProyecto = new FormGroup({
     titulo: new FormControl('', [
       Validators.required
@@ -113,7 +116,7 @@ export class DetallesProyecto implements OnInit {
       descripcion: valores.descripcion,
       nomenclatura: valores.nomenclatura,
       estado: valores.estado,
-      memoria:valores.memoria,
+      memoria: valores.memoria,
       fecha_inicio: valores.fecha_inicio,
       fecha_finalizacion: valores.fecha_finalizacion
     };
@@ -145,7 +148,7 @@ export class DetallesProyecto implements OnInit {
           title: 'Proyecto actualizado',
           text: 'Los cambios se guardaron correctamente.',
           icon: 'success',
-          confirmButtonText:'Continuar',
+          confirmButtonText: 'Continuar',
           confirmButtonColor: '#2f6f7e'
         });
 

@@ -1,5 +1,6 @@
 import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { PortfolioService } from '../../services/portfolio-service';
+import { Router } from '@angular/router';
 import { ProyectosService } from '../../services/proyectos';
 import Swal from 'sweetalert2';
 @Component({
@@ -13,7 +14,7 @@ import Swal from 'sweetalert2';
 export class Porfolio implements OnInit {
   proyectoPortfolio: any[] = []
 
-  constructor(private portFolio: PortfolioService, private cdr: ChangeDetectorRef, private proyectoService: ProyectosService) { }
+  constructor(private portFolio: PortfolioService, private cdr: ChangeDetectorRef, private proyectoService: ProyectosService,private router:Router) { }
   ngOnInit(): void {
     this.listar()
   }
@@ -32,6 +33,21 @@ export class Porfolio implements OnInit {
       },
       error: (error) => {//Si la peticion falla *dios quiera q no* se muestra el mensaje de error
         console.error('Error al obtener los proyectos de portFolio:', error);
+      }
+    })
+  }
+
+   obtenerProyecto(id: number) {
+
+    this.proyectoService.buscar(id).subscribe({
+      next: (respuesta: any) => {
+        this.proyectoService.proyectoSeleccionado = respuesta;
+        console.log("producto obtenido", respuesta)
+        this.router.navigate(['/detalles-proyectos']);
+
+      },
+      error: (error) => {
+        console.error('Error al obtener el proyecto:', error);
       }
     })
   }
