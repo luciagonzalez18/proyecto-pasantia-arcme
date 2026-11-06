@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, inject, ChangeDetectorRef } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 // le pusimos otro nombre al servicio para que no se confunda con la clase Agenda de abajo
 import { Agenda as AgendaService } from '../../servicios/agenda';
@@ -10,8 +10,11 @@ import { Agenda as AgendaService } from '../../servicios/agenda';
   styleUrl: './agenda.css',
 })
 export class Agenda implements OnInit {
+constructor(private detector: ChangeDetectorRef) {
 
+}
   //injectamos el sevicio
+  
   private agendaServicios = inject(AgendaService);
 
   // angular ejecuta una sola vez este metodo al cargar el componente
@@ -239,6 +242,7 @@ export class Agenda implements OnInit {
       .filter(ev => ev.fecha >= hoyStr && ev.fecha <= semanaStr)
       .filter(ev => this.filtroCategoria === '' || ev.categoria === this.filtroCategoria)
       .sort((a, b) => (a.fecha + a.hora).localeCompare(b.fecha + b.hora));
+      this.detector.markForCheck()
   }
 
 }

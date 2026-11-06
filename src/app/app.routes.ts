@@ -10,7 +10,7 @@ import { Configuracion } from './paginas/configuracion/configuracion';
 import { Personalizacion } from './paginas/personalizacion/personalizacion';
 import { Porfolio } from './paginas/porfolio/porfolio';
 import { Ingresos } from './paginas/ingresos/ingresos';
-import { Agenda } from './compartidos/agenda/agenda';
+import { Agenda } from './paginas/agenda/agenda';
 import { PreguntasFrecuentes } from './compartidos/preguntas-frecuentes/preguntas-frecuentes';
 
 

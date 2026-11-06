@@ -4,7 +4,7 @@
   --suave: #6b7785;
   --linea: #dde2e9;
   --fondo: #f4f6fa;
-  --acento: #2452d6;
+  --acento: #2f6f7e;
   font-family: 'Segoe UI', system-ui, sans-serif;
   color: var(--tinta);
   display: block;
@@ -18,18 +18,29 @@
 }
 .agenda {  padding: 16px; }
 
+
+.titulos { justify-self: start; }
+
 .titulo-agenda {
-  font-size: 2.2rem;          /* más grande que la fecha */
+  display: block;
+  font-size: 2.2rem;
   font-weight: bold;
-  justify-self: start;        /* pegado a la izquierda */
+  line-height: 1;
 }
 
-.barra h1 {
-  font-size: 1.4rem;          /* la fecha más chica que el título */
-  margin: 0;
-  text-align: center;
+.subtitulo {
+  margin: 6px 0 0 0;
+  color: #777777;
+  font-size: 16px;
 }
 
+.barra {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
 
 
 .barra {
@@ -42,8 +53,26 @@
   margin-bottom: 16px;
 }
 h1 { margin: 0; font-size: 1.6rem; text-transform: capitalize; }
-.controles { display: flex; gap: 6px; }
 
+.controles { display: flex; gap: 6px; }
+.controles { justify-self: end; }
+
+.navegacion-mes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navegacion-mes button {
+  font: inherit;
+  padding: 6px 12px;
+  border: 1px solid var(--linea);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--tinta);
+  cursor: pointer;
+}
+.navegacion-mes button:hover { background: var(--fondo); }
 /* botones del encabezado del calendario (solo estos, para no pisar los del modal) */
 .controles button {
   font: inherit;
@@ -56,7 +85,7 @@ h1 { margin: 0; font-size: 1.6rem; text-transform: capitalize; }
 }
 .controles button:hover { background: var(--fondo); }
 .controles button.primario { background: var(--acento); border-color: var(--acento); color: #fff; }
-.controles button.primario:hover { background: #1b43b3; }
+.controles button.primario:hover { background: #245865; }
 
 button:focus-visible, .celda:focus-visible {
   outline: 2px solid var(--acento);
@@ -287,31 +316,36 @@ button:focus-visible, .celda:focus-visible {
   padding: 10px 12px;
   margin-bottom: 10px;
 }
-.proximo[dato-cat="alta"]  { border-color: #e53935; }
-.proximo[dato-cat="media"] { border-color: #fb8c00; }
-.proximo[dato-cat="baja"]  { border-color: #43a047; }
+.proximo[dato-cat="alta"]  { border-color: #db5e5c; }
+.proximo[dato-cat="media"] { border-color: #dfa660; }
+.proximo[dato-cat="baja"]  { border-color: #73ad76; }
 
 .proximo span {
   display: block;
 }
 .seccionAbajo {
   display: flex;
-  align-items: flex-start;   /* ambos arriba */
+  align-items: flex-start;
   justify-content: space-between;
   gap: 20px;
-   padding-bottom: 150px;
+  padding: 0 16px 150px 16px;
 }
 
 .proximos-lista {
-  width: 80%;                /* lista más chica, a la izquierda */
+  flex: 1;
 }
 
 .filtro {
-  margin-left: auto;          /* lo empuja a la derecha */
-  width: 220px;
+  margin-left: auto;
+  width: 350px;
   padding: 12px 14px;
-  border: 2px solid #555;     /* borde marcado */
-  border-radius: 10px;        /* esquinas redondeadas */
+  border: 2px solid #555;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.filtro select {
+  width: 100%;
 }
 .filtro label {
   display: block;

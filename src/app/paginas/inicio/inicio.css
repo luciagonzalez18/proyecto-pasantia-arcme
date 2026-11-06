@@ -360,3 +360,24 @@ img:hover {
         padding: 11px;
     }
 }
+/*nuevo diseño de recordatorios */
+
+.proximos-lista {
+  width: 100%;
+}
+
+.proximo {
+  border: 2px solid #888;
+  border-left-width: 8px;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.proximo[dato-cat="alta"]  { border-color: #db5e5c; }
+.proximo[dato-cat="media"] { border-color: #dfa660; }
+.proximo[dato-cat="baja"]  { border-color: #73ad76; }
+
+.proximo span {
+  display: block;
+}
