@@ -1,49 +1,95 @@
+
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-inicio-sesion',
   standalone: true,
-  imports: [ReactiveFormsModule,RouterLink],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './inicio-sesion.html',
   styleUrl: './inicio-sesion.css'
 })
-
-
 
 export class InicioSesion {
 
   formulario = new FormGroup({
     dni: new FormControl('', [
-      Validators.required,//Verifica que el campo no esté vacío
-      Validators.minLength(7),//Verifica que el campo tenga al menos 7 caracteres
-      Validators.maxLength(8),//Verifica que el campo no tenga más de 8 caracteres
-      Validators.pattern(/^[0-9-]+$/) //Verifica que el campo tenga solo numeros del 0 al 9
+      Validators.required,
+      Validators.minLength(7),
+      Validators.maxLength(8),
+      Validators.pattern(/^[0-9-]+$/)
     ]),
 
     contra: new FormControl('', [
-      Validators.required,//Verifica que el campo no esté vacío
-      Validators.minLength(8),//Verifica que el campo tenga al menos 8 caracteres
-      Validators.pattern(/^(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$/)//Verifica que el campo contenga una mayúscula y un carácter especial
+      Validators.required,
+      Validators.minLength(8),
+      Validators.pattern(/^(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$/)
     ]),
 
     recordarme: new FormControl(false)
   });
 
+  errorDni = '';
+  errorContrasena = '';
+
+  constructor(private http: HttpClient, private router: Router, private detector: ChangeDetectorRef) {
+      this.verificarSesion();
+  }
 
   iniciarSesion() {
 
-    // Marca todos los campos como tocados
+    this.errorDni = '';
+    this.errorContrasena = '';
+
     this.formulario.markAllAsTouched();
 
-    // Si hay algún campo inválido, no continúa
     if (this.formulario.invalid) {
       return;
     }
 
-    console.log('Formulario válido');
-    console.log(this.formulario.value);
+    const datos = {
+      dni: this.formulario.value.dni,
+      contrasena: this.formulario.value.contra
+    };
 
-    // Acá después iría la lógica para iniciar sesión
+    this.http.post(
+      '/apiArcme/public/index.php/login',
+      datos
+    ).subscribe({
+      next: () => {
+        this.router.navigate(['/inicio']);
+      },
+
+      error: (err) => {
+        this.errorContrasena =
+          err.error?.error || 'No se pudo iniciar sesión';
+          this.detector.detectChanges();
+      }
+    });
+    
   }
+
+  verificarSesion() {
+
+  this.http.get<{sesion: boolean}>(
+    '/apiArcme/public/index.php/verificar-sesion'
+  ).subscribe({
+    next: (respuesta) => {
+
+      if (respuesta.sesion) {
+        this.router.navigate(['/inicio']);
+      }
+
+    },
+    error: (err) => {
+      console.error(err);
+    }
+  });
+
 }
+
+}
+
+

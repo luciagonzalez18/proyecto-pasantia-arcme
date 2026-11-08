@@ -591,3 +591,156 @@ td button i {
         overflow-x: auto;
     }
 }
+
+
+/* =========================================
+   MODO OSCURO - CLIENTES
+   ========================================= */
+
+/* CONTENEDOR Y TITULOS */
+:host-context(html.modo-oscuro) .container {
+    background-color: #202020;
+}
+
+:host-context(html.modo-oscuro) .titulo {
+    color: #e0e0e0;
+}
+
+:host-context(html.modo-oscuro) .titulo-contenido p {
+    color: #aaaaaa;
+}
+
+/* FILTROS */
+:host-context(html.modo-oscuro) .filtros {
+    background-color: #242424;
+    border-color: #383838;
+}
+
+:host-context(html.modo-oscuro) .filtros p {
+    color: #d0d0d0;
+}
+
+:host-context(html.modo-oscuro) .filtros select {
+    background-color: #303030;
+    border-color: #484848;
+    color: #e0e0e0;
+}
+
+:host-context(html.modo-oscuro) .filtros input {
+    background-color: #303030;
+    border-color: #484848;
+    color: #e0e0e0;
+}
+
+:host-context(html.modo-oscuro) .filtros input::placeholder {
+    color: #999999;
+}
+
+:host-context(html.modo-oscuro) .filtros input:focus,
+:host-context(html.modo-oscuro) .filtros select:focus {
+    border-color: #5b91a0;
+    box-shadow: 0 0 0 3px rgba(91, 145, 160, 0.15);
+}
+
+:host-context(html.modo-oscuro) .filtros form button {
+    color: #8bc5a0;
+    border-color: #527c60;
+}
+
+:host-context(html.modo-oscuro) .filtros form button:hover {
+    background-color: #294333;
+    color: #b5e4c3;
+}
+
+/* TABLA */
+:host-context(html.modo-oscuro) .tabla {
+    background-color: #242424;
+    border-color: #383838;
+}
+
+:host-context(html.modo-oscuro) table {
+    background-color: #242424;
+}
+
+:host-context(html.modo-oscuro) thead {
+    background-color: #303030;
+}
+
+:host-context(html.modo-oscuro) th {
+    background-color: #303030;
+    color: #e0e0e0;
+    border-bottom-color: #444444;
+}
+
+:host-context(html.modo-oscuro) td {
+    background-color: #242424;
+    color: #d0d0d0;
+    border-bottom-color: #383838;
+}
+
+:host-context(html.modo-oscuro) tbody tr:hover {
+    background-color: #303030;
+}
+
+:host-context(html.modo-oscuro) tbody tr:hover td {
+    background-color: #303030;
+}
+
+/* BOTON VER DETALLES */
+:host-context(html.modo-oscuro) td button {
+    background-color: transparent;
+    color: #b8c2d1;
+    border-color: #64748b;
+}
+
+:host-context(html.modo-oscuro) td button:hover {
+    background-color: #475569;
+    color: #e0e0e0;
+}
+
+/* MODAL */
+:host-context(html.modo-oscuro) .modal-content {
+    background-color: #242424;
+}
+
+:host-context(html.modo-oscuro) .modal-header,
+:host-context(html.modo-oscuro) .modal-footer {
+    background-color: #303030;
+    border-color: #444444;
+}
+
+:host-context(html.modo-oscuro) .modal-title {
+    color: #e0e0e0;
+}
+
+:host-context(html.modo-oscuro) .modal-body {
+    background-color: #242424;
+}
+
+:host-context(html.modo-oscuro) .modal-body .form-label {
+    color: #d0d0d0;
+}
+
+:host-context(html.modo-oscuro) .modal-body .form-control {
+    background-color: #303030;
+    border-color: #484848;
+    color: #e0e0e0;
+}
+
+:host-context(html.modo-oscuro) .modal-body .form-control::placeholder {
+    color: #999999;
+}
+
+:host-context(html.modo-oscuro) .modal-body .form-control:focus {
+    border-color: #5b91a0;
+    box-shadow: 0 0 0 3px rgba(91, 145, 160, 0.15);
+}
+
+:host-context(html.modo-oscuro) .modal-header .btn-close {
+    filter: invert(1);
+}
+
+:host-context(html.modo-oscuro) .modal-footer .btn-secondary {
+    background-color: #555555;
+    border-color: #555555;
+}

@@ -1,3 +1,4 @@
+
 .footer {
     width: 100%;
     background-color: #ffffff;
@@ -5,6 +6,7 @@
     padding: 20px 32px;
     font-size: 14px;
     color: #666666;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .footer-contenido {
@@ -30,4 +32,23 @@
 
 .footer-links a:hover {
     color: #1a1a1a;
+}
+
+
+/* =========================================
+   MODO OSCURO
+========================================= */
+
+:host-context(html.modo-oscuro) .footer {
+    background-color: #202020;
+    border-top-color: #383838;
+    color: #b0b0b0;
+}
+
+:host-context(html.modo-oscuro) .footer-links a {
+    color: #b0b0b0;
+}
+
+:host-context(html.modo-oscuro) .footer-links a:hover {
+    color: #e0e0e0;
 }
