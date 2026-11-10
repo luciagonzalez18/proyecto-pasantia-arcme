@@ -8,12 +8,50 @@
     margin: 45px 0;
     padding: 0 35px;
     box-sizing: border-box;
-    
+}
+
+/* =========================================
+   CABECERA (HEADER) Y BOTÓN PRINCIPAL
+   ========================================= */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+    flex-wrap: wrap; 
+    gap: 20px;
 }
 
 
+.header button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 21px;
+    background-color: #2f6f7e;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s ease;
+    white-space: nowrap;
+}
+
+.header button:hover {
+    background-color: #245865;
+}
+
+.header button:active {
+    transform: scale(0.97);
+}
+
+.header button i {
+    font-size: 16px;
+}
+
 /* =========================================
-   TITULO
+   TITULO Y DESCRIPCIÓN
    ========================================= */
 
 h1 {
@@ -26,6 +64,8 @@ h1 {
 .descripcion {
     color: #666;
     font-size: 15px;
+    margin-top: 5px;
+    margin-bottom: 0;
 }
 
 
@@ -434,6 +474,128 @@ h1 {
 
 
 /* =========================================
+   MODALES Y FORMULARIOS (ESTILOS BOOTSTRAP)
+   ========================================= */
+
+.modal-dialog {
+    max-width: 950px;
+}
+
+.modal-content {
+    border: none;
+    border-radius: 13px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 23px 28px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e1e5e8;
+}
+
+.modal-title {
+    margin: 0;
+    color: #2f3e46;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.modal-header .btn-close {
+    opacity: 0.6;
+    transform: scale(1.1);
+}
+
+.modal-header .btn-close:hover {
+    opacity: 1;
+}
+
+.modal-body {
+    padding: 28px 34px;
+    background-color: white;
+}
+
+.modal-body .form-label {
+    margin-bottom: 8px;
+    color: #2f3e46;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* Hace que los inputs de cuotas sean más cortos y elegantes */
+.input-cuota {
+    max-width: 90px;
+}
+
+/* Inputs generales del modal y datalist */
+.modal-body .form-control {
+    padding: 12px 16px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 9px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-body .form-control:focus {
+    border-color: #2f6f7e;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(47, 111, 126, 0.25);
+}
+
+.modal-body .form-control::placeholder {
+    color: #adb5bd;
+}
+
+.modal-body .row {
+    margin-bottom: 3px;
+}
+
+.modal-footer {
+    padding: 19px 28px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e1e5e8;
+}
+
+.modal-footer .btn {
+    min-width: 100px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.modal-footer .btn-primary {
+    background-color: #2f6f7e;
+    border-color: #2f6f7e;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #245865;
+    border-color: #245865;
+}
+
+.modal-footer .btn-primary:active {
+    transform: scale(0.97);
+}
+
+.modal-footer .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #5c636a;
+}
+
+.modal-footer .btn-secondary:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================
    BOTON VER CLIENTE
    ========================================= */
 
@@ -456,18 +618,13 @@ h1 {
 
 
 /* =========================================
-   FECHAS
+   FECHAS Y OBRA (TABLA CLIENTES)
    ========================================= */
 
 .tabla-clientes td:nth-child(4) {
     color: #6b7280;
     font-size: 13px;
 }
-
-
-/* =========================================
-   OBRA
-   ========================================= */
 
 .tabla-clientes td:nth-child(2) {
     color: #6b7280;
@@ -479,7 +636,6 @@ h1 {
    ========================================= */
 
 @media (max-width: 900px) {
-
     .parte-superior {
         flex-direction: column;
     }
@@ -494,4 +650,227 @@ h1 {
         overflow-x: auto;
         white-space: nowrap;
     }
+}
+
+
+/* =========================================
+   MODO OSCURO - INGRESOS
+   ========================================= */
+
+/* CONTENEDOR Y TITULOS */
+:host-context(html.modo-oscuro) .container {
+    background-color: #202020;
+}
+
+:host-context(html.modo-oscuro) h1,
+:host-context(html.modo-oscuro) .ingresos h2,
+:host-context(html.modo-oscuro) .alertas h2,
+:host-context(html.modo-oscuro) .titulo-clientes h2 {
+    color: #e0e0e0;
+}
+
+:host-context(html.modo-oscuro) .descripcion {
+    color: #aaaaaa;
+}
+
+/* INGRESOS MENSUALES */
+:host-context(html.modo-oscuro) .ingresos {
+    background-color: #242424;
+    border-color: #383838;
+}
+
+:host-context(html.modo-oscuro) .ingresos h2 {
+    background-color: #242424;
+    border-bottom-color: #383838;
+}
+
+:host-context(html.modo-oscuro) .ingresos th {
+    background-color: #303030;
+    color: #aaaaaa;
+    border-bottom-color: #444444;
+}
+
+:host-context(html.modo-oscuro) .ingresos td {
+    background-color: #242424;
+    color: #d0d0d0;
+    border-bottom-color: #383838;
+}
+
+:host-context(html.modo-oscuro) .ingresos .numero-tabla {
+    color: #d0d0d0;
+}
+
+:host-context(html.modo-oscuro) .ingresos tr:not(.total):hover td {
+    background-color: #303030;
+}
+
+:host-context(html.modo-oscuro) .ingresos .total td {
+    background-color: #303030;
+    color: #e0e0e0;
+    border-top-color: #484848;
+}
+
+:host-context(html.modo-oscuro) .ingresos .total .numero-tabla {
+    color: #8bb4ff;
+}
+
+/* ALERTAS */
+:host-context(html.modo-oscuro) .alertas {
+    background-color: #242424;
+    border-color: #383838;
+}
+
+/* Mantenemos los colores de las alertas para diferenciarlas */
+:host-context(html.modo-oscuro) .vencidas {
+    background-color: #3a2424;
+    border-color: #633737;
+    color: #f0aaaa;
+}
+
+:host-context(html.modo-oscuro) .vencidas strong {
+    color: #ff8d8d;
+}
+
+:host-context(html.modo-oscuro) .por-vencer {
+    background-color: #3a3220;
+    border-color: #66552b;
+    color: #f0d28a;
+}
+
+:host-context(html.modo-oscuro) .por-vencer strong {
+    color: #ffca70;
+}
+
+:host-context(html.modo-oscuro) .pagadas {
+    background-color: #203629;
+    border-color: #315b40;
+    color: #a5ddb5;
+}
+
+:host-context(html.modo-oscuro) .pagadas strong {
+    color: #7ee09b;
+}
+
+:host-context(html.modo-oscuro) .numero {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+/* BOTON VER TODOS */
+:host-context(html.modo-oscuro) .ver-todos {
+    background-color: #303030;
+    border-color: #484848;
+    color: #d0d0d0;
+}
+
+:host-context(html.modo-oscuro) .ver-todos:hover {
+    background-color: #383838;
+    border-color: #555555;
+}
+
+/* TABLA DE CLIENTES */
+:host-context(html.modo-oscuro) .tabla-clientes {
+    background-color: #242424;
+    border-color: #383838;
+}
+
+:host-context(html.modo-oscuro) .tabla-clientes th {
+    background-color: #303030;
+    color: #aaaaaa;
+    border-bottom-color: #444444;
+}
+
+:host-context(html.modo-oscuro) .tabla-clientes td {
+    background-color: #242424;
+    color: #d0d0d0;
+    border-bottom-color: #383838;
+}
+
+:host-context(html.modo-oscuro) .tabla-clientes tr:hover td {
+    background-color: #303030;
+}
+
+:host-context(html.modo-oscuro) .tabla-clientes td:first-child,
+:host-context(html.modo-oscuro) .tabla-clientes td:nth-child(3) {
+    color: #e0e0e0;
+}
+
+:host-context(html.modo-oscuro) .tabla-clientes td:nth-child(2),
+:host-context(html.modo-oscuro) .tabla-clientes td:nth-child(4) {
+    color: #aaaaaa;
+}
+
+/* ESTADOS DE LOS CLIENTES */
+:host-context(html.modo-oscuro) .vencido {
+    background-color: #482727;
+    color: #ff9999;
+    border-color: #754040;
+}
+
+:host-context(html.modo-oscuro) .por-vencer-estado {
+    background-color: #48391f;
+    color: #ffd080;
+    border-color: #75602e;
+}
+
+/* BOTON VER CLIENTE */
+:host-context(html.modo-oscuro) .cliente-boton {
+    background-color: #29364d;
+    color: #9bbcff;
+    border-color: #475f87;
+}
+
+:host-context(html.modo-oscuro) .cliente-boton:hover {
+    background-color: #354968;
+    border-color: #647fae;
+}
+
+/* MODAL */
+:host-context(html.modo-oscuro) .modal-content {
+    background-color: #242424;
+}
+
+:host-context(html.modo-oscuro) .modal-header,
+:host-context(html.modo-oscuro) .modal-footer {
+    background-color: #303030;
+    border-color: #444444;
+}
+
+:host-context(html.modo-oscuro) .modal-title {
+    color: #e0e0e0;
+}
+
+:host-context(html.modo-oscuro) .modal-body {
+    background-color: #242424;
+}
+
+:host-context(html.modo-oscuro) .modal-body .form-label {
+    color: #d0d0d0;
+}
+
+:host-context(html.modo-oscuro) .modal-body .form-control {
+    background-color: #303030;
+    color: #e0e0e0;
+    border-color: #484848;
+}
+
+:host-context(html.modo-oscuro) .modal-body .form-control::placeholder {
+    color: #999999;
+}
+
+:host-context(html.modo-oscuro) .modal-body .form-control:disabled {
+    background-color: #424242 !important;
+    color: #aaaaaa;
+}
+
+:host-context(html.modo-oscuro) .modal-body .text-muted {
+    color: #aaaaaa !important;
+}
+
+:host-context(html.modo-oscuro) .modal-header .btn-close {
+    filter: invert(1);
+}
+
+:host-context(html.modo-oscuro) .modal-footer .btn-secondary {
+    background-color: #555555;
+    border-color: #555555;
 }

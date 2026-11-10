@@ -319,3 +319,145 @@ body {
     padding: 8px;
     font-size: 14px;
 }
+
+
+/* =========================================
+   MODO OSCURO
+========================================= */
+
+/* Fondo general */
+
+:host-context(html.modo-oscuro) body {
+    background-color: #202020;
+    color: #d0d0d0;
+}
+
+/* Encabezado */
+
+:host-context(html.modo-oscuro) .logotipo {
+    color: #e0e0e0;
+}
+
+:host-context(html.modo-oscuro) .barra-separadora-superior {
+    background-color: #383838;
+}
+
+/* Botones del encabezado */
+
+:host-context(html.modo-oscuro) .boton-borde {
+    background-color: #303030;
+    border-color: #484848;
+    color: #d0d0d0;
+}
+
+:host-context(html.modo-oscuro) .boton-borde:hover {
+    background-color: #3a3a3a;
+}
+
+/* Tarjetas */
+
+:host-context(html.modo-oscuro) .tarjeta {
+    background-color: #242424;
+    border-color: #383838;
+}
+
+/* Títulos de las tarjetas */
+
+:host-context(html.modo-oscuro) .cabecera-tarjeta h2 {
+    color: #e0e0e0;
+}
+
+:host-context(html.modo-oscuro) .subtitulo {
+    color: #999999;
+}
+
+:host-context(html.modo-oscuro) .icono-configuracion {
+    color: #aaa0bf;
+}
+
+/* Imágenes y miniaturas */
+
+:host-context(html.modo-oscuro) .imagen-principal,
+:host-context(html.modo-oscuro) .miniatura {
+    background-color: #383838;
+    color: #a5a5a5;
+}
+
+:host-context(html.modo-oscuro) .miniatura-mas {
+    background-color: #484848;
+    color: #d0d0d0;
+}
+
+/* Información de las obras */
+
+:host-context(html.modo-oscuro) .tabla-info {
+    border-top-color: #383838;
+    border-bottom-color: #383838;
+}
+
+:host-context(html.modo-oscuro) .borde-derecho {
+    border-right-color: #383838;
+}
+
+:host-context(html.modo-oscuro) .titulo-info {
+    color: #bcbcbc;
+}
+
+:host-context(html.modo-oscuro) .valor-info {
+    color: #d0d0d0;
+}
+
+/* Archivo PDF */
+
+:host-context(html.modo-oscuro) .etiqueta-pdf {
+    background-color: #383838;
+    border-color: #555555;
+    color: #d0d0d0;
+}
+
+:host-context(html.modo-oscuro) .etiqueta-pdf i {
+    color: #d0d0d0;
+}
+
+/* Botones inferiores */
+
+:host-context(html.modo-oscuro) .boton-icono {
+    background-color: #383838;
+}
+
+:host-context(html.modo-oscuro) .boton-icono i {
+    color: #c0c0c0;
+}
+
+:host-context(html.modo-oscuro) .boton-icono:hover {
+    background-color: #484848;
+}
+
+:host-context(html.modo-oscuro) .boton-texto {
+    color: #d0d0d0;
+}
+
+/* Paginación */
+
+:host-context(html.modo-oscuro) .pagina {
+    background-color: #303030;
+    color: #d0d0d0;
+}
+
+:host-context(html.modo-oscuro) .pagina:hover {
+    background-color: #424242;
+}
+
+:host-context(html.modo-oscuro) .pagina-activa,
+:host-context(html.modo-oscuro) .pagina-activa:hover {
+    background-color: #475569;
+    color: #ffffff;
+}
+
+:host-context(html.modo-oscuro) .anterior {
+    color: #999999;
+}
+
+:host-context(html.modo-oscuro) .puntos {
+    color: #b0b0b0;
+}

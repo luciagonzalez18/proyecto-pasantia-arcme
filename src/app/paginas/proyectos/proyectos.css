@@ -353,9 +353,99 @@
     }
 }
 
+
+/* Fondo y título principal */
+
+:host-context(html.modo-oscuro) .container {
+    background-color: #202020;
+}
+
+:host-context(html.modo-oscuro) .container h2 {
+    color: #e0e0e0;
+}
+
+/* Flechas del carrusel */
+
+:host-context(html.modo-oscuro) .carousel-control-next-icon::after,
+:host-context(html.modo-oscuro) .carousel-control-prev-icon::after {
+    color: #c9cdd3;
+}
+
+/* Buscador */
+
+:host-context(html.modo-oscuro) .navegacion form input[type="search"] {
+    background-color: #303030;
+    border-color: #444444;
+    color: #e0e0e0;
+}
+
+:host-context(html.modo-oscuro) .navegacion form input[type="search"]::placeholder {
+    color: #aaaaaa;
+}
+
+/* Botón de filtro */
+
+:host-context(html.modo-oscuro) .navegacion .dropdown button {
+    background-color: #303030;
+    color: #d0d0d0;
+    border: 1px solid #444444;
+}
+
+:host-context(html.modo-oscuro) .navegacion .dropdown button:hover {
+    background-color: #383838;
+}
+
+/* Menú desplegable */
+
+:host-context(html.modo-oscuro) .dropdown-menu {
+    background-color: #303030;
+    border-color: #444444;
+}
+
+:host-context(html.modo-oscuro) .dropdown-item {
+    color: #d0d0d0;
+}
+
+:host-context(html.modo-oscuro) .dropdown-item:hover {
+    background-color: #424242;
+    color: #e0e0e0;
+}
+
+/* Tarjetas de proyectos */
+
+:host-context(html.modo-oscuro) .card {
+    background-color: #242424;
+    border-color: #383838;
+}
+
+/* Título de cada obra */
+
+:host-context(html.modo-oscuro) .card .datos > p {
+    color: #e0e0e0;
+}
+
+/* Información de cada proyecto */
+
+:host-context(html.modo-oscuro) .card .datos ul li {
+    color: #d18b8b;
+}
+
+:host-context(html.modo-oscuro) .card .datos ul li:first-child {
+    color: #a5a5a5;
+}
+
+/* Botón Ver detalles */
+
+:host-context(html.modo-oscuro) .card .datos button {
+    color: #b8c2d1;
+    border-color: #64748b;
+}
+
+:host-context(html.modo-oscuro) .card .datos button:hover {
+    background-color: #475569;
+    color: #e0e0e0;
 /* =========================
    MODAL
-========================= */
 
 .modal-dialog {
     max-width: 950px;
@@ -374,7 +464,6 @@
 
 /* =========================
    CABECERA MODAL
-========================= */
 
 .modal-header {
     padding: 23px 28px;
@@ -409,7 +498,6 @@
 
 /* =========================
    CUERPO MODAL
-========================= */
 
 .modal-body {
     padding: 28px 34px;
@@ -473,7 +561,6 @@
 
 /* =========================
    FOOTER MODAL
-========================= */
 
 .modal-footer {
     padding: 19px 28px;
