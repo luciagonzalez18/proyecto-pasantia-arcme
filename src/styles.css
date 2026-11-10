@@ -1,17 +1,80 @@
 /* You can add global styles to this file, and also import other style files */
-/* Fondo oscuro detrás del modal */
-.modal-backdrop {
-    z-index: 1050 !important;
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
 }
 
-/* Ventana del modal */
-.modal {
-    z-index: 1060 !important;
+/* MODO CLARO */
+
+:root {
+    --fondo-pagina: #fcfbf9;
+    --fondo-tarjeta: #ffffff;
+    --fondo-menu: #fcfbf9;
+    --fondo-input: #ffffff;
+
+    --color-texto: #111111;
+    --color-secundario: #888888;
+
+    --color-borde: #dddddd;
 }
 
-/* Contenido blanco del modal */
-.modal .modal-content {
-    background-color: #fff !important;
-    opacity: 1 !important;
-    filter: none !important;
+
+/* MODO OSCURO */
+
+html.modo-oscuro {
+    --fondo-pagina: #171717;
+    --fondo-tarjeta: #242424;
+    --fondo-menu: #202020;
+    --fondo-input: #303030;
+
+    --color-texto: #f1f1f1;
+    --color-secundario: #aaaaaa;
+
+    --color-borde: #383838;
+}
+
+
+/* TRANSICIONES GENERALES */
+
+body {
+    margin: 0;
+    background-color: var(--fondo-pagina);
+    color: var(--color-texto);
+
+    transition: background-color 0.4s, color 0.4s;
+}
+
+/* Fondo general de la aplicación en modo oscuro */
+html.modo-oscuro body,
+html.modo-oscuro app-root,
+html.modo-oscuro .page,
+html.modo-oscuro .main-content {
+    background-color: #202020;
+}
+
+.page.pagina-configuracion app-footer {
+    display: block;
+    margin-left: 220px;
+    width: calc(100% - 220px);
+}
+
+@media (max-width: 768px) {
+    .page.pagina-configuracion app-footer {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+.page.pagina-personalizacion app-footer {
+    display: block;
+    margin-left: 220px;
+    width: calc(100% - 220px);
+}
+
+@media (max-width: 768px) {
+    .page.pagina-personalizacion app-footer {
+        margin-left: 0;
+        width: 100%;
+    }
 }
