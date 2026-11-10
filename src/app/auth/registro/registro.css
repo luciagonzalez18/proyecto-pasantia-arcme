@@ -170,6 +170,18 @@ form>p {
     font-size: 14px;
 }
 
+.containerDNI small,
+.containerContraseña small {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #dc3545;
+
+    font-size: 13px;
+    line-height: 1.4;
+}
+
 
 /* =========================
    SEGUNDO BOTÓN

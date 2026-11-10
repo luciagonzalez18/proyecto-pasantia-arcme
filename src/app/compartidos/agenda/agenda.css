@@ -348,4 +348,150 @@ button:focus-visible, .celda:focus-visible {
   padding: 0;             /* Quita el espacio interno si es necesario */
   cursor: pointer;         /* Mantiene la manito al pasar el mouse */
 
+.btn-submit:active {
+  transform: scale(0.97);
+}
+
+
+/* =========================================
+   MODO OSCURO
+
+/* Fondo general */
+
+:host-context(html.modo-oscuro) .container {
+    background-color: #202020;
+}
+
+/* Tarjetas */
+
+:host-context(html.modo-oscuro) .card {
+    background-color: #242424;
+    border-color: #383838;
+}
+
+/* Título principal */
+
+:host-context(html.modo-oscuro) .header-title {
+    color: #e0e0e0;
+}
+
+/* Título de fechas */
+
+:host-context(html.modo-oscuro) .nav-center h2 {
+    color: #d0d0d0;
+}
+
+/* Botones de navegación */
+
+:host-context(html.modo-oscuro) .agenda-nav .btn {
+    background-color: #303030;
+    color: #d0d0d0;
+    border-color: #444444;
+}
+
+:host-context(html.modo-oscuro) .agenda-nav .btn:hover {
+    background-color: #383838;
+}
+
+:host-context(html.modo-oscuro) .nav-right .btn.active {
+    background-color: #29364d;
+    color: #8bb4ff;
+    border-color: #647fae;
+}
+
+/* Tabla de agenda */
+
+:host-context(html.modo-oscuro) .agenda-table {
+    border-color: #444444;
+}
+
+:host-context(html.modo-oscuro) .cell {
+    background-color: #242424;
+    border-color: #444444;
+    color: #d0d0d0;
+}
+
+/* Encabezados de los días */
+
+:host-context(html.modo-oscuro) .cell-header {
+    background-color: #303030;
+    color: #d0d0d0;
+    border-bottom-color: #444444;
+}
+
+/* Columna de horarios */
+
+:host-context(html.modo-oscuro) .cell-time {
+    background-color: #303030;
+    color: #a5a5a5;
+    border-right-color: #444444;
+}
+
+/* Próximos eventos y filtros */
+
+:host-context(html.modo-oscuro) .events-list-header h3,
+:host-context(html.modo-oscuro) .sidebar h3 {
+    color: #e0e0e0;
+}
+
+:host-context(html.modo-oscuro) .event-row {
+    border-bottom-color: #383838;
+}
+
+:host-context(html.modo-oscuro) .event-details h4 {
+    color: #d0d0d0;
+}
+
+:host-context(html.modo-oscuro) .event-details p {
+    color: #a5a5a5;
+}
+
+:host-context(html.modo-oscuro) .filter-group label,
+:host-context(html.modo-oscuro) .checkbox-container {
+    color: #b0b0b0;
+}
+
+/* Selectores de filtros */
+
+:host-context(html.modo-oscuro) .filter-select {
+    background-color: #303030;
+    color: #d0d0d0;
+    border-color: #444444;
+}
+
+/* =========================================
+   MODAL NUEVO EVENTO
+
+:host-context(html.modo-oscuro) .modal-content {
+    background-color: #242424;
+    color: #d0d0d0;
+}
+
+:host-context(html.modo-oscuro) .modal-header h2 {
+    color: #e0e0e0;
+}
+
+:host-context(html.modo-oscuro) .btn-close {
+    color: #b0b0b0;
+}
+
+:host-context(html.modo-oscuro) .form-group label {
+    color: #d0d0d0;
+}
+
+:host-context(html.modo-oscuro) .form-group input,
+:host-context(html.modo-oscuro) .form-group select,
+:host-context(html.modo-oscuro) .form-group textarea {
+    background-color: #303030;
+    color: #e0e0e0;
+    border-color: #484848;
+}
+
+:host-context(html.modo-oscuro) .form-group input::placeholder,
+:host-context(html.modo-oscuro) .form-group textarea::placeholder {
+    color: #999999;
+}
+
+:host-context(html.modo-oscuro) .modal-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
 }

@@ -1,5 +1,8 @@
-<div class="page" [class.sin-menu]="!mostrarMenu()"> <!-- Cuando mostrarMenu devuelva false al div "page" se le agrega la class sin-menu-->
-
+<div class="page"
+     [class.sin-menu]="!mostrarMenu()"
+     [class.pagina-configuracion]="esConfiguracion()"
+     [class.pagina-personalizacion]="esPersonalizacion()">
+    
     @if(mostrarMenu()){
         <app-menu></app-menu>
     }

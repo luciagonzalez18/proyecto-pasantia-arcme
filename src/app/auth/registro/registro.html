@@ -1,50 +1,121 @@
+```html
+<link rel="stylesheet" href="./registro.css">
+
 <div class="registro" id="div-registro">
-    @if(paso===1){
-    <form id="formulario-registro">
+
+    @if (paso === 1) {
+    <form id="formulario-registro" [formGroup]="formulario" (ngSubmit)="continuar()">
+
         <img src="assets/logoArcme.png" alt="logoArcme">
         <h2>Registrarse</h2>
 
-        <div class="mb-3">
-            <label for="exampleDNI" class="form-label">DNI</label>
-            <input type="text" class="form-control" id="DNI-input"
-                placeholder="xx-xxx-xxx"><!--aria-describedby="DNIhelp"-->
+        <div class="mb-3 containerDNI">
+            <label for="DNI-input" class="form-label">DNI</label>
+
+            <input type="text" class="form-control" id="DNI-input" formControlName="dni" placeholder="xx-xxx-xxx">
+
+            @if (formulario.controls.dni.invalid &&
+            formulario.controls.dni.touched) {
+
+                @if (formulario.controls.dni.hasError('required')) {
+                    <small>El DNI es obligatorio.</small>
+                }
+                @else if (formulario.controls.dni.hasError('pattern')) {
+                    <small>Solo puede ingresar números.</small>
+                }
+                @else if (formulario.controls.dni.hasError('minlength')) {
+                    <small>El DNI debe tener al menos 7 números.</small>
+                }
+                @else if (formulario.controls.dni.hasError('maxlength')) {
+                    <small>El DNI no puede superar los 8 números.</small>
+                }
+            }
+
+            @if (error) {
+                <small style="display: block; color: #dc3545; font-size: 13px; line-height: 1.4;">
+                    {{ error }}
+                </small>
+            }
         </div>
-        <div class="mb-3">
-            <label for="passInp" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="contraseña" placeholder="###########">
+
+        <div class="mb-3 containerContraseña">
+            <label for="contrasena" class="form-label">Contraseña</label>
+
+            <input type="password" class="form-control" id="contrasena" formControlName="contra"
+                placeholder="###########">
 
             <label class="mostrar-password">
-                <input type="checkbox" onclick="contraseña.type=this.checked ? 'text' : 'password'"> Mostrar contraseña
+                <input type="checkbox" onclick="contrasena.type=this.checked ? 'text' : 'password'">
+                Mostrar contraseña
             </label>
 
+            @if (formulario.controls.contra.invalid &&
+            formulario.controls.contra.touched) {
+
+                @if (formulario.controls.contra.hasError('required')) {
+                    <small>La contraseña es obligatoria.</small>
+                }
+                @else if (formulario.controls.contra.hasError('minlength')) {
+                    <small>La contraseña debe tener al menos 8 caracteres.</small>
+                }
+                @else if (formulario.controls.contra.hasError('pattern')) {
+                    <small>La contraseña debe contener una mayúscula y un carácter especial.</small>
+                }
+            }
         </div>
-        <div class="mb-3">
-            <label for="passInp2" class="form-label">Repita su contraseña </label>
-            <input type="password" class="form-control" id="contraseña2" placeholder="###########">
+
+        <div class="mb-3 containerContraseña">
+            <label for="contrasena2" class="form-label">
+                Repita su contraseña
+            </label>
+
+            <input type="password" class="form-control" id="contrasena2" placeholder="###########"
+                [value]="contrasena2"
+                (input)="contrasena2 = $any($event.target).value" required>
+
+            @if (errorContrasena) {
+                <small style="display: block; color: #dc3545; font-size: 13px; line-height: 1.4;">
+                    {{ errorContrasena }}
+                </small>
+            }
 
             <label class="mostrar-password">
-                <input type="checkbox" onclick="contraseña2.type=this.checked ? 'text' : 'password'"> Mostrar
-                contraseña
+                <input type="checkbox" onclick="contrasena2.type=this.checked ? 'text' : 'password'">
+                Mostrar contraseña
             </label>
-
         </div>
 
-        <button type="button" class="btn btn-primary" id="continuar" (click)="paso=2">Continuar</button>
+        <button type="submit" class="btn btn-primary" id="continuar">
+            Continuar
+        </button>
+
         <p>¿Ya tienes una cuenta?</p>
-        <button type="submit" class="btn btn-primary" routerLink='/inicioSesion'>Iniciar sesión</button>
+
+        <button type="button" class="btn btn-primary" routerLink="/inicioSesion">
+            Iniciar sesión
+        </button>
 
     </form>
     }
 
-    @if(paso===2){
-    <form>
+    @if (paso === 2) {
+    <form (ngSubmit)="registrarUsuario()">
+
         <img src="assets/logoArcme.png" alt="logoArcme">
         <h2>¿Cómo te llamas?</h2>
 
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre de usuario</label>
 
-            <input type="text" class="form-control" id="nombre" placeholder="Ingrese un nombre de usuario">
+            <input type="text" class="form-control" id="nombre" name="nombre"
+                [(ngModel)]="nombre"
+                placeholder="Ingrese un nombre de usuario" required>
+
+            @if (error) {
+                <small style="display: block; color: #dc3545; font-size: 13px; line-height: 1.4;">
+                    {{ error }}
+                </small>
+            }
         </div>
 
         <button type="submit" class="btn btn-primary">
@@ -54,16 +125,9 @@
         <button type="button" class="btn btn-secondary" (click)="paso = 1">
             ← Volver
         </button>
-    </form>
 
+    </form>
     }
 
-    <footer>
-        <div class="footer-links">
-            <a href="">Contactanos</a>
-            <a href="">Ayuda</a>
-            <a href="">Acerca de nosotros</a>
-        </div>
-        <p class="copyright">Copyright © 2026</p>
-    </footer>
 </div>
+```

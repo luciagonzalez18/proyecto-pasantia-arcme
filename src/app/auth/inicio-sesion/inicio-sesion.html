@@ -10,7 +10,7 @@
     <div class="mb-3 containerDNI">
       <label for="dni">DNI</label>
 
-      <input type="text" id="dni" placeholder="XX-XXX-XXX" formControlName="dni">
+      <input type="text" id="dni" placeholder="XX-XXX-XXX" formControlName="dni" (input)="errorDni = ''">
 
 
       <!--formulario verifica si el dato ingresado es invalido y si el usuario ya interactuo con el campo(dni)-->
@@ -35,13 +35,16 @@
       }
 
       }
+      @if (errorDni) {
+  <small>{{ errorDni }}</small>
+}
     </div>
 
 
     <div class="mb-3 containerContraseña">
       <label for="contraseña">Contraseña</label>
 
-      <input type="password" id="contraseña" placeholder="############" formControlName="contra">
+      <input type="password" id="contraseña" placeholder="############" formControlName="contra" (input)="errorContrasena = ''">
       <label class="mostrar-password">
         <input type="checkbox" onclick="contraseña.type=this.checked ? 'text' : 'password'"> Mostrar contraseña <!--Si el checkbox fue seleccionado cambia el type del input a text sino queda como input-->
       </label>
@@ -73,6 +76,9 @@
       }
 
       }
+      @if (errorContrasena) {
+  <small>{{ errorContrasena }}</small>
+}
     </div>
 
 
@@ -97,12 +103,3 @@
 </div>
 
 
-<footer>
-  <div class="footer-links">
-    <a href="#">Contactanos</a>
-    <a href="#">Ayuda</a>
-    <a href="#">Acerca de nosotros</a>
-  </div>
-
-  <p class="copyright">Copyright © 2026</p>
-</footer>
