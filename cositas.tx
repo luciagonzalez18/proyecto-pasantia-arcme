@@ -1,0 +1,31 @@
+Comando para ejecutar la pag:
+ng serve --proxy-config proxy.conf.json 
+esto para iniciar la pagina usando la configuracion del proxy para conectar con la API
+
+Proxy:
+Sirve para que angular pueda enviar peticiones al backend usando una ruta local sin tener que escribir toda la direccion deñ servidor PHp en cada peticion
+
+
+
+proxy.conf.json:
+{
+  "/api_proyectoLucia": {        //Si se hace una peticion a por ejemplo "/api_proyectoLucia/public/index.php/proyectos"  proxy reconoce que la ruta empieza con /api_proyectoLucia y redirige al servidor establecido en target
+                                 //api_proyectoLucia es el nombre de la carpeta de la api en htdocs--- en caso de error o que no funcionen las peticiones verificar que el nombre de la carpeta en htdocs sea el mismo que aca :,/
+    "target": "http://localhost",//Indica a que servidor se envian las peticion
+    "secure": false,             //Controla la validación de certificados TLS cuando el destino utiliza HTTPS --- no importa por ahora creo
+    "changeOrigin": true,        // no se no entendi --- algo de seguridad creo
+    "logLevel": "debug"          //Activa mensajes de diagnostico del proxy en la terminal para mostrar q mierda salio mal
+  }
+}
+
+httpClient:
+Permite enviar peticiones http a la api para obtener, crear, actualizar o eliminar datos
+
+Observable: 
+Representa una fuente de datos que pueden llegar de forma asíncrona, como la respuesta de una API
+
+subscribe(): 
+Permite suscribirse a esa fuente para recibir los datos y manejar posibles errores
+
+JSON: formato habitual para enviar y recibir datos entre Angular y PHP
+
