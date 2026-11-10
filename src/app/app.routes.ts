@@ -14,6 +14,9 @@ import { Porfolio } from './paginas/porfolio/porfolio';
 import { Ingresos } from './paginas/ingresos/ingresos';
 import { Agenda } from './compartidos/agenda/agenda';
 import { PreguntasFrecuentes } from './compartidos/preguntas-frecuentes/preguntas-frecuentes';
+import { DetallesCliente } from './detalles/detalles-cliente/detalles-cliente';
+import {DetallesProveedores} from './detalles/detalles-proveedores/detalles-proveedores';
+import { DetallesProyecto } from './detalles/detalles-proyecto/detalles-proyecto';
 
 // Importamos el Guard que comprueba si existe una sesión.
 import { sesionGuard } from './auth/sesionguard';

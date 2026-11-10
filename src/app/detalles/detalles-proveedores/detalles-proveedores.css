@@ -1,0 +1,639 @@
+.container {
+    width: 100%;
+    max-width: none;
+    margin: 45px 0;
+    padding: 0 35px;
+    box-sizing: border-box;
+}
+
+/* =========================
+   HEADER VOLVER
+========================= */
+
+.header-verDetalles {
+    width: 100%;
+    max-width: none;
+    margin: 45px 0 0 0;
+    padding: 0 35px;
+    box-sizing: border-box;
+}
+
+.titulo-contenido.volver {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    width: fit-content;
+    transition: 0.2s ease;
+}
+
+.titulo-contenido.volver:hover {
+    opacity: 0.75;
+}
+
+.titulo-contenido.volver i {
+    font-size: 22px;
+    color: #2f6f7e;
+}
+
+.titulo-volver {
+    margin: 0;
+    color: #2f6f7e;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+/* =========================
+   CONTENEDOR DETALLES
+========================= */
+
+.container-verDetalles {
+    width: 100%;
+    max-width: none;
+    margin: 25px 0 45px 0;
+    padding: 0 35px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: stretch;
+}
+
+
+/* =========================
+   COLUMNA IZQUIERDA - DATOS
+========================= */
+
+.contenido-detalles {
+    background-color: white;
+    border: 1px solid #e1e5e8;
+    border-radius: 11px;
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.04);
+    padding: 30px 32px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.contenido-detalles .titulo {
+    margin: 0 0 8px 0;
+    color: #2f3e46;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.contenido-detalles .subtitulo {
+    margin: 0 0 24px 0;
+    color: #777777;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+/* =========================
+   ÍTEMS DE DETALLE
+========================= */
+
+.detalle {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.detalle:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.detalle i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    background-color: #f0f7f9;
+    color: #2f6f7e;
+    border-radius: 9px;
+    font-size: 18px;
+}
+
+.detalle span {
+    color: #495057;
+    font-size: 16px;
+    line-height: 1.45;
+}
+
+.detalle span strong {
+    color: #2f3e46;
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+
+/* =========================
+   CARD DERECHA
+========================= */
+
+.card-Proveedores {
+    background-color: white;
+    border: 1px solid #e1e5e8;
+    border-radius: 11px;
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.04);
+    padding: 28px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   HEADER CARD (BOTONES) - CORREGIDO
+========================= */
+
+.header-card-detalles {
+    display: flex;
+    gap: 12px;
+    flex-wrap: nowrap;
+    /* ← Impide que se apilen */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-card-detalles button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    /* un poco más compacto */
+    border: none;
+    border-radius: 8px;
+    font-size: 14.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s ease;
+    white-space: nowrap;
+    /* ← No corta el texto */
+    flex-shrink: 1;
+    /* Permite que se achiquen un poco si hace falta */
+    min-width: 0;
+}
+
+.header-card-detalles button:first-child {
+    background-color: #2f6f7e;
+    color: white;
+}
+
+.header-card-detalles button:first-child:hover {
+    background-color: #245865;
+}
+
+.header-card-detalles button:last-child {
+    background-color: #fff;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+.header-card-detalles button:last-child:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+.header-card-detalles button:active {
+    transform: scale(0.97);
+}
+
+.header-card-detalles button i {
+    font-size: 16px;
+}
+
+/* =========================
+   LÍNEA HORIZONTAL
+========================= */
+
+.linea-horizontal {
+    margin: 0;
+    border: none;
+    border-top: 1px solid #e1e5e8;
+}
+
+
+/* =========================
+   DESCRIPCIÓN
+========================= */
+
+.card-Proveedores>p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #2f3e46;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.card-Proveedores>p i {
+    color: #2f6f7e;
+    font-size: 18px;
+}
+
+.descripcion-Proveedor {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 9px;
+    padding: 16px 18px;
+    flex: 1;
+}
+
+.descripcion-Proveedor span {
+    color: #495057;
+    font-size: 17px;
+    line-height: 1.65;
+}
+
+
+/* =========================
+   FOOTER CARD (CATEGORÍA + PRODUCTOS)
+========================= */
+
+.footer-card-detalles {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 24px;
+    margin-top: 4px;
+}
+
+.footer-card-detalles .categoria,
+.footer-card-detalles .productos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-card-detalles p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #2f3e46;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.footer-card-detalles p i {
+    color: #2f6f7e;
+    font-size: 17px;
+}
+
+.footer-card-detalles .categoria span {
+    display: inline-block;
+    width: fit-content;
+    padding: 7px 15px;
+    background-color: #f0f7f9;
+    color: #2f6f7e;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.footer-card-detalles .productos ul {
+    margin: 0;
+    padding: 0 0 0 18px;
+    list-style: disc;
+}
+
+.footer-card-detalles .productos li {
+    color: #495057;
+    font-size: 15px;
+    padding: 4px 0;
+}
+
+
+/* =========================
+   RESPONSIVE - DETALLES PROVEEDOR
+========================= */
+
+/* ---------- Laptop / Tablet grande ---------- */
+@media (max-width: 1100px) {
+
+    .header-verDetalles,
+    .container-verDetalles {
+        padding: 0 24px;
+    }
+
+    .container-verDetalles {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .contenido-detalles,
+    .card-Proveedores {
+        height: auto;
+    }
+}
+
+
+/* ---------- Tablet ---------- */
+@media (max-width: 900px) {
+
+    .header-verDetalles,
+    .container-verDetalles {
+        padding: 0 20px;
+    }
+
+    .container-verDetalles {
+        margin-top: 20px;
+        gap: 20px;
+    }
+
+    .contenido-detalles {
+        padding: 26px 24px;
+    }
+
+    .contenido-detalles .titulo {
+        font-size: 26px;
+    }
+
+    .card-Proveedores {
+        padding: 24px;
+    }
+
+    /* Botones: se reparten el ancho */
+    .header-card-detalles {
+        gap: 10px;
+    }
+
+    .header-card-detalles button {
+        flex: 1;
+        justify-content: center;
+        padding: 10px 14px;
+        font-size: 14.5px;
+        min-width: 0;
+    }
+
+    .descripcion-Proveedor {
+        padding: 14px 16px;
+    }
+
+    .descripcion-Proveedor span {
+        font-size: 15.5px;
+    }
+
+    .footer-card-detalles {
+        gap: 20px;
+    }
+}
+
+
+/* ---------- Móvil / Tablet chica ---------- */
+@media (max-width: 768px) {
+
+    .header-verDetalles {
+        margin-top: 24px;
+        padding: 0 16px;
+    }
+
+    .container-verDetalles {
+        margin: 16px 0 28px 0;
+        padding: 0 16px;
+        gap: 18px;
+    }
+
+    /* Volver */
+    .titulo-contenido.volver {
+        gap: 10px;
+    }
+
+    .titulo-contenido.volver i {
+        font-size: 20px;
+    }
+
+    .titulo-volver {
+        font-size: 15px;
+    }
+
+    /* Card izquierda - Datos */
+    .contenido-detalles {
+        padding: 22px 18px;
+    }
+
+    .contenido-detalles .titulo {
+        font-size: 24px;
+        margin-bottom: 6px;
+    }
+
+    .contenido-detalles .subtitulo {
+        font-size: 14px;
+        margin-bottom: 18px;
+    }
+
+    .detalle {
+        gap: 12px;
+        padding: 13px 0;
+    }
+
+    .detalle i {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+        font-size: 17px;
+    }
+
+    .detalle span {
+        font-size: 14.5px;
+    }
+
+    /* Card derecha */
+    .card-Proveedores {
+        padding: 20px 18px;
+        gap: 16px;
+    }
+
+    /* Botones apilados a ancho completo */
+    .header-card-detalles {
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: stretch;
+    }
+
+    .header-card-detalles button {
+        width: 100%;
+        flex: none;
+        justify-content: center;
+        padding: 12px 16px;
+        font-size: 14px;
+        white-space: normal;
+    }
+
+    .card-Proveedores>p {
+        font-size: 16px;
+    }
+
+    .card-Proveedores>p i {
+        font-size: 17px;
+    }
+
+    .descripcion-Proveedor {
+        padding: 14px 16px;
+    }
+
+    .descripcion-Proveedor span {
+        font-size: 14.5px;
+        line-height: 1.6;
+    }
+
+    /* Footer categoría + productos → apilar */
+    .footer-card-detalles {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .footer-card-detalles p {
+        font-size: 15px;
+    }
+
+    .footer-card-detalles .categoria span {
+        font-size: 14px;
+        padding: 6px 14px;
+    }
+
+    .footer-card-detalles .productos li {
+        font-size: 14px;
+    }
+}
+
+
+/* ---------- Móvil chico ---------- */
+@media (max-width: 480px) {
+
+    .header-verDetalles,
+    .container-verDetalles {
+        padding: 0 12px;
+    }
+
+    .header-verDetalles {
+        margin-top: 20px;
+    }
+
+    .container-verDetalles {
+        margin: 14px 0 24px 0;
+        gap: 16px;
+    }
+
+    /* Volver */
+    .titulo-contenido.volver i {
+        font-size: 18px;
+    }
+
+    .titulo-volver {
+        font-size: 14px;
+    }
+
+    /* Datos */
+    .contenido-detalles {
+        padding: 18px 16px;
+    }
+
+    .contenido-detalles .titulo {
+        font-size: 22px;
+    }
+
+    .contenido-detalles .subtitulo {
+        font-size: 13.5px;
+        margin-bottom: 16px;
+    }
+
+    .detalle {
+        gap: 11px;
+        padding: 12px 0;
+    }
+
+    .detalle i {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+
+    .detalle span {
+        font-size: 13.5px;
+    }
+
+    /* Card derecha */
+    .card-Proveedores {
+        padding: 18px 16px;
+        gap: 14px;
+    }
+
+    .header-card-detalles {
+        gap: 8px;
+    }
+
+    .header-card-detalles button {
+        padding: 11px 14px;
+        font-size: 13.5px;
+    }
+
+    .card-Proveedores>p {
+        font-size: 15px;
+    }
+
+    .descripcion-Proveedor {
+        padding: 12px 14px;
+    }
+
+    .descripcion-Proveedor span {
+        font-size: 13.5px;
+    }
+
+    .footer-card-detalles {
+        gap: 16px;
+    }
+
+    .footer-card-detalles p {
+        font-size: 14.5px;
+    }
+
+    .footer-card-detalles .categoria span {
+        font-size: 13.5px;
+        padding: 6px 12px;
+    }
+
+    .footer-card-detalles .productos li {
+        font-size: 13.5px;
+    }
+}
+
+
+/* ---------- Extra pequeño ---------- */
+@media (max-width: 360px) {
+
+    .contenido-detalles .titulo {
+        font-size: 20px;
+    }
+
+    .detalle span {
+        font-size: 13px;
+    }
+
+    .header-card-detalles button {
+        font-size: 13px;
+        padding: 9px 12px;
+    }
+
+    .descripcion-Proveedor span {
+        font-size: 13px;
+    }
+
+    .footer-card-detalles .productos li {
+        font-size: 13px;
+    }
+}
