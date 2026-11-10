@@ -178,6 +178,87 @@ img:hover {
 }
 
 
+/* =========================
+   BOTÓN PREGUNTAS FRECUENTES
+========================= */
+
+.preguntasFrecuentes {
+    position: fixed;
+    right: 30px;
+    bottom: 25px;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 60px;
+    height: 60px;
+
+    background-color: #2f6f7e;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 50%;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* Icono */
+
+.preguntasFrecuentes i {
+    font-size: 27px;
+    line-height: 1;
+}
+
+/* Efecto hover */
+
+.preguntasFrecuentes:hover {
+    background-color: #245865;
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.23);
+}
+
+/* Efecto al presionar */
+
+.preguntasFrecuentes:active {
+    transform: scale(0.94);
+}
+
+/* Accesibilidad: navegación con teclado */
+
+.preguntasFrecuentes:focus-visible {
+    outline: 3px solid rgba(47, 111, 126, 0.4);
+    outline-offset: 4px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+    .preguntasFrecuentes {
+        right: 20px;
+        bottom: 20px;
+
+        width: 54px;
+        height: 54px;
+    }
+
+    .preguntasFrecuentes i {
+        font-size: 24px;
+    }
+}
+
 /* =========================================
    TABLET
 ========================================= */

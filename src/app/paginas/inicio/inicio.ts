@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-inicio',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './inicio.html',
   styleUrl: './inicio.css',
 })
