@@ -4,47 +4,69 @@
   --suave: #6b7785;
   --linea: #dde2e9;
   --fondo: #f4f6fa;
-  --acento: #2452d6;
+  --acento: #2f6f7e;
   font-family: 'Segoe UI', system-ui, sans-serif;
   color: var(--tinta);
   display: block;
 }
+
 .contenedor {
   width: 100%;
-    max-width: none;
-    margin: 45px 0;
-    padding: 0 35px;
-    box-sizing: border-box;
+  max-width: none;
+  margin: 45px 0;
+  padding: 0 35px;
+  box-sizing: border-box;
 }
-.agenda {  padding: 16px; }
+
+.agenda {
+  padding: 16px;
+}
+
+.titulos {
+  justify-self: start;
+}
 
 .titulo-agenda {
-  font-size: 2.2rem;          /* más grande que la fecha */
+  display: block;
+  font-size: 2.2rem;
   font-weight: bold;
-  justify-self: start;        /* pegado a la izquierda */
+  line-height: 1;
 }
 
-.barra h1 {
-  font-size: 1.4rem;          /* la fecha más chica que el título */
-  margin: 0;
-  text-align: center;
+.subtitulo {
+  margin: 6px 0 0 0;
+  color: #777777;
+  font-size: 16px;
 }
-
-
 
 .barra {
   display: flex;
-   grid-template-columns: 1fr auto 1fr;
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 16px;
 }
-h1 { margin: 0; font-size: 1.6rem; text-transform: capitalize; }
-.controles { display: flex; gap: 6px; }
 
-/* botones del encabezado del calendario (solo estos, para no pisar los del modal) */
+h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  text-transform: capitalize;
+}
+
+.controles {
+  display: flex;
+  gap: 6px;
+  justify-self: end;
+}
+
+.navegacion-mes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navegacion-mes button,
 .controles button {
   font: inherit;
   padding: 6px 12px;
@@ -54,22 +76,37 @@ h1 { margin: 0; font-size: 1.6rem; text-transform: capitalize; }
   color: var(--tinta);
   cursor: pointer;
 }
-.controles button:hover { background: var(--fondo); }
-.controles button.primario { background: var(--acento); border-color: var(--acento); color: #fff; }
-.controles button.primario:hover { background: #1b43b3; }
 
-button:focus-visible, .celda:focus-visible {
+.navegacion-mes button:hover,
+.controles button:hover {
+  background: var(--fondo);
+}
+
+.controles button.primario {
+  background: var(--acento);
+  border-color: var(--acento);
+  color: #fff;
+}
+
+.controles button.primario:hover {
+  background: #245865;
+}
+
+button:focus-visible,
+.celda:focus-visible {
   outline: 2px solid var(--acento);
   outline-offset: 2px;
 }
 
 /* ---- grilla del mes ---- */
+
 .grilla {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
   border-top: 1px solid var(--linea);
   border-left: 1px solid var(--linea);
 }
+
 .cabecera {
   padding: 8px 4px;
   text-align: center;
@@ -79,6 +116,7 @@ button:focus-visible, .celda:focus-visible {
   border-right: 1px solid var(--linea);
   border-bottom: 1px solid var(--linea);
 }
+
 .celda {
   min-height: 100px;
   padding: 4px;
@@ -86,8 +124,15 @@ button:focus-visible, .celda:focus-visible {
   border-bottom: 1px solid var(--linea);
   cursor: pointer;
 }
-.celda:not(.vacia):hover { background: var(--fondo); }
-.celda.vacia { background: var(--fondo); cursor: default; }
+
+.celda:not(.vacia):hover {
+  background: var(--fondo);
+}
+
+.celda.vacia {
+  background: var(--fondo);
+  cursor: default;
+}
 
 .numero {
   display: inline-flex;
@@ -98,9 +143,15 @@ button:focus-visible, .celda:focus-visible {
   border-radius: 13px;
   font-size: 0.9rem;
 }
-.celda.hoy .numero { background: var(--acento); color: #fff; font-weight: 600; }
+
+.celda.hoy .numero {
+  background: var(--acento);
+  color: #fff;
+  font-weight: 600;
+}
 
 /* ---- eventos dentro de cada día ---- */
+
 .evento {
   display: flex;
   align-items: center;
@@ -113,10 +164,27 @@ button:focus-visible, .celda:focus-visible {
   background: #e8ebf0;
   font-size: 0.78rem;
 }
-.evento .texto { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.evento[data-cat='trabajo']  { background: #ffeed9; border-left-color: #d97a06; }
-.evento[data-cat='personal'] { background: #dff5e8; border-left-color: #1f9d5a; }
-.evento[data-cat='reunion']  { background: #e3ebff; border-left-color: #2452d6; }
+
+.evento .texto {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.evento[data-cat='trabajo'] {
+  background: #ffeed9;
+  border-left-color: #d97a06;
+}
+
+.evento[data-cat='personal'] {
+  background: #dff5e8;
+  border-left-color: #1f9d5a;
+}
+
+.evento[data-cat='reunion'] {
+  background: #e3ebff;
+  border-left-color: #2452d6;
+}
 
 .borrar {
   font: inherit;
@@ -127,9 +195,13 @@ button:focus-visible, .celda:focus-visible {
   line-height: 1;
   cursor: pointer;
 }
-.borrar:hover { color: #c0272d; }
+
+.borrar:hover {
+  color: #c0272d;
+}
 
 /* ---- modal ---- */
+
 .modal-dialog {
   width: min(720px, 92vw);
   padding: 0;
@@ -223,7 +295,11 @@ button:focus-visible, .celda:focus-visible {
   resize: vertical;
 }
 
-.error { margin: 0; color: #c0272d; font-size: 0.9rem; }
+.error {
+  margin: 0;
+  color: #c0272d;
+  font-size: 0.9rem;
+}
 
 .modal-actions {
   display: flex;
@@ -254,244 +330,277 @@ button:focus-visible, .celda:focus-visible {
   cursor: pointer;
 }
 
-.btn-cancel:hover { background-color: #f2f2f2; }
-.btn-submit:hover { background-color: #333333; }
-
-/* ---- celulares ---- */
-@media (max-width: 640px) {
-  .celda { min-height: 64px; }
-  .evento { font-size: 0.68rem; }
-  h1 { font-size: 1.3rem; }
-
-  .modal-body { flex-direction: column; }
+.btn-cancel:hover {
+  background-color: #f2f2f2;
 }
 
-.evento[dato-cat="alta"] {
-  background: #fde2e2;
-  border-left: 4px solid #d93025;   /* rojo */
+.btn-submit:hover {
+  background-color: #333333;
 }
-
-.evento[dato-cat="media"] {
-  background: #fff4d6;
-  border-left: 4px solid #f2b705;   /* amarillo */
-}
-
-.evento[dato-cat="baja"] {
-  background: #e3f6e5;
-  border-left: 4px solid #0ad346;   /* verde */
-}
-.proximo {
-  border: 2px solid #888;        /* borde general más marcado */
-  border-left-width: 8px;       /* el borde derecho más grueso */
-  border-radius: 8px;
-  padding: 10px 12px;
-  margin-bottom: 10px;
-}
-.proximo[dato-cat="alta"]  { border-color: #e53935; }
-.proximo[dato-cat="media"] { border-color: #fb8c00; }
-.proximo[dato-cat="baja"]  { border-color: #43a047; }
-
-.proximo span {
-  display: block;
-}
-.seccionAbajo {
-  display: flex;
-  align-items: flex-start;   /* ambos arriba */
-  justify-content: space-between;
-  gap: 20px;
-   padding-bottom: 150px;
-}
-
-.proximos-lista {
-  width: 80%;                /* lista más chica, a la izquierda */
-}
-
-.filtro {
-  margin-left: auto;          /* lo empuja a la derecha */
-  width: 220px;
-  padding: 12px 14px;
-  border: 2px solid #555;     /* borde marcado */
-  border-radius: 10px;        /* esquinas redondeadas */
-}
-.filtro label {
-  display: block;
-  margin-bottom: 12px;   /* antes 6px, subilo hasta que te guste */
-  font-weight: bold;
-}
-
-  .proximo {
-  display: flex;
-  justify-content: space-between; /* info a la izquierda, botones a la derecha */
-  align-items: center;            /* centrados verticalmente */
-  gap: 12px;
-}
-
-.proximo .info {
-  flex: 1;                        /* ocupa todo el espacio disponible */
-}
-
-.proximo .indexBotones {
-  display: flex;
-  flex-direction: column;         /* uno debajo del otro */
-  gap: 8px;
-}
-.btn-eliminar {
- background: transparent; /* Quita el color de fondo */
-  border: none;            /* Quita el borde predeterminado */
-  padding: 0;             /* Quita el espacio interno si es necesario */
-  cursor: pointer;         /* Mantiene la manito al pasar el mouse */
-
-}
-.btn-editar{
- background: transparent; /* Quita el color de fondo */
-  border: none;            /* Quita el borde predeterminado */
-  padding: 0;             /* Quita el espacio interno si es necesario */
-  cursor: pointer;         /* Mantiene la manito al pasar el mouse */
 
 .btn-submit:active {
   transform: scale(0.97);
 }
 
+/* ---- celulares ---- */
+
+@media (max-width: 640px) {
+  .celda {
+    min-height: 64px;
+  }
+
+  .evento {
+    font-size: 0.68rem;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  .modal-body {
+    flex-direction: column;
+  }
+}
+
+/* ---- categorías de eventos ---- */
+
+.evento[dato-cat="alta"] {
+  background: #fde2e2;
+  border-left: 4px solid #d93025;
+}
+
+.evento[dato-cat="media"] {
+  background: #fff4d6;
+  border-left: 4px solid #f2b705;
+}
+
+.evento[dato-cat="baja"] {
+  background: #e3f6e5;
+  border-left: 4px solid #0ad346;
+}
+
+/* ---- próximos eventos ---- */
+
+.proximo {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border: 2px solid #888;
+  border-left-width: 8px;
+  border-radius: 8px;
+  padding: 10px 80px 10px 12px;
+  margin-bottom: 10px;
+}
+
+.proximo[dato-cat="alta"] {
+  border-color: #db5e5c;
+}
+
+.proximo[dato-cat="media"] {
+  border-color: #dfa660;
+}
+
+.proximo[dato-cat="baja"] {
+  border-color: #73ad76;
+}
+
+.proximo span {
+  display: block;
+}
+
+.proximo .info {
+  flex: 1;
+}
+
+.proximo .indexBotones {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-eliminar,
+.btn-editar {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+/* ---- sección inferior ---- */
+
+.seccionAbajo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0 16px 150px 16px;
+}
+
+.proximos-lista {
+  flex: 1;
+}
+
+.filtro {
+  margin-left: auto;
+  width: 350px;
+  padding: 12px 14px;
+  border: 2px solid #555;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.filtro select {
+  width: 100%;
+}
+
+.filtro label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
 
 /* =========================================
    MODO OSCURO
+========================================= */
 
 /* Fondo general */
 
 :host-context(html.modo-oscuro) .container {
-    background-color: #202020;
+  background-color: #202020;
 }
 
 /* Tarjetas */
 
 :host-context(html.modo-oscuro) .card {
-    background-color: #242424;
-    border-color: #383838;
+  background-color: #242424;
+  border-color: #383838;
 }
 
 /* Título principal */
 
 :host-context(html.modo-oscuro) .header-title {
-    color: #e0e0e0;
+  color: #e0e0e0;
 }
 
 /* Título de fechas */
 
 :host-context(html.modo-oscuro) .nav-center h2 {
-    color: #d0d0d0;
+  color: #d0d0d0;
 }
 
 /* Botones de navegación */
 
 :host-context(html.modo-oscuro) .agenda-nav .btn {
-    background-color: #303030;
-    color: #d0d0d0;
-    border-color: #444444;
+  background-color: #303030;
+  color: #d0d0d0;
+  border-color: #444444;
 }
 
 :host-context(html.modo-oscuro) .agenda-nav .btn:hover {
-    background-color: #383838;
+  background-color: #383838;
 }
 
 :host-context(html.modo-oscuro) .nav-right .btn.active {
-    background-color: #29364d;
-    color: #8bb4ff;
-    border-color: #647fae;
+  background-color: #29364d;
+  color: #8bb4ff;
+  border-color: #647fae;
 }
 
 /* Tabla de agenda */
 
 :host-context(html.modo-oscuro) .agenda-table {
-    border-color: #444444;
+  border-color: #444444;
 }
 
 :host-context(html.modo-oscuro) .cell {
-    background-color: #242424;
-    border-color: #444444;
-    color: #d0d0d0;
+  background-color: #242424;
+  border-color: #444444;
+  color: #d0d0d0;
 }
 
 /* Encabezados de los días */
 
 :host-context(html.modo-oscuro) .cell-header {
-    background-color: #303030;
-    color: #d0d0d0;
-    border-bottom-color: #444444;
+  background-color: #303030;
+  color: #d0d0d0;
+  border-bottom-color: #444444;
 }
 
 /* Columna de horarios */
 
 :host-context(html.modo-oscuro) .cell-time {
-    background-color: #303030;
-    color: #a5a5a5;
-    border-right-color: #444444;
+  background-color: #303030;
+  color: #a5a5a5;
+  border-right-color: #444444;
 }
 
 /* Próximos eventos y filtros */
 
 :host-context(html.modo-oscuro) .events-list-header h3,
 :host-context(html.modo-oscuro) .sidebar h3 {
-    color: #e0e0e0;
+  color: #e0e0e0;
 }
 
 :host-context(html.modo-oscuro) .event-row {
-    border-bottom-color: #383838;
+  border-bottom-color: #383838;
 }
 
 :host-context(html.modo-oscuro) .event-details h4 {
-    color: #d0d0d0;
+  color: #d0d0d0;
 }
 
 :host-context(html.modo-oscuro) .event-details p {
-    color: #a5a5a5;
+  color: #a5a5a5;
 }
 
 :host-context(html.modo-oscuro) .filter-group label,
 :host-context(html.modo-oscuro) .checkbox-container {
-    color: #b0b0b0;
+  color: #b0b0b0;
 }
 
 /* Selectores de filtros */
 
 :host-context(html.modo-oscuro) .filter-select {
-    background-color: #303030;
-    color: #d0d0d0;
-    border-color: #444444;
+  background-color: #303030;
+  color: #d0d0d0;
+  border-color: #444444;
 }
 
-/* =========================================
-   MODAL NUEVO EVENTO
+/* ---- modal nuevo evento ---- */
 
 :host-context(html.modo-oscuro) .modal-content {
-    background-color: #242424;
-    color: #d0d0d0;
+  background-color: #242424;
+  color: #d0d0d0;
 }
 
 :host-context(html.modo-oscuro) .modal-header h2 {
-    color: #e0e0e0;
+  color: #e0e0e0;
 }
 
 :host-context(html.modo-oscuro) .btn-close {
-    color: #b0b0b0;
+  color: #b0b0b0;
 }
 
 :host-context(html.modo-oscuro) .form-group label {
-    color: #d0d0d0;
+  color: #d0d0d0;
 }
 
 :host-context(html.modo-oscuro) .form-group input,
 :host-context(html.modo-oscuro) .form-group select,
 :host-context(html.modo-oscuro) .form-group textarea {
-    background-color: #303030;
-    color: #e0e0e0;
-    border-color: #484848;
+  background-color: #303030;
+  color: #e0e0e0;
+  border-color: #484848;
 }
 
 :host-context(html.modo-oscuro) .form-group input::placeholder,
 :host-context(html.modo-oscuro) .form-group textarea::placeholder {
-    color: #999999;
+  color: #999999;
 }
 
 :host-context(html.modo-oscuro) .modal-dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
 }

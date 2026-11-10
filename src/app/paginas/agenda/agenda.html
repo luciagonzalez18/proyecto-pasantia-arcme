@@ -1,17 +1,22 @@
 <div class="contenedor">
   <section class="agenda">
-    <header class="barra">
+  <header class="barra">
+  <div class="titulos">
+    <span class="titulo-agenda">Agenda</span>
+    <p class="subtitulo">Anota y organiza tus reuniones</p>
+  </div>
 
-      <span class="titulo-agenda">Agenda</span>
-      <h1>{{ tituloMes }}</h1>
-      <div class="controles">
-        <button type="button" (click)="cambiarMes(-1)" aria-label="Mes anterior">‹</button>
-        <button type="button" (click)="irAHoy()">Hoy</button>
-        <button type="button" (click)="cambiarMes(1)" aria-label="Mes siguiente">›</button>
-        <button type="button" class="primario" (click)="abrirModal()">Nuevo evento</button>
-      </div>
-    </header>
+  <div class="navegacion-mes">
+    <button type="button" (click)="cambiarMes(-1)" aria-label="Mes anterior">‹</button>
+    <h1>{{ tituloMes }}</h1>
+    <button type="button" (click)="cambiarMes(1)" aria-label="Mes siguiente">›</button>
+  </div>
 
+  <div class="controles">
+    <button type="button" (click)="irAHoy()">Ir a hoy</button>
+    <button type="button" class="primario" (click)="abrirModal()">Nuevo evento</button>
+  </div>
+</header>
     <div class="grilla">
       @for (n of nombresDias; track n) {
       <div class="cabecera">{{ n }}</div>
@@ -26,7 +31,7 @@
         @for (ev of eventosDelDia(dia); track ev.id) {
         <div class="evento" [attr.dato-cat]="ev.categoria" [title]="ev.descripcion">
           <span class="texto"><b>{{ ev.hora }}</b> {{ ev.titulo }}</span>
-          <button type="button" class="borrar" aria-label="Eliminar evento" ></button>
+          <button type="button" class="borrar" aria-label="Eliminar evento" (click)="eliminar(ev.id_evento, $event)">×</button>
         </div>
         }
       </div>
@@ -107,36 +112,31 @@
 
   <!--seccion que va a mostrar los eventos mas cercanos a la fecha-->
   <section class="seccionAbajo">
-    <!--<div class="proximos-lista">
-      <h3><i class="bi bi-calendar4-week"></i><b>Proximos eventos</b></h3>
+    <div class="proximos-lista">
+      <h3><i class="bi bi-calendar4-week"></i><b> Proximos eventos</b></h3>
       @for (ev of Proximosevent; track ev.id) {
       <div class="proximo" [attr.dato-cat]="ev.categoria">
-        <div class="info">
-          <span class="fecha" class="hora">{{ formatoFecha(ev.fecha) }}- {{ ev.hora }} hs</span>
-          <span class="titulo">{{ ev.titulo }}</span>
-          <p class="descripcion">{{ ev.descripcion }}</p>
-        </div>
-
+        <span class="fecha" class="hora">{{ formatoFecha(ev.fecha) }}- {{ ev.hora }} hs</span>
+        <span class="titulo">{{ ev.titulo }}</span>
+        <p class="descripcion">{{ ev.descripcion }}</p>
         <div class="indexBotones">
-          <button class="btn-eliminar" (click)="eliminar(ev.id, $event)"><i class="bi bi-trash"></i></button>
-          <button class="btn-editar" (click)="editar(ev, $event)"><i class="bi bi-pencil-square"></i></button>
+          <button class="btn-eliminar" (click)="eliminar(ev.id_evento, $event)"><i class="bi bi-trash"></i></button>
+          <button class="btn-editar" (click)="editar(ev)"><i class="bi bi-pencil-square"></i></button>
         </div>
-
       </div>
       } @empty {
       <p>No hay eventos próximos.</p>
       }
     </div>
-  -->
     <div class="filtro">
       <label for="filtroCat"><i class="bi bi-funnel"></i> Filtrar eventos</label>
-     <!--<select id="filtroCat" (change)="filtrar($event)">
+      <select id="filtroCat" (change)="filtrar($event)">
         <option value="">Todas</option>
         <option value="alta">Alta</option>
         <option value="media">Media</option>
         <option value="baja">Baja</option>
       </select>
-    --> 
+
     </div>
   </section>
 

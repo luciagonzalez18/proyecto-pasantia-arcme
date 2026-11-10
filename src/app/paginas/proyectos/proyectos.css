@@ -1,3 +1,6 @@
+
+/* ---- Título ---- */
+
 .titulo {
     display: flex;
     justify-content: space-between;
@@ -6,8 +9,7 @@
 }
 
 .titulo p {
-    margin: 4px 0 0 0;
-
+    margin: 4px 0 0;
     color: #777777;
     font-size: 16px;
     font-weight: 400;
@@ -17,18 +19,13 @@
     display: flex;
     align-items: center;
     gap: 10px;
-
     padding: 13px 21px;
-
     background-color: #2f6f7e;
     color: white;
-
     border: none;
     border-radius: 9px;
-
     font-size: 16px;
     font-weight: 500;
-
     cursor: pointer;
     transition: 0.2s ease;
 }
@@ -49,7 +46,8 @@
     border-radius: 15px;
 }
 
-/* --- General / Contenedor principal --- */
+/* ---- General / Contenedor principal ---- */
+
 .container {
     width: 100%;
     max-width: none;
@@ -65,7 +63,8 @@
     font-weight: 600;
 }
 
-/* Contenedor del carrusel */
+/* ---- Carrusel ---- */
+
 #carouselExample {
     margin-top: 35px;
     position: relative;
@@ -76,10 +75,8 @@
     border-radius: 8px !important;
     object-fit: cover;
     box-shadow: none !important;
-    /* Elimina sombras pesadas para un diseño limpio */
 }
 
-/* Flechas/Controles del Carrusel */
 .carousel-control-prev,
 .carousel-control-next {
     width: 8%;
@@ -93,7 +90,6 @@
     opacity: 0.8;
 }
 
-/* Cambia el tamaño del icono aquí */
 .carousel-control-prev i,
 .carousel-control-next i {
     font-size: 2.5rem;
@@ -109,15 +105,8 @@
     margin-right: 10px;
 }
 
-.carousel-inner img {
-    border-radius: 8px;
-    object-fit: cover;
-    box-shadow: none;
-}
+/* ---- Navegación / Buscador y filtros ---- */
 
-
-
-/* --- Barra de Navegación / Buscador y Filtros --- */
 .navegacion {
     display: flex;
     align-items: center;
@@ -126,7 +115,6 @@
     flex-wrap: wrap;
 }
 
-/* Formulario de Búsqueda */
 .navegacion form {
     flex-grow: 1;
     position: relative;
@@ -134,9 +122,7 @@
 
 .navegacion form input[type="search"] {
     height: 50px;
-
     min-width: 260px;
-
     border-radius: 8px;
     border-color: #b4b8bd;
     font-size: 15px;
@@ -147,7 +133,8 @@
     background-color: #e0e0e0;
 }
 
-/* Botón Filtro (Dropdown) */
+/* Botón filtro */
+
 .navegacion .dropdown button {
     background-color: white;
     color: #020202;
@@ -164,32 +151,25 @@
 .navegacion .dropdown button:hover,
 .navegacion .dropdown button:focus {
     border-color: #2f6f7e;
-
     box-shadow: 0 0 0 3px rgba(47, 111, 126, 0.12);
 }
 
-/* Botón Agregar Proyecto */
-.navegacion .btn-outline-success {
+/* Botón agregar proyecto */
 
+.navegacion .btn-outline-success {
     display: flex;
     align-items: center;
     gap: 10px;
-
     padding: 13px 21px;
-
     background-color: #2f6f7e;
     color: white;
-
     border: none;
     border-radius: 9px;
-
     font-size: 16px;
     font-weight: 500;
-
     cursor: pointer;
     transition: 0.2s ease;
 }
-
 
 .navegacion .btn-outline-success:hover {
     background-color: #245865;
@@ -199,50 +179,47 @@
     transform: scale(0.97);
 }
 
-/* --- Cards / Tarjetas de Proyecto --- */
+/* ---- Cards / Tarjetas de proyectos ---- */
+
 .card {
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 0;
     background-color: #ffffff;
     border: 1px solid #e2e2e2;
     border-radius: 4px;
-    align-items: flex-end; /* Alinea los contenidos al fondo de la card */
-    padding: 20px;
-    padding-bottom: 25px;
-    /* Espacio extra abajo para que los botones no peguen con el borde */
-    padding-right: 170px;
-    /* Espacio a la derecha para que el texto no pase por debajo de los botones */
+    padding: 20px 170px 25px 20px;
     margin-bottom: 20px;
     box-shadow: none;
     position: relative;
-    /* Clave: permite posicionar elementos absolutos dentro de la card */
 }
 
-.card>div:first-child {
+.card > div:first-child {
     width: 140px;
     height: 110px;
     flex-shrink: 0;
     margin-right: 25px;
 }
 
-.card>div:first-child img {
+.card > div:first-child img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 2px;
 }
 
-
 .card .datos {
     display: flex;
     flex-direction: column;
     justify-content: center;
     flex-grow: 1;
+    min-width: 0;
 }
 
 /* Título de la obra */
-.card .datos>p {
+
+.card .datos > p {
     font-size: 1.15rem;
     font-weight: bold;
     color: #111111;
@@ -250,31 +227,32 @@
 }
 
 /* Lista de detalles */
+
 .card .datos ul {
     list-style: none;
     padding: 0;
-    margin: 0 0 12px 0;
+    margin: 0 0 12px;
 }
 
 .card .datos ul li {
     font-size: 0.9rem;
     color: #e57373;
-    /* Color rojizo/rosado para los textos secundarios como en la imagen */
     margin-bottom: 2px;
 }
 
 .card .datos ul li:first-child {
     color: #777777;
-    /* La superficie se mantiene en gris */
 }
 
-/* Botón "Ver detalles" */
+/* Botón ver detalles */
+
 .card .datos button {
     display: inline-flex;
     align-items: center;
     gap: 7px;
     padding: 8px 15px;
     width: fit-content;
+    height: 38px;
     background-color: transparent;
     color: #475569;
     border: 1.5px solid #475569;
@@ -282,9 +260,7 @@
     font-size: 15px;
     cursor: pointer;
     transition: 0.2s ease;
-     height: 38px;
 }
-
 
 .card .datos button i {
     font-size: 16px;
@@ -299,22 +275,18 @@
     transform: scale(0.97);
 }
 
+/* ---- Acciones de la card ---- */
 
-
-
-/* Acciones Card */
 .acciones {
     position: absolute;
     bottom: 25px;
     right: 20px;
     display: flex;
     gap: 8px;
-    /* Espacio entre el botón de editar y el de eliminar */
 }
 
-/* Opcional: Ajustar el tamaño de los botones si los notas muy grandes para la card */
 .acciones button {
-     height: 38px;
+    height: 38px;
     display: inline-flex;
     align-items: center;
     gap: 7px;
@@ -322,146 +294,270 @@
     padding: 8px 15px;
 }
 
-/* =========================
-   IMAGEN DE LOS PROYECTOS
-========================= */
+/* ---- Imagen de los proyectos ---- */
 
 .card .imagen-proyecto {
     display: block;
-
     width: 160px;
     height: 130px;
-
     flex-shrink: 0;
     margin-right: 25px;
-
     object-fit: cover;
     object-position: center;
-
     border-radius: 8px;
     background-color: #f1f3f5;
-
     border: 1px solid #e2e8f0;
-
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Efecto al pasar el cursor */
 .card .imagen-proyecto:hover {
     transform: scale(1.04);
     box-shadow: 0 5px 14px rgba(0, 0, 0, 0.12);
 }
 
-/* =========================
-   AJUSTES PARA LAS TARJETAS
-========================= */
+/* ---- Modal ---- */
 
-.card {
+.modal-dialog {
+    max-width: 950px;
+}
+
+.modal-content {
+    border: none;
+    border-radius: 13px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+}
+
+/* Cabecera modal */
+
+.modal-header {
+    padding: 23px 28px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e1e5e8;
+}
+
+.modal-title {
+    margin: 0;
+    color: #2f3e46;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.modal-header .btn-close {
+    opacity: 0.6;
+    transform: scale(1.1);
+}
+
+.modal-header .btn-close:hover {
+    opacity: 1;
+}
+
+/* Cuerpo modal */
+
+.modal-body {
+    padding: 28px 34px;
+    background-color: white;
+}
+
+.modal-body .form-label {
+    margin-bottom: 8px;
+    color: #2f3e46;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.modal-body .form-control {
+    min-height: 45px;
+    padding: 10px 14px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    color: #495057;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+.modal-body .form-control:focus {
+    border-color: #2f6f7e;
+    box-shadow: 0 0 0 3px rgba(47, 111, 126, 0.12);
+}
+
+.modal-body .form-control::placeholder {
+    color: #adb5bd;
+}
+
+.modal-body .row {
+    margin-bottom: 3px;
+}
+
+/* Footer modal */
+
+.modal-footer {
+    padding: 19px 28px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e1e5e8;
+}
+
+.modal-footer .btn {
+    min-width: 100px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.modal-footer .btn-primary {
+    background-color: #2f6f7e;
+    border-color: #2f6f7e;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #245865;
+    border-color: #245865;
+}
+
+.modal-footer .btn-primary:active {
+    transform: scale(0.97);
+}
+
+.modal-footer .btn-secondary {
+    background-color: #cf5050;
+    border-color: #d36e6e;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #9c3a3a;
+}
+
+.modal-footer .btn-secondary:active {
+    transform: scale(0.97);
+}
+
+/* ---- Paginación ---- */
+
+.paginacion {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 0;
+    gap: 8px;
+    width: 100%;
+    margin: 40px auto 20px;
 }
 
-.card .datos {
-    min-width: 0;
+.pagina {
+    background-color: white;
+    border: none;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: #222222;
+    cursor: pointer;
+    border-radius: 7px;
 }
 
-/* =========================
-   RESPONSIVE - TABLETS Y MÓVILES
-========================= */
-
-@media (max-width: 768px) {
-    .card {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 16px;
-    }
-
-    .card .imagen-proyecto {
-        width: 100%;
-        height: 220px;
-
-        margin-right: 0;
-        margin-bottom: 16px;
-
-        border-radius: 10px;
-    }
-
-    .card .imagen-proyecto:hover {
-        transform: none;
-    }
-
-    .card .datos {
-        width: 100%;
-    }
-
-    .card .acciones {
-        position: static;
-
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-
-        margin-top: 16px;
-    }
-
-    .card .acciones button {
-        max-width: 100%;
-        height: auto;
-        min-height: 38px;
-        white-space: normal;
-    }
+.pagina:hover {
+    background-color: #eeeeee;
 }
 
-/* =========================
-   PANTALLAS PEQUEÑAS
-========================= */
-
-@media (max-width: 480px) {
-    .card .imagen-proyecto {
-        height: 190px;
-    }
-
-    .card .acciones {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .card .acciones button {
-        justify-content: center;
-    }
+.pagina-activa {
+    background-color: #292929;
+    color: white;
 }
 
-
-
-
-
-
-
-
-
-
-/* --- Responsive (Móviles) --- */
-@media (max-width: 768px) {
-    .navegacion {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .card {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .card>div:first-child {
-        width: 100%;
-        height: 180px;
-        margin-right: 0;
-        margin-bottom: 15px;
-    }
+.pagina-activa:hover {
+    background-color: #292929;
 }
 
+.anterior,
+.siguiente {
+    padding: 9px 12px;
+}
 
-/* Fondo y título principal */
+.anterior {
+    color: #aaaaaa;
+}
+
+.puntos {
+    padding: 8px;
+    font-size: 14px;
+}
+
+/* ---- Sin proyectos ---- */
+
+.sin-proyectos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 320px;
+    padding: 40px 25px;
+    margin: 25px 0;
+    background-color: #ffffff;
+    border: 1px dashed #ced4da;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.sin-proyectos > i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    margin-bottom: 20px;
+    background-color: #edf4f5;
+    color: #2f6f7e;
+    border-radius: 50%;
+    font-size: 35px;
+}
+
+.sin-proyectos h3 {
+    margin: 0 0 10px;
+    color: #2f3e46;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.sin-proyectos p {
+    max-width: 500px;
+    margin: 0 0 25px;
+    color: #777777;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+/* ---- Botón subir ---- */
+
+.boton-subir {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2f6f7e;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 25px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.boton-subir:hover {
+    background-color: #245865;
+    transform: translateY(-4px);
+}
+
+.boton-subir:active {
+    transform: scale(0.95);
+}
+
+/* =========================================
+   MODO OSCURO
+========================================= */
 
 :host-context(html.modo-oscuro) .container {
     background-color: #202020;
@@ -525,13 +621,9 @@
     border-color: #383838;
 }
 
-/* Título de cada obra */
-
 :host-context(html.modo-oscuro) .card .datos > p {
     color: #e0e0e0;
 }
-
-/* Información de cada proyecto */
 
 :host-context(html.modo-oscuro) .card .datos ul li {
     color: #d18b8b;
@@ -541,7 +633,7 @@
     color: #a5a5a5;
 }
 
-/* Botón Ver detalles */
+/* Botón ver detalles */
 
 :host-context(html.modo-oscuro) .card .datos button {
     color: #b8c2d1;
@@ -551,334 +643,62 @@
 :host-context(html.modo-oscuro) .card .datos button:hover {
     background-color: #475569;
     color: #e0e0e0;
-/* =========================
-   MODAL
-
-.modal-dialog {
-    max-width: 950px;
 }
 
+/* =========================================
+   RESPONSIVE
+========================================= */
 
-.modal-content {
-    border: none;
-    border-radius: 13px;
+@media (max-width: 768px) {
+    .navegacion {
+        flex-direction: column;
+        align-items: stretch;
+    }
 
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.18);
+    .card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+    }
 
-    overflow: hidden;
+    .card > div:first-child {
+        width: 100%;
+        height: 180px;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .card .imagen-proyecto {
+        width: 100%;
+        height: 220px;
+        margin-right: 0;
+        margin-bottom: 16px;
+        border-radius: 10px;
+    }
+
+    .card .imagen-proyecto:hover {
+        transform: none;
+    }
+
+    .card .datos {
+        width: 100%;
+    }
+
+    .card .acciones {
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+    }
+
+    .card .acciones button {
+        max-width: 100%;
+        height: auto;
+        min-height: 38px;
+        white-space: normal;
+    }
 }
-
-
-/* =========================
-   CABECERA MODAL
-
-.modal-header {
-    padding: 23px 28px;
-
-    background-color: #f8f9fa;
-
-    border-bottom: 1px solid #e1e5e8;
-}
-
-.modal-title {
-    margin: 0;
-
-    color: #2f3e46;
-
-    font-size: 23px;
-    font-weight: 600;
-}
-
-
-/* Botón Cancelar */
-
-.modal-header .btn-close {
-    opacity: 0.6;
-  
-    transform: scale(1.1);
-}
-
-.modal-header .btn-close:hover {
-    opacity: 1;
-}
-
-
-/* =========================
-   CUERPO MODAL
-
-.modal-body {
-    padding: 28px 34px;
-
-    background-color: white;
-}
-
-
-/* Labels */
-
-.modal-body .form-label {
-    margin-bottom: 8px;
-
-    color: #2f3e46;
-
-    font-size: 15px;
-    font-weight: 500;
-}
-
-
-/* Inputs */
-
-.modal-body .form-control {
-    min-height: 45px;
-
-    padding: 10px 14px;
-
-    border: 1px solid #ced4da;
-    border-radius: 8px;
-
-    color: #495057;
-
-    font-size: 15px;
-
-    transition: 0.2s ease;
-}
-
-
-/* Focus de inputs */
-
-.modal-body .form-control:focus {
-    border-color: #2f6f7e;
-
-    box-shadow: 0 0 0 3px rgba(47, 111, 126, 0.12);
-}
-
-
-/* Placeholder */
-
-.modal-body .form-control::placeholder {
-    color: #adb5bd;
-}
-
-
-/* Espaciado entre filas */
-
-.modal-body .row {
-    margin-bottom: 3px;
-}
-
-
-/* =========================
-   FOOTER MODAL
-
-.modal-footer {
-    padding: 19px 28px;
-
-    background-color: #f8f9fa;
-
-    border-top: 1px solid #e1e5e8;
-}
-
-
-/* Botones del modal */
-
-.modal-footer .btn {
-    min-width: 100px;
-
-    padding: 10px 18px;
-
-    border-radius: 8px;
-   
-    font-size: 15px;
-    font-weight: 500;
-}
-
-
-/* Botón guardar */
-
-.modal-footer .btn-primary {
-    background-color: #2f6f7e;
-
-    border-color: #2f6f7e;
-}
-
-.modal-footer .btn-primary:hover {
-    background-color: #245865;
-
-    border-color: #245865;
-}
-
-.modal-footer .btn-primary:active {
-    transform: scale(0.97);
-}
-
-/* Botón cerrar */
-
-.modal-footer .btn-secondary {
-    background-color:#cf5050;
-
-    border-color: #d36e6e;
-}
-
-.modal-footer .btn-secondary:hover {
-    background-color: #9c3a3a;
-}
-
-.modal-footer .btn-secondary:active {
-    transform: scale(0.97);
-}
-
-
-/* Paginación */
-.paginacion {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    margin: 40px auto 20px;
-}
-
-.pagina {
-    background-color: white;
-    border: none;
-    padding: 9px 12px;
-    font-size: 14px;
-    color: #222222;
-    cursor: pointer;
-    border-radius: 7px;
-}
-
-.pagina:hover {
-    background-color: #eeeeee;
-}
-
-.pagina-activa {
-    background-color: #292929;
-    color: white;
-}
-
-.pagina-activa:hover {
-    background-color: #292929;
-}
-
-.anterior,
-.siguiente {
-    padding: 9px 12px;
-}
-
-.anterior {
-    color: #aaaaaa;
-}
-
-.puntos {
-    padding: 8px;
-    font-size: 14px;
-}
-
-/* =========================
-   SIN PROYECTOS
-========================= */
-
-.sin-proyectos {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-    min-height: 320px;
-
-    padding: 40px 25px;
-    margin: 25px 0;
-
-    background-color: #ffffff;
-
-    border: 1px dashed #ced4da;
-    border-radius: 12px;
-
-    text-align: center;
-}
-
-/* Icono */
-
-.sin-proyectos > i {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 75px;
-    height: 75px;
-
-    margin-bottom: 20px;
-
-    background-color: #edf4f5;
-    color: #2f6f7e;
-
-    border-radius: 50%;
-
-    font-size: 35px;
-}
-
-/* Título */
-
-.sin-proyectos h3 {
-    margin: 0 0 10px;
-
-    color: #2f3e46;
-
-    font-size: 23px;
-    font-weight: 600;
-}
-
-/* Descripción */
-
-.sin-proyectos p {
-    max-width: 500px;
-
-    margin: 0 0 25px;
-
-    color: #777777;
-
-    font-size: 17px;
-    line-height: 1.6;
-}
-
-
-
-
-
-/*BOTON SUBIRR      */
-.boton-subir {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 55px;
-    height: 55px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background-color: #2f6f7e;
-    color: white;
-    border: none;
-    border-radius: 50%;
-
-    font-size: 25px;
-    cursor: pointer;
-    z-index: 1000;
-
-    transition: all 0.3s ease;
-}
-
-.boton-subir:hover {
-    background-color: #245865;
-    transform: translateY(-4px);
-}
-
-.boton-subir:active {
-    transform: scale(0.95);
-}
-/* Responsive */
 
 @media (max-width: 576px) {
     .sin-proyectos {
@@ -892,5 +712,20 @@
 
     .sin-proyectos p {
         font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card .imagen-proyecto {
+        height: 190px;
+    }
+
+    .card .acciones {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .card .acciones button {
+        justify-content: center;
     }
 }

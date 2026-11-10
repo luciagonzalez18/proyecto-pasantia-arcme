@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { RouterLink, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ProyectosService } from '../../services/proyectos';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Location } from '@angular/common';
@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-detalles-proyecto',
-  imports: [RouterLink, ReactiveFormsModule, FormsModule],
+  imports: [ ReactiveFormsModule, FormsModule],
   templateUrl: './detalles-proyecto.html',
   styleUrl: './detalles-proyecto.css',
 })

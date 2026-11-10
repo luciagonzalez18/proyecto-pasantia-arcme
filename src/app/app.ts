@@ -16,7 +16,27 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
 export class App {
   protected readonly title = signal('proyecto-pasantia');
 
-  constructor(private proyectosService: ProyectosService) { }
+  constructor(private proyectosService: ProyectosService) {
+    // Detecta cuando cambia la página
+    this.router.events.subscribe(event => {
+
+      if (event instanceof NavigationEnd) {
+
+        // Comprueba si está en una página pública
+        let paginaPublica = ['/home', '/inicioSesion', '/registro'].includes(event.urlAfterRedirects);
+
+        // Recupera la preferencia guardada
+        let modoOscuro = localStorage.getItem('modoOscuro') === 'true';
+
+        // Las páginas públicas siempre quedan claras
+        document.documentElement.classList.toggle(
+          'modo-oscuro',
+          modoOscuro && !paginaPublica
+        );
+      }
+
+    });
+  }
   router = inject(Router) // Inyecta el Router de Angular para poder acceder a la ruta actual de la aplicación.
 
   mostrarMenu(): boolean {
@@ -90,33 +110,7 @@ export class App {
         console.log('Respuesta del servidor:', error.error);
       }
     })
-  router = inject(Router);
 
-  mostrarMenu(): boolean {
-    return !['/home', '/inicioSesion', '/registro', '/configuracion', '/personalizacion'].includes(this.router.url);
-  }
-
-  constructor() {
-
-    // Detecta cuando cambia la página
-    this.router.events.subscribe(event => {
-
-      if (event instanceof NavigationEnd) {
-
-        // Comprueba si está en una página pública
-        let paginaPublica = ['/home', '/inicioSesion', '/registro'].includes(event.urlAfterRedirects);
-
-        // Recupera la preferencia guardada
-        let modoOscuro = localStorage.getItem('modoOscuro') === 'true';
-
-        // Las páginas públicas siempre quedan claras
-        document.documentElement.classList.toggle(
-          'modo-oscuro',
-          modoOscuro && !paginaPublica
-        );
-      }
-
-    });
 
   }
 

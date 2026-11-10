@@ -493,4 +493,99 @@ img:hover {
     display: block;
     min-height: 100vh;
     background-color: #202020;
+/*nuevo diseño de recordatorios */
+
+.proximos-lista {
+  width: 100%;
+}
+
+.proximo {
+  border: 2px solid #888;
+  border-left-width: 8px;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.proximo[dato-cat="alta"]  { border-color: #db5e5c; }
+.proximo[dato-cat="media"] { border-color: #dfa660; }
+.proximo[dato-cat="baja"]  { border-color: #73ad76; }
+
+.proximo span {
+  display: block;
+}
+}
+/*nuevo diseño de recordatorios */
+
+.proximos-lista {
+  width: 100%;
+}
+
+.proximo {
+  border: 2px solid #888;
+  border-left-width: 8px;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.proximo[dato-cat="alta"]  { border-color: #db5e5c; }
+.proximo[dato-cat="media"] { border-color: #dfa660; }
+.proximo[dato-cat="baja"]  { border-color: #73ad76; }
+
+.proximo span {
+  display: block;
+}
+
+
+/* =========================================
+   MODO OSCURO
+========================================= */
+
+:host-context(html.modo-oscuro) .container h1 {
+    color: #e0e0e0;
+}
+
+:host-context(html.modo-oscuro) .linea-horizontal {
+    border-top-color: #383838;
+}
+
+:host-context(html.modo-oscuro) .titulo i {
+    color: #c9cdd3;
+}
+
+:host-context(html.modo-oscuro) .titulo h1 {
+    color: #e0e0e0;
+}
+
+/* Notificaciones */
+
+:host-context(html.modo-oscuro) .notificacion {
+    background-color: #242424;
+    border-color: #383838;
+}
+
+:host-context(html.modo-oscuro) .notificacion:hover {
+    background-color: #303030;
+}
+
+:host-context(html.modo-oscuro) .notificacion p {
+    color: #d0d0d0;
+}
+
+:host-context(html.modo-oscuro) .notificacion > div:first-child p:last-child {
+    color: #999999;
+}
+
+:host-context(html.modo-oscuro) .agendado p {
+    color: #a5a5a5;
+}
+:host-context(html.modo-oscuro) .container {
+    background-color: #202020;
+}
+/* Fondo de toda la vista Inicio en modo oscuro */
+:host-context(html.modo-oscuro) {
+    display: block;
+    min-height: 100vh;
+    background-color: #202020;
 }

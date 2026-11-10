@@ -12,7 +12,7 @@ import { Configuracion } from './paginas/configuracion/configuracion';
 import { Personalizacion } from './paginas/personalizacion/personalizacion';
 import { Porfolio } from './paginas/porfolio/porfolio';
 import { Ingresos } from './paginas/ingresos/ingresos';
-import { Agenda } from './compartidos/agenda/agenda';
+import { Agenda } from './paginas/agenda/agenda';
 import { PreguntasFrecuentes } from './compartidos/preguntas-frecuentes/preguntas-frecuentes';
 import { DetallesCliente } from './detalles/detalles-cliente/detalles-cliente';
 import {DetallesProveedores} from './detalles/detalles-proveedores/detalles-proveedores';
@@ -37,6 +37,9 @@ export const routes: Routes = [
     { path: "agenda", component: Agenda, canActivate: [sesionGuard] },
     { path: "porfolio", component: Porfolio, canActivate: [sesionGuard] },
     { path: "preguntas-frecuentes", component: PreguntasFrecuentes, canActivate: [sesionGuard] },
+    { path: "detalles-proyectos",component:DetallesProyecto, canActivate: [sesionGuard]},
+    { path: "detalles-clientes",component:DetallesCliente, canActivate: [sesionGuard]},
+    { path: "detalles-proveedores",component:DetallesProveedores, canActivate: [sesionGuard]},
 
     // Páginas públicas: no necesitan una sesión.
     { path: "home", component: Home },
