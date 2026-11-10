@@ -22,6 +22,7 @@ export class Clientes implements OnInit {
     telefono: new FormControl('', [Validators.required]),
     direccion: new FormControl('', [Validators.required]),
     ciudad: new FormControl('', [Validators.required]),
+    correo: new FormControl('', [Validators.required, Validators.email]),
   });
 
   ngOnInit(): void {
@@ -82,7 +83,8 @@ export class Clientes implements OnInit {
       nombre: valores.nombre,
       telefono: valores.telefono,
       direccion: valores.direccion,
-      ciudad: valores.ciudad
+      ciudad: valores.ciudad,
+      correo: valores.correo
     };
 
     this.ClientesService.crear(cliente).subscribe({
