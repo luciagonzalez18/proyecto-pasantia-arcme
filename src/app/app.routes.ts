@@ -23,7 +23,7 @@ import { sesionGuard } from './auth/sesionguard';
 export const routes: Routes = [
 
     // Redirige la ruta principal hacia inicio.
-    { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
 
     // Páginas privadas: necesitan una sesión activa.
     { path: "inicio", component: Inicio, canActivate: [sesionGuard] },
@@ -47,6 +47,6 @@ export const routes: Routes = [
     { path: "inicioSesion", component: InicioSesion },
 
     // Si la ruta no existe, redirige a inicio.
-    { path: '**', redirectTo: 'inicio' }
+    { path: '**', redirectTo: 'home' }
 
 ];

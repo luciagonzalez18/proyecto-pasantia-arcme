@@ -525,35 +525,6 @@
     line-height: 1.6;
 }
 
-/* ---- Botón subir ---- */
-
-.boton-subir {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 55px;
-    height: 55px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #2f6f7e;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 25px;
-    cursor: pointer;
-    z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-.boton-subir:hover {
-    background-color: #245865;
-    transform: translateY(-4px);
-}
-
-.boton-subir:active {
-    transform: scale(0.95);
-}
 
 /* =========================================
    MODO OSCURO
@@ -644,6 +615,8 @@
     background-color: #475569;
     color: #e0e0e0;
 }
+
+
 
 /* =========================================
    RESPONSIVE

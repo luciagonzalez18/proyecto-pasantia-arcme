@@ -511,13 +511,12 @@ td button i {
 /* Botón cerrar */
 
 .modal-footer .btn-secondary {
-    background-color: #6c757d;
-
-    border-color: #6c757d;
+    background-color: #cf5050;
+    border-color: #d36e6e;
 }
 
 .modal-footer .btn-secondary:hover {
-    background-color: #5c636a;
+    background-color: #9c3a3a;
 }
 
 .modal-footer .btn-secondary:active {
