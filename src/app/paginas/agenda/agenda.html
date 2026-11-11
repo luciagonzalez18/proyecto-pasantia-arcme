@@ -116,14 +116,16 @@
       <h3><i class="bi bi-calendar4-week"></i><b> Proximos eventos</b></h3>
       @for (ev of Proximosevent; track ev.id) {
       <div class="proximo" [attr.dato-cat]="ev.categoria">
-        <span class="fecha" class="hora">{{ formatoFecha(ev.fecha) }}- {{ ev.hora }} hs</span>
-        <span class="titulo">{{ ev.titulo }}</span>
-        <p class="descripcion">{{ ev.descripcion }}</p>
-        <div class="indexBotones">
-          <button class="btn-eliminar" (click)="eliminar(ev.id_evento, $event)"><i class="bi bi-trash"></i></button>
-          <button class="btn-editar" (click)="editar(ev)"><i class="bi bi-pencil-square"></i></button>
-        </div>
-      </div>
+  <div class="info">
+    <span class="hora">{{ formatoFecha(ev.fecha) }}- {{ ev.hora }} hs</span>
+    <span class="titulo">{{ ev.titulo }}</span>
+    <p class="descripcion">{{ ev.descripcion }}</p>
+  </div>
+  <div class="indexBotones">
+    <button class="btn-eliminar" (click)="eliminar(ev.id_evento, $event)"><i class="bi bi-trash"></i></button>
+    <button class="btn-editar" (click)="editar(ev)"><i class="bi bi-pencil-square"></i></button>
+  </div>
+</div>
       } @empty {
       <p>No hay eventos próximos.</p>
       }

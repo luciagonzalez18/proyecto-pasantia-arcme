@@ -1,7 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild, inject, ChangeDetectorRef } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 // le pusimos otro nombre al servicio para que no se confunda con la clase Agenda de abajo
-import { Agenda as AgendaService } from '../../servicios/agenda';
+import { Agenda as AgendaService } from '../../services/agenda';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agenda',
@@ -145,46 +146,64 @@ constructor(private detector: ChangeDetectorRef) {
 
   // arma el evento y se lo manda a la API para que lo guarde en la base
   agregarEvento() {
-    if (this.eventoForm.invalid) {
-      this.mensajeError = 'Por favor completá todos los campos obligatorios';
-      return;
-    }
-
-    this.mensajeError = '';
-
-    const valores = this.eventoForm.value;
-    // ya no ponemos id: lo genera la base de datos solo
-    const nuevoEvento = {
-      titulo: valores.titulo ?? '',
-      fecha: valores.fecha ?? '',
-      hora: valores.hora ?? '',
-      categoria: valores.categoria ?? '',
-      descripcion: valores.descripcion ?? ''
-    };
-
-    //  si estamos editando mandamos la modificación, si no, creamos uno nuevo
-    const pedido = this.idEditando
-      ? this.agendaServicios.editar(this.idEditando, nuevoEvento)
-      : this.agendaServicios.crear(nuevoEvento);
-
-    // sin el subscribe el pedido NUNCA se envía
-    pedido.subscribe({
-      next: () => {
-        // si el evento es de otro mes, mostramos ese mes para que se vea
-        const [anio, mes] = nuevoEvento.fecha.split('-').map(Number);
-        this.mesActual = new Date(anio, mes - 1, 1);
-        this.generarMes();
-
-        // volvemos a pedir la lista para que aparezca el evento nuevo
-        this.cargarEventos();
-        this.cerrarModal();
-      },
-      error: (err) => {
-        console.error('Error al guardar el evento', err);
-        this.mensajeError = 'No se pudo guardar el evento';
-      }
-    });
+  if (this.eventoForm.invalid) {
+    this.mensajeError = 'Por favor completá todos los campos obligatorios';
+    return;
   }
+
+  this.mensajeError = '';
+
+  // guardamos si estamos editando ANTES de mandar el pedido, para saber qué mensaje mostrar
+  const estabaEditando = this.idEditando !== null;
+
+  const valores = this.eventoForm.value;
+  const nuevoEvento = {
+    titulo: valores.titulo ?? '',
+    fecha: valores.fecha ?? '',
+    hora: valores.hora ?? '',
+    categoria: valores.categoria ?? '',
+    descripcion: valores.descripcion ?? ''
+  };
+
+  const pedido = this.idEditando
+    ? this.agendaServicios.editar(this.idEditando, nuevoEvento)
+    : this.agendaServicios.crear(nuevoEvento);
+
+  pedido.subscribe({
+    next: () => {
+      const [anio, mes] = nuevoEvento.fecha.split('-').map(Number);
+      this.mesActual = new Date(anio, mes - 1, 1);
+      this.generarMes();
+
+      this.cargarEventos();
+      this.cerrarModal();   // primero cerramos el modal
+
+      // después mostramos el alert (si lo mostrás antes, queda tapado por el modal)
+      Swal.fire({
+        title: estabaEditando ? '¡Evento editado!' : '¡Evento agregado!',
+        text: estabaEditando
+          ? 'El evento se editó con éxito'
+          : 'El evento se agregó con éxito',
+        icon: 'success',
+        confirmButtonText: 'Continuar',
+        confirmButtonColor: '#2f6f7e'
+      });
+    },
+    error: (err) => {
+      console.error('Error al guardar el evento', err);
+      this.mensajeError = 'No se pudo guardar el evento';
+
+      Swal.fire({
+        title: 'Error al guardar',
+        text: 'No se pudo guardar el evento. Intentá nuevamente.',
+        icon: 'error',
+        confirmButtonText: 'Continuar',
+        confirmButtonColor: '#2f6f7e'
+      });
+    }
+  });
+}
+ //borrar hasta aca
 
   //  abre el modal con los datos del evento para poder modificarlos
   editar(ev: any) {
@@ -201,21 +220,66 @@ constructor(private detector: ChangeDetectorRef) {
   }
 
   // borra el evento primero lo saca de la pantalla y después lo borra en la base
-  eliminar(id: number, e: Event) {
-    e.stopPropagation(); // evita que se abra el modal al borrar
+  
+  
+eliminar(id: number, e: Event) {
+  e.stopPropagation(); // Evita que se abra el modal al borrar
 
-    // lo sacamos de la lista al instante (!= porque PHP manda el id como texto)
-    this.eventos = this.eventos.filter(ev => ev.id_evento != id);
-    this.actualizarProximos();
+  Swal.fire({
+    title: "¿Deseas eliminar este evento?",
+    text: "¡Esta acción no se puede revertir!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#2f6f7e",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí, quiero borrarlo",
+    cancelButtonText: "Cancelar"
+  }).then((result) => {
 
-    this.agendaServicios.eliminar(id).subscribe({
-      next: () => this.cargarEventos(),
-      error: (err) => {
-        console.error('Error al eliminar el evento', err);
-        this.cargarEventos();
-      }
-    });
-  }
+    // Si el usuario confirma la eliminación
+    if (result.isConfirmed) {
+
+      this.agendaServicios.eliminar(id).subscribe({
+
+        next: (respuesta) => {
+
+          console.log("Evento eliminado", respuesta);
+
+          // Actualizamos la lista de eventos
+          this.cargarEventos();
+
+          // Mostramos el mensaje de éxito
+          Swal.fire({
+            title: "¡Evento eliminado!",
+            text: "El evento fue eliminado con éxito",
+            icon: "success",
+            confirmButtonText: "Continuar",
+            confirmButtonColor: "#2f6f7e"
+          });
+
+        },
+
+        error: (err) => {
+
+          console.error('Error al eliminar el evento', err);
+
+          Swal.fire({
+            title: "Error al eliminar",
+            text: "No se pudo eliminar el evento. Intentá nuevamente.",
+            icon: "error",
+            confirmButtonText: "Continuar"
+          });
+
+        }
+
+      });
+
+    }
+
+  });
+}
+
+
 
   // pasa "2026-10-16" a "16/10/2026" para mostrarlo
   formatoFecha(fecha: string): string {

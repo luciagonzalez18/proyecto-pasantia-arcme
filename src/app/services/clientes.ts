@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -6,12 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ClientesService {
-  // ⚠️ Asegúrate de que esta URL sea exactamente la misma que probaste en Postman, SIN punto y coma al final.
-  private apiUrl = 'http://localhost/apiArcme/public/index.php/clientes';
+  
+    private http = inject(HttpClient);
+  private apiUrl = '/apiArcme/public/index.php/clientes';
+
 
   public clienteSeleccionado: any = null;
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   listar(): Observable<any> {
     return this.http.get(this.apiUrl);
