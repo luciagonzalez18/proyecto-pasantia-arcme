@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -6,33 +6,34 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ClientesService {
-  // ⚠️ Asegúrate de que esta URL sea exactamente la misma que probaste en Postman, SIN punto y coma al final.
-  private apiUrl = 'http://localhost/apiArcme/public/index.php/clientes';
+
+  private http = inject(HttpClient);
+  private apiUrl = '/apiArcme/public/index.php/clientes';
+
 
   public clienteSeleccionado: any = null;
 
-  constructor(private http: HttpClient) { }
 
-  listar(): Observable<any> {
+  listar(){
     return this.http.get(this.apiUrl);
   }
 
-  buscar(id: number): Observable<any> {
+  buscar(id: number){
     return this.http.get(`${this.apiUrl}/${id}`);
   }
 
-  crear(cliente: any): Observable<any> {
+  crear(cliente: any){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     // Enviamos explícitamente los headers para que PHP reciba el JSON correctamente
     return this.http.post(this.apiUrl, cliente, { headers });
   }
 
-  actualizar(id: number, cliente: any): Observable<any> {
+  actualizar(id: number, cliente: any){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put(`${this.apiUrl}/${id}`, cliente, { headers });
   }
 
-  eliminar(id: number): Observable<any> {
+  eliminar(id: number){
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }
