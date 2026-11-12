@@ -519,6 +519,13 @@ img:hover {
 
 .proximos-lista {
   width: 100%;
+
+}
+.proximos-lista h3 {
+  margin: 0 0 10px 40px;
+}
+.proximos-lista > p {
+  margin: 0 0 10px 40px;
 }
 
 .proximo {
