@@ -22,7 +22,7 @@ import { DetallesProyecto } from './detalles/detalles-proyecto/detalles-proyecto
 import { sesionGuard } from './auth/sesionguard';
 export const routes: Routes = [
 
-    // Redirige la ruta principal hacia inicio.
+    // Redirige la ruta principal hacia home.
     { path: '', redirectTo: 'home', pathMatch: 'full' },
 
     // Páginas privadas: necesitan una sesión activa.
@@ -47,7 +47,7 @@ export const routes: Routes = [
     { path: "registro", component: RegistroComponent },
     { path: "inicioSesion", component: InicioSesion },
 
-    // Si la ruta no existe, redirige a inicio.
+    // Si la ruta no existe, redirige a home.
     { path: '**', redirectTo: 'home' }
 
 ];
