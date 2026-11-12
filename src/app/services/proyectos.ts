@@ -42,4 +42,22 @@ export class ProyectosService {
   eliminar(id: number) {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
+
+  // Obtener proyectos que todavía no están vinculados.
+listarDisponibles() {
+  return this.http.get<any[]>(`${this.apiUrl}/disponibles`);
+}
+
+// Obtener proyectos vinculados a un cliente.
+listarPorCliente(id_cliente: number) {
+  return this.http.get<any[]>(`${this.apiUrl}/cliente/${id_cliente}`);
+}
+
+// Vincular un proyecto a un cliente.
+vincular(id_obra: number, datos: any) {
+  return this.http.patch(
+    `${this.apiUrl}/${id_obra}/vincular`,
+    datos
+  );
+}
 }

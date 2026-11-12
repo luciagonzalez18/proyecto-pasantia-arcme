@@ -1,169 +1,362 @@
+
 <div class="container">
     @if(cliente){
-    <div class="header-verDetalles">
+        <div class="header-verDetalles">
 
-        <div class="titulo-contenido volver" (click)="volverAtras()">
-            <i class="bi bi-arrow-left"></i>
-            <p class="titulo-volver">Volver a Clientes</p>
-        </div>
-
-    </div>
-    <div class="container-verDetalles">
-
-        <div class="contenido-detalles">
-
-            <h1 class="titulo">Datos del Cliente:</h1>
-
-            <p class="subtitulo">Información General:</p>
-
-            <div class="detalle">
-                <i class="bi bi-person"></i>
-                <span><strong>Nombre del Cliente:</strong>{{cliente.nombre}}</span>
-            </div>
-
-            <div class="detalle">
-                <i class="bi bi-geo-alt"></i>
-                <span><strong>Dirección:</strong> {{cliente.direccion}}</span>
-            </div>
-
-            <div class="detalle">
-                <i class="bi bi-buildings"></i>
-                <span><strong>Ciudad:</strong> {{cliente.ciudad}}</span>
-            </div>
-
-            <div class="detalle">
-                <i class="bi bi-telephone"></i>
-                <span><strong>Teléfono:</strong> {{cliente.telefono}}</span>
-            </div>
-
-            <div class="detalle">
-                <i class="bi bi-envelope"></i>
-                <span><strong>Email:</strong> {{cliente.correo}}</span>
+            <div class="titulo-contenido volver" (click)="volverAtras()">
+                <i class="bi bi-arrow-left"></i>
+                <p class="titulo-volver">Volver a Clientes</p>
             </div>
 
         </div>
-        <div class="card-Clientes">
-            <header class="header-card-detalles">
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#formEditarCliente"><i
-                        class="bi bi-pencil-square"></i>Editar Información</button>
-                <button (click)="Eliminar(cliente.id_cliente)"><i class="bi bi-trash-fill"></i>Eliminar Cliente</button>
-            </header>
-            <hr class="linea-horizontal">
-            <p> <i class="bi bi-clipboard"></i>Obras Vinculadas</p>
-            <div class="obras-Cliente">
-                <div class="obra">
-                    <img src="assets/imagenHOME1.jpg" alt="obra1 aña">
-                    <div class="contenido-card">
-                        <span class="titulo-obra">Casa familiar</span>
-                        <span class="Direccion">Direccion:Los Alamos 2345</span>
-                        <span class="estado"><strong>Finalizada</strong></span>
-                    </div>
+
+        <div class="container-verDetalles">
+
+            <div class="contenido-detalles">
+
+                <h1 class="titulo">Datos del Cliente:</h1>
+
+                <p class="subtitulo">Información General:</p>
+
+                <div class="detalle">
+                    <i class="bi bi-person"></i>
+                    <span><strong>Nombre del Cliente:</strong>{{cliente.nombre}}</span>
                 </div>
 
-                <div class="obra">
-                    <img src="assets/imagenHOME1.jpg" alt="obra1 aña">
-                    <div class="contenido-card">
-                        <span class="titulo-obra">Casa familiar</span>
-                        <span class="Direccion">Direccion:Los Alamos 2345</span>
-                        <span class="estado"><strong>Finalizada</strong></span>
-                    </div>
+                <div class="detalle">
+                    <i class="bi bi-geo-alt"></i>
+                    <span><strong>Dirección:</strong> {{cliente.direccion}}</span>
                 </div>
 
-                <div class="obra">
-                    <img src="assets/imagenHOME1.jpg" alt="obra1 aña">
-                    <div class="contenido-card">
-                        <span class="titulo-obra">Casa familiar</span>
-                        <span class="Direccion">Direccion:Los Alamos 2345</span>
-                        <span class="estado"><strong>Finalizada</strong></span>
-                    </div>
+                <div class="detalle">
+                    <i class="bi bi-buildings"></i>
+                    <span><strong>Ciudad:</strong> {{cliente.ciudad}}</span>
                 </div>
 
-                <div class="obra">
-                    <img src="assets/imagenHOME1.jpg" alt="obra1 aña">
-                    <div class="contenido-card">
-                        <span class="titulo-obra">Casa familiar</span>
-                        <span class="Direccion">Direccion:Los Alamos 2345</span>
-                        <span class="estado"><strong>Finalizada</strong></span>
-                    </div>
+                <div class="detalle">
+                    <i class="bi bi-telephone"></i>
+                    <span><strong>Teléfono:</strong> {{cliente.telefono}}</span>
+                </div>
+
+                <div class="detalle">
+                    <i class="bi bi-envelope"></i>
+                    <span><strong>Email:</strong> {{cliente.correo}}</span>
                 </div>
 
             </div>
-            <div class="footer-card-detalles">
-                <button><i class="bi bi-file-earmark-plus"></i>Vincular nueva Obra</button>
+
+            <div class="card-Clientes">
+
+                <header class="header-card-detalles">
+
+                    <button type="button" class="btn"
+                        data-bs-toggle="modal"
+                        data-bs-target="#formEditarCliente">
+                        <i class="bi bi-pencil-square"></i>
+                        Editar Información
+                    </button>
+
+                    <button (click)="Eliminar(cliente.id_cliente)">
+                        <i class="bi bi-trash-fill"></i>
+                        Eliminar Cliente
+                    </button>
+
+                </header>
+
+                <hr class="linea-horizontal">
+
+                <p>
+                    <i class="bi bi-clipboard"></i>
+                    Obras Vinculadas
+                </p>
+
+                <div class="obras-Cliente">
+
+                    @if(proyectosCliente.length > 0){
+
+                        @for(proyecto of proyectosCliente; track proyecto.id_obra){
+
+                            <div class="obra">
+
+                                <img src="assets/imagenHOME1.jpg" alt="Imagen de la obra">
+
+                                <div class="contenido-card">
+
+                                    <span class="titulo-obra">
+                                        {{proyecto.titulo}}
+                                    </span>
+
+                                    <span class="Direccion">
+                                        Dirección: {{proyecto.ubicacion}}
+                                    </span>
+
+                                    <span class="estado">
+                                        <strong>{{proyecto.estado}}</strong>
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        }
+
+                    } @else {
+
+                        <p class="sin-obras">
+                            Este cliente todavía no tiene obras vinculadas.
+                        </p>
+
+                    }
+
+                </div>
+
+                <div class="footer-card-detalles">
+
+                    <button type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalVincularObra">
+
+                        <i class="bi bi-file-earmark-plus"></i>
+                        Vincular nueva Obra
+
+                    </button>
+
+                </div>
+
             </div>
+
         </div>
-    </div>
 
 
-    <!--modal editar cliente-->
+        <!-- MODAL EDITAR CLIENTE -->
 
-    <div class="modal fade" id="formEditarCliente" tabindex="-1" aria-labelledby="formEditarClienteModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="formEditarClienteModalLabel">Editar Cliente</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal fade" id="formEditarCliente" tabindex="-1"
+            aria-labelledby="formEditarClienteModalLabel"
+            aria-hidden="true">
+
+            <div class="modal-dialog modal-lg">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h1 class="modal-title fs-5" id="formEditarClienteModalLabel">
+                            Editar Cliente
+                        </h1>
+
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close">
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                        <form [formGroup]="editarCliente">
+
+                            <!-- Nombre del cliente -->
+
+                            <div class="mb-3">
+
+                                <label for="nombreCliente" class="form-label">
+                                    Nombre del cliente
+                                </label>
+
+                                <input type="text" class="form-control"
+                                    id="nombreCliente"
+                                    formControlName="nombre"
+                                    placeholder="Ej: Juan Pérez">
+
+                            </div>
+
+                            <div class="row">
+
+                                <!-- TELEFONO -->
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label for="telefonoCliente" class="form-label">
+                                        Teléfono
+                                    </label>
+
+                                    <input type="text" class="form-control"
+                                        id="telefonoCliente"
+                                        formControlName="telefono"
+                                        placeholder="Ej: 123-456-7890">
+
+                                </div>
+
+                                <!-- DIRECCION -->
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label for="direccionCliente" class="form-label">
+                                        Dirección
+                                    </label>
+
+                                    <input type="text" class="form-control"
+                                        id="direccionCliente"
+                                        formControlName="direccion"
+                                        placeholder="Ej: Los Alamos 2345">
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <!-- CIUDAD -->
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label for="ciudad" class="form-label">
+                                        Ciudad
+                                    </label>
+
+                                    <input type="text" class="form-control"
+                                        id="ciudad"
+                                        formControlName="ciudad"
+                                        placeholder="Ej: Buenos Aires">
+
+                                </div>
+
+                                <!-- CORREO ELECTRONICO -->
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label for="correo" class="form-label">
+                                        Correo electrónico
+                                    </label>
+
+                                    <input type="email" class="form-control"
+                                        id="correo"
+                                        formControlName="correo"
+                                        placeholder="Ej: juan.perez@example.com">
+
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                            Cancelar
+                        </button>
+
+                        <button type="submit" class="btn btn-primary"
+                            data-bs-dismiss="modal"
+                            (click)="modificarCliente(cliente.id_cliente)"
+                            [disabled]="editarCliente.invalid">
+                            Guardar
+                        </button>
+
+                    </div>
+
                 </div>
-                <div class="modal-body">
-                    <form [formGroup]="editarCliente">
-                        <!-- Nombre del cliente -->
-                        <div class="mb-3">
-                            <label for="nombreCliente" class="form-label">Nombre del cliente</label>
-                            <input type="text" class="form-control" id="nombreCliente" formControlName="nombre"
-                                placeholder="Ej: Juan Pérez">
-                        </div>
 
-                        <div class="row">
-                            <!-- TeLEFONO -->
-                            <div class="col-md-6 mb-3">
-                                <label for="telefonoCliente" class="form-label">Teléfono</label>
-                                <input type="text" class="form-control" id="telefonoCliente" formControlName="telefono"
-                                    placeholder="Ej: 123-456-7890">
-                            </div>
-
-                            <!-- DIRECCION -->
-                            <div class="col-md-6 mb-3">
-                                <label for="direccionCliente" class="form-label">Dirección</label>
-                                <input type="text" class="form-control" id="direccionCliente"
-                                    formControlName="direccion" placeholder="Ej: Los Alamos 2345">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <!-- CIUDAD -->
-                            <div class="col-md-6 mb-3">
-                                <label for="ciudad" class="form-label">Ciudad</label>
-                                <input type="text" class="form-control" id="ciudad" formControlName="ciudad"
-                                    placeholder="Ej: Buenos Aires">
-                            </div>
-
-                            <!-- CORREO ELECTRÓNICO -->
-                            <div class="col-md-6 mb-3">
-                                <label for="correo" class="form-label">Correo electrónico</label>
-                                <input type="email" class="form-control" id="correo" formControlName="correo"
-                                    placeholder="Ej: juan.perez@example.com">
-                            </div>
-                        </div>
-
-
-
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
-                        (click)="modificarCliente(cliente.id_cliente)"
-                        [disabled]="editarCliente.invalid">Guardar</button>
-                </div>
             </div>
+
         </div>
 
 
+        <!-- MODAL VINCULAR OBRA -->
 
-    </div>
+        <div class="modal fade" id="modalVincularObra" tabindex="-1"
+            aria-labelledby="modalVincularObraLabel"
+            aria-hidden="true">
+
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h1 class="modal-title fs-5" id="modalVincularObraLabel">
+                            Vincular nueva Obra
+                        </h1>
+
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close">
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                        <p>
+                            Seleccioná una obra disponible para vincularla
+                            a {{cliente.nombre}}.
+                        </p>
+
+                        @if(obrasDisponibles.length > 0){
+
+                            <div class="mb-3">
+
+                                <label for="selectObra" class="form-label">
+                                    Proyectos disponibles
+                                </label>
+
+                                <select class="form-select"
+                                    id="selectObra"
+                                    name="proyectoSeleccionado"
+                                    [(ngModel)]="proyectoSeleccionadoId">
+
+                                    <option [ngValue]="null" disabled>
+                                        Seleccioná una obra
+                                    </option>
+
+                                    @for(proyecto of obrasDisponibles; track proyecto.id_obra){
+
+                                        <option [ngValue]="proyecto.id_obra">
+                                            {{proyecto.titulo}} - {{proyecto.ubicacion}}
+                                        </option>
+
+                                    }
+
+                                </select>
+
+                            </div>
+
+                        } @else {
+
+                            <p class="text-muted">
+                                No hay proyectos disponibles para vincular.
+                            </p>
+
+                        }
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                            Cancelar
+                        </button>
+
+                        <button type="button" class="btn btn-primary"
+                            (click)="vincularObra()"
+                            [disabled]="proyectoSeleccionadoId === null || obrasDisponibles.length === 0"
+                            data-bs-dismiss="modal">
+
+                            Vincular Obra
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
     }
-
-
 </div>
