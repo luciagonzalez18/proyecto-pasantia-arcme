@@ -30,11 +30,11 @@ export const sesionGuard: CanActivateFn = () => {
       }
 
       // Si no existe una sesión, redirigimos al login.
-      return router.createUrlTree(['/inicioSesion']);
+      return router.createUrlTree(['/home']);
     }),
 
     // Si ocurre un error, también redirigimos al login.
-    catchError(() => of(router.createUrlTree(['/inicioSesion'])))
+    catchError(() => of(router.createUrlTree(['/home'])))
 
   );
 

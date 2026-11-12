@@ -98,7 +98,7 @@ export class RegistroComponent {
           this.detector.detectChanges();
           return;
         }
-
+this.detector.detectChanges();
         this.error = '';
         this.paso = 2;
       },
