@@ -1,9 +1,16 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-preguntas-frecuentes',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './preguntas-frecuentes.html',
   styleUrl: './preguntas-frecuentes.css',
 })
-export class PreguntasFrecuentes {}
+export class PreguntasFrecuentes {
+  constructor(private location: Location) {}
+
+  // Función para volver a la página anterior
+  volverAtras() {
+    this.location.back();
+  }
+}

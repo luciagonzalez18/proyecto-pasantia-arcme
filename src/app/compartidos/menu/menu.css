@@ -59,6 +59,7 @@ body {
     align-items: center;
     gap: 3px;
     margin-bottom: 12px;
+    cursor: pointer;
 }
 
 .container .logo img {
@@ -212,6 +213,7 @@ body {
 .container ul li {
     display: flex;
     align-items: center;
+    cursor:pointer;
     padding: 7px 9px;
     border-radius: 7px;
     transition: all 0.2s ease;

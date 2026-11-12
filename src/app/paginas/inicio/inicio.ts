@@ -2,7 +2,7 @@
 import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
-import { Agenda as AgendaService } from '../../servicios/agenda';
+import { Agenda as AgendaService } from '../../services/agenda';
 
 @Component({
   selector: 'app-inicio',

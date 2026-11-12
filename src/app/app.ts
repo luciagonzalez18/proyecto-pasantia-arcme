@@ -1,6 +1,6 @@
 
 import { Component, inject, signal } from '@angular/core';
-import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd,RouterLink } from '@angular/router';
 import { Menu } from './compartidos/menu/menu';
 import { Footer } from './compartidos/footer/footer';
 import Swal from 'sweetalert2';
@@ -9,7 +9,7 @@ import { ProyectosService } from './services/proyectos';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Menu, Footer, ReactiveFormsModule],
+  imports: [RouterOutlet, Menu, Footer, ReactiveFormsModule, RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -41,6 +41,10 @@ export class App {
 
   mostrarMenu(): boolean {
     return !['/home', '/inicioSesion', '/registro', '/configuracion', '/personalizacion'].includes(this.router.url)//retorna false cuando se encuetra en alguna de estas rutas, en cualquier otra retorna true
+  }
+
+  ocultarBoton():boolean{
+    return !['/home', '/inicioSesion', '/registro', '/preguntas-frecuentes'].includes(this.router.url)
   }
 
   nuevoProyecto = new FormGroup({
