@@ -22,11 +22,10 @@ import { DetallesProyecto } from './detalles/detalles-proyecto/detalles-proyecto
 import { sesionGuard } from './auth/sesionguard';
 export const routes: Routes = [
 
-    // Redirige la ruta principal hacia inicio.
+    // Redirige la ruta principal hacia home.
     { path: '', redirectTo: 'home', pathMatch: 'full' },
 
     // Páginas privadas: necesitan una sesión activa.
-<<<<<<< HEAD
     { path: "inicio", component: Inicio, canActivate: [sesionGuard] },
     { path: "proyectos", component: Proyectos, canActivate: [sesionGuard] },
     { path: "proveedores", component: Proveedores, canActivate: [sesionGuard] },
@@ -41,31 +40,15 @@ export const routes: Routes = [
     { path: "detalles-proyectos", component: DetallesProyecto, canActivate: [sesionGuard] },
     { path: "detalles-clientes", component: DetallesCliente, canActivate: [sesionGuard] },
     { path: "detalles-proveedores", component: DetallesProveedores, canActivate: [sesionGuard] },
-    //ad
-    
-=======
-    { path: "inicio", component: Inicio },
-    { path: "proyectos", component: Proyectos },
-    { path: "proveedores", component: Proveedores },
-    { path: "clientes", component: Clientes },
-    { path: "configuracion", component: Configuracion },
-    { path: "personalizacion", component: Personalizacion },
-    { path: "portfolio", component: Porfolio },
-    { path: "ingresos", component: Ingresos },
-    { path: "agenda", component: Agenda },
-    { path: "porfolio", component: Porfolio },
-    { path: "preguntas-frecuentes", component: PreguntasFrecuentes },
-    { path: "detalles-proyectos",component:DetallesProyecto},
-    { path: "detalles-clientes",component:DetallesCliente},
-    { path: "detalles-proveedores",component:DetallesProveedores},
 
->>>>>>> 9a2512c527f6de44f3de80df2d7d15f8fe0bed07
+
+    
     // Páginas públicas: no necesitan una sesión.
     { path: "home", component: Home },
     { path: "registro", component: RegistroComponent },
     { path: "inicioSesion", component: InicioSesion },
 
-    // Si la ruta no existe, redirige a inicio.
+    // Si la ruta no existe, redirige a home.
     { path: '**', redirectTo: 'home' }
 
 ];
