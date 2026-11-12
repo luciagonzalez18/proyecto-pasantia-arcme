@@ -40,8 +40,11 @@ export class App {
   router = inject(Router) // Inyecta el Router de Angular para poder acceder a la ruta actual de la aplicación.
 
   mostrarMenu(): boolean {
-    return !['/home', '/inicioSesion', '/registro', '/configuracion', '/personalizacion'].includes(this.router.url)//retorna false cuando se encuetra en alguna de estas rutas, en cualquier otra retorna true
-  }
+  return !['/home', '/inicioSesion', '/registro', '/configuracion', '/personalizacion', '/detalles-proyectos']
+    .includes(this.router.url.split('/')[1] === 'detalles-proyectos'
+      ? '/detalles-proyectos'
+      : this.router.url);
+}
 
   ocultarBoton():boolean{
     return !['/home', '/inicioSesion', '/registro', '/preguntas-frecuentes'].includes(this.router.url)

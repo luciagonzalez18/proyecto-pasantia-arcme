@@ -37,10 +37,9 @@ export const routes: Routes = [
     { path: "agenda", component: Agenda, canActivate: [sesionGuard] },
     { path: "porfolio", component: Porfolio, canActivate: [sesionGuard] },
     { path: "preguntas-frecuentes", component: PreguntasFrecuentes, canActivate: [sesionGuard] },
-    { path: "detalles-proyectos", component: DetallesProyecto, canActivate: [sesionGuard] },
+    { path: "detalles-proyectos/:id", component: DetallesProyecto },
     { path: "detalles-clientes", component: DetallesCliente, canActivate: [sesionGuard] },
     { path: "detalles-proveedores", component: DetallesProveedores, canActivate: [sesionGuard] },
-    //ad
     
     // Páginas públicas: no necesitan una sesión.
     { path: "home", component: Home },
@@ -48,6 +47,6 @@ export const routes: Routes = [
     { path: "inicioSesion", component: InicioSesion },
 
     // Si la ruta no existe, redirige a home.
-    { path: '**', redirectTo: 'home' }
+    { path: '**', redirectTo: ' home' }
 
 ];

@@ -91,19 +91,8 @@ export class Proyectos implements OnInit {
       }
     })
   }
-  obtenerProyecto(id: number) {
-
-    this.proyectosService.buscar(id).subscribe({
-      next: (respuesta: any) => {
-        this.proyectosService.proyectoSeleccionado = respuesta;
-        console.log("producto obtenido", respuesta)
-        this.router.navigate(['/detalles-proyectos']);
-
-      },
-      error: (error) => {
-        console.error('Error al obtener el proyecto:', error);
-      }
-    })
+  verDetalles(proyecto: any) {
+    this.router.navigate(['/detalles-proyectos', proyecto.id_obra]);
   }
 
   crearNuevoProyecto(): void {

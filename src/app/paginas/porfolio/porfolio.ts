@@ -37,13 +37,13 @@ export class Porfolio implements OnInit {
     })
   }
 
-   obtenerProyecto(id: number) {
+   verDetalles(id: number) {
 
     this.proyectoService.buscar(id).subscribe({
       next: (respuesta: any) => {
         this.proyectoService.proyectoSeleccionado = respuesta;
         console.log("producto obtenido", respuesta)
-        this.router.navigate(['/detalles-proyectos']);
+        this.router.navigate(['/detalles-proyectos', respuesta.id_obra]);
 
       },
       error: (error) => {
