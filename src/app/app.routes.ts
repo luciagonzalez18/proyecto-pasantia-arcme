@@ -15,7 +15,7 @@ import { Ingresos } from './paginas/ingresos/ingresos';
 import { Agenda } from './paginas/agenda/agenda';
 import { PreguntasFrecuentes } from './compartidos/preguntas-frecuentes/preguntas-frecuentes';
 import { DetallesCliente } from './detalles/detalles-cliente/detalles-cliente';
-import {DetallesProveedores} from './detalles/detalles-proveedores/detalles-proveedores';
+import { DetallesProveedores } from './detalles/detalles-proveedores/detalles-proveedores';
 import { DetallesProyecto } from './detalles/detalles-proyecto/detalles-proyecto';
 
 // Importamos el Guard que comprueba si existe una sesión.
@@ -26,21 +26,22 @@ export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
 
     // Páginas privadas: necesitan una sesión activa.
-    { path: "inicio", component: Inicio,canActivate:[sesionGuard] },
-    { path: "proyectos", component: Proyectos,canActivate:[sesionGuard]},
-    { path: "proveedores", component: Proveedores,canActivate:[sesionGuard] },
-    { path: "clientes", component: Clientes ,canActivate:[sesionGuard]},
-    { path: "configuracion", component: Configuracion ,canActivate:[sesionGuard]},
-    { path: "personalizacion", component: Personalizacion ,canActivate:[sesionGuard]},
-    { path: "portfolio", component: Porfolio ,canActivate:[sesionGuard]},
-    { path: "ingresos", component: Ingresos ,canActivate:[sesionGuard]},
-    { path: "agenda", component: Agenda ,canActivate:[sesionGuard]},
-    { path: "porfolio", component: Porfolio ,canActivate:[sesionGuard]},
-    { path: "preguntas-frecuentes", component: PreguntasFrecuentes ,canActivate:[sesionGuard]},
-    { path: "detalles-proyectos",component:DetallesProyecto,canActivate:[sesionGuard]},
-    { path: "detalles-clientes",component:DetallesCliente,canActivate:[sesionGuard]},
-    { path: "detalles-proveedores",component:DetallesProveedores,canActivate:[sesionGuard]},
-
+    { path: "inicio", component: Inicio, canActivate: [sesionGuard] },
+    { path: "proyectos", component: Proyectos, canActivate: [sesionGuard] },
+    { path: "proveedores", component: Proveedores, canActivate: [sesionGuard] },
+    { path: "clientes", component: Clientes, canActivate: [sesionGuard] },
+    { path: "configuracion", component: Configuracion, canActivate: [sesionGuard] },
+    { path: "personalizacion", component: Personalizacion, canActivate: [sesionGuard] },
+    { path: "portfolio", component: Porfolio, canActivate: [sesionGuard] },
+    { path: "ingresos", component: Ingresos, canActivate: [sesionGuard] },
+    { path: "agenda", component: Agenda, canActivate: [sesionGuard] },
+    { path: "porfolio", component: Porfolio, canActivate: [sesionGuard] },
+    { path: "preguntas-frecuentes", component: PreguntasFrecuentes, canActivate: [sesionGuard] },
+    { path: "detalles-proyectos", component: DetallesProyecto, canActivate: [sesionGuard] },
+    { path: "detalles-clientes", component: DetallesCliente, canActivate: [sesionGuard] },
+    { path: "detalles-proveedores", component: DetallesProveedores, canActivate: [sesionGuard] },
+    //ad
+    
     // Páginas públicas: no necesitan una sesión.
     { path: "home", component: Home },
     { path: "registro", component: RegistroComponent },
