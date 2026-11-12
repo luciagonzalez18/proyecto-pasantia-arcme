@@ -13,7 +13,7 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class RegistroComponent {
 
-    formulario = new FormGroup({
+  formulario = new FormGroup({
     dni: new FormControl('', [
       Validators.required,//Verifica que el campo no esté vacío
       Validators.minLength(7),//Verifica que el campo tenga al menos 7 caracteres
@@ -32,19 +32,19 @@ export class RegistroComponent {
 
   paso = 1;
 
-dni = '';
-contrasena = '';
-contrasena2 = '';
-nombre = '';
+  dni = '';
+  contrasena = '';
+  contrasena2 = '';
+  nombre = '';
 
-mensaje = '';
-error = '';
-errorContrasena = '';
-enviando = false;
-mostrarContrasena = false;
+  mensaje = '';
+  error = '';
+  errorContrasena = '';
+  enviando = false;
+  mostrarContrasena = false;
 
   private registroService = inject(RegistroService);
-  constructor(private router: Router, private detector: ChangeDetectorRef) {}
+  constructor(private router: Router, private detector: ChangeDetectorRef) { }
 
   registrarUsuario() {
     this.mensaje = '';
@@ -52,15 +52,15 @@ mostrarContrasena = false;
     this.errorContrasena = '';
     this.enviando = true;
 
-const datos: DatosRegistro = {
-  dni: this.dni.trim(),
-  contrasena: this.contrasena,
-  nombre: this.nombre.trim()
-};
+    const datos: DatosRegistro = {
+      dni: this.dni.trim(),
+      contrasena: this.contrasena,
+      nombre: this.nombre.trim()
+    };
 
     this.registroService.registrar(datos).subscribe({
       next: () => {
-           this.router.navigate(['/inicio']);
+        this.router.navigate(['/inicio']);
 
       },
       error: (err) => {
@@ -73,41 +73,41 @@ const datos: DatosRegistro = {
   }
 
 
-continuar() {
-  this.formulario.markAllAsTouched();
+  continuar() {
+    this.formulario.markAllAsTouched();
 
-  if (this.formulario.invalid) {
-    return;
-  }
-
-  this.dni = this.formulario.controls.dni.value?.trim() ?? '';
-  this.contrasena = this.formulario.controls.contra.value ?? '';
-
-  if (this.contrasena !== this.contrasena2) {
-    this.errorContrasena = 'Las contraseñas no coinciden';
-    return;
-  }
-
-  this.errorContrasena = '';
-  this.error = '';
-
-  this.registroService.verificarDni(this.dni).subscribe({
-    next: (respuesta) => {
-      if (respuesta.existe) {
-        this.error = 'Este DNI ya está registrado';
-      this.detector.detectChanges();
+    if (this.formulario.invalid) {
       return;
-      }
-
-      this.error = '';
-      this.paso = 2;
-    },
-    error: (err) => {
-      this.error = 'No se pudo verificar el DNI';
-      console.error(err);
     }
-  });
-}
+
+    this.dni = this.formulario.controls.dni.value?.trim() ?? '';
+    this.contrasena = this.formulario.controls.contra.value ?? '';
+
+    if (this.contrasena !== this.contrasena2) {
+      this.errorContrasena = 'Las contraseñas no coinciden';
+      return;
+    }
+
+    this.errorContrasena = '';
+    this.error = '';
+
+    this.registroService.verificarDni(this.dni).subscribe({
+      next: (respuesta) => {
+        if (respuesta.existe) {
+          this.error = 'Este DNI ya está registrado';
+          this.detector.detectChanges();
+          return;
+        }
+
+        this.error = '';
+        this.paso = 2;
+      },
+      error: (err) => {
+        this.error = 'No se pudo verificar el DNI';
+        console.error(err);
+      }
+    });
+  }
 
 
 }

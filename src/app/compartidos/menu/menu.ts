@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef } from '@angular/core';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-menu',
   imports: [RouterLink, RouterLinkActive],
@@ -23,7 +23,7 @@ export class Menu {
   // Verifica si hay una sesión iniciada
   verificarSesion() {
 
-    this.http.get<{sesion: boolean, nombre?: string}>(
+    this.http.get<{ sesion: boolean, nombre?: string }>(
       '/apiArcme/public/index.php/verificar-sesion'
     ).subscribe({
       next: (respuesta) => {
@@ -71,21 +71,47 @@ export class Menu {
 
   }
 
- 
+
+
+
+
+
+
+
 
   cerrarSesion() {
+    Swal.fire({
+      title: "¿Seguro que quieres cerrar sesión?",
+      text: "No se perderán los datos guardados",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#2f6f7e",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Cerrar Sesión"
+    }).then((result: any) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "¡Sesión Cerrada!",
+          text: "Has cerrado tu sesión.",
+          icon: "success"
+        }).then(() => {
+          this.http.post(
+            '/apiArcme/public/index.php/cerrar-sesion',
+            {}
+          ).subscribe({
+            next: () => {
+              this.router.navigate(['/home']);
+            },
+            error: (err) => {
+              console.error(err);
+            }
+          });
 
-    this.http.post(
-      '/apiArcme/public/index.php/cerrar-sesion',
-      {}
-    ).subscribe({
-      next: () => {
-        this.router.navigate(['/home']);
-      },
-      error: (err) => {
-        console.error(err);
+        });
       }
     });
-
   }
+
+
 }

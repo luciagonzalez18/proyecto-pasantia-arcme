@@ -298,6 +298,51 @@ td button i {
     font-size: 16px;
 }
 
+/* ---- Sin clientes ---- */
+
+.sin-clientes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 320px;
+    padding: 40px 25px;
+    margin: 25px 0;
+    background-color: #ffffff;
+    border: 1px dashed #ced4da;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.sin-clientes > i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    margin-bottom: 20px;
+    background-color: #edf4f5;
+    color: #2f6f7e;
+    border-radius: 50%;
+    font-size: 35px;
+}
+
+.sin-clientes h3 {
+    margin: 0 0 10px;
+    color: #2f3e46;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.sin-clientes p {
+    max-width: 500px;
+    margin: 0 0 25px;
+    color: #777777;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
 
 /* =========================
    MODAL
@@ -351,6 +396,7 @@ td button i {
 .modal-header .btn-close:hover {
     opacity: 1;
 }
+
 
 
 /* =========================
@@ -465,13 +511,12 @@ td button i {
 /* Botón cerrar */
 
 .modal-footer .btn-secondary {
-    background-color: #6c757d;
-
-    border-color: #6c757d;
+    background-color: #cf5050;
+    border-color: #d36e6e;
 }
 
 .modal-footer .btn-secondary:hover {
-    background-color: #5c636a;
+    background-color: #9c3a3a;
 }
 
 .modal-footer .btn-secondary:active {
