@@ -11,7 +11,7 @@ export class ClientesService {
   private apiUrl = '/apiArcme/public/index.php/clientes';
 
 
-  public clienteSeleccionado: any = null;
+  clienteSeleccionado: any = null;
 
 
   listar(){
