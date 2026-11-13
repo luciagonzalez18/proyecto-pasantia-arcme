@@ -3,6 +3,7 @@ import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angula
 // le pusimos otro nombre al servicio para que no se confunda con la clase Agenda de abajo
 import { Agenda as AgendaService } from '../../servicios/agenda';
 
+
 @Component({
   selector: 'app-agenda',
   imports: [ReactiveFormsModule],
@@ -10,10 +11,14 @@ import { Agenda as AgendaService } from '../../servicios/agenda';
   styleUrl: './agenda.css',
 })
 export class Agenda implements OnInit {
+
+  //Inyecta el servicio de detección de cambios de Angular 
+  // para forzar actualizaciones visuales cuando sea necesario.
 constructor(private detector: ChangeDetectorRef) {
 
 }
-  //injectamos el sevicio
+
+  //injectamos el sevicio que se va a comunicar con la api
   
   private agendaServicios = inject(AgendaService);
 
@@ -24,26 +29,34 @@ constructor(private detector: ChangeDetectorRef) {
   }
 
   //agarra el modal del html y lo guarda en una variable del ts
+  //viewchild conecta una variable con un elemento html
+  //element ref agarra el elemento html
   @ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
 
   
 
-  // un arreglo de eventos de tipo any ( el any indica q puede ser cualquier cosa)
+  // un arreglo que guarda todos los eventos traidos de la base de datos
+  //  de tipo any ( el any indica q puede ser cualquier cosa)
   eventos: any[] = [];
 
-  // guarda una fecha cualquiera del mes que se esta viendo
+  // objeto date
+  //mantiene la referencia del mes y año que el usuario está visualizando 
+  // actualmente (empieza en la fecha actual).
   mesActual: Date = new Date();
 
-  // es la lista de casillas de la agenda, null es un casillero vacio
+  // arreglo que representa  la lista de casillas de la agenda, null es un casillero vacio
   dias: (Date | null)[] = [];
 
-  //arreglo con los dias de la semana
+  //arreglo con los dias de la semana son etiquetas fijas para las columnas de la semana
   nombresDias = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
 
   //arreglo de proximos eventos
+  //aca van todos los eventos filtrados que sucederan en los proximos 7 dias
   Proximosevent: any[] = [];
 
   // validación de los campos del formulario de agregar evento
+  //validators required obliga a que el campo no este vacio
+  
   eventoForm = new FormGroup({
     titulo: new FormControl('', Validators.required),
     fecha: new FormControl('', Validators.required),
@@ -51,7 +64,7 @@ constructor(private detector: ChangeDetectorRef) {
     categoria: new FormControl('', Validators.required),
     descripcion: new FormControl('')
   });
-
+//muestra las alertas de error al usuario
   mensajeError: string = '';
 
   //  guarda el id del evento que estamos editando (null = estamos creando uno nuevo)
@@ -60,10 +73,15 @@ constructor(private detector: ChangeDetectorRef) {
   //  conexión con la API 
 
   // le pide a la API todos los eventos y los guarda en la lista
+  //cargareventos llama al metodo listar
+  //Al ser un Observable, usa .subscribe().
   cargarEventos() {
     this.agendaServicios.listar().subscribe({
       next: (datos) => {
         // MySQL manda la hora como "10:00:00", la recortamos a "10:00"
+        //Recorre los datos obtenidos y recorta la hora (.slice(0, 5))
+        //  para transformar formatos largos de bases de datos (10:00:00) a formato hora/minuto (10:00).
+        //  Luego actualiza la lista de próximos eventos.
         this.eventos = datos.map(ev => ({ ...ev, hora: ev.hora.slice(0, 5) }));
         this.actualizarProximos();
       },
@@ -74,6 +92,10 @@ constructor(private detector: ChangeDetectorRef) {
   //logica del calendario
 
   // arma la lista de celdas del mes: primero las vacías, después los días
+
+  //Calcula cuántos días tiene el mes actual y calcula los espacios en blanco iniciales 
+  // (para alinear correctamente los días con los nombres de la semana empezando en lunes).
+  //  Rellena el array dias con null o con objetos Date.
   generarMes() {
     const anio = this.mesActual.getFullYear();
     const mes = this.mesActual.getMonth();
@@ -88,11 +110,12 @@ constructor(private detector: ChangeDetectorRef) {
   }
 
   // navegación: no hay límite de meses para adelante ni para atrás
+  //Avanza o retrocede meses sumando o restando el número n al mes actual y regenera la vista.
   cambiarMes(n: number) {
     this.mesActual = new Date(this.mesActual.getFullYear(), this.mesActual.getMonth() + n, 1);
     this.generarMes();
   }
-
+//Restablece el calendario al día y mes actual del sistema
   irAHoy() {
     this.mesActual = new Date();
     this.generarMes();
@@ -102,7 +125,7 @@ constructor(private detector: ChangeDetectorRef) {
   get tituloMes(): string {
     return this.mesActual.toLocaleDateString('es-AR', { month: 'long', year: 'numeric' });
   }
-
+//Compara si una fecha coincide con el día actual para destacarlo visualmente.
   esHoy(dia: Date): boolean {
     return this.fechaTexto(dia) === this.fechaTexto(new Date());
   }
@@ -144,6 +167,11 @@ constructor(private detector: ChangeDetectorRef) {
   }
 
   // arma el evento y se lo manda a la API para que lo guarde en la base
+  //Valida que el formulario esté correcto. Define si debe llamar al servicio
+  //  de crear o de editar basándose en si existe un idEditando.
+  //  Al completarse con éxito, ajusta el mes si fuera necesario,
+  //  recarga los eventos y cierra el modal.
+
   agregarEvento() {
     if (this.eventoForm.invalid) {
       this.mensajeError = 'Por favor completá todos los campos obligatorios';
@@ -184,9 +212,11 @@ constructor(private detector: ChangeDetectorRef) {
         this.mensajeError = 'No se pudo guardar el evento';
       }
     });
-  }
+  }//aca termina agregar evento
 
   //  abre el modal con los datos del evento para poder modificarlos
+  //Carga los datos de un evento existente en los campos del formulario,
+  //  almacena su ID en idEditando y abre el modal para modificarlo.
   editar(ev: any) {
     this.idEditando = ev.id_evento;
     this.mensajeError = '';
@@ -220,19 +250,30 @@ constructor(private detector: ChangeDetectorRef) {
   // pasa "2026-10-16" a "16/10/2026" para mostrarlo
   formatoFecha(fecha: string): string {
     return fecha.split('-').reverse().join('/');
-  }// marca aquellos eventos que ya se pasaron de hora
+
+
+
+  }//metodo NUEVO  marca aquellos eventos que ya se pasaron de hora
+  //Compara la fecha y hora del evento con el momento actual (new Date())
+  //  para determinar si ya transcurrió.
  yaTermino(ev: any): boolean {
     const fechaHora = new Date(`${ev.fecha}T${ev.hora}`);
-    return fechaHora < new Date();
+    return fechaHora < new Date();// retorna que la fecha y la hora del evento  son menores a la fecha actual
   }
   //logica del filtro por categoria
   filtroCategoria: string = '';
 
+  //Captura el valor seleccionado en el selector HTML
+  //  de categorías para aplicarlo a la lista de próximos eventos.
   filtrar(e: Event) {
     this.filtroCategoria = (e.target as HTMLSelectElement).value;
     this.actualizarProximos();
   }
 
+  //Calcula los eventos que ocurren desde el día de hoy hasta los próximos 7 días, 
+  // aplica el filtro de categoría activo, los ordena cronológicamente y
+  //  utiliza ChangeDetectorRef (markForCheck()) 
+  // para asegurar que la interfaz se actualice correctamente.
   actualizarProximos() {
     const hoy = new Date();
     const hoyStr = this.fechaTexto(hoy);
