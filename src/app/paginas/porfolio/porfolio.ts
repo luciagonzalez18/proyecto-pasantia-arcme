@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 export class Porfolio implements OnInit {
   proyectoPortfolio: any[] = []
 
-  constructor(private portFolio: PortfolioService, private cdr: ChangeDetectorRef, private proyectoService: ProyectosService,private router:Router) { }
+  constructor(private portFolio: PortfolioService, private cdr: ChangeDetectorRef, private proyectoService: ProyectosService, private router: Router) { }
   ngOnInit(): void {
     this.listar()
   }
@@ -37,7 +37,19 @@ export class Porfolio implements OnInit {
     })
   }
 
-   verDetalles(id: number) {
+  tieneMemoria(memoria: string): boolean {
+    return typeof memoria === 'string' && memoria.startsWith('uploads/');
+  }
+
+  nombreMemoria(memoria: string): string {
+    if (!memoria) {
+      return '';
+    }
+
+    return memoria.split(/[\\/]/).pop() || memoria;
+  }
+
+  verDetalles(id: number) {
 
     this.proyectoService.buscar(id).subscribe({
       next: (respuesta: any) => {

@@ -205,7 +205,7 @@
                             <!-- Superficie -->
                             <div class="col-md-6 mb-3">
                                 <label for="superficie" class="form-label">Superficie</label>
-                                <input type="text" class="form-control" id="superficie" placeholder="Ej: 120 m²"
+                                <input type="number" class="form-control" id="superficie" placeholder="Ej: 120 m²"
                                     formControlName="superficie" name="superficie">
                             </div>
 
@@ -265,7 +265,7 @@
                             <label for="memoriaPdf" class="form-label">Memoria (Archivo PDF)</label>
                             <!--Cambie el type de file a text polque no se, cositas :v-->
                             <input type="file" class="form-control" id="memoriaPdf" accept=".pdf,application/pdf"
-                                formControlName="memoria" > 
+                               #memoriaInput (change)="seleccionarMemoria($event)">
                         </div>
 
                         <!-- Descripción -->

@@ -1,13 +1,14 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute, Router,RouterLink } from '@angular/router';
+import { Component, ElementRef, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ProyectosService } from '../../services/proyectos';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Location } from '@angular/common';
+import { of, switchMap } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detalles-proyecto',
-  imports: [ReactiveFormsModule, FormsModule,RouterLink],
+  imports: [ReactiveFormsModule, FormsModule, RouterLink],
   templateUrl: './detalles-proyecto.html',
   styleUrl: './detalles-proyecto.css',
 })
@@ -16,13 +17,16 @@ export class DetallesProyecto implements OnInit {
   cargando = true;
   error = false;
 
+  @ViewChild('memoriaInput') memoriaInput?: ElementRef<HTMLInputElement>;
+  archivoMemoria: File | null = null
+
   constructor(
     private proyectoService: ProyectosService,
     private router: Router,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
     private location: Location
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Se ejecuta al entrar y cada vez que cambie el id en la URL
@@ -32,7 +36,7 @@ export class DetallesProyecto implements OnInit {
     });
   }
 
-  cargarProyecto(id:any) {
+  cargarProyecto(id: any) {
     this.cargando = true;
     this.error = false;
 
@@ -64,7 +68,6 @@ export class DetallesProyecto implements OnInit {
       fecha_inicio: this.proyecto.fecha_inicio,
       fecha_finalizacion: this.proyecto.fecha_finalizacion,
       estado: this.proyecto.estado,
-      memoria: this.proyecto.memoria,
       descripcion: this.proyecto.descripcion,
     });
   }
@@ -82,9 +85,43 @@ export class DetallesProyecto implements OnInit {
     fecha_inicio: new FormControl('', [Validators.required]),
     fecha_finalizacion: new FormControl('', [Validators.required]),
     estado: new FormControl('', [Validators.required]),
-    memoria: new FormControl('', [Validators.required]),
     descripcion: new FormControl('', [Validators.required]),
   });
+
+  seleccionarMemoria(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const archivo = input.files?.[0] ?? null;
+
+    if (!archivo) {
+      this.archivoMemoria = null;
+      return;
+    }
+
+    if (!archivo.name.toLowerCase().endsWith('.pdf')) {
+      this.archivoMemoria = null;
+      input.value = '';
+      Swal.fire({
+        title: 'Archivo no válido',
+        text: 'La memoria debe ser un archivo PDF.',
+        icon: 'error'
+      });
+      return;
+    }
+
+    this.archivoMemoria = archivo;
+  }
+
+  tieneMemoria(memoria: string): boolean {
+    return typeof memoria === 'string' && memoria.startsWith('uploads/');
+  }
+
+  nombreMemoria(memoria: string): string {
+    if (!memoria) {
+      return '';
+    }
+
+    return memoria.split(/[\\/]/).pop() || memoria;
+  }
 
   Eliminar(id: number) {
     Swal.fire({
@@ -126,12 +163,43 @@ export class DetallesProyecto implements OnInit {
       ...this.proyecto,
       ...valores
     };
+    const subida$ = this.archivoMemoria
+      ? this.proyectoService.subirMemoria(this.archivoMemoria)
+      : of({ memoria: this.proyecto.memoria });
 
-    this.proyectoService.actualizar(id, proyectoActualizado).subscribe({
+
+    subida$.pipe(
+      switchMap((subida: any) => {
+        proyectoActualizado.memoria = subida.memoria;
+        return this.proyectoService.actualizar(id, proyectoActualizado);
+      })
+    ).subscribe({
       next: (respuesta: any) => {
+        // Actualizamos los datos que muestra la página.
         this.proyecto = proyectoActualizado;
+
+        // Actualizamos el objeto compartido por el servicio.
         this.proyectoService.proyectoSeleccionado = this.proyecto;
-        this.rellenarFormulario();
+
+        // Actualizamos los campos del formulario.
+        this.editarProyecto.patchValue({
+          titulo: this.proyecto.titulo,
+          superficie: this.proyecto.superficie,
+          ubicacion: this.proyecto.ubicacion,
+          precio: this.proyecto.precio,
+          nomenclatura: this.proyecto.nomenclatura,
+          fecha_inicio: this.proyecto.fecha_inicio,
+          fecha_finalizacion: this.proyecto.fecha_finalizacion,
+          estado: this.proyecto.estado,
+          descripcion: this.proyecto.descripcion
+        });
+
+        this.archivoMemoria = null;
+
+        if (this.memoriaInput) {
+          this.memoriaInput.nativeElement.value = '';
+        }
+
         this.cdr.detectChanges();
 
         Swal.fire({
@@ -141,13 +209,15 @@ export class DetallesProyecto implements OnInit {
           confirmButtonText: 'Continuar',
           confirmButtonColor: '#2f6f7e'
         });
+
         console.log('Respuesta del servidor:', respuesta);
       },
       error: (error) => {
         console.error('Error al actualizar el proyecto:', error);
+
         Swal.fire({
           title: 'Error',
-          text: 'No se pudo actualizar el proyecto.',
+          text: error.error?.error || 'No se pudo actualizar el proyecto.',
           icon: 'error'
         });
       }

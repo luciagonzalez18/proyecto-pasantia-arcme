@@ -261,6 +261,8 @@ body {
     max-width: 100%;       /* Obliga al botón a no superar el ancho de su columna */
     overflow: hidden;       /* Si el texto "Memoria.pdf" es muy largo, oculta lo sobrante en pantallas mini */
     text-overflow: ellipsis;/* Pone tres puntos (...) si el nombre del archivo no llega a entrar */
+    color: #333333;
+    text-decoration: none;
 }
 
 .etiqueta-pdf i {

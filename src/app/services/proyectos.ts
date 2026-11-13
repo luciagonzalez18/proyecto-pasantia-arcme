@@ -26,7 +26,16 @@ export class ProyectosService {
 
   // Crear un proyecto junto con sus fotografías.
   crear(proyecto: any) {
-   return this.http.post(this.apiUrl,proyecto)
+    return this.http.post(this.apiUrl, proyecto)
+  }
+
+  // Subir el PDF de la memoria del proyecto.
+  subirMemoria(archivo: File) {
+    const datos = new FormData();
+
+    datos.append('memoria', archivo);
+
+    return this.http.post<any>(`${this.apiUrl}/memoria`, datos);
   }
 
   agregarPortfolio(id: number) {

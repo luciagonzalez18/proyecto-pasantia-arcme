@@ -1,8 +1,9 @@
 
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, ElementRef, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { ProyectosService } from '../../services/proyectos';
 import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { switchMap } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,8 +18,11 @@ export class Proyectos implements OnInit {
 
   //ChangeDetectorRef: actualiza la vista de este componente, se utiliza cuando los datos llegan en un subscribe() y la vista no se actualiza aña
 
-  proyectos: any[] = [];
+  @ViewChild('memoriaInput') memoriaInput?: ElementRef<HTMLInputElement>;
 
+  archivoMemoria: File | null = null;
+
+  proyectos: any[] = [];
 
 
   // nuevoProyecto = {
@@ -59,9 +63,6 @@ export class Proyectos implements OnInit {
     estado: new FormControl('', [
       Validators.required
     ]),
-    memoria: new FormControl('', [
-      Validators.required
-    ]),
     descripcion: new FormControl('', [
       Validators.required
     ]),
@@ -95,6 +96,29 @@ export class Proyectos implements OnInit {
     this.router.navigate(['/detalles-proyectos', proyecto.id_obra]);
   }
 
+  seleccionarMemoria(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const archivo = input.files?.[0] ?? null;
+
+    if (!archivo) {
+      this.archivoMemoria = null;
+      return;
+    }
+
+    if (!archivo.name.toLowerCase().endsWith('.pdf')) {
+      this.archivoMemoria = null;
+      input.value = '';
+      Swal.fire({
+        title: 'Archivo no válido',
+        text: 'La memoria debe ser un archivo PDF.',
+        icon: 'error'
+      });
+      return;
+    }
+
+    this.archivoMemoria = archivo;
+  }
+
   crearNuevoProyecto(): void {
 
     if (this.formNuevoProyecto.invalid) {
@@ -102,6 +126,14 @@ export class Proyectos implements OnInit {
       return;
     }
 
+    if (!this.archivoMemoria) {
+      Swal.fire({
+        title: 'Falta la memoria',
+        text: 'Seleccioná un archivo PDF.',
+        icon: 'warning'
+      });
+      return;
+    }
 
     const valores = this.formNuevoProyecto.getRawValue();
 
@@ -113,13 +145,17 @@ export class Proyectos implements OnInit {
       descripcion: valores.descripcion,
       nomenclatura: valores.nomenclatura,
       estado: valores.estado,
-      memoria: valores.memoria,
       fecha_inicio: valores.fecha_inicio,
       fecha_finalizacion: valores.fecha_finalizacion
     };
 
 
-    this.proyectosService.crear(proyecto).subscribe({
+    this.proyectosService.subirMemoria(this.archivoMemoria).pipe(
+      switchMap((subida: any) => this.proyectosService.crear({
+        ...proyecto,
+        memoria: subida.memoria
+      }))
+    ).subscribe({
 
       next: (respuesta) => {
 
@@ -127,6 +163,12 @@ export class Proyectos implements OnInit {
         this.cargarProyectos()
         console.log('Proyectos después de crear:', this.proyectos);
         this.formNuevoProyecto.reset();
+        this.archivoMemoria = null;
+
+        if (this.memoriaInput) {
+          this.memoriaInput.nativeElement.value = '';
+        }
+
         Swal.fire({
           title: "Proyecto Cargado!",
           icon: "success",
@@ -142,8 +184,8 @@ export class Proyectos implements OnInit {
 
         Swal.fire({
           title: 'Error al crear el proyecto',
-          text: error.error?.mensaje ||
-            'No se pudo guardar el proyecto. Revisá la respuesta de la API.',
+          text: error.error?.error || error.error?.mensaje ||
+            'No se pudo subir la memoria o guardar el proyecto.',
           icon: 'error'
         });
 

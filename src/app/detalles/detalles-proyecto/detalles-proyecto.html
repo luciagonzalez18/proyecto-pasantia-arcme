@@ -2,7 +2,7 @@
     @if(proyecto){
     <div class="header-verDetalles">
 
-        <div class="titulo-contenido volver"  (click)="volverAtras()">
+        <div class="titulo-contenido volver" (click)="volverAtras()">
             <i class="bi bi-arrow-left"></i>
             <p class="titulo-volver">Volver a Proyectos</p>
         </div>
@@ -123,8 +123,18 @@
                 <div class="Documentos">
                     <p><i class="bi bi-paperclip"></i>Documentos</p>
                     <hr class="linea-horizontal">
-                    <span><i class="bi bi-filetype-pdf"></i>{{proyecto.memoria}}<i
-                            class="bi bi-box-arrow-down"></i></span>
+                    <span>
+                        @if (tieneMemoria(proyecto.memoria)) {
+                        <a [href]="'/apiArcme/public/' + proyecto.memoria" target="_blank" rel="noopener">
+                            <i class="bi bi-filetype-pdf"></i>{{ nombreMemoria(proyecto.memoria) }}<i
+                                class="bi bi-box-arrow-down"></i>
+                        </a>
+                        } @else if (proyecto.memoria) {
+                        <i class="bi bi-filetype-pdf"></i>{{ nombreMemoria(proyecto.memoria) }}
+                        } @else {
+                        <span>Sin memoria</span>
+                        }
+                    </span>
                 </div>
                 <div class="Estado-Detalles">
                     <p><i class="bi bi-box-fill"></i>Estado y Detalles</p>
@@ -140,7 +150,7 @@
         </div>
     </div>
 
- <!--Modal editar proyecto-->
+    <!--Modal editar proyecto-->
 
     <div class="modal fade" id="formEditarProyecto" tabindex="-1" aria-labelledby="formEditarProyectoModalLabel"
         aria-hidden="true">
@@ -225,7 +235,8 @@
                             </label>
 
                             <input type="file" class="form-control" id="memoriaPdf" accept=".pdf,application/pdf"
-                                formControlName="memoria">
+                                #memoriaInput (change)="seleccionarMemoria($event)">
+
 
                             @if (proyecto.memoria) {
                             <small class="text-muted">
@@ -244,7 +255,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="modificarProyecto(proyecto.id_obra)"
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                        (click)="modificarProyecto(proyecto.id_obra)"
                         [disabled]="editarProyecto.invalid">Guardar</button>
                 </div>
             </div>
@@ -256,5 +268,5 @@
 
 
     }
-   
+
 </div>

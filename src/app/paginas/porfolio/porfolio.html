@@ -56,7 +56,7 @@
                     <h2>{{p.titulo}}</h2>
                     <p class="subtitulo">Última actualización</p>
                 </div>
-              
+
             </div>
 
             <div class="imagen-principal">
@@ -85,7 +85,15 @@
                 </div>
                 <div class="columna-info">
                     <span class="titulo-info"><i class="bi bi-book"></i> Memoria</span>
-                    <span class="etiqueta-pdf"><i class="bi bi-file-pdf"></i>{{p.memoria}}</span>
+                    @if (tieneMemoria(p.memoria)) {
+                    <a class="etiqueta-pdf" [href]="'/apiArcme/public/' + p.memoria" target="_blank" rel="noopener">
+                        <i class="bi bi-file-pdf"></i>{{ nombreMemoria(p.memoria) }}
+                    </a>
+                    } @else {
+                    <span class="etiqueta-pdf">
+                        <i class="bi bi-file-pdf"></i>{{ p.memoria ? nombreMemoria(p.memoria) : 'Sin memoria' }}
+                    </span>
+                    }
                 </div>
             </div>
 
@@ -94,7 +102,7 @@
                         class="bi bi-trash-fill"></i></button>
                 <div class="acciones-derecha">
                     <button class="boton-texto"><i class="bi bi-link-45deg"></i> Compartir</button>
-                    <button class="boton-texto texto-negrita" (click)="verDetalles(p.id_obra)" >Ver Más »</button>
+                    <button class="boton-texto texto-negrita" (click)="verDetalles(p.id_obra)">Ver Más »</button>
                 </div>
             </div>
         </div>
