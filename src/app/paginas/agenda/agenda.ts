@@ -220,8 +220,11 @@ constructor(private detector: ChangeDetectorRef) {
   // pasa "2026-10-16" a "16/10/2026" para mostrarlo
   formatoFecha(fecha: string): string {
     return fecha.split('-').reverse().join('/');
+  }// marca aquellos eventos que ya se pasaron de hora
+ yaTermino(ev: any): boolean {
+    const fechaHora = new Date(`${ev.fecha}T${ev.hora}`);
+    return fechaHora < new Date();
   }
-
   //logica del filtro por categoria
   filtroCategoria: string = '';
 
@@ -234,15 +237,22 @@ constructor(private detector: ChangeDetectorRef) {
     const hoy = new Date();
     const hoyStr = this.fechaTexto(hoy);
 
+
     const semana = new Date();
     semana.setDate(hoy.getDate() + 7);
     const semanaStr = this.fechaTexto(semana);
 
+    
     this.Proximosevent = this.eventos
-      .filter(ev => ev.fecha >= hoyStr && ev.fecha <= semanaStr)
-      .filter(ev => this.filtroCategoria === '' || ev.categoria === this.filtroCategoria)
-      .sort((a, b) => (a.fecha + a.hora).localeCompare(b.fecha + b.hora));
+    .filter(ev => ev.fecha >= hoyStr && ev.fecha <= semanaStr)
+    .filter(ev => this.filtroCategoria === '' || ev.categoria === this.filtroCategoria)
+    .sort((a, b) => (a.fecha + a.hora).localeCompare(b.fecha + b.hora));
+       
       this.detector.markForCheck()
+     
+
   }
+ 
+
 
 }

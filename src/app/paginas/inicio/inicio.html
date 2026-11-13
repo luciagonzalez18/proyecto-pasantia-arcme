@@ -35,13 +35,16 @@
 <div class="proximos-lista">
     <h3><i class="bi bi-calendar4-week"></i><b> Recordatorio</b></h3>
     @for (ev of proximosEventos; track ev.id_evento) {
-    <div class="proximo" [attr.dato-cat]="ev.categoria">
+    <div class="proximo" [attr.dato-cat]="ev.categoria" [class.terminado]="yaTermino(ev)">
         <span class="fecha">{{ formatoFecha(ev.fecha) }}- {{ ev.hora }} hs</span>
         <span class="titulo">{{ ev.titulo }}</span>
         <p class="descripcion">{{ ev.descripcion }}</p>
+        @if (yaTermino(ev)) {
+    <span class="etiqueta-terminado">Finalizado</span>
+    }
     </div>
     } @empty {
-    <p>No hay eventos próximos.</p>
+    <p class="sin-eventos">No hay eventos próximos.</p>
     }
 </div>
 <button routerLink='/preguntas-frecuentes' class="preguntasFrecuentes"><i class="bi bi-question-circle"></i></button>

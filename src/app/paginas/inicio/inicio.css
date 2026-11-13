@@ -493,8 +493,14 @@ img:hover {
     display: block;
     min-height: 100vh;
     background-color: #202020;
-/*nuevo diseño de recordatorios */
+}
 
+
+
+/*nuevo diseño de recordatorios */
+.proximo .titulo {
+  font-weight: 700;
+}
 .proximos-lista {
   width: 100%;
 }
@@ -514,7 +520,7 @@ img:hover {
 .proximo span {
   display: block;
 }
-}
+
 /*nuevo diseño de recordatorios */
 
 .proximos-lista {
@@ -522,11 +528,22 @@ img:hover {
 }
 
 .proximo {
+     position: relative;
   border: 2px solid #888;
   border-left-width: 8px;
   border-radius: 8px;
   padding: 10px 12px;
-  margin-bottom: 10px;
+  margin: 0 0 10px 40px;
+  max-width: 600px;
+}
+.proximos-lista > p {
+  margin: 0 0 10px 40px;
+}
+.proximos-lista h3 {
+  margin: 0 0 10px 60px;   /* 40px de la card + 8px del borde + 12px de espacio interno */
+}
+.proximos-lista .sin-eventos {
+  margin: 0 0 10px 40px;
 }
 
 .proximo[dato-cat="alta"]  { border-color: #db5e5c; }
@@ -535,6 +552,23 @@ img:hover {
 
 .proximo span {
   display: block;
+}
+.proximo.terminado {
+  opacity: 0.55;
+  background: #f4f4f4;
+  padding-bottom: 36px;
+}
+
+.etiqueta-terminado {
+  position: absolute;
+  bottom: 10px;
+  right: 60px;
+  padding: 1px 8px;
+  border: 1px solid #d93025;
+  border-radius: 10px;
+  background: transparent;
+  color: #d93025;
+  font-size: 0.7rem;
 }
 
 

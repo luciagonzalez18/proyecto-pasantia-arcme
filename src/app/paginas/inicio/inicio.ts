@@ -68,4 +68,8 @@ export class Inicio implements OnInit {
   formatoFecha(fecha: string): string {
     return fecha.split('-').reverse().join('/');
   }
+  yaTermino(ev: any): boolean {
+    const fechaHora = new Date(`${ev.fecha}T${ev.hora}`);
+    return fechaHora < new Date();
+  }
 }

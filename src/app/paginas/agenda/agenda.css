@@ -390,7 +390,7 @@ button:focus-visible,
   border: 2px solid #888;
   border-left-width: 8px;
   border-radius: 8px;
-  padding: 10px 80px 10px 12px;
+  padding: 10px 20px 10px 12px;
   margin-bottom: 10px;
 }
 
@@ -405,7 +405,9 @@ button:focus-visible,
 .proximo[dato-cat="baja"] {
   border-color: #73ad76;
 }
-
+.proximo .titulo {
+  font-weight: 700;
+}
 .proximo span {
   display: block;
 }
@@ -428,7 +430,23 @@ button:focus-visible,
   cursor: pointer;
   font-size: 28px;
 }
+.proximo.terminado {
+  opacity: 0.55;
+  background: #f4f4f4;
+  padding-bottom: 36px;
+}
 
+.etiqueta-terminado {
+  position: absolute;
+  bottom: 10px;
+  right: 60px;
+  padding: 1px 8px;
+  border: 1px solid #d93025;
+  border-radius: 10px;
+  background: transparent;
+  color: #d93025;
+  font-size: 0.7rem;
+}
 /* ---- sección inferior ---- */
 
 .seccionAbajo {
@@ -461,6 +479,9 @@ button:focus-visible,
   margin-bottom: 12px;
   font-weight: bold;
 }
+
+
+
 
 /* =========================================
    MODO OSCURO

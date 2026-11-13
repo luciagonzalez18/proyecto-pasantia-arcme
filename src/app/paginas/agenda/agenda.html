@@ -75,12 +75,12 @@
           </div>
 
           <div class="form-group">
-            <label><i class="bi bi-filter"></i>Categoría</label>
+            <label><i class="bi bi-filter"></i>Prioridad</label>
             <select formControlName="categoria">
               <option value="" disabled selected>Seleccione una prioridad</option>
-              <option value="alta">Alta</option>
-              <option value="media">Media</option>
-              <option value="baja">baja </option>
+              <option value="alta">🔴Alta      </option>
+              <option value="media">🟡Media    </option>
+              <option value="baja">🟢baja       </option>
             </select>
           </div>
         </div>
@@ -112,13 +112,18 @@
 
   <!--seccion que va a mostrar los eventos mas cercanos a la fecha-->
   <section class="seccionAbajo">
-    <div class="proximos-lista">
+        <div class="proximos-lista">
       <h3><i class="bi bi-calendar4-week"></i><b> Proximos eventos</b></h3>
       @for (ev of Proximosevent; track ev.id) {
-      <div class="proximo" [attr.dato-cat]="ev.categoria">
-        <span class="fecha" class="hora">{{ formatoFecha(ev.fecha) }}- {{ ev.hora }} hs</span>
-        <span class="titulo">{{ ev.titulo }}</span>
-        <p class="descripcion">{{ ev.descripcion }}</p>
+      <div class="proximo" [attr.dato-cat]="ev.categoria" [class.terminado]="yaTermino(ev)">
+        <div class="info">
+          <span class="fecha hora">{{ formatoFecha(ev.fecha) }}- {{ ev.hora }} hs</span>
+          <span class="titulo">{{ ev.titulo }}</span>
+          <p class="descripcion">{{ ev.descripcion }}</p>
+          @if (yaTermino(ev)) {
+          <span class="etiqueta-terminado">Finalizado</span>
+          }
+        </div>
         <div class="indexBotones">
           <button class="btn-eliminar" (click)="eliminar(ev.id_evento, $event)"><i class="bi bi-trash"></i></button>
           <button class="btn-editar" (click)="editar(ev)"><i class="bi bi-pencil-square"></i></button>
@@ -129,12 +134,12 @@
       }
     </div>
     <div class="filtro">
-      <label for="filtroCat"><i class="bi bi-funnel"></i> Filtrar eventos</label>
+      <label for="filtroCat"><i class="bi bi-funnel"></i>Prioridad</label>
       <select id="filtroCat" (change)="filtrar($event)">
         <option value="">Todas</option>
-        <option value="alta">Alta</option>
-        <option value="media">Media</option>
-        <option value="baja">Baja</option>
+        <option value="alta">🔴Alta</option>
+        <option value="media">🟡Media</option>
+        <option value="baja">🟢Baja</option>
       </select>
 
     </div>
