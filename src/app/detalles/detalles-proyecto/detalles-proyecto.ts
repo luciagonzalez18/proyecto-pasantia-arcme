@@ -1,22 +1,34 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProyectosService } from '../../services/proyectos';
+import { ClientesService } from '../../services/clientes'; 
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Location } from '@angular/common';
 
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-detalles-proyecto',
-  imports: [ ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule],
   templateUrl: './detalles-proyecto.html',
   styleUrl: './detalles-proyecto.css',
 })
 export class DetallesProyecto implements OnInit {
-  constructor(private proyectoService: ProyectosService, private router: Router, private cdr: ChangeDetectorRef, private location: Location) { }
-  proyecto: any = null
-  ngOnInit(): void {
 
-    this.proyectoCargado()
+  constructor(
+    private proyectoService: ProyectosService,
+    private clientesService: ClientesService,
+    private router: Router, 
+    private cdr: ChangeDetectorRef, 
+    private location: Location
+  ) { }
+
+  proyecto: any = null; //Declarar la variable para almacenar el proyecto seleccionado
+  listaClientes: any[] = []; // Declarar la lista para el select del modal
+
+  ngOnInit(): void {
+    this.proyectoCargado(); // Cargar el proyecto seleccionado al iniciar el componente
+    this.cargarClientes(); //Cargar clientes al iniciar el componente para el select del modal
 
     if (this.proyecto) {
       this.editarProyecto.patchValue({
@@ -28,75 +40,76 @@ export class DetallesProyecto implements OnInit {
         fecha_inicio: this.proyecto.fecha_inicio,
         fecha_finalizacion: this.proyecto.fecha_finalizacion,
         estado: this.proyecto.estado,
+        memoria: this.proyecto.memoria,
         descripcion: this.proyecto.descripcion,
+        id_cliente: this.proyecto.id_cliente
       });
     }
   }
+
   proyectoCargado() {
-    this.proyecto = this.proyectoService.proyectoSeleccionado
+    this.proyecto = this.proyectoService.proyectoSeleccionado;
     this.cdr.markForCheck();
-    console.log(this.proyectoService.proyectoSeleccionado)
+    console.log(this.proyectoService.proyectoSeleccionado);
   }
+
+  // Método para obtener todos los clientes desde la API
+  cargarClientes() {
+    this.clientesService.listar().subscribe({
+      next: (respuesta: any) => {
+        this.listaClientes = respuesta;
+        this.cdr.markForCheck();
+      },
+      error: (error) => {
+        console.error('Error al cargar la lista de clientes:', error);
+      }
+    });
+  }
+
   volverAtras() {
     this.location.back();
   }
+
   editarProyecto = new FormGroup({
-    titulo: new FormControl('', [
-      Validators.required
-    ]),
-    superficie: new FormControl('', [
-      Validators.required
-    ]),
-    ubicacion: new FormControl('', [
-      Validators.required
-    ]),
-    precio: new FormControl('', [
-      Validators.required
-    ]),
-    nomenclatura: new FormControl('', [
-      Validators.required
-    ]),
-    fecha_inicio: new FormControl('', [
-      Validators.required
-    ]),
-    fecha_finalizacion: new FormControl('', [
-      Validators.required
-    ]),
-    estado: new FormControl('', [
-      Validators.required
-    ]),
-    memoria: new FormControl('', [
-      Validators.required
-    ]),
-    descripcion: new FormControl('', [
-      Validators.required
-    ]),
-  })
+    titulo: new FormControl('', [Validators.required]),
+    superficie: new FormControl('', [Validators.required]),
+    ubicacion: new FormControl('', [Validators.required]),
+    precio: new FormControl('', [Validators.required]),
+    nomenclatura: new FormControl('', [Validators.required]),
+    fecha_inicio: new FormControl('', [Validators.required]),
+    fecha_finalizacion: new FormControl('', [Validators.required]),
+    estado: new FormControl('', [Validators.required]),
+    memoria: new FormControl('', [Validators.required]),
+    descripcion: new FormControl('', [Validators.required]),
+    id_cliente: new FormControl('', [Validators.required])
+  });
+
   Eliminar(id: number) {
     Swal.fire({
       title: "¿Deseas eliminar este proyecto?",
-      text: "Esta acción no se puede revertir!",
+      text: "¡Esta acción no se puede revertir!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#2f6f7e",
       cancelButtonColor: "#d33",
       cancelButtonText: "Cancelar",
-      confirmButtonText: "Si, quiero borralo!"
+      confirmButtonText: "Sí, quiero borrarlo!"
     }).then((result) => {
-      if (result.isConfirmed) Swal.fire({
-        title: "Eliminado",
-        text: "Tu proyecto ha sido eliminado.",
-        icon: "success"
-      }).then(() => {
-        this.proyectoService.eliminar(id).subscribe({
-          next: (respuesta: any) => {
-            this.router.navigate(['/proyectos'])
-            console.log("Proyecto eliminado", respuesta)
-          }
-        })
-
-      })
-    })
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Eliminado",
+          text: "Tu proyecto ha sido eliminado.",
+          icon: "success"
+        }).then(() => {
+          this.proyectoService.eliminar(id).subscribe({
+            next: (respuesta: any) => {
+              this.router.navigate(['/proyectos']);
+              console.log("Proyecto eliminado", respuesta);
+            }
+          });
+        });
+      }
+    });
   }
 
   modificarProyecto(id: number) {
@@ -108,7 +121,7 @@ export class DetallesProyecto implements OnInit {
     const valores = this.editarProyecto.getRawValue();
 
     const proyectoActualizado = {
-      ...this.proyecto,// ... :Se utilizan para copiar o expandir las propiedades de un objeto dentro de otro.
+      ...this.proyecto,
       titulo: valores.titulo,
       superficie: valores.superficie,
       ubicacion: valores.ubicacion,
@@ -118,18 +131,15 @@ export class DetallesProyecto implements OnInit {
       estado: valores.estado,
       memoria: valores.memoria,
       fecha_inicio: valores.fecha_inicio,
-      fecha_finalizacion: valores.fecha_finalizacion
+      fecha_finalizacion: valores.fecha_finalizacion,
+      id_cliente: valores.id_cliente
     };
 
     this.proyectoService.actualizar(id, proyectoActualizado).subscribe({
       next: (respuesta: any) => {
-        // Actualizamos los datos que muestra la página.
         this.proyecto = proyectoActualizado;
-
-        // Actualizamos el objeto compartido por el servicio.
         this.proyectoService.proyectoSeleccionado = this.proyecto;
 
-        // Actualizamos los campos del formulario.
         this.editarProyecto.patchValue({
           titulo: this.proyecto.titulo,
           superficie: this.proyecto.superficie,
@@ -139,7 +149,8 @@ export class DetallesProyecto implements OnInit {
           fecha_inicio: this.proyecto.fecha_inicio,
           fecha_finalizacion: this.proyecto.fecha_finalizacion,
           estado: this.proyecto.estado,
-          descripcion: this.proyecto.descripcion
+          descripcion: this.proyecto.descripcion,
+          id_cliente: this.proyecto.id_cliente
         });
 
         this.cdr.detectChanges();
@@ -156,7 +167,6 @@ export class DetallesProyecto implements OnInit {
       },
       error: (error) => {
         console.error('Error al actualizar el proyecto:', error);
-
         Swal.fire({
           title: 'Error',
           text: 'No se pudo actualizar el proyecto.',

@@ -260,12 +260,25 @@
                             </select>
                         </div>
 
+                        <!-- Selector de Cliente dentro del modal de Nuevo Proyecto -->
+                        <div class="mb-3">
+                            <label for="selectCliente" class="form-label">Cliente</label>
+                            <select class="form-select" id="selectCliente" formControlName="id_cliente">
+                                <option value="" selected disabled>Seleccione un cliente</option>
+                                @for (cliente of listaClientes; track cliente.id_cliente) {
+                                <option [value]="cliente.id_cliente">
+                                    {{ cliente.nombre }}
+                                </option>
+                                }
+                            </select>
+                        </div>
+
                         <!-- Memoria (Archivo PDF) -->
                         <div class="mb-3">
                             <label for="memoriaPdf" class="form-label">Memoria (Archivo PDF)</label>
                             <!--Cambie el type de file a text polque no se, cositas :v-->
                             <input type="file" class="form-control" id="memoriaPdf" accept=".pdf,application/pdf"
-                                formControlName="memoria" > 
+                                formControlName="memoria">
                         </div>
 
                         <!-- Descripción -->
@@ -291,5 +304,5 @@
 
 
     </div>
-    
+
 </div>

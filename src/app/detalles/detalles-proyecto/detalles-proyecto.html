@@ -2,7 +2,7 @@
     @if(proyecto){
     <div class="header-verDetalles">
 
-        <div class="titulo-contenido volver"  (click)="volverAtras()">
+        <div class="titulo-contenido volver" (click)="volverAtras()">
             <i class="bi bi-arrow-left"></i>
             <p class="titulo-volver">Volver a Proyectos</p>
         </div>
@@ -22,7 +22,7 @@
 
             <div class="detalle">
                 <i class="bi bi-person"></i>
-                <span><strong>Nombre del cliente: </strong> Lucia Gonzalez </span>
+                <span><strong>Nombre del cliente: </strong> {{ proyecto.cliente || 'Sin cliente asignado' }} </span>
             </div>
 
             <div class="detalle">
@@ -140,7 +140,7 @@
         </div>
     </div>
 
- <!--Modal editar proyecto-->
+    <!--Modal editar proyecto-->
 
     <div class="modal fade" id="formEditarProyecto" tabindex="-1" aria-labelledby="formEditarProyectoModalLabel"
         aria-hidden="true">
@@ -218,6 +218,21 @@
                             </select>
                         </div>
 
+                        <!-- Selector de Cliente en el formulario de edición -->
+                        <div class="mb-3">
+                            <label for="selectClienteEdit" class="form-label">Cliente Asignado</label>
+                            <select class="form-select" id="selectClienteEdit" formControlName="id_cliente">
+                                <option value="" disabled>Seleccione un cliente</option>
+                                @for (cliente of listaClientes; track cliente.id_cliente) {
+                                <option [value]="cliente.id_cliente">
+                                    {{ cliente.nombre }}
+                                </option>
+                                }
+                            </select>
+                        </div>
+
+
+
                         <!-- Memoria (Archivo PDF) -->
                         <div class="mb-3">
                             <label for="memoriaPdf" class="form-label">
@@ -244,7 +259,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="modificarProyecto(proyecto.id_obra)"
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                        (click)="modificarProyecto(proyecto.id_obra)"
                         [disabled]="editarProyecto.invalid">Guardar</button>
                 </div>
             </div>
@@ -256,5 +272,5 @@
 
 
     }
-   
+
 </div>
