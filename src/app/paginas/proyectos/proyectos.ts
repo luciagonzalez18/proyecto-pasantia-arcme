@@ -22,6 +22,10 @@ export class Proyectos implements OnInit {
 
   archivoMemoria: File | null = null;
 
+  @ViewChild('portadaInput') portadaInput?: ElementRef<HTMLInputElement>
+
+  portadaIMG: File | null = null;
+
   proyectos: any[] = [];
 
 
@@ -119,6 +123,35 @@ export class Proyectos implements OnInit {
     this.archivoMemoria = archivo;
   }
 
+  seleccionarPortada(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const portada = input.files?.[0] ?? null;
+
+    if (!portada) {
+      this.portadaIMG = null
+      return
+    }
+
+    if (
+      !portada.name.toLowerCase().endsWith('.png') &&
+      !portada.name.toLowerCase().endsWith('.jpg') &&
+      !portada.name.toLowerCase().endsWith('.jpeg') &&
+      !portada.name.toLowerCase().endsWith('.webp')
+    ) {
+      this.portadaIMG = null;
+      input.value = '';
+
+      Swal.fire({
+        title: 'Archivo no válido',
+        text: 'La portada debe ser PNG, JPG, JPEG o WEBP.',
+        icon: 'error'
+      });
+      return;
+    }
+
+    this.portadaIMG = portada;
+  }
+
   crearNuevoProyecto(): void {
 
     if (this.formNuevoProyecto.invalid) {
@@ -130,6 +163,15 @@ export class Proyectos implements OnInit {
       Swal.fire({
         title: 'Falta la memoria',
         text: 'Seleccioná un archivo PDF.',
+        icon: 'warning'
+      });
+      return;
+    }
+
+    if (!this.portadaIMG) {
+      Swal.fire({
+        title: 'Falta la portada',
+        text: 'Seleccioná una imagen.',
         icon: 'warning'
       });
       return;
@@ -150,28 +192,51 @@ export class Proyectos implements OnInit {
     };
 
 
+
     this.proyectosService.subirMemoria(this.archivoMemoria).pipe(
-      switchMap((subida: any) => this.proyectosService.crear({
-        ...proyecto,
-        memoria: subida.memoria
-      }))
+
+      switchMap((subidaMemoria: any) => {
+
+        return this.proyectosService.subirPortada(this.portadaIMG!).pipe(
+
+          switchMap((subidaPortada: any) => {
+
+            return this.proyectosService.crear({
+              ...proyecto,
+              memoria: subidaMemoria.memoria,
+              portada: subidaPortada.portada
+            });
+
+          })
+
+        );
+
+      })
+
     ).subscribe({
 
       next: (respuesta) => {
 
         console.log('Proyecto creado:', respuesta);
-        this.cargarProyectos()
-        console.log('Proyectos después de crear:', this.proyectos);
+
+        this.cargarProyectos();
+
         this.formNuevoProyecto.reset();
+
         this.archivoMemoria = null;
+        this.portadaIMG = null;
 
         if (this.memoriaInput) {
           this.memoriaInput.nativeElement.value = '';
         }
 
+        if (this.portadaInput) {
+          this.portadaInput.nativeElement.value = '';
+        }
+
         Swal.fire({
-          title: "Proyecto Cargado!",
-          icon: "success",
+          title: "¡Proyecto cargado!",
+          icon: "success"
         });
 
       },
@@ -184,16 +249,16 @@ export class Proyectos implements OnInit {
 
         Swal.fire({
           title: 'Error al crear el proyecto',
-          text: error.error?.error || error.error?.mensaje ||
-            'No se pudo subir la memoria o guardar el proyecto.',
+          text: error.error?.error ||
+            error.error?.mensaje ||
+            'No se pudieron subir los archivos o guardar el proyecto.',
           icon: 'error'
         });
 
-      },
-
-
+      }
 
     });
+
   }
 
   agregarPortfolio(id: number) {

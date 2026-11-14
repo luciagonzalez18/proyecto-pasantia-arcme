@@ -122,7 +122,7 @@
 
     <div class="card">
         <div>
-            <img [src]="proyecto.imagen" [alt]="proyecto.nombre">
+            <img [src]="'http://localhost/apiArcme/public/' + proyecto.portada" [alt]="proyecto.titulo">
         </div>
 
 
@@ -263,9 +263,16 @@
                         <!-- Memoria (Archivo PDF) -->
                         <div class="mb-3">
                             <label for="memoriaPdf" class="form-label">Memoria (Archivo PDF)</label>
-                            <!--Cambie el type de file a text polque no se, cositas :v-->
                             <input type="file" class="form-control" id="memoriaPdf" accept=".pdf,application/pdf"
-                               #memoriaInput (change)="seleccionarMemoria($event)">
+                                #memoriaInput (change)="seleccionarMemoria($event)">
+                        </div>
+
+                        <!--Foto principal del proyecto-->
+                        <div class="mb-3">
+                            <label for="portadaImg" class="form-label">Foto Principal</label>
+                            <input type="file" class="form-control" id="portadaImg"
+                                accept="image/png, image/jpeg, image/webp" #portadaInput
+                                (change)="seleccionarPortada($event)">
                         </div>
 
                         <!-- Descripción -->
@@ -291,5 +298,5 @@
 
 
     </div>
-    
+
 </div>

@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
 //bug arreglar el boton de agregar al portfolio al crear el proyecto 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,14 @@ export class ProyectosService {
     datos.append('memoria', archivo);
 
     return this.http.post<any>(`${this.apiUrl}/memoria`, datos);
+  }
+
+  subirPortada(archivoimg:File){
+    const img= new FormData()
+
+    img.append('portada',archivoimg)//'portada' debe coincidir con el de la base de datos
+
+    return this.http.post<any>(`${this.apiUrl}/portada`,img)
   }
 
   agregarPortfolio(id: number) {
